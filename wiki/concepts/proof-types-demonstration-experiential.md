@@ -29,7 +29,7 @@ The sequence matters: demonstration proof → decision to start → experiential
 
 🟡 In curating 67 AI impact stories for the AI Commons, the team found that more than half the builders could not articulate their own problem statement — it had to be written for them after interviews. A pathway's first function must be helping the adopter formulate their problem. A problem well-stated is a pathway half-found.
 
-⬜ The most powerful demonstration proof is the compression sequence itself — 9 months (MahaVISTAAR) → 3 months (Ethiopia) → 3 weeks (Amul). The claim is not "the system works." The claim is "the pathway makes each next adoption faster." See [[concepts/compression-sequence]].
+⬜ The most powerful demonstration proof is the compression sequence itself — 9 months (MahaVISTAAR) → 3 months (Ethiopia) → 3 weeks (Amul). The claim is not "the system works." The claim is "the pathway makes each next adoption faster." See [compression-sequence](compression-sequence.md).
 
 ## Key decisions for adopters
 
@@ -41,10 +41,10 @@ The sequence matters: demonstration proof → decision to start → experiential
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — Pioneer demonstration proof across five institutional types
-- [[deployments/amul-sarlaben]] — CEO experiential proof documented
-- [[deployments/ethiopia-ati]] — Cross-country demonstration proof
+- [mahavistaar](../deployments/mahavistaar.md) — Pioneer demonstration proof across five institutional types
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — CEO experiential proof documented
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — Cross-country demonstration proof
 
 ## Related concepts
 
-- [[concepts/compression-sequence]] — The strongest form of demonstration proof
+- [compression-sequence](compression-sequence.md) — The strongest form of demonstration proof

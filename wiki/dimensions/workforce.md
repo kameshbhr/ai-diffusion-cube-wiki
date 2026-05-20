@@ -72,9 +72,9 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 ## Pathways in this dimension
 
-- [[deployments/mahavistaar]] — E1 (design-by-use for end users; natural progression from simple to complex); E3 (farmer progression from queries to transactions)
-- [[deployments/bihar-krishi]] — E1 (institutional workforce training); E2 (training at scale — 15,000+ extension workers)
-- [[deployments/amul-sarlaben]] — E3 (agency test, both outcomes — positive and risk — documented)
+- [mahavistaar](../deployments/mahavistaar.md) — E1 (design-by-use for end users; natural progression from simple to complex); E3 (farmer progression from queries to transactions)
+- [bihar-krishi](../deployments/bihar-krishi.md) — E1 (institutional workforce training); E2 (training at scale — 15,000+ extension workers)
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — E3 (agency test, both outcomes — positive and risk — documented)
 
 ---
 

@@ -53,10 +53,10 @@ The seven-layer model resolves a known gap in the B1–B4 dimension framework, w
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — Reference implementation; all seven layers documented from this deployment
+- [mahavistaar](../deployments/mahavistaar.md) — Reference implementation; all seven layers documented from this deployment
 
 ## Related concepts
 
-- [[concepts/dpi-ai-frame]] — Layer 7 is the implementation of the DPI frame; Layers 4-6 are the AI delivery layer
-- [[concepts/inclusion-architecture]] — Layer 2 (Interface) and Layer 3 (Moderation) are where inclusion architecture is implemented technically
-- [[dimensions/architecture]] — B1–B4 decision framework; this page provides the implementation structure
+- [dpi-ai-frame](dpi-ai-frame.md) — Layer 7 is the implementation of the DPI frame; Layers 4-6 are the AI delivery layer
+- [inclusion-architecture](inclusion-architecture.md) — Layer 2 (Interface) and Layer 3 (Moderation) are where inclusion architecture is implemented technically
+- [architecture](../dimensions/architecture.md) — B1–B4 decision framework; this page provides the implementation structure

@@ -78,10 +78,10 @@ The pathway must frame the undertaking differently for each.
 
 ## Pathways in this dimension
 
-- [[deployments/mahavistaar]] — C3 (DoA authorised advisory corpus; 205,000 queries reveal knowledge gaps)
-- [[deployments/bihar-krishi]] — C2 (non-transferability across institutional types; independent build with different partners)
-- [[deployments/amul-sarlaben]] — C2 (cooperative learning differently from state department)
-- [[deployments/ethiopia-ati]] — C2 (new learning cycle required for international transfer)
+- [mahavistaar](../deployments/mahavistaar.md) — C3 (DoA authorised advisory corpus; 205,000 queries reveal knowledge gaps)
+- [bihar-krishi](../deployments/bihar-krishi.md) — C2 (non-transferability across institutional types; independent build with different partners)
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — C2 (cooperative learning differently from state department)
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — C2 (new learning cycle required for international transfer)
 
 ---
 

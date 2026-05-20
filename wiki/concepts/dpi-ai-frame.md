@@ -25,7 +25,7 @@ The DPI+AI frame has three design consequences that determine whether a deployme
 
 **1. Federated data, not centralised:** Data does not move into a single repository. Each institution retains ownership. The AI connects to data sources at the moment of query, with the farmer's consent, and returns results that cite their institutional origin. The farmer receives institutional knowledge delivered through an AI interface — not an AI opinion. 🟡
 
-**2. Voice-first as architectural requirement:** The inclusion commitment is structural, not optional. See [[concepts/inclusion-architecture]].
+**2. Voice-first as architectural requirement:** The inclusion commitment is structural, not optional. See [inclusion-architecture](inclusion-architecture.md).
 
 **3. Modular and replaceable AI layer:** No AI model is permanent. The infrastructure beneath — institutional data sources, open network protocols, farmer registries — remains stable as models evolve, are replaced, or upgraded. This preserves institutional continuity while enabling continuous AI improvement. It means the system does not lock the institution into a single vendor or model. 🟡
 
@@ -48,14 +48,14 @@ These are not technical decisions. They are institutional decisions — and they
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — The reference implementation of DPI+AI in agriculture
-- [[deployments/amul-sarlaben]] — Cooperative data commons as DPI+AI
-- [[deployments/bharat-vistaar]] — National DPI rail; the coordination layer that makes the frame operate at national scale
-- [[deployments/ethiopia-ati]] — DPI+AI adapted to a new country context
+- [mahavistaar](../deployments/mahavistaar.md) — The reference implementation of DPI+AI in agriculture
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — Cooperative data commons as DPI+AI
+- [bharat-vistaar](../deployments/bharat-vistaar.md) — National DPI rail; the coordination layer that makes the frame operate at national scale
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — DPI+AI adapted to a new country context
 
 ## Related concepts
 
-- [[concepts/federate-vs-aggregate-data]] — The data architecture decision that is the practical expression of this frame
-- [[concepts/inclusion-architecture]] — The voice-first commitment that flows from the DPI+AI design principles
-- [[concepts/seven-layer-architecture]] — The technical implementation of DPI+AI across seven layers
-- [[concepts/network-operator-role]] — The institutional role that governs the whole
+- [federate-vs-aggregate-data](federate-vs-aggregate-data.md) — The data architecture decision that is the practical expression of this frame
+- [inclusion-architecture](inclusion-architecture.md) — The voice-first commitment that flows from the DPI+AI design principles
+- [seven-layer-architecture](seven-layer-architecture.md) — The technical implementation of DPI+AI across seven layers
+- [network-operator-role](network-operator-role.md) — The institutional role that governs the whole

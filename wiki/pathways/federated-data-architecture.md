@@ -14,8 +14,8 @@ times-referenced: 0
 
 **One-line summary:** Connect institutional data sources at query time rather than copying them centrally — enabling AI advisory without requiring data ownership transfer, and making deployment possible before any data cleaning has happened.
 
-**Deployment source:** MahaVISTAAR (reference implementation) — [[deployments/mahavistaar]]; [[deployments/amul-sarlaben]]
-**Contributor:** EkStep Foundation — [[people-orgs/ai-diffusion-pathways]]
+**Deployment source:** MahaVISTAAR (reference implementation) — [mahavistaar](../deployments/mahavistaar.md); [amul-sarlaben](../deployments/amul-sarlaben.md)
+**Contributor:** EkStep Foundation — [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 **Contributed:** 2026-05-20
 **Last updated:** 2026-05-20
 **Times referenced:** 0
@@ -127,16 +127,16 @@ Government data residency rules (NIC hosting requirements) may apply to data flo
 
 ## Related pathways
 
-- [[pathways/voice-first-access-design]] — Voice is the interface layer delivered on top of the federated data infrastructure
-- [[pathways/institution-as-authority-trust]] — Source attribution and institutional data ownership are the technical implementation of the institution-as-authority design
-- [[pathways/enabler-ecosystem-assembly]] — Each data enabler in the ecosystem is a node in the federated network; this pathway describes how to identify and connect them
+- [voice-first-access-design](voice-first-access-design.md) — Voice is the interface layer delivered on top of the federated data infrastructure
+- [institution-as-authority-trust](institution-as-authority-trust.md) — Source attribution and institutional data ownership are the technical implementation of the institution-as-authority design
+- [enabler-ecosystem-assembly](enabler-ecosystem-assembly.md) — Each data enabler in the ecosystem is a node in the federated network; this pathway describes how to identify and connect them
 
 ## Related concepts
 
-- [[concepts/federate-vs-aggregate-data]] — Concept-level treatment of this decision
-- [[concepts/dpi-ai-frame]] — The federated data model is the practical expression of the DPI+AI frame
-- [[concepts/seven-layer-architecture]] — Layers 6 (Live Data Sources) and 7 (DPI Foundation) are the implementation of this architecture
-- [[concepts/deploy-first-data-posture]] — The data posture shift that enables federation: deploy first, clean later
+- [federate-vs-aggregate-data](../concepts/federate-vs-aggregate-data.md) — Concept-level treatment of this decision
+- [dpi-ai-frame](../concepts/dpi-ai-frame.md) — The federated data model is the practical expression of the DPI+AI frame
+- [seven-layer-architecture](../concepts/seven-layer-architecture.md) — Layers 6 (Live Data Sources) and 7 (DPI Foundation) are the implementation of this architecture
+- [deploy-first-data-posture](../concepts/deploy-first-data-posture.md) — The data posture shift that enables federation: deploy first, clean later
 
 ## Lineage
 

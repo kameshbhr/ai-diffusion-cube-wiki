@@ -11,7 +11,7 @@ No AI deployment at scale is executed by a single organisation. The ecosystem di
 - **D1 — Ecosystem design:** Who the partners are, what roles they play, how the ecosystem was assembled. A four-layer taxonomy helps inventory: institutional/governance (funders, orchestrators, government bodies), technology/AI (R&D, language models, knowledge contributors), structured data (live feeds), and knowledge/documents (guidelines, publications, research).
 - **D2 — Trust source:** Where trust in the deployment originates. In public-sector deployments, trust flows from a specific institution, individual, or community structure — not from the technology itself.
 - **D3 — Coordination mechanism:** How partners coordinate. The traditional approach requires full consensus before work begins; AI enables coordination before full consensus exists.
-- **D4 — Network operator:** Who holds the network together — who says "this runs in my name." See [[concepts/network-operator-role]] for full treatment.
+- **D4 — Network operator:** Who holds the network together — who says "this runs in my name." See [network-operator-role](../concepts/network-operator-role.md) for full treatment.
 
 ---
 
@@ -92,10 +92,10 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 ## Pathways in this dimension
 
-- [[deployments/mahavistaar]] — D1 (54 enablers, four-layer ecosystem); D2 (trust via DoA attribution, voice-first)
-- [[deployments/bharat-vistaar]] — D3 (hub-and-spoke federation); D4 (national ministry as network operator)
-- [[deployments/amul-sarlaben]] — D4 (cooperative as network operator)
-- [[deployments/ethiopia-ati]] — D4 (ATI as network operator)
+- [mahavistaar](../deployments/mahavistaar.md) — D1 (54 enablers, four-layer ecosystem); D2 (trust via DoA attribution, voice-first)
+- [bharat-vistaar](../deployments/bharat-vistaar.md) — D3 (hub-and-spoke federation); D4 (national ministry as network operator)
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — D4 (cooperative as network operator)
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — D4 (ATI as network operator)
 
 ---
 

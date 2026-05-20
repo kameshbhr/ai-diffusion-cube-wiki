@@ -14,8 +14,8 @@ times-referenced: 0
 
 **One-line summary:** Design the AI system so the institution is the advisory authority and the AI is only the delivery layer — the trust architecture that drives adoption in populations that trust institutions, not algorithms.
 
-**Deployment source:** MahaVISTAAR (primary evidence) — [[deployments/mahavistaar]]; confirmed across [[deployments/amul-sarlaben]], [[deployments/bharat-vistaar]], [[deployments/ethiopia-ati]], [[deployments/bihar-krishi]]
-**Contributor:** EkStep Foundation — [[people-orgs/ai-diffusion-pathways]]
+**Deployment source:** MahaVISTAAR (primary evidence) — [mahavistaar](../deployments/mahavistaar.md); confirmed across [amul-sarlaben](../deployments/amul-sarlaben.md), [bharat-vistaar](../deployments/bharat-vistaar.md), [ethiopia-ati](../deployments/ethiopia-ati.md), [bihar-krishi](../deployments/bihar-krishi.md)
+**Contributor:** EkStep Foundation — [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 **Contributed:** 2026-05-20
 **Last updated:** 2026-05-20
 **Times referenced:** 0
@@ -115,7 +115,7 @@ Not documented in this source. The pathway evidence suggests the institution-as-
 
 The institution-as-authority design creates the highest available accountability structure for an AI advisory system — and therefore the highest obligation to govern what the AI says. The guardrail is specific: no claim can be made without a verifiable institutional source. A system that cannot cite a source must surface the gap, not fill it with inference.
 
-The escalation path — "when the AI cannot answer, direct to institutional contact" — is a safety design, not a quality concession. Farmers who get a confident wrong answer from a system they trust are harmed more than farmers who get "I don't know — here is who to ask." See [[concepts/seven-layer-architecture]] for the moderation layer detail.
+The escalation path — "when the AI cannot answer, direct to institutional contact" — is a safety design, not a quality concession. Farmers who get a confident wrong answer from a system they trust are harmed more than farmers who get "I don't know — here is who to ask." See [seven-layer-architecture](../concepts/seven-layer-architecture.md) for the moderation layer detail.
 
 ## Policy and regulation notes
 
@@ -123,15 +123,15 @@ The question of who authorises an AI to speak in a government institution's name
 
 ## Related pathways
 
-- [[pathways/voice-first-access-design]] — Voice carries institutional identity in a direct and audible way; voice-first and institution-as-authority are mutually reinforcing
-- [[pathways/federated-data-architecture]] — Institutional data stays with institutions, which is what makes the institution's name legitimately appear on the advice
-- [[pathways/enabler-ecosystem-assembly]] — All 54 enablers operate within an authority hierarchy; this pathway defines the top of that hierarchy
+- [voice-first-access-design](voice-first-access-design.md) — Voice carries institutional identity in a direct and audible way; voice-first and institution-as-authority are mutually reinforcing
+- [federated-data-architecture](federated-data-architecture.md) — Institutional data stays with institutions, which is what makes the institution's name legitimately appear on the advice
+- [enabler-ecosystem-assembly](enabler-ecosystem-assembly.md) — All 54 enablers operate within an authority hierarchy; this pathway defines the top of that hierarchy
 
 ## Related concepts
 
-- [[concepts/network-operator-role]] — The network operator is the entity that plays the D4 role in the institution-as-authority design
-- [[concepts/dpi-ai-frame]] — The DPI+AI frame is the architectural expression of institution-as-authority: AI as delivery layer, institution as data and authority source
-- [[concepts/proof-types-demonstration-experiential]] — The proof that the institution-as-authority design works is partly experiential — the Amul CEO's conversion when he saw his own data demonstrate what the system could do
+- [network-operator-role](../concepts/network-operator-role.md) — The network operator is the entity that plays the D4 role in the institution-as-authority design
+- [dpi-ai-frame](../concepts/dpi-ai-frame.md) — The DPI+AI frame is the architectural expression of institution-as-authority: AI as delivery layer, institution as data and authority source
+- [proof-types-demonstration-experiential](../concepts/proof-types-demonstration-experiential.md) — The proof that the institution-as-authority design works is partly experiential — the Amul CEO's conversion when he saw his own data demonstrate what the system could do
 
 ## Lineage
 

@@ -39,12 +39,12 @@ The role is also non-obvious to funders and governments, who often assume that w
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — State government department as network operator
-- [[deployments/bharat-vistaar]] — National ministry as network operator
-- [[deployments/amul-sarlaben]] — Cooperative as network operator
-- [[deployments/ethiopia-ati]] — ATI as network operator
+- [mahavistaar](../deployments/mahavistaar.md) — State government department as network operator
+- [bharat-vistaar](../deployments/bharat-vistaar.md) — National ministry as network operator
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — Cooperative as network operator
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — ATI as network operator
 
 ## Related concepts
 
-- [[concepts/compression-sequence]] — Each node in the compression sequence had a clear network operator
-- [[dimensions/ecosystem]] — Full treatment of D1-D4 ecosystem dimension
+- [compression-sequence](compression-sequence.md) — Each node in the compression sequence had a clear network operator
+- [ecosystem](../dimensions/ecosystem.md) — Full treatment of D1-D4 ecosystem dimension

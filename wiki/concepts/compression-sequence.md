@@ -27,12 +27,12 @@ The sequence also demonstrates that the pathway is not context-specific: the thr
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — pioneer (9 months)
-- [[deployments/ethiopia-ati]] — first international adopter (3 months)
-- [[deployments/amul-sarlaben]] — cooperative with existing data infrastructure (3 weeks)
+- [mahavistaar](../deployments/mahavistaar.md) — pioneer (9 months)
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — first international adopter (3 months)
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — cooperative with existing data infrastructure (3 weeks)
 
 ## Related concepts
 
-- [[concepts/proof-types-demonstration-experiential]] — Compression sequence as the strongest form of proof
-- [[concepts/deploy-first-data-posture]] — Data posture shift that enables faster subsequent deployments
-- [[concepts/network-operator-role]] — D4 role that must be played for each node to achieve its compression
+- [proof-types-demonstration-experiential](proof-types-demonstration-experiential.md) — Compression sequence as the strongest form of proof
+- [deploy-first-data-posture](deploy-first-data-posture.md) — Data posture shift that enables faster subsequent deployments
+- [network-operator-role](network-operator-role.md) — D4 role that must be played for each node to achieve its compression

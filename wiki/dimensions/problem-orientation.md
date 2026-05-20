@@ -13,7 +13,7 @@ Problem orientation is the foundation on which every other dimension rests. A de
 - **A3 — Existing assets:** What is already in place — prior pilots, legacy systems, databases, institutional processes, community structures — that can be built on or must be worked around.
 - **A4 — Proof mechanism:** How the deployment will demonstrate that it works, at what threshold of evidence, for which audiences. Proof requirements differ across funders, governments, and field workers.
 
-**Open question (potential A5):** Inclusion design — whether the system is built for the person with the least access (voice-first, feature phone, low literacy) rather than the median user. Field evidence suggests this is independently variable from A1-A4. See [[concepts/inclusion-architecture]].
+**Open question (potential A5):** Inclusion design — whether the system is built for the person with the least access (voice-first, feature phone, low literacy) rather than the median user. Field evidence suggests this is independently variable from A1-A4. See [inclusion-architecture](../concepts/inclusion-architecture.md).
 
 ---
 
@@ -32,7 +32,7 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 🟡 The system's categories must match the user's mental model, not the deployer's organisational chart. Grouping use cases by what farmers are trying to do (asking about a sick animal, checking scheme eligibility, tracking an application) produces a more adoptable architecture than grouping by technical taxonomy.
 
-⬜ Problems come in two modes — inbound (user comes with a question) and outbound (system anticipates a need). See [[concepts/inbound-vs-outbound-problem-modes]]. MahaVISTAAR's shift from inbound to outbound (17 lakh proactive daily alerts) is where the system moved from useful to indispensable.
+⬜ Problems come in two modes — inbound (user comes with a question) and outbound (system anticipates a need). See [inbound-vs-outbound-problem-modes](../concepts/inbound-vs-outbound-problem-modes.md). MahaVISTAAR's shift from inbound to outbound (17 lakh proactive daily alerts) is where the system moved from useful to indispensable.
 
 **A2 — Data posture:**
 🟡 The unlock is access, not quality. In MahaVISTAAR, departments had APIs that had existed for years but had never been called. The connection itself was the intervention — no data cleaning was required to start.
@@ -41,7 +41,7 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 🟡 Data flows in both directions: the system returns anonymised, aggregated signals back to institutions (which advisories are being accessed, which crops have insufficient guidance, which regions show stress). AI creates a feedback loop that improves institutional data over time.
 
-⬜ Two decisions sit within data posture that adopters must resolve early: federate vs. aggregate, and opt-in/consent-based vs. pre-loaded. See [[concepts/federate-vs-aggregate-data]].
+⬜ Two decisions sit within data posture that adopters must resolve early: federate vs. aggregate, and opt-in/consent-based vs. pre-loaded. See [federate-vs-aggregate-data](../concepts/federate-vs-aggregate-data.md).
 
 **A3 — Existing assets:**
 🟡 Every deployment that moved fast started with an inventory, not a specification. Maharashtra had fragmented advisory platforms, university databases, weather services, and market data — all working in isolation. The feasibility question was not "what do we need?" but "what can be joined?"
@@ -51,9 +51,9 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 **A4 — Proof:**
 🟡 Proof must be product-independent. The moment you tie it to one vendor's platform, you have proved that their product works, not that the approach works.
 
-🟡 Two proof types are necessary: demonstration proof (triggers the decision to start) and experiential proof (creates the internal champion). See [[concepts/proof-types-demonstration-experiential]]. The Amul CEO's conversion happened because he saw AI working on his own data, not through a slide deck.
+🟡 Two proof types are necessary: demonstration proof (triggers the decision to start) and experiential proof (creates the internal champion). See [proof-types-demonstration-experiential](../concepts/proof-types-demonstration-experiential.md). The Amul CEO's conversion happened because he saw AI working on his own data, not through a slide deck.
 
-🟡 The most powerful proof is the compression sequence: 9 months (MahaVISTAAR) → 3 months (Ethiopia) → 3 weeks (Amul). The claim is not "the system works" but "the pathway makes each next adoption faster." See [[concepts/compression-sequence]].
+🟡 The most powerful proof is the compression sequence: 9 months (MahaVISTAAR) → 3 months (Ethiopia) → 3 weeks (Amul). The claim is not "the system works" but "the pathway makes each next adoption faster." See [compression-sequence](../concepts/compression-sequence.md).
 
 ---
 
@@ -73,16 +73,16 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 - **Cannot articulate the problem statement.** More than half of builders in the AI Commons curation exercise could not do this. If the pathway provider or adopter cannot name the specific person whose life gets better and explain how, they are not ready to build.
 - **Waiting for perfect data.** Leads to indefinite delay. The data question should be "what exists across silos and can we connect it?" not "is it clean enough?"
-- **Building for the wrong user.** A system designed for smartphone-literate users in data-connected areas will not reach the people with the greatest need. See [[concepts/inclusion-architecture]].
+- **Building for the wrong user.** A system designed for smartphone-literate users in data-connected areas will not reach the people with the greatest need. See [inclusion-architecture](../concepts/inclusion-architecture.md).
 - **Vendor-specific proof.** Ties the adopter's credibility to one vendor's platform rather than demonstrating that the approach works independent of any vendor.
 
 ---
 
 ## Pathways in this dimension
 
-- [[deployments/mahavistaar]] — A1 (problem framing at right granularity, inbound→outbound); A2 (data connection without cleaning); A3 (API inventory); A4 (multi-institutional proof)
-- [[deployments/amul-sarlaben]] — A3 (deep existing asset base enabling 3-week deployment); A4 (experiential proof via CEO conversion)
-- [[deployments/ethiopia-ati]] — A3 (limited starting assets, same pathway); A4 (cross-country proof)
+- [mahavistaar](../deployments/mahavistaar.md) — A1 (problem framing at right granularity, inbound→outbound); A2 (data connection without cleaning); A3 (API inventory); A4 (multi-institutional proof)
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — A3 (deep existing asset base enabling 3-week deployment); A4 (experiential proof via CEO conversion)
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — A3 (limited starting assets, same pathway); A4 (cross-country proof)
 
 ---
 

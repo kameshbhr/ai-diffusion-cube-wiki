@@ -5,7 +5,7 @@
 **Geography:** Bihar state, India (all 38 districts)
 **Scale:** 850,000+ farmers registered 🟡; 15,000+ extension workers trained across 38 districts 🟡; 38,000+ scheme applications submitted 🟡; 20–25% monthly engagement rate 🟡; 20 million farmers reached through digital outreach 🟡
 **Period:** Active since May 2025 🟡; built under Bihar's 4th Agriculture Roadmap
-**Contact / network:** [[people-orgs/ai-diffusion-pathways]]
+**Contact / network:** [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 
 ## One-paragraph summary
 

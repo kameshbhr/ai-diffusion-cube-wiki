@@ -35,9 +35,9 @@ Outbound also requires a different data architecture: the system must have acces
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — Both modes documented; outbound (17 lakh daily alerts) documented
+- [mahavistaar](../deployments/mahavistaar.md) — Both modes documented; outbound (17 lakh daily alerts) documented
 
 ## Related concepts
 
-- [[dimensions/problem-orientation]] — Full treatment of A1 problem framing
-- [[concepts/deploy-first-data-posture]] — Outbound requires richer data access (location, crop calendar, regional patterns) than inbound
+- [problem-orientation](../dimensions/problem-orientation.md) — Full treatment of A1 problem framing
+- [deploy-first-data-posture](deploy-first-data-posture.md) — Outbound requires richer data access (location, crop calendar, regional patterns) than inbound

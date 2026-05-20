@@ -14,8 +14,8 @@ times-referenced: 0
 
 **One-line summary:** Identify what already exists before specifying what to build — an agricultural AI deployment does not assemble its ecosystem from scratch; it identifies and connects the 50+ enablers already operating in separate layers.
 
-**Deployment source:** MahaVISTAAR — [[deployments/mahavistaar]]
-**Contributor:** EkStep Foundation — [[people-orgs/ai-diffusion-pathways]]
+**Deployment source:** MahaVISTAAR — [mahavistaar](../deployments/mahavistaar.md)
+**Contributor:** EkStep Foundation — [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 **Contributed:** 2026-05-20
 **Last updated:** 2026-05-20
 **Times referenced:** 0
@@ -124,7 +124,7 @@ Not documented in this source. The pathway evidence describes the inventory-firs
 
 Layer A (institutional/governance) is the safety layer in the ecosystem: it provides the authority chain that determines what the system can and cannot say in whose name. If Layer A is weak or informal, the safety architecture has no institutional backing — there is no one to escalate to when the AI gives advice that causes harm, and no one with authority to correct course.
 
-Layer B (technology/AI) includes the moderation infrastructure — adversarial test sets, prompt injection defence, content safety classification. This is an ecosystem member requirement, not a deployment-by-deployment rebuild. See [[concepts/seven-layer-architecture]] for detail.
+Layer B (technology/AI) includes the moderation infrastructure — adversarial test sets, prompt injection defence, content safety classification. This is an ecosystem member requirement, not a deployment-by-deployment rebuild. See [seven-layer-architecture](../concepts/seven-layer-architecture.md) for detail.
 
 ## Policy and regulation notes
 
@@ -132,15 +132,15 @@ Layer A enablers include government bodies whose participation may require forma
 
 ## Related pathways
 
-- [[pathways/federated-data-architecture]] — The data enablers in Layer C are the sources connected in the federated architecture; this pathway identifies them; the federated architecture connects them
-- [[pathways/institution-as-authority-trust]] — Layer A (institutional/governance) is the trust source; this pathway shows how to assemble it; institution-as-authority shows what it requires institutionally
-- [[pathways/voice-first-access-design]] — The language and AI models in Layer B (Bhashini, AI4Bharat, Karya) are the voice infrastructure enablers
+- [federated-data-architecture](federated-data-architecture.md) — The data enablers in Layer C are the sources connected in the federated architecture; this pathway identifies them; the federated architecture connects them
+- [institution-as-authority-trust](institution-as-authority-trust.md) — Layer A (institutional/governance) is the trust source; this pathway shows how to assemble it; institution-as-authority shows what it requires institutionally
+- [voice-first-access-design](voice-first-access-design.md) — The language and AI models in Layer B (Bhashini, AI4Bharat, Karya) are the voice infrastructure enablers
 
 ## Related concepts
 
-- [[concepts/network-operator-role]] — The network operator is the role that convenes and sustains relationships across all four layers
-- [[concepts/dpi-ai-frame]] — The DPI is the protocol layer (Layer 7 of the system architecture) that makes four-layer ecosystem participation possible without bilateral coordination
-- [[concepts/federate-vs-aggregate-data]] — The data enablers in Layer C are connected, not consolidated
+- [network-operator-role](../concepts/network-operator-role.md) — The network operator is the role that convenes and sustains relationships across all four layers
+- [dpi-ai-frame](../concepts/dpi-ai-frame.md) — The DPI is the protocol layer (Layer 7 of the system architecture) that makes four-layer ecosystem participation possible without bilateral coordination
+- [federate-vs-aggregate-data](../concepts/federate-vs-aggregate-data.md) — The data enablers in Layer C are connected, not consolidated
 
 ## Lineage
 

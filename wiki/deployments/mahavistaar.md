@@ -5,7 +5,7 @@
 **Geography:** Maharashtra state, India
 **Scale:** 342,000+ unique users 🟡; 1.67 million+ farmer questions answered 🟡; 791,000+ sessions 🟡; 17 lakh farmers reached via proactive voice alerts daily 🟡; 440,000 total categorised queries/month (December 2025) 🟡; 205,000 of those crop/pest queries 🟡; 97%+ positive feedback rate (98.5% most recent measurement) 🟡
 **Period:** Pioneer deployment; active as of December 2025 (start year not documented in source)
-**Contact / network:** [[people-orgs/ai-diffusion-pathways]]
+**Contact / network:** [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 **Access:** Short code 155313 (voice call, any phone) 🟡
 
 ## One-paragraph summary
@@ -14,10 +14,10 @@ MahaVISTAAR is the pioneer deployment of the AI diffusion pathway for agricultur
 
 ## Pathways from this deployment
 
-- [[pathways/voice-first-access-design]] — Voice as structural inclusion solution; short code 155313; ASR/TTS architecture; trust through institutional voice
-- [[pathways/federated-data-architecture]] — Connecting APIs that existed but had never been called; "no tool = no answer"; data stays with institutions
-- [[pathways/institution-as-authority-trust]] — Agri Secretary sponsor named; every response cites institutional source; AI subordinate to institution's identity
-- [[pathways/enabler-ecosystem-assembly]] — 54 enablers across four layers; inventory before specification; OAN connects, not builds
+- [voice-first-access-design](../pathways/voice-first-access-design.md) — Voice as structural inclusion solution; short code 155313; ASR/TTS architecture; trust through institutional voice
+- [federated-data-architecture](../pathways/federated-data-architecture.md) — Connecting APIs that existed but had never been called; "no tool = no answer"; data stays with institutions
+- [institution-as-authority-trust](../pathways/institution-as-authority-trust.md) — Agri Secretary sponsor named; every response cites institutional source; AI subordinate to institution's identity
+- [enabler-ecosystem-assembly](../pathways/enabler-ecosystem-assembly.md) — 54 enablers across four layers; inventory before specification; OAN connects, not builds
 
 ## Key facts for adopters
 

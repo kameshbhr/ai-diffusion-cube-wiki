@@ -19,11 +19,11 @@ The initiative's primary contribution to the Cube is the six-orthogonal-shifts f
 
 ## Deployments they are associated with
 
-- [[deployments/mahavistaar]] — Maharashtra, India (technical partner / builder)
-- [[deployments/bharat-vistaar]] — National layer, India
-- [[deployments/amul-sarlaben]] — Cooperative deployment (technical partner)
-- [[deployments/bihar-krishi]] — Bihar state, India
-- [[deployments/ethiopia-ati]] — Ethiopia (knowledge transfer / technical support)
+- [mahavistaar](../deployments/mahavistaar.md) — Maharashtra, India (technical partner / builder)
+- [bharat-vistaar](../deployments/bharat-vistaar.md) — National layer, India
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — Cooperative deployment (technical partner)
+- [bihar-krishi](../deployments/bihar-krishi.md) — Bihar state, India
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — Ethiopia (knowledge transfer / technical support)
 
 ## When to connect with them
 

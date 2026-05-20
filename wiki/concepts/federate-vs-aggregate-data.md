@@ -39,10 +39,10 @@ The decision also interacts with the opt-in/consent question: can data be federa
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — Federation model implemented; only prompt goes to LLM
-- [[deployments/bharat-vistaar]] — Partial aggregation at national layer (not fully documented)
+- [mahavistaar](../deployments/mahavistaar.md) — Federation model implemented; only prompt goes to LLM
+- [bharat-vistaar](../deployments/bharat-vistaar.md) — Partial aggregation at national layer (not fully documented)
 
 ## Related concepts
 
-- [[concepts/deploy-first-data-posture]] — The broader data posture shift within which this decision sits
-- [[dimensions/architecture]] — B2 data sovereignty full treatment
+- [deploy-first-data-posture](deploy-first-data-posture.md) — The broader data posture shift within which this decision sits
+- [architecture](../dimensions/architecture.md) — B2 data sovereignty full treatment

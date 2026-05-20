@@ -5,7 +5,7 @@
 **Geography:** Gujarat, India — 18,500+ villages 🟡
 **Scale:** 3.6 million milk producers 🟡 (⚠️ contradiction: prior source recorded "25 lakh" / 2.5 million — see note below); 1 million+ app downloads 🟡; data infrastructure: 2 billion milk procurement transactions, 30 million cattle records, 1,200+ veterinary doctor records, 50 years of cooperative history 🟡; 1,400 vets serving 3.6 million farmers and 22 million cattle 🟡; 3.5 crore litres of milk processed daily 🟡
 **Period:** Deployed 3 weeks after pathway adoption 🟡; referenced at India AI Impact Summit 2026 🟡
-**Contact / network:** [[people-orgs/ai-diffusion-pathways]]
+**Contact / network:** [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 **Access:** Short code 08035453545 (voice call, Gujarati) 🟡
 
 **Scale contradiction note:** Previous source (Six Orthogonal Shifts document) recorded "25 lakh farmers in network." This source and the OAN Master Deck both consistently record "3.6 million." Possible explanation: 25 lakh (2.5 million) may refer to a prior period or to active app-registered users, while 3.6 million is total cooperative membership. Contradiction unresolved — both figures recorded. 🟡
@@ -16,9 +16,9 @@ Amul's cooperative deployment is the fastest in the compression sequence — 3 w
 
 ## Pathways from this deployment
 
-- [[pathways/voice-first-access-design]] — Sarlaben named for inclusion; 08035453545; voice for women dairy producers with no smartphone; "same questions, now answerable"
-- [[pathways/federated-data-architecture]] — 2 billion cooperative transactions connected, not consolidated; "institution did not change; farmer's access to what it knew did"
-- [[pathways/institution-as-authority-trust]] — Amul as D4 network operator and authority; Sarlaben speaks as cooperative; CEO experiential proof on own data
+- [voice-first-access-design](../pathways/voice-first-access-design.md) — Sarlaben named for inclusion; 08035453545; voice for women dairy producers with no smartphone; "same questions, now answerable"
+- [federated-data-architecture](../pathways/federated-data-architecture.md) — 2 billion cooperative transactions connected, not consolidated; "institution did not change; farmer's access to what it knew did"
+- [institution-as-authority-trust](../pathways/institution-as-authority-trust.md) — Amul as D4 network operator and authority; Sarlaben speaks as cooperative; CEO experiential proof on own data
 - *(A3 existing assets, A4 experiential proof, B1 model evaluation, E3 agency test, F1 plus-one velocity — pathway pages to be created from direct provider contributions)*
 
 ## Key facts for adopters

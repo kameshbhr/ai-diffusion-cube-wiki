@@ -47,13 +47,13 @@ This concept represents an unresolved framework question. The current wiki treat
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — Voice-first as primary access channel; short code 155313; 440k queries/month; 17 lakh proactive alerts
-- [[deployments/amul-sarlaben]] — Voice-first for dairy cooperative members; short code 08035453545; women producers as primary beneficiary
-- [[deployments/bharat-vistaar]] — National voice access; short code 155261
-- [[deployments/ethiopia-ati]] — Voice-first in local languages; climate advisory via voice
+- [mahavistaar](../deployments/mahavistaar.md) — Voice-first as primary access channel; short code 155313; 440k queries/month; 17 lakh proactive alerts
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — Voice-first for dairy cooperative members; short code 08035453545; women producers as primary beneficiary
+- [bharat-vistaar](../deployments/bharat-vistaar.md) — National voice access; short code 155261
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — Voice-first in local languages; climate advisory via voice
 
 ## Related concepts
 
-- [[dimensions/problem-orientation]] — A1 problem framing (the closest existing home for this concept)
-- [[dimensions/architecture]] — B1-B4 (where voice infrastructure choices partially sit); see also [[concepts/seven-layer-architecture]] for the ASR/TTS/telephony layer detail
-- [[concepts/dpi-ai-frame]] — Institutional authority + AI delivery layer is the frame within which voice-first inclusion operates
+- [problem-orientation](../dimensions/problem-orientation.md) — A1 problem framing (the closest existing home for this concept)
+- [architecture](../dimensions/architecture.md) — B1-B4 (where voice infrastructure choices partially sit); see also [seven-layer-architecture](seven-layer-architecture.md) for the ASR/TTS/telephony layer detail
+- [dpi-ai-frame](dpi-ai-frame.md) — Institutional authority + AI delivery layer is the frame within which voice-first inclusion operates

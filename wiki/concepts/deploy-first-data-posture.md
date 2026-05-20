@@ -33,7 +33,7 @@ The inverse is also important: AI does not just use data. It reveals what the da
 Adopters must resolve two architectural decisions early:
 
 **1. Federate vs. aggregate**
-- **Federate:** Connect at query time. Each institution retains data ownership. The AI accesses data at the moment of query, without copying it. See [[concepts/federate-vs-aggregate-data]] for full treatment.
+- **Federate:** Connect at query time. Each institution retains data ownership. The AI accesses data at the moment of query, without copying it. See [federate-vs-aggregate-data](federate-vs-aggregate-data.md) for full treatment.
 - **Aggregate:** Copy into a central warehouse. Simpler to query; more complex to govern.
 
 **2. Opt-in / consent-based vs. pre-loaded**
@@ -43,10 +43,10 @@ Both are data posture questions with governance implications (see F2 governance)
 
 ## Pathways that cover this
 
-- [[deployments/mahavistaar]] — APIs connected without prior cleaning
-- [[deployments/amul-sarlaben]] — Existing data infrastructure (2 billion transactions) as enabler of 3-week deployment
+- [mahavistaar](../deployments/mahavistaar.md) — APIs connected without prior cleaning
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — Existing data infrastructure (2 billion transactions) as enabler of 3-week deployment
 
 ## Related concepts
 
-- [[concepts/federate-vs-aggregate-data]] — The specific architectural decision within data posture
-- [[concepts/compression-sequence]] — Deep data infrastructure is one reason Amul achieved 3-week deployment
+- [federate-vs-aggregate-data](federate-vs-aggregate-data.md) — The specific architectural decision within data posture
+- [compression-sequence](compression-sequence.md) — Deep data infrastructure is one reason Amul achieved 3-week deployment

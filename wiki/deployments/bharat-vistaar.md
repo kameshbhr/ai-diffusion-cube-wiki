@@ -5,7 +5,7 @@
 **Geography:** India (national)
 **Scale:** Phase-1 live at launch: 10 major central schemes, ICAR crop/livestock guidance, IMD weather and NPSS pest alerts; hub-and-spoke federation with MahaVISTAAR, Amul, Bihar Krishi as nodes 🟡
 **Period:** Announced in Union Budget 2026-27; formally launched 17 February 2026, Jaipur 🟡
-**Contact / network:** [[people-orgs/ai-diffusion-pathways]]
+**Contact / network:** [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 **Access:** Short code 155261 (feature phone, Hindi and English) 🟡
 
 ## One-paragraph summary

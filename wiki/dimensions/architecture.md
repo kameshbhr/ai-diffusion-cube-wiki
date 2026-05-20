@@ -81,9 +81,9 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 ## Pathways in this dimension
 
-- [[deployments/mahavistaar]] — B2 (federation model, only prompt to LLM); B3 (open protocol use); B4 (DPG as source for Ethiopia transfer)
-- [[deployments/amul-sarlaben]] — B1 (model evaluation evidence: 94% vs 91%)
-- [[deployments/ethiopia-ati]] — B4 (DPG component transfer enabling 3-month deployment)
+- [mahavistaar](../deployments/mahavistaar.md) — B2 (federation model, only prompt to LLM); B3 (open protocol use); B4 (DPG as source for Ethiopia transfer)
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — B1 (model evaluation evidence: 94% vs 91%)
+- [ethiopia-ati](../deployments/ethiopia-ati.md) — B4 (DPG component transfer enabling 3-month deployment)
 
 ---
 

@@ -5,7 +5,7 @@
 **Geography:** Ethiopia (national)
 **Scale:** 30 million farmers targeted, including 14 million women 🟡; 8% income boost within five years as stated ambition 🟡
 **Period:** Formally launched February 2026; three months from commitment to launch 🟡
-**Contact / network:** [[people-orgs/ai-diffusion-pathways]]
+**Contact / network:** [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 
 ## One-paragraph summary
 
@@ -13,8 +13,8 @@ Ethiopia's deployment is the first international adoption of the AI diffusion pa
 
 ## Pathways from this deployment
 
-- [[pathways/voice-first-access-design]] — Voice-first in local languages; language pipeline methodology transferred from MahaVISTAAR
-- [[pathways/enabler-ecosystem-assembly]] — Inventory-first made 3-month deployment possible; evaluators assessed "what needed adaptation rather than construction"
+- [voice-first-access-design](../pathways/voice-first-access-design.md) — Voice-first in local languages; language pipeline methodology transferred from MahaVISTAAR
+- [enabler-ecosystem-assembly](../pathways/enabler-ecosystem-assembly.md) — Inventory-first made 3-month deployment possible; evaluators assessed "what needed adaptation rather than construction"
 - *(A3 readiness gradient, A4 cross-country proof, D4 network operator, F4 transferred assets — pathway pages to be created from direct provider contributions)*
 
 ## Key facts for adopters

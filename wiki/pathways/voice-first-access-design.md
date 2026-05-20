@@ -14,8 +14,8 @@ times-referenced: 0
 
 **One-line summary:** Design voice as the primary access channel — not a feature added to a text-first system — and every structural barrier to inclusion (literacy, device type, language, navigation) dissolves simultaneously.
 
-**Deployment source:** MahaVISTAAR (reference implementation) — [[deployments/mahavistaar]]; confirmed across [[deployments/amul-sarlaben]], [[deployments/bharat-vistaar]], [[deployments/ethiopia-ati]]
-**Contributor:** EkStep Foundation — [[people-orgs/ai-diffusion-pathways]]
+**Deployment source:** MahaVISTAAR (reference implementation) — [mahavistaar](../deployments/mahavistaar.md); confirmed across [amul-sarlaben](../deployments/amul-sarlaben.md), [bharat-vistaar](../deployments/bharat-vistaar.md), [ethiopia-ati](../deployments/ethiopia-ati.md)
+**Contributor:** EkStep Foundation — [ai-diffusion-pathways](../people-orgs/ai-diffusion-pathways.md)
 **Contributed:** 2026-05-20
 **Last updated:** 2026-05-20
 **Times referenced:** 0
@@ -118,7 +118,7 @@ Not documented in this source. The source describes the system as operational an
 
 Voice carries the institution's identity in a direct and audible way. The farmer hears the voice of the system they are calling, in their language, from a number they associate with the state or cooperative. This creates both the highest trust signal available to the system — and the highest accountability obligation. If the voice system gives incorrect advice, the institutional credibility attached to that advice amplifies the harm. 🟡
 
-The moderation layer (Layer 3 of the seven-layer architecture) is embedded within the ASR pipeline for voice, not as a separate call. This means safety filtering must be designed into the voice pipeline from the beginning — it cannot be layered on after the fact. See [[concepts/seven-layer-architecture]].
+The moderation layer (Layer 3 of the seven-layer architecture) is embedded within the ASR pipeline for voice, not as a separate call. This means safety filtering must be designed into the voice pipeline from the beginning — it cannot be layered on after the fact. See [seven-layer-architecture](../concepts/seven-layer-architecture.md).
 
 ## Policy and regulation notes
 
@@ -126,14 +126,14 @@ Cloud telephony providers (Exotel, Tata Tele) require regulatory compliance for 
 
 ## Related pathways
 
-- [[pathways/institution-as-authority-trust]] — Voice-first and institution-as-authority are complementary: voice carries trust when it speaks as the institution, not as itself
-- [[pathways/federated-data-architecture]] — The data the voice system draws from must be accessible in the federated model; voice is the interface layer on top of the federated data infrastructure
+- [institution-as-authority-trust](institution-as-authority-trust.md) — Voice-first and institution-as-authority are complementary: voice carries trust when it speaks as the institution, not as itself
+- [federated-data-architecture](federated-data-architecture.md) — The data the voice system draws from must be accessible in the federated model; voice is the interface layer on top of the federated data infrastructure
 
 ## Related concepts
 
-- [[concepts/inclusion-architecture]] — This pathway is the implementation guide for the inclusion architecture concept
-- [[concepts/seven-layer-architecture]] — Layer 2 (Interface) and Layer 3 (Moderation/ASR) and the Voice Pipeline detail
-- [[concepts/dpi-ai-frame]] — Voice-first is one of three design commitments that follow from the DPI+AI frame
+- [inclusion-architecture](../concepts/inclusion-architecture.md) — This pathway is the implementation guide for the inclusion architecture concept
+- [seven-layer-architecture](../concepts/seven-layer-architecture.md) — Layer 2 (Interface) and Layer 3 (Moderation/ASR) and the Voice Pipeline detail
+- [dpi-ai-frame](../concepts/dpi-ai-frame.md) — Voice-first is one of three design commitments that follow from the DPI+AI frame
 
 ## Lineage
 

@@ -30,7 +30,7 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 🟡 The Amul plus-one pattern: start with Sarlaben advisory, then add AI-based booking for artificial insemination (a small plus-one on what already exists), then microcredit via the cooperative bank, then Bharat Taxi via open network protocols. Each step builds on existing readiness. Never plus-ten.
 
-🟡 Velocity also operates across deployments: 9 months (MahaVISTAAR, pioneer) → 3 months (Ethiopia, first international adopter) → 3 weeks (Amul, cooperative with existing data infrastructure). See [[concepts/compression-sequence]].
+🟡 Velocity also operates across deployments: 9 months (MahaVISTAAR, pioneer) → 3 months (Ethiopia, first international adopter) → 3 weeks (Amul, cooperative with existing data infrastructure). See [compression-sequence](../concepts/compression-sequence.md).
 
 🟡 Proactive push is a velocity accelerator at the user level. MahaVISTAAR's proactive voice alerts reach 17 lakh farmers daily. The design question: how quickly can you shift from pull (farmer calls you) to push (you call the farmer)?
 
@@ -92,10 +92,10 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 ## Pathways in this dimension
 
-- [[deployments/mahavistaar]] — F1 (proactive push, 17 lakh daily alerts)
-- [[deployments/amul-sarlaben]] — F1 (plus-one scaling pattern documented)
-- [[deployments/bharat-vistaar]] — F3 (national-layer amortisation; Rs. 150 crore)
-- [[concepts/compression-sequence]] — F1 velocity across deployments
+- [mahavistaar](../deployments/mahavistaar.md) — F1 (proactive push, 17 lakh daily alerts)
+- [amul-sarlaben](../deployments/amul-sarlaben.md) — F1 (plus-one scaling pattern documented)
+- [bharat-vistaar](../deployments/bharat-vistaar.md) — F3 (national-layer amortisation; Rs. 150 crore)
+- [compression-sequence](../concepts/compression-sequence.md) — F1 velocity across deployments
 
 ---
 
