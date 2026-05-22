@@ -17,7 +17,9 @@ Most AI deployments succeed as pilots and fail at scale. The operating model dim
 
 ## What the wiki currently holds
 
-One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Diffusion Pathways initiative). Strong field evidence on F1 (velocity and plus-one pattern from Amul; compression sequence across deployments; proactive push from MahaVISTAAR), F3 (cost data from the initiative), and F4 (pilot failure modes). F2 (governance) has important pattern-level documentation, including procurement as a governance dimension.
+Two sources ingested:
+1. "The Six Orthogonal Shifts - detailed version 2" (AI Diffusion Pathways initiative) — Strong field evidence on F1, F3 cost data, F4 pilot failure modes. Sector: agriculture.
+2. "Blue Dots AI — An AI Diffusion Pathway for Livelihoods" (Tushar Bansal, EkStep Foundation, May 2026) — New F3 pattern (cold start → private actor self-sustainability); new F1 pattern (facilitation team weekly rhythm); livelihoods compression sequence (10 months → 4 months). Sector: livelihoods.
 
 ---
 
@@ -30,9 +32,11 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 🟡 The Amul plus-one pattern: start with Sarlaben advisory, then add AI-based booking for artificial insemination (a small plus-one on what already exists), then microcredit via the cooperative bank, then Bharat Taxi via open network protocols. Each step builds on existing readiness. Never plus-ten.
 
-🟡 Velocity also operates across deployments: 9 months (MahaVISTAAR, pioneer) → 3 months (Ethiopia, first international adopter) → 3 weeks (Amul, cooperative with existing data infrastructure). See [compression-sequence](../concepts/compression-sequence.md).
+🟡 Velocity also operates across deployments: 9 months (MahaVISTAAR, pioneer) → 3 months (Ethiopia, first international adopter) → 3 weeks (Amul, cooperative with existing data infrastructure). In the livelihoods track: 10 months (Dharwad, pioneer) → 4 months (Ghaziabad, second district). See [compression-sequence](../concepts/compression-sequence.md).
 
 🟡 Proactive push is a velocity accelerator at the user level. MahaVISTAAR's proactive voice alerts reach 17 lakh farmers daily. The design question: how quickly can you shift from pull (farmer calls you) to push (you call the farmer)?
+
+🟡 **Facilitation team rhythm as a velocity dimension (livelihoods):** In the Blue Dots AI deployments, the District Facilitation Team (6–8 people) maintains weekly discovery rhythm — identifying aggregators, tracking Blue Dot freshness, prompting stalled participants. This ongoing operational cadence is a velocity mechanism: without it, Blue Dots go stale, both sides lose confidence, and discovery reverts to pre-infrastructure patterns. "A live map requires a live rhythm." The velocity question in livelihoods discovery is not how fast to launch but how consistently to maintain. Source: Tushar Bansal, EkStep Foundation, May 2026. 🟡
 
 **F2 — Governance:**
 ⬜ Governance is not the enemy of speed. It is what lets you scale without stopping to fix things that should have been right from the start. Going fast without governance is going fast towards a wall.
@@ -56,6 +60,10 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 🟡 The financing model for at-scale diffusion is not "N pathways × $250,000." It is a declining marginal cost curve. The first twenty pathways cost roughly $5 million total; the next twenty cost significantly less because the reusable infrastructure is already in place.
 
 🟡 National-layer amortisation shifts the economics: Bharat-VISTAAR's Rs. 150 crore allocation creates a national layer that amortises infrastructure costs across all state nodes. Maharashtra does not bear the full cost of the knowledge base, AgriStack, or ICAR integration — those sit at the national level.
+
+🟡 **Cold start → self-sustaining economics (livelihoods):** The Blue Dots AI deployments document a specific F3 pattern for two-sided discovery marketplaces. Before private actors have a reason to join (before there is sufficient density of verified participants), government or philanthropic funding must cover the cold start period: facilitation team salaries, voice AI setup, and aggregator mobilisation for the first 12 months. Once density is reached and innovators are active, the ecosystem generates its own economic value and does not require continuous subsidy. In Dharwad and Ghaziabad, the cold start threshold was reached within the first three months of aggregator mobilisation. The unit economics: a ₹10 voice interaction surfaces a worker who generates ₹1 lakh in annual local economic activity — the ROI case for the funder is straightforward once the numbers are named. Source: Tushar Bansal, EkStep Foundation, May 2026. 🟡
+
+⬜ The 12-month funded commitment is a minimum threshold, not a guarantee. Timeline to private actor self-sustainability depends on district density targets, aggregator engagement speed, and the local private sector's appetite for verified candidate pools. Dharwad and Ghaziabad are the only documented reference points; both are in India. Whether this timeline holds in lower-density or lower-SMB-density districts is not yet documented.
 
 **F4 — Pilot to deployment:**
 ⬜ Pilot has project funding, excited volunteers, and weekly check-ins. Deployment has none of those. If the operating model is "same as the pilot but bigger," it will fail.
@@ -96,12 +104,15 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 - [amul-sarlaben](../deployments/amul-sarlaben.md) — F1 (plus-one scaling pattern documented)
 - [bharat-vistaar](../deployments/bharat-vistaar.md) — F3 (national-layer amortisation; Rs. 150 crore)
 - [compression-sequence](../concepts/compression-sequence.md) — F1 velocity across deployments
+- [blue-dots-dharwad](../deployments/blue-dots-dharwad.md) — F1 (10-month pioneer; aggregator-led density acceleration); F3 (cold start → private actor self-sustainability within 3 months)
+- [blue-dots-ghaziabad](../deployments/blue-dots-ghaziabad.md) — F1 (4-month activation; compression from Dharwad); F3 (state scaling to multiple districts)
 
 ---
 
 ## Gaps
 
 - F4 is the most important and most under-documented. No current source describes the specific transition process from pilot to deployment for any named deployment — what changed in team structure, governance, cost profile, or technical infrastructure.
-- F3: the $250,000 / $250,000 figures are initiative-level estimates. No deployment-specific cost breakdown is documented.
-- F2: governance structure at the deployment level (who makes decisions, at what authority level, with what accountability) is not documented for any specific deployment in current sources. The procurement challenge is named but no solution pathway is documented.
-- F1: the "negative coalition" pattern — who resists, when, and how it was overcome — is named conceptually but not documented with deployment-specific evidence.
+- F3: the $250,000 / $250,000 figures are initiative-level estimates. No deployment-specific cost breakdown is documented. The livelihoods cold start cost (facilitation team + voice AI + aggregator mobilisation for 12 months) is similarly not broken down with numbers.
+- F2: governance structure at the deployment level (who makes decisions, at what authority level, with what accountability) is not documented for any specific deployment in current sources. The District Facilitation Team's governance mechanisms in Blue Dots AI are described at the operational level but not at the decision-authority level.
+- F1: the "negative coalition" pattern — who resists, when, and how it was overcome — is named conceptually but not documented with deployment-specific evidence. In Blue Dots AI, the facilitation team's rhythm-keeping function is documented, but resistance patterns are not.
+- F3 livelihoods: what happens in districts where the private sector is too thin to reach self-sustainability — no documented evidence.

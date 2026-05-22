@@ -46,12 +46,22 @@ A commitment to the DPI+AI frame is a commitment to three things simultaneously:
 
 These are not technical decisions. They are institutional decisions — and they are the system leadership decisions that determine whether a deployment takes root or remains a pilot. 🟡
 
+## DPI+AI in livelihoods: Blue Dots AI
+
+🟡 The Blue Dots AI platform (Dharwad and Ghaziabad, 2024–25) extends the DPI+AI frame to the livelihoods and district economy sector. The source document makes the analogy explicit: "Blue Dots AI builds shared digital rails that any government department, SMB, private or social sector organisation, or citizen can use to become discoverable and find others — without owning or controlling the map, connected through an open discovery protocol. [This is] comparable in spirit to what UPI created for payments." 🟡
+
+The Blue Dots AI data architecture represents a variation on the agricultural DPI+AI model. In agriculture, institutions own data about farmers (soil records, scheme databases, weather feeds) and the AI connects to those institutional data sources at query time. In Blue Dots AI, participants create their own data — a job-seeker or SMB speaks their intent, skills, and location into a voice call, and the AI structures this signal as a location-anchored Blue Dot on a shared map. The institution (state skilling mission, district administration) governs the infrastructure but does not own the participant's data. Citizens and businesses own their own Blue Dots.
+
+This introduces a third data architecture pattern alongside the federate-vs-aggregate decision in agriculture: **participant-created, consent-governed, distributed discovery data.** It is neither federated institutional data (there is no institution that holds a seeker's skills record prior to onboarding) nor aggregated into a central warehouse. The data is created fresh by participants via voice, stored on shared public rails, and accessible only through consent.
+
 ## Pathways that cover this
 
 - [mahavistaar](../deployments/mahavistaar.md) — The reference implementation of DPI+AI in agriculture
 - [amul-sarlaben](../deployments/amul-sarlaben.md) — Cooperative data commons as DPI+AI
 - [bharat-vistaar](../deployments/bharat-vistaar.md) — National DPI rail; the coordination layer that makes the frame operate at national scale
 - [ethiopia-ati](../deployments/ethiopia-ati.md) — DPI+AI adapted to a new country context
+- [blue-dots-dharwad](../deployments/blue-dots-dharwad.md) — DPI+AI in livelihoods; participant-created data; district discovery infrastructure as public rail
+- [blue-dots-ghaziabad](../deployments/blue-dots-ghaziabad.md) — DPI+AI in livelihoods; second district; state scaling
 
 ## Related concepts
 

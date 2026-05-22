@@ -120,3 +120,67 @@ No sources ingested. Awaiting first source in raw/.
 - Failure modes / frictions: this source is explicitly not a case study and names no specific failures beyond what previous source documented
 - Ethiopia actual usage data: 30M is targeted, not measured
 - F4 (pilot to deployment) remains underdocumented
+
+---
+
+## 2026-05-21 ingest | "Blue Dots AI — An AI Diffusion Pathway for Livelihoods" (Tushar Bansal, EkStep Foundation, May 2026) | Pages created: 4 | Pages updated: 12
+
+**Source:** raw/[Internal] AI Diffusion Pathway for Blue Dots in Livelihoods.pdf (12 pages)
+
+**What this source is:** Deployment pathway document for the Blue Dots AI platform — shared digital discovery infrastructure for district-level livelihoods. Covers two pilot districts: Dharwad (Karnataka, pioneer, 2024) and Ghaziabad (Uttar Pradesh, second district). Also names Uttar Pradesh and Karnataka as scaling to multiple districts (2025–26). Sector: livelihoods / district economy — the first non-agriculture source ingested into this wiki.
+
+**Contributor confirmed:** Tushar Bansal, EkStep Foundation. This source also explicitly names EkStep Foundation as the institution behind the AI Diffusion Pathways initiative — resolving the attribution uncertainty flagged in the 2026-05-20 ingest.
+
+**Evidence quality in this source:** Specific numbers from named deployments 🟡; framework analysis and deployment architecture ⬜; direct quotes from source document 🟡. No first-hand field observation 🔵 in this source — all evidence is participant-reported or analytical.
+
+**Pages created:**
+- wiki/deployments/blue-dots-dharwad.md — Dharwad district, Karnataka; pioneer livelihoods deployment; 10 months to self-sustaining ecosystem
+- wiki/deployments/blue-dots-ghaziabad.md — Ghaziabad district, UP; second deployment; 4 months to activation; 10,000+ jobs visible from <10% SMB coverage
+- wiki/concepts/paradox-of-proximity.md — Local discovery failure framework; supply and demand in proximity but cannot find each other; Ghaziabad evidence
+- wiki/concepts/ecosystem-aggregator-model.md — Mass onboarding via existing institutions; two-sided density without person-by-person mobilisation; Dharwad evidence
+
+**Pages updated:**
+- wiki/concepts/compression-sequence.md — Added livelihoods track (Dharwad 10mo → Ghaziabad 4mo); distinguished from agriculture track; noted parallel nature of two sequences
+- wiki/concepts/inclusion-architecture.md — Added Blue Dots AI evidence: 2–3 min voice call on any phone; ₹500+ → ₹10 cost shift; livelihoods sector extension
+- wiki/concepts/dpi-ai-frame.md — Added Blue Dots AI as DPI for livelihoods (UPI analogy explicitly stated in source); introduced participant-created consent-governed data as third architecture pattern alongside federate/aggregate
+- wiki/concepts/network-operator-role.md — Added District Facilitation Team + District Champion as fifth institutional type; documented distinction between Champion (names deployment) and Facilitation Team (maintains rhythm); "this runs in my name" phrase formally documented
+- wiki/people-orgs/ai-diffusion-pathways.md — Confirmed EkStep Foundation attribution; added Tushar Bansal as named contributor; added Blue Dots deployments; noted livelihoods sector extension
+- wiki/dimensions/problem-orientation.md — Added paradox-of-proximity pattern under A1; added livelihoods deployments to pathways section; updated gaps
+- wiki/dimensions/ecosystem.md — Added ecosystem aggregator model under D1; added District Champion/Facilitation Team refinement under D4; added Blue Dots deployments; updated gaps
+- wiki/dimensions/operating-model.md — Added cold start → self-sustaining F3 pattern; added facilitation team rhythm as F1 velocity mechanism; added livelihoods compression to F1; updated gaps
+- wiki/index.md — Added new deployment and concept entries; reorganised deployments by sector
+
+**Key new knowledge:**
+- First non-agriculture sector documented: livelihoods / district economy
+- Paradox of proximity: local discovery failure as root cause of jobs/skills crisis in Indian districts
+- Blue Dots AI platform: shared digital discovery infrastructure via voice (any phone, any language, 2–3 min)
+- Ecosystem aggregator model: two-sided density building via existing institutions; Dharwad evidence (300+ employers in 2 weeks from one MSME association; 500+ seekers from one ITI)
+- Cold start → self-sustaining economics: 12-month funded commitment; threshold reached in 3 months in Dharwad and Ghaziabad
+- District Facilitation Team (6–8 people) as operational spine: rhythm keeper, distinct from District Champion
+- "This runs in my name" phrase formally documented as the anchor-adopter test
+- EkStep Foundation confirmed as institution behind AI Diffusion Pathways initiative (resolves prior uncertainty)
+- Parallel compression sequence in livelihoods sector: 10 months → 4 months (different mechanism from agriculture track)
+- Economic case quantified: ₹1,050 crore/year GDP addition per district from 5% workforce participation improvement; ₹87,500 crore across 100 districts
+- Four DPGs documented: Signal DPG, Aggregator DPG, Facilitator DPG, AI Diffusion DPGs (7 open-source building blocks)
+- DPDP 2023 compliance as architectural property, not post-facto audit
+- Digitally verifiable credentials for Blue Dots: participants can be verified in seconds
+
+**Contradictions with existing pages:** None found. Blue Dots AI evidence is additive, not contradictory, to existing pages. The participant-created data architecture in Blue Dots AI is a new pattern alongside (not contradicting) the federate-vs-aggregate concept from agriculture deployments. Flagged in dpi-ai-frame.md.
+
+**Pathway pages built (approved by user — pathways 1, 2, and 4 of the four proposed):**
+- wiki/pathways/local-discovery-infrastructure.md — Full Blue Dots AI approach; A1, A4, B1–B4, D1–D4, F1, F3
+- wiki/pathways/aggregator-led-density-building.md — D1/D3/D4; aggregator-led mass onboarding; Dharwad evidence
+- wiki/pathways/consent-based-participant-data.md — B2/B3/F2; participant-owned consent-at-creation data architecture; DPDP 2023
+
+**Pathway proposal declined:**
+- Pathway 3 (Cold start to self-sustaining ecosystem): user did not select. Evidence in this source folds into F3 sections of local-discovery-infrastructure.md and the operating-model dimension page.
+
+**Open questions / gaps identified:**
+- E1–E3 (workforce/training) for both Blue Dots deployments: not documented at all
+- C2 (resistance) in livelihoods context: not documented
+- F2 governance specifics for District Facilitation Team: not documented
+- A2/A3 (data posture, existing assets) for district-economy deployments: not documented
+- D2 (trust source) in livelihoods: why do job-seekers and SMBs trust Blue Dots? Not documented
+- What happens when no strong aggregator exists on one side of a use case: not documented
+- F3 livelihoods: cold start sustainability in low-density districts outside India: not documented
+- F4 (pilot to deployment) remains underdocumented across all sectors

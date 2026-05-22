@@ -39,6 +39,10 @@ Voice-first is not the only inclusion architecture, but it is the most documente
 
 ⬜ **The trust dimension of voice**: Nandan Nilekani named both requirements simultaneously: "When the monsoon is delayed, people want to know who stands behind a recommendation. Citizens tend to trust institutions rather than algorithms. For AI to be adopted by a whole population, it must carry the credibility of trusted institutions, with traceable and verifiable authority." Voice-first access built on verified institutional data is how both conditions — reach and trust — are met simultaneously.
 
+🟡 **Blue Dots AI (livelihoods, Dharwad and Ghaziabad):** "A 2–3 minute voice call in any language on any phone is enough to become a Blue Dot." The same voice-first architecture that removed literacy, device, and language barriers in agriculture removes them for job-seekers, SMBs, and citizens registering for scheme eligibility. Cost shift: ₹500+ per field survey interaction → ₹10 per voice interaction. Placement conversion at job fairs: below 10% → above 50% in targeted drives using voice-based discovery. Source: Tushar Bansal, EkStep Foundation, May 2026. 🟡
+
+This is the first documented extension of voice-first architecture beyond agriculture to a livelihoods/district economy context. The inclusion mechanism is identical; the beneficiary population differs (job-seekers, returning workers, SMBs vs. farmers).
+
 ⬜ The test for orthogonality (whether this deserves to be a separate sub-component from A1-A4): can you vary your inclusion design independently of problem framing, data posture, existing assets, and proof? Evidence suggests yes: you could frame the right problem (A1), have the right data posture (A2), start with existing assets (A3), and have proof (A4) — and still build a system that only reaches smartphone-literate users in areas with data connectivity.
 
 ## Flag for wiki users
@@ -51,6 +55,8 @@ This concept represents an unresolved framework question. The current wiki treat
 - [amul-sarlaben](../deployments/amul-sarlaben.md) — Voice-first for dairy cooperative members; short code 08035453545; women producers as primary beneficiary
 - [bharat-vistaar](../deployments/bharat-vistaar.md) — National voice access; short code 155261
 - [ethiopia-ati](../deployments/ethiopia-ati.md) — Voice-first in local languages; climate advisory via voice
+- [blue-dots-dharwad](../deployments/blue-dots-dharwad.md) — Voice-first for livelihoods; any phone, any language, 2–3 minutes; pioneer district (livelihoods sector)
+- [blue-dots-ghaziabad](../deployments/blue-dots-ghaziabad.md) — Voice-first for livelihoods; ₹10 per interaction vs. ₹500+ field survey; second district (livelihoods sector)
 
 ## Related concepts
 

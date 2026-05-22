@@ -1,9 +1,10 @@
-# AI Diffusion Pathways Initiative
+# AI Diffusion Pathways Initiative — EkStep Foundation
 
 **Type:** Organisation / Initiative
 **Role in the ecosystem:** Framework builder; Pathway provider; Enabler; Technical partner
 **Geography:** India (primary); international (Ethiopia documented; others in development)
 **Contact:** Not publicly documented in source
+**Named contributor:** Tushar Bansal (author of Blue Dots AI pathway document, May 2026)
 
 ## What they have deployed or contributed
 
@@ -11,7 +12,9 @@ The AI Diffusion Pathways initiative built and maintains the six-shift framework
 
 The initiative's primary contribution to the Cube is the six-orthogonal-shifts framework — the decomposition of AI deployment into six independent dimensions and 21 sub-components, with FROM→TO operational formulations for each. This framework is the capture lens for every pathway in this wiki.
 
-**Note:** The specific institution or foundation behind the AI Diffusion Pathways initiative is not named in the foundational source document. EkStep Foundation is associated with this work by broader context but is not confirmed as the author in the source ingested. This page should be updated with attribution when a source that names the institution explicitly is ingested.
+The Blue Dots AI livelihoods pathway (Dharwad and Ghaziabad, 2024–25) was authored by Tushar Bansal, EkStep Foundation (May 2026). This source also confirms EkStep Foundation as the institution behind the AI Diffusion Pathways initiative — resolving the attribution uncertainty flagged in the prior ingest.
+
+EkStep Foundation has extended the AI diffusion pathway to the livelihoods sector, applying the same six-dimension framework and DPG architecture to the problem of district-level local discovery failure. The Blue Dots AI platform is a new deployment class — not agriculture, not government advisory, but shared digital discovery infrastructure for district economies.
 
 ## Pathways they have contributed
 
@@ -24,6 +27,8 @@ The initiative's primary contribution to the Cube is the six-orthogonal-shifts f
 - [amul-sarlaben](../deployments/amul-sarlaben.md) — Cooperative deployment (technical partner)
 - [bihar-krishi](../deployments/bihar-krishi.md) — Bihar state, India
 - [ethiopia-ati](../deployments/ethiopia-ati.md) — Ethiopia (knowledge transfer / technical support)
+- [blue-dots-dharwad](../deployments/blue-dots-dharwad.md) — Dharwad district, Karnataka (pioneer livelihoods deployment; pathway authored by Tushar Bansal)
+- [blue-dots-ghaziabad](../deployments/blue-dots-ghaziabad.md) — Ghaziabad district, Uttar Pradesh (second livelihoods deployment)
 
 ## When to connect with them
 

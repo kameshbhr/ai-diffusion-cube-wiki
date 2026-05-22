@@ -19,7 +19,9 @@ Problem orientation is the foundation on which every other dimension rests. A de
 
 ## What the wiki currently holds
 
-One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Diffusion Pathways initiative). This provides FROM→TO operational formulations for A1-A4, field evidence from MahaVISTAAR (Maharashtra), Amul/Sarlaben, Ethiopia/ATI, Bihar Krishi, and the AI Commons curation exercise.
+Two sources ingested:
+1. "The Six Orthogonal Shifts - detailed version 2" (AI Diffusion Pathways initiative) — FROM→TO operational formulations for A1-A4, field evidence from MahaVISTAAR, Amul/Sarlaben, Ethiopia/ATI, Bihar Krishi, and the AI Commons curation exercise. Sector: agriculture.
+2. "Blue Dots AI — An AI Diffusion Pathway for Livelihoods" (Tushar Bansal, EkStep Foundation, May 2026) — Full deployment pathway for Dharwad and Ghaziabad districts. Sector: livelihoods / district economy. First non-agriculture source ingested.
 
 ---
 
@@ -33,6 +35,8 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 🟡 The system's categories must match the user's mental model, not the deployer's organisational chart. Grouping use cases by what farmers are trying to do (asking about a sick animal, checking scheme eligibility, tracking an application) produces a more adoptable architecture than grouping by technical taxonomy.
 
 ⬜ Problems come in two modes — inbound (user comes with a question) and outbound (system anticipates a need). See [inbound-vs-outbound-problem-modes](../concepts/inbound-vs-outbound-problem-modes.md). MahaVISTAAR's shift from inbound to outbound (17 lakh proactive daily alerts) is where the system moved from useful to indispensable.
+
+🟡 **A new problem frame from the livelihoods sector — paradox of proximity:** The Blue Dots AI source introduces a reframe critical for any district-economy deployment. "When a district economy is not reaching its potential, the instinct is to look for what is missing — insufficient jobs, inadequate skills, not enough investment. But across many of India's progressive districts, this diagnosis is wrong. The jobs are there. The talent is there. The services and schemes are there. Everything lies in proximity, but it cannot find each other." This is the **paradox of proximity** — a local discovery failure, not a resource failure. The reframe changes the intervention: instead of more training programmes or investment, build shared digital discovery infrastructure. See [paradox-of-proximity](../concepts/paradox-of-proximity.md). Government continuously invests in skilling and schemes; placement rates stay below 50%; service and scheme utilisation stays below 70% — not for lack of supply, but for lack of discovery. 🟡
 
 **A2 — Data posture:**
 🟡 The unlock is access, not quality. In MahaVISTAAR, departments had APIs that had existed for years but had never been called. The connection itself was the intervention — no data cleaning was required to start.
@@ -83,11 +87,14 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 - [mahavistaar](../deployments/mahavistaar.md) — A1 (problem framing at right granularity, inbound→outbound); A2 (data connection without cleaning); A3 (API inventory); A4 (multi-institutional proof)
 - [amul-sarlaben](../deployments/amul-sarlaben.md) — A3 (deep existing asset base enabling 3-week deployment); A4 (experiential proof via CEO conversion)
 - [ethiopia-ati](../deployments/ethiopia-ati.md) — A3 (limited starting assets, same pathway); A4 (cross-country proof)
+- [blue-dots-dharwad](../deployments/blue-dots-dharwad.md) — A1 (paradox of proximity; local discovery failure reframe); A4 (self-sustaining ecosystem as proof of density threshold) — **livelihoods sector**
+- [blue-dots-ghaziabad](../deployments/blue-dots-ghaziabad.md) — A1 (CDO champion; vivid user vignettes); A4 (10,000+ jobs visible from <10% SMB coverage in 60 days) — **livelihoods sector**
 
 ---
 
 ## Gaps
 
 - No pathway currently documents A2 (data posture) from the perspective of an adopter with poor-quality data (as opposed to siloed-but-existing data). The Malawi case (67 health databases, all unconnected) is referenced but not documented.
-- Proof mechanisms for non-agriculture sectors (health, education) are not yet documented.
+- Proof mechanisms for health and education sectors remain undocumented.
 - Inclusion design (potential A5) lacks a dedicated pathway — only deployment-level observations exist.
+- Livelihoods sector now partially covered (A1, A4) via Blue Dots AI; A2 and A3 for district-economy deployments not yet documented.

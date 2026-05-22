@@ -17,7 +17,9 @@ No AI deployment at scale is executed by a single organisation. The ecosystem di
 
 ## What the wiki currently holds
 
-One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Diffusion Pathways initiative). Strong field evidence on D1 (from MahaVISTAAR's 54-enabler ecosystem), D2 (trust source in farmer-facing deployments), D4 (network operator documented across four institutional types). D3 (coordination mechanism) has strong pattern-level documentation.
+Two sources ingested:
+1. "The Six Orthogonal Shifts - detailed version 2" (AI Diffusion Pathways initiative) — Strong field evidence on D1 (54-enabler ecosystem), D2 (trust source in farmer-facing deployments), D4 (four institutional types). Sector: agriculture.
+2. "Blue Dots AI — An AI Diffusion Pathway for Livelihoods" (Tushar Bansal, EkStep Foundation, May 2026) — New D1 pattern (ecosystem aggregator model), new D4 type (District Facilitation Team + District Champion). Sector: livelihoods.
 
 ---
 
@@ -35,6 +37,10 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 ⬜ The pathway ecosystem requires an incentive structure: those who contribute their decomposed experience get access to the full knowledge base, visibility at global summits, and early access to funding opportunities. Those who do not contribute lose access. The currency is knowledge, not money.
 
 ⬜ Dead ends must be managed: when a contributor's deployment stops working, that node must be flagged — not deleted. The failure itself is valuable knowledge. Flag it so future adopters are routed around it with appropriate warnings.
+
+🟡 **Livelihoods sector — the ecosystem aggregator model:** The Blue Dots AI deployments (Dharwad and Ghaziabad) introduce a structurally different D1 pattern: the **ecosystem aggregator model**. Instead of a 54-enabler network assembled by an orchestrator, the minimum viable livelihoods ecosystem is two anchoring institutions — one on each side of the use case. For livelihoods: one ITI or college (seeker side) and one MSME association (provider/employer side). These aggregators onboard their constituencies en masse (bulk voice upload, QR code, assisted voice) rather than participant by participant. In Dharwad, one MSME association onboarded 300+ employers in 2 weeks; one ITI onboarded 500+ seekers. One strong aggregator on each side and the map starts doing the work. See [ecosystem-aggregator-model](../concepts/ecosystem-aggregator-model.md). Source: Tushar Bansal, EkStep Foundation, May 2026. 🟡
+
+⬜ The livelihoods aggregator model and the agriculture 54-enabler model solve different problems. Agriculture assembles knowledge infrastructure first (to answer questions that exist). Livelihoods assembles two-sided density first (to surface signals that are offline). The minimum viable ecosystem structure differs by problem type.
 
 **D2 — Trust source:**
 🟡 Trust cannot be bought. In one deployment (not named), conversations alone took 18 months before serious work could begin. There are no shortcuts.
@@ -59,11 +65,14 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 
 🟡 "The hunter and the farmer have different roles. The mistake is asking farmers to hunt and hunters to farm."
 
-🟡 The network operator role has been played by four different institutional types:
+🟡 The network operator role has been played by five different institutional types:
 - State government department (MahaVISTAAR)
 - National ministry (Bharat-VISTAAR)
 - Cooperative (Amul)
 - National transformation institute (Ethiopia/ATI)
+- District administration champion supported by state sponsor (Blue Dots AI, Dharwad and Ghaziabad)
+
+🟡 The Blue Dots AI deployments introduce a refinement of the D4 role: the **District Champion** (the named individual who says "this runs in my name") and the **District Facilitation Team** (6–8 people who maintain weekly discovery rhythm) are distinct functions. The Champion provides institutional legitimacy; the Facilitation Team provides operational continuity. Both are necessary; neither substitutes for the other. In Ghaziabad, the CDO was the Champion; the Facilitation Team was drawn from government, social sector, and MSME associations. Source: Tushar Bansal, EkStep Foundation, May 2026. 🟡
 
 ⬜ Any entity that can say "this runs in my name" and has institutional standing to back that claim can play this role. What matters is not the type of entity but the commitment.
 
@@ -96,12 +105,15 @@ One foundational source: "The Six Orthogonal Shifts - detailed version 2" (AI Di
 - [bharat-vistaar](../deployments/bharat-vistaar.md) — D3 (hub-and-spoke federation); D4 (national ministry as network operator)
 - [amul-sarlaben](../deployments/amul-sarlaben.md) — D4 (cooperative as network operator)
 - [ethiopia-ati](../deployments/ethiopia-ati.md) — D4 (ATI as network operator)
+- [blue-dots-dharwad](../deployments/blue-dots-dharwad.md) — D1 (aggregator model; MSME association + ITI as anchor pair); D4 (state sponsor + District Facilitation Team)
+- [blue-dots-ghaziabad](../deployments/blue-dots-ghaziabad.md) — D4 (CDO as named District Champion; "this runs in my name" explicitly documented)
 
 ---
 
 ## Gaps
 
 - D1: the process of assembling the ecosystem (how partners were identified and recruited) is not documented for any deployment.
-- D2: the 18-month trust-building timeline is documented but the specific steps taken during that period are not.
+- D2: the 18-month trust-building timeline is documented but the specific steps taken during that period are not. In the livelihoods context, trust source dynamics (why job-seekers or SMBs trust the Blue Dots platform) are not yet documented.
 - D3: the Beckn protocol use is referenced but not documented in practice for any specific deployment.
-- D4: the failure case (accusation + abdication) is documented without naming the deployment. Field evidence with named examples would strengthen this gap significantly.
+- D4: the failure case (accusation + abdication) is documented without naming the deployment. Field evidence with named examples would strengthen this significantly.
+- D1 livelihoods: what happens when no strong aggregator exists on one side of the use case — no documented evidence of how this was handled or whether the model fails.
