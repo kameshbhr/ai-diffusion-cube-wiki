@@ -1,24 +1,24 @@
-# OpenAgriNet
+# OpenAgriNet (OAN)
 
-**Type:** Organisation / Network
-**Role:** Network operator / Coordination layer / DPG ecosystem
-**Geography:** India and Ethiopia (documented); intended as a multi-country network
-**Contact or reference:** Referenced in OAN-DiffusionPathway.pdf (raw/)
+**Type:** System / Programme
+**Role:** Digital Public Goods Infrastructure
+**Geography:** India and international (Ethiopia deployment confirmed)
+**Contact or reference:** Via EkStep Foundation — [ekstep.org](https://ekstep.org)
 
 ## What they are
 
-OpenAgriNet (OAN) is the network and coordination layer connecting AI agricultural advisory deployments across multiple countries and institutional contexts. It provides the interoperability standards, shared components, and ecosystem coordination that allows individual deployments (MahaVistaar, Bihar Krishi, Ethiopia ATI, Amul Sarlaben) to function as connected instances of a larger system rather than isolated projects. OpenAgriNet is the entity through which the deployment compression sequence is sustained: reusable components, shared methodology, and cross-deployment learning are held and distributed through this network rather than residing only within individual deployments.
+OpenAgriNet (OAN) is the digital public goods programme and open-source codebase that underlies the MahaVistaar, Amul Sarlaben, Bharat-VISTAAR, and Ethiopia ATI agricultural AI advisory deployments. OAN defines the 7-layer system architecture (user, interface, moderation, AI decision engine, knowledge and scientific models, live data sources, DPI foundation), the ecosystem coordination model, the safeguard architecture, and the deployment methodology. It is maintained by EkStep Foundation and is designed for reuse — new deployments configure the OAN DPG layer rather than rebuilding from scratch, compressing deployment time from months to weeks.
 
-The Beckn protocol provides the technical interoperability standard within the OpenAgriNet network — allowing deployments with different data sources, languages, and institutional contexts to exchange information and route queries across the network.
+OAN is not a product or a vendor — it is a shared infrastructure programme. Deployers own their deployment instance; OAN provides the reusable foundation. The programme's design explicitly separates the DPG layer (reusable, maintained centrally) from the deployment instance (language, domain, institutional configuration), so each deployment can evolve independently while benefiting from improvements to the shared layer.
 
 ## Deployments they are associated with
 
 - [MahaVistaar](../pathways/mahavistaar.md)
-- [Bihar Krishi](../pathways/bihar-krishi.md)
 - [Amul Sarlaben](../pathways/amul-sarlaben.md)
 - [Bharat-VISTAAR](../pathways/bharat-vistaar.md)
+- [Bihar Krishi](../pathways/bihar-krishi.md) — independent (non-OAN) deployment; comparison case
 - [Ethiopia ATI](../pathways/ethiopia-ati.md)
 
 ## When this entity is relevant to an adopter
 
-If you are planning an agricultural AI deployment and want to connect to an existing network of components, partners, and operational knowledge rather than deploying in isolation, OpenAgriNet is the network to engage. Connection to OpenAgriNet provides: access to reusable architecture components (federated data pattern, moderation layer, inference infrastructure), access to the partner network (ICAR, IMD, EkStep Foundation, cooperative networks), and connection to cross-deployment learning that will compound as the network grows. An adopter in a new country who joins the OpenAgriNet network gains the deployment compression benefits documented in [compression-proof.md](../synthesis/compression-proof.md).
+OAN is relevant to any adopter considering an AI agricultural advisory deployment. Before committing to a custom build, assess whether the OAN DPG layer covers your use case. If it does, the deployment effort reduces to language configuration, domain knowledge, and institutional data integration — potentially achievable in weeks rather than months. Contact EkStep Foundation to assess fit.

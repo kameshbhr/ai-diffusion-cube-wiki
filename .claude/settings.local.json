@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:gist.github.com)",
+      "Bash(Get-ChildItem -Recurse \"D:\\\\ekstep-new\\\\AI Diffusion Pathways\\\\aid-cube-wiki\\\\wiki\")",
+      "Bash(Select-Object FullName)",
+      "Skill(anthropic-skills:pdf)",
+      "Skill(anthropic-skills:pdf:*)",
+      "Bash(python -c ' *)",
+      "Bash(py --version)",
+      "Bash(where python3 *)",
+      "Bash(where py *)",
+      "PowerShell($condaPath = \"C:\\\\Users\\\\Kamesh\\\\miniconda3\\\\python.exe\"; $condaPath2 = \"C:\\\\Users\\\\Kamesh\\\\anaconda3\\\\python.exe\"; $condaPath3 = \"C:\\\\ProgramData\\\\miniconda3\\\\python.exe\"; if \\(Test-Path $condaPath\\) { & $condaPath --version } elseif \\(Test-Path $condaPath2\\) { & $condaPath2 --version } elseif \\(Test-Path $condaPath3\\) { & $condaPath3 --version } else { Get-ChildItem \"C:\\\\Users\\\\Kamesh\" -Filter \"python.exe\" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 5 FullName })",
+      "mcp__a6f84622-be34-4295-a1d2-e08d0672d4b4__search_files",
+      "Bash(\"C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\pdftotext.exe\" -layout \"D:\\\\ekstep-new\\\\AI Diffusion Pathways\\\\aid-cube-wiki\\\\raw\\\\OAN-DiffusionPathway.pdf\" -)",
+      "Bash(git -C \"D:\\\\ekstep-new\\\\AI Diffusion Pathways\\\\aid-cube-wiki\" status)",
+      "Bash(where python *)",
+      "Bash(python3 -c \"import pdfplumber; print\\('ok'\\)\")",
+      "Bash(python3 -m pip install pdfplumber --quiet)",
+      "PowerShell(Get-Command python, python3, py -ErrorAction SilentlyContinue)",
+      "PowerShell($env:PATH -split ';' | Where-Object { $_ -ne '' } | ForEach-Object { if \\(Test-Path \"$_\\\\python.exe\"\\) { \"$_\\\\python.exe\" } })",
+      "PowerShell(Get-ChildItem \"$env:APPDATA\\\\Claude\" -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem \"$env:LOCALAPPDATA\\\\Claude\" -ErrorAction SilentlyContinue | Select-Object Name)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(where python*)",
+      "Read(//usr/**)",
+      "Read(//usr/local/**)",
+      "PowerShell($env:PATH -split ';' | ForEach-Object { if \\(Test-Path \"$_\\\\python.exe\"\\) { \"$_\\\\python.exe\" } })",
+      "Bash(git rm *)"
+    ]
+  }
+}

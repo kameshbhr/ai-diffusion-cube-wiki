@@ -1,18 +1,18 @@
-# Amul
+# Amul (GCMMF)
 
 **Type:** Organisation
-**Role:** Deployer / Data custodian / Cooperative infrastructure
-**Geography:** India — Gujarat state (18,500+ villages); national federation (GCMMF)
-**Contact or reference:** https://amul.com
+**Role:** Deployer
+**Geography:** Gujarat, India; national dairy cooperative network
+**Contact or reference:** [amul.com](https://amul.com)
 
 ## What they are
 
-Amul (the Gujarat Cooperative Milk Marketing Federation, GCMMF) is India's largest food products marketing organisation and one of the world's largest dairy cooperatives, with 3.6 million milk producer members across Gujarat. In the context of AI diffusion pathways, Amul is significant as an institutional model: a cooperative that simultaneously holds the data (2 billion transactions, 30 million cattle records), operates the distribution network (18,500 villages), owns the user trust relationship (members are owners), and has direct financial alignment between the AI deployment's success and the cooperative's core outcomes (cattle health → milk yield → cooperative income). This alignment between institutional incentive and deployment outcome is rare among documented deployments and is the primary reason Amul Sarlaben's sustainability model is more inherently stable than government-funded equivalents.
+GCMMF (Gujarat Co-operative Milk Marketing Federation), operating as Amul, is India's largest dairy cooperative — a network of over 3.6 million farmer-members producing and marketing milk and dairy products under the Amul brand. In the OAN context, Amul deployed Sarlaben, an AI advisory system for Gujarati dairy farmers, leveraging the cooperative's pre-existing trust relationship with member farmers and the OAN DPG layer to deploy in three weeks. Amul's cooperative structure provides deployment advantages not available to government deployers: faster procurement, unified data ownership (Amul controls member data directly rather than navigating inter-departmental sharing agreements), and a direct member relationship that serves as the trust source for the advisory system.
 
 ## Deployments they are associated with
 
-- [Amul Sarlaben](../pathways/amul-sarlaben.md) — deploying institution and data custodian
+- [Amul Sarlaben](../pathways/amul-sarlaben.md) — deployer
 
 ## When this entity is relevant to an adopter
 
-Amul is directly relevant to an adopter in the cooperative or agricultural sector who is asking: how do we build institutional sustainability for an AI deployment without depending on external grants? The cooperative model — where the institution deploying AI is also the institution whose financial outcomes improve if the AI works — provides a sustainability structure that government deployments must engineer artificially (outcome measurement, value demonstration, budget advocacy). An adopter exploring cooperative-sector AI deployments should study the Amul model as the most clearly documented example of inherent financial alignment.
+If you are considering an AI advisory deployment through a cooperative structure — dairy, agricultural inputs, fisheries, or other cooperative sectors — Amul Sarlaben is the evidence base for how a cooperative deployer differs from a government deployer in procurement speed, trust architecture, and data ownership. The cooperative model collapses several of the institutional coordination challenges that make government deployments slow; understanding where those advantages come from helps adopters assess which model fits their context.

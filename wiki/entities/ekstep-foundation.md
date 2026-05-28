@@ -1,20 +1,22 @@
 # EkStep Foundation
 
 **Type:** Organisation
-**Role:** Technology partner / System integrator / Network operator
-**Geography:** India (primary), with engagements in Ethiopia and other countries
-**Contact or reference:** https://ekstep.org
+**Role:** Network Operator / Technical Partner / Enabler
+**Geography:** India (Bengaluru); deployments across India and Ethiopia
+**Contact or reference:** [ekstep.org](https://ekstep.org)
 
 ## What they are
 
-EkStep Foundation is a not-for-profit organisation focused on building digital public infrastructure and AI systems for public-interest sectors, particularly agriculture, education, and livelihoods. In the context of AI diffusion pathways, EkStep plays a distinctive role: not as a deployer, but as a system integrator and knowledge transfer partner who carries accumulated architecture decisions, ecosystem-building methodology, and deployment operational experience from one context to the next. EkStep's involvement is the primary mechanism through which the deployment compression sequence (9 months to 3 months to 3 weeks) has been achieved — they are the carrier of reusable components and the network bridge between deployments.
+EkStep Foundation is an Indian non-profit technology organisation that builds and maintains the OpenAgriNet (OAN) digital public goods infrastructure for AI-powered agricultural advisory. In the OAN context, EkStep serves as the named network operator — the organisation responsible for maintaining the shared DPG layer, coordinating the technology ecosystem (Bhashini, Karya, compute partners), supporting new deployments through their configuration and launch, and holding the cross-deployment ecosystem relationships that individual deployers cannot maintain independently. EkStep's model separates the reusable DPG infrastructure (which it maintains) from the deployment-specific configuration (which each deployer owns), enabling multiple state and country deployments to share a common foundation without sharing governance.
 
 ## Deployments they are associated with
 
-- [MahaVistaar](../pathways/mahavistaar.md) — technology partner and system integrator for Maharashtra state deployment
-- [Bharat-VISTAAR](../pathways/bharat-vistaar.md) — technology partner for national federation
-- [Ethiopia ATI](../pathways/ethiopia-ati.md) — technology transfer partner enabling 3-month deployment
+- [MahaVistaar](../pathways/mahavistaar.md) — anchor deployment; OAN DPG layer originated here
+- [Amul Sarlaben](../pathways/amul-sarlaben.md) — technology ecosystem partner; supported 3-week deployment
+- [Bharat-VISTAAR](../pathways/bharat-vistaar.md) — technology ecosystem partner
+- [Bihar Krishi](../pathways/bihar-krishi.md) — referenced in OAN comparison documentation
+- [Ethiopia ATI](../pathways/ethiopia-ati.md) — supported first international OAN deployment
 
 ## When this entity is relevant to an adopter
 
-If you are planning an AI deployment in agriculture or a comparable public-interest sector and want to avoid rebuilding components that already exist (federated architecture, moderation layer, dual-provider inference, evaluation methodology), EkStep Foundation is the entity most likely to be able to transfer those components. Their involvement is also the fastest path to the network of 25+ partner organisations whose data and knowledge feeds the deployed systems. An adopter who engages EkStep early — before technology design — rather than late — as a procurement vendor — will extract significantly more value from the relationship.
+If you are a government or cooperative considering an AI agricultural advisory deployment and want to avoid rebuilding the technology stack from scratch, EkStep Foundation is the primary point of contact for the OAN ecosystem. They hold the DPG layer, the ecosystem coordination model, and the institutional relationships required to connect a new deployment to the existing OAN infrastructure. Contact EkStep to assess whether your use case fits the OAN model before committing to a build timeline.

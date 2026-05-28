@@ -62,7 +62,7 @@ cube-wiki/
 
 &#x20;   entities/       ← Pages for organisations, people, and systems
 
-&#x20;   navigation/     ← Sector listing pages
+&#x20;   sectors/     ← Sector listing pages
 
 &#x20; CLAUDE.md         ← This file. The schema and operating instructions.
 
@@ -188,6 +188,8 @@ markdown# \[Deployment Name] — Pathway
 
 \*\*Last updated:\*\* \[YYYY-MM-DD]
 
+\*\*Contact for peer connection:\*\* \[Name, organisation, and how to reach — if publicly available]
+
 
 
 \## Summary
@@ -228,11 +230,13 @@ deployment.]
 
 
 
-\[Answer the questions above in prose. Answer only those questions for which there is
+\[For each question above, render the question in bold as a label, then answer it
 
-documented evidence. Mark gaps explicitly: "Not documented."]
+in one or more sentences on the next line. Do not weave answers into a continuous
 
+narrative. If evidence does not exist for a question, write exactly: "Not documented."
 
+Every question must appear — do not skip questions silently.]
 
 \---
 
@@ -262,9 +266,13 @@ documented evidence. Mark gaps explicitly: "Not documented."]
 
 
 
-\[Answer in prose. Mark gaps explicitly.]
+\[For each question above, render the question in bold as a label, then answer it
 
+in one or more sentences on the next line. Do not weave answers into a continuous
 
+narrative. If evidence does not exist for a question, write exactly: "Not documented."
+
+Every question must appear — do not skip questions silently.]
 
 \---
 
@@ -294,7 +302,13 @@ documented evidence. Mark gaps explicitly: "Not documented."]
 
 
 
-\[Answer in prose. Mark gaps explicitly.]
+\[For each question above, render the question in bold as a label, then answer it
+
+in one or more sentences on the next line. Do not weave answers into a continuous
+
+narrative. If evidence does not exist for a question, write exactly: "Not documented."
+
+Every question must appear — do not skip questions silently.]
 
 
 
@@ -320,7 +334,13 @@ documented evidence. Mark gaps explicitly: "Not documented."]
 
 
 
-\[Answer in prose. Mark gaps explicitly.]
+\[For each question above, render the question in bold as a label, then answer it
+
+in one or more sentences on the next line. Do not weave answers into a continuous
+
+narrative. If evidence does not exist for a question, write exactly: "Not documented."
+
+Every question must appear — do not skip questions silently.]
 
 
 
@@ -346,9 +366,13 @@ documented evidence. Mark gaps explicitly: "Not documented."]
 
 
 
-\[Answer in prose. Mark gaps explicitly.]
+\[For each question above, render the question in bold as a label, then answer it
 
+in one or more sentences on the next line. Do not weave answers into a continuous
 
+narrative. If evidence does not exist for a question, write exactly: "Not documented."
+
+Every question must appear — do not skip questions silently.]
 
 \---
 
@@ -376,9 +400,13 @@ documented evidence. Mark gaps explicitly: "Not documented."]
 
 
 
-\[Answer in prose. Mark gaps explicitly.]
+\[For each question above, render the question in bold as a label, then answer it
 
+in one or more sentences on the next line. Do not weave answers into a continuous
 
+narrative. If evidence does not exist for a question, write exactly: "Not documented."
+
+Every question must appear — do not skip questions silently.]
 
 \---
 
@@ -572,7 +600,7 @@ markdown# \[Name]
 
 
 
-4\. Navigation Page (wiki/navigation/)
+4\. Sectors Page (wiki/sectors/)
 
 Sector listing pages only in v1. Thin index pages — not knowledge containers.
 
@@ -744,7 +772,7 @@ Tables:
 
 Use tables only for: the header metadata block, the toolkit assets section,
 
-and the navigation page pathway listing.
+and the sector page pathway listing.
 
 Keep tables narrow — no more than four columns.
 
@@ -796,22 +824,6 @@ Summary section: maximum three sentences.
 
 
 
-Evidence markers:
-
-Use these markers inline on every factual claim:
-
-
-
-🔵 First-hand field observation (field transcripts, architecture specs, direct accounts)
-
-🟡 Reported by a participant (meeting notes, deployment team accounts)
-
-⬜ Inferred or analytical (patterns drawn from above, cross-deployment synthesis)
-
-
-
-
-
 Operations
 
 Ingest
@@ -856,7 +868,7 @@ Create or update entity pages for any organisations, people, or systems referenc
 
 Check whether any synthesis pages should be updated given new evidence.
 
-Update the relevant navigation (sector) page if the sector is new or the pathway
+Update the relevant sector page if the sector is new or the pathway
 
 is new to that sector.
 
@@ -946,7 +958,7 @@ Identify orphan pages — pages with no inbound links.
 
 Identify synthesis pages that need updating given new pathway evidence.
 
-Identify sectors mentioned in pathways but without a navigation page.
+Identify sectors mentioned in pathways but without a sector page.
 
 Identify entities referenced in pathways but without an entity page.
 
@@ -955,6 +967,102 @@ Append to wiki/log.md:
 \## \[YYYY-MM-DD] lint | Issues found: N | Gaps identified: N
 
 
+
+\### SUMMARY.md
+
+
+
+Maintain `SUMMARY.md` in the root of the repository. This file controls the sidebar
+
+order in GitBook. Update it every time a new page is created or a page is renamed.
+
+
+
+The order of sections in SUMMARY.md must always be:
+
+1\. Framework
+
+2\. Sectors
+
+3\. Pathways
+
+4\. Synthesis
+
+5\. Entities
+
+6\. Index and Log
+
+
+
+Template:
+
+
+
+\# Summary
+
+
+
+\## Framework
+
+\* \[The Six Dimensions Framework](wiki/framework.md)
+
+
+
+\## Sectors
+
+\* \[Agriculture](wiki/sectors/agriculture.md)
+
+\* \[Livelihoods](wiki/sectors/livelihoods.md)
+
+
+
+\## Pathways
+
+\* \[Pathway name](wiki/pathways/slug.md)
+
+
+
+\## Synthesis
+
+\* \[Dimension Shifts](wiki/synthesis/dimension-shifts.md)
+
+\* \[Compression Proof](wiki/synthesis/compression-proof.md)
+
+\* \[Trust Architecture](wiki/synthesis/trust-architecture.md)
+
+\* \[Failure Modes](wiki/synthesis/failure-modes.md)
+
+\* \[70-30 Split](wiki/synthesis/70-30-split.md)
+
+\* \[DPG Reuse Patterns](wiki/synthesis/dpg-reuse-patterns.md)
+
+
+
+\## Entities
+
+\* \[Entity name](wiki/entities/slug.md)
+
+
+
+\## Index and Log
+
+\* \[Index](wiki/index.md)
+
+\* \[Log](wiki/log.md)
+
+
+
+Within each section, order pages as follows:
+
+\- Sectors: alphabetical
+
+\- Pathways: alphabetical by deployment name
+
+\- Synthesis: fixed order as above
+
+\- Entities: alphabetical
+
+\- Index and Log: fixed order as above
 
 
 
@@ -994,16 +1102,6 @@ acceptable. "Trust-building in MahaVISTAAR took six months before extension offi
 
 used outputs without verification" is.
 
-Distinguish evidence quality using inline markers on every claim:
-
-
-
-🔵 First-hand field observation — strongest weight
-
-🟡 Reported by a participant — strong weight
-
-⬜ Inferred or analytical — always mark explicitly as inference
-
 
 
 If two sources contradict, note both and flag. Contradictions are informative —
@@ -1016,7 +1114,7 @@ in the log for human review.
 
 Index and Log Conventions
 
-index.md — organised by page type (pathways, synthesis, entities, navigation).
+index.md — organised by page type (pathways, synthesis, entities, sectors).
 
 Each entry: \[page title](folder/filename.md) — one-line summary. Updated on every ingest.
 
@@ -1076,7 +1174,7 @@ wiki/framework.md — framework page with descriptions filled from this schema,
 
 pathway sections empty pending first ingest
 
-Empty folders: wiki/pathways/, wiki/synthesis/, wiki/entities/, wiki/navigation/
+Empty folders: wiki/pathways/, wiki/synthesis/, wiki/entities/, wiki/sectors/
 
 
 

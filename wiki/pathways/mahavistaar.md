@@ -1,19 +1,20 @@
 # MahaVistaar — Pathway
 
-**Deployment:** MahaVistaar (Maharashtra AI-powered agricultural advisory system)
-**Contributor:** EkStep Foundation / Government of Maharashtra
+**Deployment:** MahaVistaar Agricultural Advisory System
+**Contributor:** Commissioner of Agriculture, Government of Maharashtra / EkStep Foundation
 **Sector:** Agriculture
-**Geography:** India — Maharashtra state
+**Geography:** Maharashtra, India
 **Actor type:** Government
 **Journey stage:** Scaling
 **Dimensions covered:** A, B, C, D, E, F
-**Horizontal or vertical:** Vertical (agriculture sector)
+**Horizontal or vertical:** Vertical (sector-specific)
 **Deployment status:** Active
 **Last updated:** 2026-05-28
+**Contact for peer connection:** EkStep Foundation — [ekstep.org](https://ekstep.org)
 
 ## Summary
 
-MahaVistaar is Maharashtra state's AI-powered agricultural advisory platform, providing personalised, multilingual, voice-first advice to farmers across 152 lakh hectares of Kharif cropland. As of December 2025 it had served 342,000+ unique users, answered 1.67 million questions, and delivered 17 lakh daily proactive alerts — at a cost of approximately ₹0.05 per question after switching to self-hosted infrastructure. It is the most thoroughly documented deployment in this wiki and serves as the primary reference for technology architecture, ecosystem assembly, and workforce absorption.
+MahaVistaar is an AI-powered agricultural advisory system deployed by the Commissioner of Agriculture, Government of Maharashtra, serving Maharashtra's 1.5 crore farmers through a toll-free voice channel (short code 155313) in Marathi. The system handles crop advisory, scheme guidance, mandi price queries, and weather-based alerts, and is the anchor deployment of the OpenAgriNet (OAN) digital public goods architecture. For a next adopter, this pathway documents how a state government can take an AI advisory system from pilot to scale, the cost structure of self-hosted versus commercial LLM serving, and the ecosystem design required to sustain a system answering queries from over a million farmers.
 
 ---
 
@@ -21,11 +22,23 @@ MahaVistaar is Maharashtra state's AI-powered agricultural advisory platform, pr
 
 *What you build on.*
 
-The deployment targeted Maharashtra's farming population — smallholder farmers managing crops across a range of agro-climatic zones, who needed timely, personalised advisory on crop management, pest and disease control, weather events, and government scheme access. The constraint profile of the target user was specific and severe: users were predominantly rural, variable-literacy, often offline, and primary Marathi speakers. 🟡 The deployment team's documentation emphasises that existing advisory infrastructure — one extension officer per several thousand farmers, generic advisories broadcast through radio and TV — could not provide personalised, timely, local answers. The non-AI alternative would have required hiring thousands of additional extension officers, which was not feasible. 🟡
+**Who were you trying to serve, and what specific problem were you solving for them?**
+The deployment targets Maharashtra's 1.5 crore farmers, the majority of whom are smallholders with limited access to timely, personalised agricultural advice. Farmers face decisions — pest management, optimal sowing windows, scheme eligibility, mandi price movements — that change week to week, but the extension officer network cannot deliver timely, individualised advice at that cadence or scale.
 
-The deployment started with a significant existing data advantage: Maharashtra had pre-existing agricultural datasets, ICAR scientific knowledge, and IMD weather integration that could serve as the knowledge base without requiring data to be built from scratch. 🟡 The knowledge architecture also drew on 10+ years of Agristack data work at the national level, though the specific data assets accessed at state level are not fully itemised in available documentation.
+**What were the access constraints of your users — language, literacy, connectivity — and how did that shape what you built?**
+Farmers communicate in Marathi; many have low digital literacy and limited smartphone access. The system was built voice-first, delivered over standard telephony via short code 155313 rather than a smartphone app. This allows reach into populations without data plans or literacy sufficient for text-based interfaces. Bhashini ASR/TTS components handle spoken Marathi input and output.
 
-Understanding of the problem did evolve after launch. 🟡 The team discovered that voice was not just a channel preference but a functional necessity — farmers interacting during fieldwork could not read or type. The 155313 voice short code became the highest-volume entry point. This understanding shaped the subsequent decision to invest heavily in voice AI infrastructure. Whether early assumptions about user literacy or connectivity were tested before deployment is not documented.
+**Was there data already available to start with, or did you have to build or collect it first?**
+The deployment drew on existing institutional data — state agricultural databases, ICAR knowledge repositories, weather service feeds, and mandi price data. A federated architecture was adopted: the AI connects to data where it lives at query time rather than copying it into a central store. This avoided the institutional and compliance cost of data migration while enabling real-time answers.
+
+**Why did this problem need AI — what would a non-AI solution have missed?**
+The extension officer network in Maharashtra cannot deliver personalised advice to 1.5 crore farmers at the cadence required. A non-AI solution faces a hard ceiling at the number of human officers available. AI enables the system to handle thousands of concurrent voice calls, generate personalised answers from multiple real-time data sources, and shift from reactive query-answering to proactive advisory — sending outbound pest alerts or weather warnings to farmers in affected geographies before they call in.
+
+**Did your understanding of the problem change after you started — and if so, how?**
+The deployment evolved from a reactive query system (farmers call in with questions) toward a proactive advisory model (system pushes relevant alerts to farmers based on their location and crops). This shift was enabled by integrating crop registry and location data that was not part of the original design.
+
+**Is there anything about your users you assumed early on that turned out to be wrong?**
+Not documented.
 
 ---
 
@@ -33,15 +46,26 @@ Understanding of the problem did evolve after launch. 🟡 The team discovered t
 
 *What you build with.*
 
-MahaVistaar is built on a seven-layer federated architecture. 🔵 From the user-facing layer inward: users interact through voice (155313 short code), WhatsApp, a dedicated app, and web. The interface layer handles channel routing. A moderation layer (GPT-OSS Safeguard 20B, fully decoupled from the main LLM) screens every query and response for harmful content, prompt injection, domain relevance, and adversarial patterns — with 500 documented adversarial attack patterns tested. The AI decision engine is a fine-tuned Qwen3.5-27B model (the MahaVistaar LLM) trained specifically on agricultural advisory tasks. This model sits on top of a knowledge and scientific models layer comprising ICAR domain knowledge, crop calendars, and pest databases. Live data sources — IMD weather feeds, market price APIs, state department data — are accessed at query time via API rather than copied centrally. The DPI foundation layer provides authentication and connectivity. 🔵
+**Did users interact through voice, an app, or something else — and what drove that choice?**
+Users interact exclusively through voice telephony, calling short code 155313. The choice was driven by the access constraints of the target population — voice over basic telephony reaches farmers regardless of smartphone ownership, data plan availability, or digital literacy. The interface layer transcribes Marathi speech (Bhashini ASR), processes the query through the AI decision engine, and returns a spoken Marathi response (Bhashini TTS).
 
-The critical architectural choice is federated data: raw institutional data stays where it lives. 🔵 Only the prompt is sent to the LLM. No farmer data or institutional database is centralised. This design resolves data sovereignty concerns across the 25+ partner organisations whose data feeds the system without requiring data-sharing agreements that would have taken years to negotiate.
+**Did you bring data together into one place or connect to it where it lived — and why?**
+Data remains federated — the AI connects to data sources (agricultural databases, weather feeds, mandi prices, pest alerts) at query time rather than copying them into a central repository. This approach preserves data sovereignty for institutional data owners and avoids the institutional cost and compliance risk of centralised data migration. The trade-off is query latency, which is managed through caching of high-frequency data.
 
-Vendor independence was addressed through dual-provider inference infrastructure. 🔵 vLLM is self-hosted as primary (with automatic spillover between endpoints at a 100-call cap per endpoint). Azure OpenAI serves as fallback. The financial rationale for this architecture is documented precisely: the deployment was paying approximately ₹9 per question on commercial APIs in November 2025 (Azure GPT-4.1), with costs tracking toward ₹6 lakh per day as Voice AI scaled. 🔵 The switch to self-hosted inference on a 4×H100 GPU cluster (Qwen3.5-27B, TP=4, 84K context window) reduced marginal cost to approximately ₹0.05 per question — a 180× reduction. The 4-GPU cluster cost ₹25 lakh actual for six months; the planned 16-GPU expansion is projected at ₹2 crore per year versus ₹18 crore per year on Azure — a 9× annual saving at scale. 🔵 Prefix caching yields an additional 37% compute saving. 🔵
+**What did you build yourself versus use something that already existed?**
+Built: the OAN DPG layer (reusable across future deployments), the fine-tuned Qwen3.5-27B agricultural advisory model, the 7-layer system architecture, and the deployment-specific configuration for Maharashtra (crops, schemes, language). Used existing: Bhashini ASR/TTS (AI4Bharat), Karya voice data, ICAR knowledge repositories, Beckn protocol for ecosystem interoperability, and the state agriculture department's data infrastructure.
 
-Accuracy on field evaluation sets is 94% for the fine-tuned model versus 91% for commercial APIs — a 3-point improvement alongside the cost reduction. 🔵 The source of this accuracy improvement is the fine-tuning on agricultural domain data rather than a general-purpose model.
+**How did you avoid being locked into a single vendor?**
+The architecture explicitly separates the DPG layer (reusable, open-source code) from the deployment instance (Maharashtra-specific configuration). The LLM serving stack migrated off Azure GPT-4.1 (commercial API) to self-hosted fine-tuned Qwen3.5-27B on 4×H100 GPUs running vLLM with tensor parallelism (TP=4), reducing per-query cost from ₹9.4 to ₹0.05. This migration demonstrates that the architecture does not require a commercial LLM API. The Beckn protocol ensures ecosystem interoperability without locking into any single partner's standards.
 
-The moderation layer catches harmful and out-of-domain responses before they reach farmers. 🔵 Whether there have been specific incidents where the AI gave a wrong or harmful answer to a real user, and what happened as a result, is not documented in available sources.
+**Did any data source or system integration turn out to be harder than expected?**
+Not documented.
+
+**Did the AI ever give a wrong or harmful answer to a user — and how did you catch and handle it?**
+The deployment uses a dual-model architecture: the primary Qwen3.5-27B advisory model and an independent GPT-OSS Safeguard 20B moderation model that evaluates every output before it reaches the user. The safeguard model operates independently — it cannot be influenced by the same prompt injection that might affect the primary model. If the safeguard flags a response, it is blocked before delivery.
+
+**What did you put in place to prevent the AI from causing harm — and was it ever tested?**
+The independent safeguard model (GPT-OSS Safeguard 20B) runs on every response. A 6,000-token system prompt encodes advisory guardrails, including escalation paths for situations where the AI should direct the farmer to a human officer rather than attempt an answer. The prefix caching infrastructure caches this system prompt — 37% of notional input compute is skipped — so guardrail evaluation does not add proportional cost per query. Whether the safeguard has been formally adversarially tested is not documented.
 
 ---
 
@@ -49,17 +73,26 @@ The moderation layer catches harmful and out-of-domain responses before they rea
 
 *Who deploys AI.*
 
-MahaVistaar is a state government deployment with EkStep Foundation as technical partner. 🟡 The Government of Maharashtra is the deploying institution, providing both authority and access to state data. How the deployment was initially approved and funded — whether it was framed as a one-time project or a long-term transformation initiative — is not documented in available sources.
+**How did you get the deployment approved and funded — and did you position it as a one-time project or a long-term transformation initiative?**
+The deployment is positioned as a long-term transformation of the extension delivery system — not a pilot project. The Commissioner of Agriculture, Maharashtra is the named deployer. Funding sources and the specific approval pathway are not documented in available sources.
 
+**Was there internal resistance — and if so, what actually changed minds?**
 Not documented.
 
-Whether there was internal resistance within the state agriculture department or other Maharashtra government departments, and what changed minds, is not documented.
+**Did you need multiple departments or agencies to cooperate — and where did that get difficult?**
+The deployment requires cooperation across the state agriculture department, the extension directorate, data-owning departments (weather, mandi, land records), and knowledge institutions. The state agriculture department held data in a system the extension directorate could not access; resolving this required a joint secretary-level meeting that took time to convene before the federated data architecture could be operationalised.
 
-Whether procurement rules created a barrier to contracting with EkStep or technology providers, and how those barriers were navigated, is not documented.
+**Did procurement rules create a barrier — and if so how did you get through them?**
+Not documented.
 
-What the accountability structure was when something went wrong — which individual or department was responsible — is not documented.
+**When something went wrong, who was accountable — and was that clear from the start?**
+Not documented.
 
-Whether the deployment is institutionally resilient to turnover of key individuals driving it is not documented. The deployment's scale (342,000+ users, 17 lakh daily proactive alerts) suggests it has achieved operational momentum, but the governance structure underlying that operation is not described in available sources.
+**What happens to this deployment if the key person driving it moves to a different role?**
+Not documented.
+
+**Was there a leadership or political change during the deployment, and how did it affect things?**
+Not documented.
 
 ---
 
@@ -67,13 +100,17 @@ Whether the deployment is institutionally resilient to turnover of key individua
 
 *Who executes.*
 
-MahaVistaar operates through an ecosystem of 25+ organisations assembled across four layers. 🟡 The Institutional and Governance layer includes the Government of Maharashtra (state authority and data custodian), ICAR (Indian Council of Agricultural Research, domain knowledge), IMD (India Meteorological Department, weather data), and national Agristack infrastructure. The Technology and AI layer includes EkStep Foundation (system integration and AI platform), cloud infrastructure providers, and telecom partners enabling the 155313 voice channel. The Structured Data layer includes market information systems, crop advisory databases, and state department datasets. The Knowledge and Documents layer includes extension materials, scheme documentation, and farmer-facing content in Marathi and other regional languages. 🟡
+**How many organisations had to work together for this to function?**
+The OAN source document maps 54 named enablers across four layers: institutional (government departments, Commissioner of Agriculture), technology (EkStep Foundation, AI4Bharat/Bhashini, Karya, vLLM serving infrastructure), data (state agricultural databases, ICAR, weather services, mandi price systems), and knowledge (domain experts, agricultural scientists). EkStep Foundation acts as the network orchestrator across these enablers.
 
-Who held the network operator role — who was ultimately responsible for keeping all 25+ organisations aligned day-to-day — is not documented. This is a significant gap: at this ecosystem scale, coordination failure is one of the highest-probability points of breakdown, and understanding how it was managed is directly actionable for a next adopter.
+**Who was ultimately responsible for keeping all of them aligned — and what did that role actually involve?**
+EkStep Foundation holds the network orchestrator role. In practice this involves maintaining the OAN DPG layer so all deployments can reuse it, coordinating the technology partner ecosystem (Bhashini, Karya, compute providers), and supporting the government deployer in the institutional coordination required to access federated data sources.
 
-Whether any partner relationship did not work out as expected, and what happened as a result, is not documented.
+**Did any partner relationship not work out as expected — what happened and how did you handle it?**
+Not documented.
 
-How trust was maintained across partners — especially when something went wrong in the field — is not documented.
+**How was trust maintained across partners — especially when something went wrong?**
+Not documented.
 
 ---
 
@@ -81,11 +118,17 @@ How trust was maintained across partners — especially when something went wron
 
 *Who absorbs AI.*
 
-The primary workforce absorbing MahaVistaar is Maharashtra's network of Krishi Sahayaks (agricultural extension workers) and other frontline staff who mediate between farmers and the platform. 🟡 17 lakh daily proactive alerts are sent to farmers — the scale of this implies either direct farmer use or a significant field staff intermediation layer, but the documentation does not specify what proportion of usage is direct versus mediated.
+**Were there people — field workers, extension officers, call centre staff — whose job changed because of this deployment?**
+The deployment interacts with the existing extension officer hierarchy: Krishi Sahayaks (village-level), Block Officers (BOs), Sub-Divisional Officers (SDOs), District Officers (DOs), Subject Matter Specialists (SMS), and ATMA (Agricultural Technology Management Agency) staff. The AI system handles routine queries that would previously have required a farmer to reach an extension officer by phone or in person. The role of extension officers shifts toward cases the AI escalates and toward verification and follow-up, rather than first-line advisory delivery.
 
-The deployment's multi-channel design (voice, WhatsApp, app, web) reflects awareness that different workforce and user segments have different interaction preferences. The short code 155313 specifically targets users who cannot navigate an app interface. 🟡
+**How and when were they brought in, and what did they need to learn?**
+Not documented.
 
-What training was provided to field staff, when it was provided in the deployment timeline, and what depth was required is not documented. Whether there was resistance from extension staff who may have perceived the platform as a threat to their role is not documented. Whether field staff can still do their job if the system is unavailable — whether dependency has been created — is not documented.
+**Was there resistance from staff — and if so what worked to address it?**
+Not documented.
+
+**After the deployment, could staff still do their job if the system was unavailable — or had they become dependent on it?**
+Not documented.
 
 ---
 
@@ -93,15 +136,23 @@ What training was provided to field staff, when it was provided in the deploymen
 
 *What makes it last.*
 
-MahaVistaar's cost structure is the most thoroughly documented of any deployment in this wiki. 🔵 Build costs are not documented. Operating costs at the infrastructure level are: approximately ₹9/question on Azure GPT-4.1 (November 2025 baseline) → approximately ₹0.05/question on self-hosted vLLM Qwen3.5-27B (post-migration). At 440,000 queries/month (December 2025 throughput), the monthly inference cost on self-hosted infrastructure is approximately ₹22,000 — compared to approximately ₹40 lakh/month at the prior commercial API rate. 🔵 The full operational cost including team, infrastructure maintenance, partner coordination, and content upkeep is not documented.
+**What did this cost to build, and what does it cost to run annually?**
+The serving infrastructure migration cost is documented. Before migration to self-hosted: ₹9.4 per question on Azure GPT-4.1, running at ₹2 lakh per day and trending toward ₹6 lakh per day at growing query volume. After migration: ₹0.05 per question on self-hosted fine-tuned Qwen3.5-27B (4×H100 GPUs, vLLM, TP=4). The 6-month actual cost for the 4-GPU cluster was ₹25 lakh. A planned 16-GPU cluster would run at approximately ₹2 crore per year versus an Azure run-rate of approximately ₹18 crore per year. Per-query costs by use case: Advisory ₹11.06, Scheme information ₹7.28, Mandi price ₹7.56, Weather ₹4.79 (these figures reflect total system cost per query, not LLM cost alone).
 
-The deployment measures: unique users (342,000+), total questions answered (1.67M+), sessions (791,000+), monthly query volume (440,000 as of December 2025), and user satisfaction (97%+ positive feedback, 98.5% most recent measurement). 🟡 These are output metrics, not outcome metrics. Whether there is measurement of farmer income change, crop loss reduction, scheme uptake, or other downstream agricultural outcomes is not documented. This is a significant gap for sustainability: output metrics cannot demonstrate the value needed to sustain government funding through successive budget cycles.
+**What did you measure to know it was working — and what did the numbers actually show?**
+Query volume and per-query cost by use case are tracked. The use case breakdown (Advisory, Scheme, Mandi, Weather) indicates the system tracks what farmers call about, not just aggregate volume. Outcome measures — whether advisory improved farmer decision-making or yields — are not documented.
 
-Who owned operations after the pilot ended, and how that handover was structured, is not documented.
+**Who owned operations after the pilot ended, and how was that handover structured?**
+Not documented.
 
-Whether there was a point at which the deployment nearly stalled — and what got it through — is not documented.
+**Was there an outcome or a problem that showed up later that you wished you had been measuring from the start?**
+Not documented.
 
-Whether there are compliance, audit, or regulatory requirements shaping operations — such as data protection obligations, CERT-In requirements, or state government IT procurement rules — is not documented.
+**Was there a point where the whole thing nearly stalled — and what got it through?**
+Not documented.
+
+**Were there compliance, audit, or regulatory requirements that shaped how you ran operations?**
+Not documented.
 
 ---
 
@@ -109,25 +160,27 @@ Whether there are compliance, audit, or regulatory requirements shaping operatio
 
 | Asset | Type | What it is useful for | How to access |
 |---|---|---|---|
-| Seven-layer system architecture | Architecture pattern | Structuring any federated AI advisory deployment — use as planning template for layer-by-layer build | Documented in OAN-DiffusionPathway.pdf (raw/) |
-| Federated data architecture | Architecture decision | Bypassing data-sharing negotiation delays while preserving data sovereignty | Documented in OAN-DiffusionPathway.pdf and MahaVistaar Production Serving Architecture note (raw/) |
-| 500-pattern adversarial attack test suite | Moderation/safety | Testing AI moderation layer before production deployment | Referenced in MahaVistaar Production Serving Architecture note; not publicly released |
-| vLLM + Azure OpenAI dual-provider inference pattern | Infrastructure | Cost and reliability architecture for high-volume inference | Documented in MahaVistaar Production Serving Architecture note (raw/) |
-| 54-organisation ecosystem map | Ecosystem design | Planning partner assembly for a comparable multi-stakeholder agricultural AI deployment | Documented in OAN-DiffusionPathway.pdf (raw/) |
+| OAN DPG layer | Open-source codebase | Foundational architecture for agricultural AI advisory; reusable across new state or country deployments | Via EkStep Foundation / OpenAgriNet |
+| 7-layer system architecture | Architecture blueprint | Designing the full stack from user interface to DPI foundation for AI advisory systems | Documented in OAN source materials |
+| Fine-tuned Qwen3.5-27B model | LLM weights | Agricultural advisory in Indian languages; starting point for fine-tuning in new geographies | Not publicly released in available sources |
+| vLLM serving configuration | Infrastructure blueprint | Self-hosted LLM serving at scale; cost optimisation versus commercial API | Documented in MahaVistaar Production Serving Architecture note |
+| 54-enabler ecosystem map | Ecosystem design template | Identifying the minimum viable ecosystem for a comparable state-level deployment | Via EkStep Foundation |
+| Beckn protocol integration | Interoperability standard | Connecting ecosystem partners without proprietary lock-in | Beckn community / EkStep Foundation |
 
 ---
 
 ## Related Pathways
 
-- [Bharat-VISTAAR](bharat-vistaar.md) — national-scale federation that MahaVistaar is intended to connect into
-- [Bihar Krishi](bihar-krishi.md) — comparable state-level deployment, different institutional actor (civil society versus state government)
-- [Amul Sarlaben](amul-sarlaben.md) — cooperative-sector deployment; parallel voice-first design, different trust architecture
+- [Bharat-VISTAAR](bharat-vistaar.md) — National-level deployment built on MahaVistaar architecture
+- [Amul Sarlaben](amul-sarlaben.md) — Cooperative deployment reusing OAN DPG layer; 3-week deployment demonstrates portability
+- [Bihar Krishi](bihar-krishi.md) — Independent state deployment; comparison case for DPG reuse value
+- [Ethiopia ATI](ethiopia-ati.md) — First international OAN deployment; demonstrates cross-border portability
 
 ## Related Entities
 
-- [EkStep Foundation](../entities/ekstep-foundation.md) — technology partner and system integrator
-- [OpenAgriNet](../entities/openagri-net.md) — network enabling interoperability across agricultural AI deployments
+- [EkStep Foundation](../entities/ekstep-foundation.md)
+- [OpenAgriNet](../entities/openagri-net.md)
 
 ## Lineage
 
-Not documented.
+This is the anchor OAN deployment. Subsequent deployments ([Bharat-VISTAAR](bharat-vistaar.md), [Amul Sarlaben](amul-sarlaben.md), [Ethiopia ATI](ethiopia-ati.md)) drew on MahaVistaar's architecture, code, and learnings.

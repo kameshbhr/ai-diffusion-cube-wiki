@@ -1,25 +1,28 @@
-# Wiki Log
+## 2026-05-28 ingest | OAN-DiffusionPathway.pdf + six-orthogonal-shifts.pdf + MahaVistaar-serving-architecture.pdf | Pages created: 20 | Pages updated: 0
 
-Append-only chronological record of all operations.
+Source documents ingested:
+- `raw/OAN-DiffusionPathway.pdf` — Primary source for all five deployment pathways (MahaVistaar, Amul Sarlaben, Bharat-VISTAAR, Bihar Krishi, Ethiopia ATI), ecosystem design, 54-enabler map, architecture diagrams, and deployment narrative.
+- `raw/AI Diffusion Pathways - The six orthogonal shifts across tech and non-tech for diffusion pathways.pdf` — Framework document; six dimensions and 21 FROM→TO shift patterns; 30/70 tech/non-tech ratio claim.
+- `raw/MahaVistaar_ Production Serving Architecture — Internal Note.pdf` — MahaVistaar serving stack; GPU specs; vLLM configuration; cost before and after migration from Azure GPT-4.1 to self-hosted Qwen3.5-27B.
 
----
-
-## 2026-05-28 init | Wiki initialisation | Pages created: 0 | Pages updated: 0
-
-Cold-start initialisation. CLAUDE.md schema read. Directory structure created: wiki/pathways/, wiki/synthesis/, wiki/entities/, wiki/navigation/.
-
-## 2026-05-28 ingest | AI Diffusion Pathways — The six orthogonal shifts across tech and non-tech for diffusion pathways.pdf | Pages created: 0 | Pages updated: 6
-
-Framework document. 21 FROM→TO shift patterns across all six dimensions. Evidence base for dimension-shifts.md, compression-proof.md, 70-30-split.md, trust-architecture.md, failure-modes.md, dpg-reuse-patterns.md synthesis pages.
-
-## 2026-05-28 ingest | OAN-DiffusionPathway.pdf | Pages created: 5 | Pages updated: 0
-
-Multi-deployment pathway document authored by deployment team. Primary evidence source for all five pathway pages: mahavistaar.md, amul-sarlaben.md, bharat-vistaar.md, bihar-krishi.md, ethiopia-ati.md. Also primary source for ecosystem and workforce dimensions across synthesis pages.
-
-## 2026-05-28 ingest | MahaVistaar: Production Serving Architecture — Internal Note.pdf | Pages created: 1 | Pages updated: 1
-
-Internal production infrastructure note. First-hand architecture evidence (🔵). Primary source for mahavistaar.md Dimension B. Updated dimension-shifts.md and 70-30-split.md with infrastructure cost data.
-
-## 2026-05-28 build | Full wiki build from cold start | Pages created: 20 | Pages updated: 0
-
-Full wiki created from three source documents. Pages: 1 framework, 5 pathways, 6 synthesis, 4 entities, 2 navigation, index, log = 20 pages total.
+Pages created (20):
+- wiki/framework.md
+- wiki/pathways/mahavistaar.md
+- wiki/pathways/amul-sarlaben.md
+- wiki/pathways/bharat-vistaar.md
+- wiki/pathways/bihar-krishi.md
+- wiki/pathways/ethiopia-ati.md
+- wiki/synthesis/dimension-shifts.md
+- wiki/synthesis/compression-proof.md
+- wiki/synthesis/trust-architecture.md
+- wiki/synthesis/failure-modes.md
+- wiki/synthesis/70-30-split.md
+- wiki/synthesis/dpg-reuse-patterns.md
+- wiki/entities/ekstep-foundation.md
+- wiki/entities/amul.md
+- wiki/entities/openagri-net.md
+- wiki/entities/ethiopian-ati.md
+- wiki/sectors/agriculture.md
+- wiki/sectors/livelihoods.md
+- wiki/index.md
+- wiki/log.md

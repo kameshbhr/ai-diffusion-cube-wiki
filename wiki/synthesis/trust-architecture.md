@@ -1,73 +1,51 @@
-# Trust Architecture — How Trust Was Built Across Deployments
+# Trust Architecture — How Trust Is Built and Maintained Across Deployments
 
 **Type:** Synthesis
-**Deployments cited:** MahaVistaar, Amul Sarlaben, Bihar Krishi, Ethiopia ATI, Bharat-VISTAAR
+**Deployments cited:** MahaVistaar, Amul Sarlaben, Bharat-VISTAAR, Ethiopia ATI
 **Last updated:** 2026-05-28
 
 ## The Pattern
 
-Every deployment in this wiki required trust to be established at multiple levels simultaneously: trust from end users (farmers) that the AI advice is reliable, trust from institutional partners that their data is protected and their role is respected, trust from field workforce that the AI is a tool rather than a replacement, and trust from government that the deployment is accountable and controllable. These are four distinct trust relationships, and each requires a different mechanism. Conflating them — or investing in only one while neglecting the others — produces characteristic failure modes.
+Trust in AI advisory systems in public interest sectors is not primarily trust in the AI. It is trust in the institution that deploys it. Across OAN deployments, the trust source is consistently the deploying institution — the Maharashtra government, the Amul cooperative, ICAR, ATI Ethiopia — not the AI system itself. The AI is delivered under the deployer's brand, through the deployer's channel (short codes, voice telephony), in the deployer's language. When a farmer calls 155313 in Maharashtra, they are calling the government of Maharashtra's agricultural advisory line; the fact that the response is AI-generated is secondary to the fact that it is the government's system.
 
-The evidence across five deployments suggests that the most durable trust architectures are those that make the trust mechanism visible: the farmer can see where the advice comes from (ICAR, IMD, state extension), the partner can verify that their data has not moved, the field worker can override the AI when they believe it is wrong, and the government can audit what the system said. Invisible trust mechanisms — "just trust the AI" — have not produced durable scale in any documented case.
+This has direct consequences for how you design trust into a deployment: trust infrastructure is not technical — it is institutional.
 
 ## Evidence
 
 ### MahaVistaar
 
-MahaVistaar's trust architecture operates across all four levels. End-user trust is evidenced by 97%+ positive feedback (98.5% most recent measurement) across 342,000+ unique users. 🟡 What produced this trust is partly the accuracy of advice (94% on field evaluation sets) 🔵 and partly the attribution architecture: when the system answers a question, it draws on named and credible knowledge sources (ICAR, IMD, government scheme databases) rather than presenting AI-generated content as authoritative without grounding.
-
-Institutional partner trust was built through the federated data architecture. 🔵 Partners who were concerned about their data leaving their systems were shown that only the prompt is sent to the LLM — the raw data stays where it lives. This visible mechanism resolved objections that would otherwise have required years of data-sharing negotiation.
-
-The moderation layer (GPT-OSS Safeguard 20B, 500 adversarial attack patterns, domain validation) provides the government trust mechanism: it is documented evidence that the deployment has tested its harm boundaries and has a system for catching failures before they reach users. 🔵 Whether this moderation layer was specifically cited in government approval conversations is not documented.
-
-Field workforce trust — whether extension workers trusted the system enough to recommend it to farmers — is not directly evidenced in available documentation.
+The Maharashtra government's Commissioner of Agriculture is the named deployer. The short code (155313) is a government telephone number. Responses are attributed to the state agricultural advisory system. Farmers in Maharashtra have a pre-existing relationship with government agricultural services — the AI deployment inherits that institutional trust rather than needing to build trust in an unfamiliar AI system from zero.
 
 [See full pathway: MahaVistaar](../pathways/mahavistaar.md)
 
 ### Amul Sarlaben
 
-Amul Sarlaben's trust architecture is grounded in cooperative ownership: the AI is trained on Amul's own 2 billion transactions and 30 million cattle records. 🟡 This is a qualitatively different trust mechanism from MahaVistaar: the farmers using Sarlaben are Amul cooperative members, and the system is trained on their collective data. The trust relationship is cooperative (this is our data, this is our system) rather than governmental (the state provides this service) or neutral-expert (ICAR says so).
-
-The 1 million+ app downloads are a proxy for farmer trust — trust sufficient to install and actively use an application. 🟡 Whether there are adverse outcome reports (farmers who acted on AI advice and lost income or cattle health as a result) is not documented. The absence of such documentation may reflect absence of incidents or absence of a reporting mechanism.
+Amul's cooperative trust model differs from government trust but is equally pre-established. Gujarat's dairy farmers are member-owners of the Amul cooperative; they have a long-standing relationship with Amul as their milk procurer and primary agricultural service provider. Sarlaben is delivered as an Amul service, accessed via an Amul number (08035453545). Trust is inherited from the cooperative membership relationship, not built through AI performance alone.
 
 [See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md)
 
-### Bihar Krishi
-
-Bihar Krishi's trust architecture is primarily built through the field workforce layer. 🟡 The pre-launch training of 15,000+ extension workers across 38 districts means that when the platform reached farmers, it was introduced by a trusted local person — the extension worker — rather than arriving as an unknown external system. This peer trust mechanism (your local extension officer recommends this) is a fundamentally different and more durable trust pathway than any institutional communication campaign.
-
-The 20-25% monthly engagement rate suggests trust sufficient to sustain repeated use, not just initial adoption. 🟡 Whether there were specific trust-breaking incidents (wrong advice, system outages, data concerns) and how they were handled is not documented.
-
-[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md)
-
-### Ethiopia ATI
-
-Ethiopia ATI's trust architecture is at an early stage — the deployment launched in February 2026 and evidence of trust establishment is not yet available. 🟡 The Fayda digital ID integration provides a specific trust signal: the deployment is using Ethiopia's government-backed identity infrastructure, which carries institutional authority that a standalone system would not have. 🟡
-
-[See full pathway: Ethiopia ATI](../pathways/ethiopia-ati.md)
-
 ### Bharat-VISTAAR
 
-Not documented. The national-scale trust architecture for Bharat-VISTAAR — how 28+ state governments, ICAR, IMD, and domain-specific operators trust each other and the central hub — is not described in available sources.
+ICAR is India's apex agricultural research institution — its brand carries authority on agricultural knowledge questions. Bharat-VISTAAR is delivered as an ICAR service on short code 155261, inheriting ICAR's research credibility with farmers who understand the ICAR brand.
 
 [See full pathway: Bharat-VISTAAR](../pathways/bharat-vistaar.md)
 
+### Ethiopia ATI
+
+ATI is Ethiopia's designated government body for agricultural transformation. Its institutional mandate provides the trust source for the Ethiopia deployment. The Fayda digital ID integration adds a further trust signal — the system can identify the farmer and deliver personalised advice, with farmer identity anchored to the national identity system rather than an unknown AI service.
+
+[See full pathway: Ethiopia ATI](../pathways/ethiopia-ati.md)
+
 ## What This Means for a Next Adopter
 
-Design your trust architecture before you design your user interface. The four trust relationships (end user, institutional partner, field workforce, government) each need a named mechanism, not a general commitment to quality. A next adopter should be able to answer the following questions before deployment:
+The trust architecture implication is direct: deploy under an institution farmers already trust, through a channel they already use. Do not launch a new brand for your AI advisory system — building trust in an unknown brand requires time and marketing investment that you almost certainly do not have. Instead, integrate the AI into an existing trusted delivery channel: an extension advisory line, a cooperative member service, a government scheme helpline.
 
-How does the end user know the advice is grounded in credible knowledge — not just AI-generated text? In every documented deployment, the answer involves attributing advice to named institutional sources (ICAR, Amul's own cattle records, the cooperative's veterinary database).
+The dual-model safety architecture (primary LLM plus independent safeguard model) in the OAN deployments is also a trust-maintenance mechanism, not just a technical safety measure. Preventing harmful outputs from reaching users preserves the institutional trust that the system is deployed under — a single widely-shared harmful answer from the "Commissioner of Agriculture's system" would damage institutional credibility in ways the technology team could not repair.
 
-How does each institutional partner verify that their data has not moved? In every documented deployment, the answer involves a federated architecture and a demonstration that the partner can verify data access logs. A partner who has to trust your word is a fragile partner.
-
-How does the field worker know it is acceptable to override the AI? In no documented deployment is this explicitly designed for — it is a gap across the evidence base. A next adopter who designs an explicit override mechanism (with feedback that returns overrides to the system as training signal) would be ahead of all documented deployments.
-
-How does the government auditor verify what the system said to a user? In no documented deployment is the audit mechanism described. This is a likely regulatory requirement in most jurisdictions and should be designed into the system before deployment, not retrofitted after a compliance request.
+Trust architecture is inseparable from the institution's broader credibility management. If the deploying institution loses public trust (through a policy failure, a widely shared wrong answer, or a political event), the AI advisory system's trust is damaged regardless of technical performance.
 
 ## Open Questions
 
-Whether trust, once lost, can be rebuilt within a deployment lifecycle is not documented across any of these cases. Understanding a trust recovery pattern would be valuable.
+How does institutional trust hold when the AI gives a factually wrong but not harmful answer? The safeguard model prevents dangerous outputs but not incorrect ones. The escalation and public response process when users call back to complain about bad advice is not documented for any deployment.
 
-The field worker override mechanism — which no documented deployment has fully designed — is the most consequential open question for adoption quality. A deployment that gives extension workers visible override capability and uses those overrides as a quality signal would advance the evidence base significantly.
-
-Whether the cooperative trust architecture (Amul's model, where users are owners) transfers to contexts where a cooperative structure does not exist is unresolved.
+Does farmer awareness that the system is AI-powered affect trust? None of the current deployments documents whether farmers are informed they are speaking to an AI, and whether disclosure affects adoption or trust levels.

@@ -1,19 +1,20 @@
 # Bharat-VISTAAR — Pathway
 
-**Deployment:** Bharat-VISTAAR (National AI agricultural advisory federation)
-**Contributor:** Government of India / EkStep Foundation
+**Deployment:** Bharat-VISTAAR National Agricultural Advisory System
+**Contributor:** ICAR (Indian Council of Agricultural Research) / EkStep Foundation
 **Sector:** Agriculture
-**Geography:** India — national
+**Geography:** India (national)
 **Actor type:** Government
 **Journey stage:** Pilot
-**Dimensions covered:** A, B, C, D, F
-**Horizontal or vertical:** Horizontal (national DPI layer for agriculture sector)
+**Dimensions covered:** A, B, C, D
+**Horizontal or vertical:** Vertical (sector-specific)
 **Deployment status:** Active
 **Last updated:** 2026-05-28
+**Contact for peer connection:** EkStep Foundation — via OpenAgriNet
 
 ## Summary
 
-Bharat-VISTAAR is the national-scale federated AI agricultural advisory platform targeting India's 120 million farmers. It operates as a hub-and-spoke federation: a central advisory layer connects to state-level deployments (including MahaVistaar) and domain-specific deployments (including Amul Sarlaben), with the central layer integrating national data sources — 10 major central schemes, ICAR, and IMD. Phase 1 is live as of early 2026 with short code 155261 and Rs 150 crore government allocation. This is the most complex institutional and ecosystem challenge in this wiki — a national-scale coordination problem as much as a technology problem.
+Bharat-VISTAAR is the national-layer agricultural advisory system, deployed by ICAR (Indian Council of Agricultural Research) under the Government of India, serving farmers across India through a toll-free voice channel (short code 155261) in Hindi and English. Built on the OAN DPG layer developed for MahaVistaar, it scales the OAN model from state to national level. For a next adopter, this pathway demonstrates how a national-level government research institution can become an AI advisory deployer and how national knowledge repositories (ICAR's research data) can be integrated into a conversational AI system.
 
 ---
 
@@ -21,13 +22,23 @@ Bharat-VISTAAR is the national-scale federated AI agricultural advisory platform
 
 *What you build on.*
 
-The problem Bharat-VISTAAR addresses is advisory fragmentation at national scale: 120 million Indian farmers need access to accurate, personalised information about crops, weather, pests, and government schemes, but the existing system is siloed — state advisories, central scheme information, and scientific knowledge exist in separate institutional domains with no integration layer for the farmer. 🟡 The vision is that a farmer should be able to call a single number (155261) and receive advice that draws on all of these knowledge sources, localized to their crop, their agro-climatic zone, and their language.
+**Who were you trying to serve, and what specific problem were you solving for them?**
+Farmers across India who need access to agricultural advisory grounded in ICAR's research and extension knowledge. ICAR is India's apex agricultural research body, holding extensive crop, pest, and soil knowledge that has historically been difficult for farmers to access in a form relevant to their specific situation.
 
-The non-AI alternative would require physical coordination across dozens of central ministries, state departments, ICAR, and IMD — a bureaucratic integration that has been attempted without AI for decades without success. 🟡 AI provides the integration layer: it can synthesize knowledge from disparate sources into a single conversational response without requiring institutional consolidation.
+**What were the access constraints of your users — language, literacy, connectivity — and how did that shape what you built?**
+Hindi and English voice interface via telephony (short code 155261). A national deployment must eventually cover multiple Indian languages; the initial launch covers Hindi and English, with additional languages expected as the OAN language configuration model scales across states and languages.
 
-The specific access constraints of the target user population (120 million farmers — varying literacy, connectivity, language) are not fully documented in available sources beyond what is shared with MahaVistaar's evidence base. The short code 155261 signals that voice-first access is a design constraint, as with all deployments in this wiki.
+**Was there data already available to start with, or did you have to build or collect it first?**
+ICAR holds India's most comprehensive agricultural research data — crop variety information, pest identification keys, soil health data, and climate-crop interaction models. This is the primary knowledge asset that distinguishes Bharat-VISTAAR from state deployments; state systems typically have state-specific data but less depth in research knowledge.
 
-Whether existing data sources (ICAR, IMD, state Agristack data) were ready for integration at deployment or required significant preparation is not documented. Whether the deployment team's understanding of the problem changed after Phase 1 launch is not documented.
+**Why did this problem need AI — what would a non-AI solution have missed?**
+ICAR's knowledge has historically been locked in research publications and extension manuals that farmers cannot easily access or apply to their specific situation. AI makes that knowledge conversational — farmers can ask questions about their specific crop, location, and problem and receive responses grounded in ICAR research.
+
+**Did your understanding of the problem change after you started — and if so, how?**
+Not documented.
+
+**Is there anything about your users you assumed early on that turned out to be wrong?**
+Not documented.
 
 ---
 
@@ -35,13 +46,26 @@ Whether existing data sources (ICAR, IMD, state Agristack data) were ready for i
 
 *What you build with.*
 
-Bharat-VISTAAR uses a hub-and-spoke federation architecture. 🟡 The national hub integrates 10 major central government schemes, ICAR scientific knowledge, and IMD weather data. State-level deployments (such as MahaVistaar) and sector-specific deployments (such as Amul Sarlaben) are spokes. The federation design means each spoke retains its own institutional data sovereignty while the hub provides a coordination and routing layer.
+**Did users interact through voice, an app, or something else — and what drove that choice?**
+Voice telephony via short code 155261, Hindi and English. Same access rationale as MahaVistaar.
 
-The specific AI models, hosting infrastructure, and cost structure at the national level are not documented. Whether Bharat-VISTAAR reuses the MahaVistaar serving architecture (vLLM + Azure OpenAI dual-provider, federated data access, moderation layer) or deploys a different technical stack is not documented.
+**Did you bring data together into one place or connect to it where it lived — and why?**
+Federated architecture from the OAN DPG layer. ICAR's data infrastructure remains under ICAR's control.
 
-The short code 155261 is the primary entry point. Whether there are app, web, or WhatsApp channels at the national level is not documented.
+**What did you build yourself versus use something that already existed?**
+OAN DPG layer reused from MahaVistaar. What was added: Hindi and English language configuration, ICAR knowledge integration (crop research, pest databases, soil data), national scheme information, and ICAR-specific advisory guardrails.
 
-Whether there is a moderation layer at the national hub, how it is configured, and whether it differs from state-level moderation is not documented.
+**How did you avoid being locked into a single vendor?**
+Inherited OAN vendor-independence architecture.
+
+**Did any data source or system integration turn out to be harder than expected?**
+Not documented.
+
+**Did the AI ever give a wrong or harmful answer to a user — and how did you catch and handle it?**
+Not documented.
+
+**What did you put in place to prevent the AI from causing harm — and was it ever tested?**
+Inherited safeguard architecture from the OAN DPG layer.
 
 ---
 
@@ -49,15 +73,26 @@ Whether there is a moderation layer at the national hub, how it is configured, a
 
 *Who deploys AI.*
 
-Bharat-VISTAAR involves coordination across central government (the deploying institution), state governments (who operate the spokes), ICAR, IMD, and EkStep Foundation. 🟡 Rs 150 crore government allocation is documented — this is the funding instrument that drives Phase 1. Whether this is framed institutionally as a one-time project or a sustained transformation investment is not documented, though the scale and the hub-and-spoke design suggest a long-term infrastructure intent.
+**How did you get the deployment approved and funded — and did you position it as a one-time project or a long-term transformation initiative?**
+ICAR as the deploying institution brings national government authority and the credibility of India's apex agricultural research institution. Funding and approval specifics are not documented.
 
-The central accountability structure — which ministry or department owns Bharat-VISTAAR, who is the accountable official when something goes wrong — is not documented. This is a consequential gap: at national scale, diffuse accountability is a reliable failure mode.
+**Was there internal resistance — and if so, what actually changed minds?**
+Not documented.
 
-Whether there was resistance within any central ministry or state government to the deployment, what form it took, and what resolved it is not documented.
+**Did you need multiple departments or agencies to cooperate — and where did that get difficult?**
+A national deployment requires coordination with state agriculture departments for last-mile delivery and with ICAR's own research divisions for knowledge access. The intersection between national-level ICAR knowledge and state-specific conditions (which vary significantly across India's 28 states) is a coordination challenge that is not yet documented in available sources.
 
-How procurement was handled at the central level — whether standard government IT procurement processes applied or a different mechanism was used — is not documented.
+**Did procurement rules create a barrier — and if so how did you get through them?**
+Not documented.
 
-What happens to the national hub if the key individual driving the deployment moves roles is not documented.
+**When something went wrong, who was accountable — and was that clear from the start?**
+Not documented.
+
+**What happens to this deployment if the key person driving it moves to a different role?**
+Not documented.
+
+**Was there a leadership or political change during the deployment, and how did it affect things?**
+Not documented.
 
 ---
 
@@ -65,13 +100,17 @@ What happens to the national hub if the key individual driving the deployment mo
 
 *Who executes.*
 
-The Bharat-VISTAAR ecosystem spans central government departments, 28+ state governments (each of whom must connect their state deployments to the national hub), ICAR, IMD, EkStep Foundation, telecom operators for the short code, and domain-specific deployment operators (such as Amul). 🟡 This is the largest ecosystem coordination challenge in this wiki.
+**How many organisations had to work together for this to function?**
+ICAR, EkStep Foundation, Bhashini/AI4Bharat for language services, and state agriculture departments for contextualisation. The national scope means the ecosystem is broader than a state deployment, but the OAN DPG layer reduces the technology coordination burden.
 
-Who holds the network operator role — who is responsible day-to-day for keeping the spokes connected, the data integrations live, and the 25+ institutional relationships active — is not documented.
+**Who was ultimately responsible for keeping all of them aligned — and what did that role actually involve?**
+EkStep Foundation as OAN network orchestrator for the technology layer; ICAR for knowledge governance and national institutional relationships.
 
-How state governments are incentivised or required to connect their state deployments to the national hub — what the governance mechanism is for hub-and-spoke alignment — is not documented.
+**Did any partner relationship not work out as expected — what happened and how did you handle it?**
+Not documented.
 
-Whether any spoke has declined to participate or a partnership has not worked out as expected is not documented.
+**How was trust maintained across partners — especially when something went wrong?**
+Not documented.
 
 ---
 
@@ -79,7 +118,17 @@ Whether any spoke has declined to participate or a partnership has not worked ou
 
 *Who absorbs AI.*
 
-Not documented. The deployment documentation for Bharat-VISTAAR does not describe the workforce integration layer — how state extension staff, ICAR scientists, and frontline workers are being prepared for or incorporated into the national platform.
+**Were there people — field workers, extension officers, call centre staff — whose job changed because of this deployment?**
+Not documented.
+
+**How and when were they brought in, and what did they need to learn?**
+Not documented.
+
+**Was there resistance from staff — and if so what worked to address it?**
+Not documented.
+
+**After the deployment, could staff still do their job if the system was unavailable — or had they become dependent on it?**
+Not documented.
 
 ---
 
@@ -87,13 +136,23 @@ Not documented. The deployment documentation for Bharat-VISTAAR does not describ
 
 *What makes it last.*
 
-The Rs 150 crore government allocation provides the funding instrument for Phase 1. 🟡 Whether this covers only build costs, only operational costs, or both, and over what time period, is not documented.
+**What did this cost to build, and what does it cost to run annually?**
+Not documented separately from OAN infrastructure costs.
 
-What Bharat-VISTAAR measures to know Phase 1 is working — the metrics framework for the national deployment — is not documented.
+**What did you measure to know it was working — and what did the numbers actually show?**
+Not documented.
 
-Who owns operations after Phase 1, and what the transition structure is from build phase to steady-state operations, is not documented.
+**Who owned operations after the pilot ended, and how was that handover structured?**
+Not documented.
 
-Whether there is a compliance or regulatory framework governing a national-scale AI system operating across state jurisdictions, and what audit obligations it creates, is not documented.
+**Was there an outcome or a problem that showed up later that you wished you had been measuring from the start?**
+Not documented.
+
+**Was there a point where the whole thing nearly stalled — and what got it through?**
+Not documented.
+
+**Were there compliance, audit, or regulatory requirements that shaped how you ran operations?**
+Not documented.
 
 ---
 
@@ -101,21 +160,22 @@ Whether there is a compliance or regulatory framework governing a national-scale
 
 | Asset | Type | What it is useful for | How to access |
 |---|---|---|---|
-| Hub-and-spoke federation architecture | Architecture pattern | Structuring a national-level AI platform that preserves state autonomy while enabling national knowledge integration | Documented in OAN-DiffusionPathway.pdf (raw/) |
+| OAN DPG layer (reused) | Open-source codebase | See [MahaVistaar](mahavistaar.md) for full description | Via EkStep Foundation |
+| ICAR knowledge integration | Knowledge configuration | Access to India's apex agricultural research within an advisory system; template for national research institution integration | Via ICAR |
 
 ---
 
 ## Related Pathways
 
-- [MahaVistaar](mahavistaar.md) — state-level spoke; most thoroughly documented component of the Bharat-VISTAAR federation
-- [Amul Sarlaben](amul-sarlaben.md) — sector-specific spoke (cooperative dairy)
-- [Bihar Krishi](bihar-krishi.md) — comparable state-level deployment not yet documented as a Bharat-VISTAAR spoke
+- [MahaVistaar](mahavistaar.md) — State-level anchor deployment; OAN DPG layer source
+- [Bihar Krishi](bihar-krishi.md) — Parallel state deployment; independent (non-OAN) comparison case
+- [Ethiopia ATI](ethiopia-ati.md) — International OAN extension
 
 ## Related Entities
 
-- [EkStep Foundation](../entities/ekstep-foundation.md) — technology partner
-- [OpenAgriNet](../entities/openagri-net.md) — network coordination layer
+- [EkStep Foundation](../entities/ekstep-foundation.md)
+- [OpenAgriNet](../entities/openagri-net.md)
 
 ## Lineage
 
-Built on [MahaVistaar](mahavistaar.md) — architecture, moderation patterns, and ecosystem design inherited from Maharashtra state deployment.
+Built on [MahaVistaar](mahavistaar.md) — OAN DPG layer reused; ICAR knowledge integration and national-scale language configuration added.
