@@ -1,3 +1,7 @@
+## 2026-05-28 update | MahaVistaar pathway | Pages created: 0 | Pages updated: 1
+
+Updated wiki/pathways/mahavistaar.md against the current CLAUDE.md template and all three source PDFs. Changes: added three new template questions (A5 harmful output, B6 peak load policy, B7 infrastructure constraint, F2 cost-over-time); updated summary to reflect multi-channel delivery, nine-month delivery, 440k+ queries/month, and 17 lakh daily alerts; corrected voice-only description to four-channel (voice, app, WhatsApp, web); expanded language coverage from Marathi-only to Marathi/Hindi/Bhili/English; filled previously undocumented answers for weather station gaps, TP=4 concurrency constraint, adversarial test set, Agri Secretary first-decision, named funders (Gates Foundation, World Bank, UNDP), training=use model, full outcome metrics (342k+ users, 1.67M+ questions, 97%+/98.5% feedback), and cost trajectory narrative; added Additional Insights sub-sections in B, C, E, F; added adversarial test set row to Reusable Toolkit.
+
 ## 2026-05-28 ingest | OAN-DiffusionPathway.pdf + six-orthogonal-shifts.pdf + MahaVistaar-serving-architecture.pdf | Pages created: 20 | Pages updated: 0
 
 Source documents ingested:
