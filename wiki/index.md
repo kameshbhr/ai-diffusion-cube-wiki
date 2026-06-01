@@ -1,10 +1,11 @@
 # AI Diffusion Cube — Wiki Index
 
-The AI Diffusion Cube is a knowledge base of AI deployment pathways — lived experience from people who have taken AI from idea to scale in government, agriculture, health, education, and other public-interest sectors. This index covers all pages in the wiki.
+The AI Diffusion Cube is an AI-powered tool that makes the lived experience of AI diffusion deployments accessible and reusable for those who are about to embark on the same journey. It is built on the premise that the challenges in deploying AI at scale are not just technological - they are institutional, operational, and contextual - and that the people who have navigated these challenges have knowledge that can dramatically compress the time, cost, and risk for those who come after them. The tool brings that knowledge together, organises it through the six dimensions framework, and surfaces the most relevant parts for each person based on their specific situation - not as a dump of what exists, but contextualised for what they need to consider or do next. 
 
 ---
 
 ## Pathway Pages
+The core knowledge unit. One page per real-world deployment. The six dimensions are the content spine. Written from the next adopter's perspective — not what this deployment did, but what they would need to know if they were facing the same challenge.
 
 | Page | Summary |
 |---|---|
@@ -17,6 +18,8 @@ The AI Diffusion Cube is a knowledge base of AI deployment pathways — lived ex
 ---
 
 ## Synthesis Pages
+Synthesis pages capture patterns that only become visible across multiple deployments. They carry their own content — they are not aggregators. They cite pathway pages as evidence but stand independently. A synthesis page should only be created once the same pattern appears in at least two deployments.
+
 
 | Page | Summary |
 |---|---|
@@ -30,6 +33,7 @@ The AI Diffusion Cube is a knowledge base of AI deployment pathways — lived ex
 ---
 
 ## Entity Pages
+Reference pages for organisations, people, and systems referenced across pathways. Not knowledge containers — reference nodes that pathway pages link to rather than re-explain every time.
 
 | Page | Summary |
 |---|---|
@@ -41,6 +45,7 @@ The AI Diffusion Cube is a knowledge base of AI deployment pathways — lived ex
 ---
 
 ## Sector Pages
+Sector listing pages only in v1. Thin index pages — not knowledge containers. They exist for human browsability, not as knowledge sources.
 
 | Page | Summary |
 |---|---|
@@ -50,6 +55,7 @@ The AI Diffusion Cube is a knowledge base of AI deployment pathways — lived ex
 ---
 
 ## Framework
+Explains the six dimensions for a reader who is new to the framework. Does not contain deployment evidence — that lives in pathway and synthesis pages.
 
 | Page | Summary |
 |---|---|
