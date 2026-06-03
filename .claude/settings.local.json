@@ -27,7 +27,8 @@
       "Read(//usr/**)",
       "Read(//usr/local/**)",
       "PowerShell($env:PATH -split ';' | ForEach-Object { if \\(Test-Path \"$_\\\\python.exe\"\\) { \"$_\\\\python.exe\" } })",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(cp \"/root/.claude/uploads/dfea0b7e-7111-4ddd-8451-a09e1a717264/6529aec0-Problem_Framework.md\" /home/user/ai-diffusion-cube-wiki/wiki/problem-framework.md)"
     ]
   }
 }
