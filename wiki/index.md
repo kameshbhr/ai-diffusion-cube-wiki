@@ -1,62 +1,58 @@
-# AI Diffusion Cube — Wiki Index
+# AI Diffusion Cube — Index
 
-The AI Diffusion Cube is an AI-powered tool that makes the lived experience of AI diffusion deployments accessible and reusable for those who are about to embark on the same journey. It is built on the premise that the challenges in deploying AI at scale are not just technological - they are institutional, operational, and contextual - and that the people who have navigated these challenges have knowledge that can dramatically compress the time, cost, and risk for those who come after them. The tool brings that knowledge together, organises it through the six dimensions framework, and surfaces the most relevant parts for each person based on their specific situation - not as a dump of what exists, but contextualised for what they need to consider or do next. 
-
----
-
-## Pathway Pages
-The core knowledge unit. One page per real-world deployment. The six dimensions are the content spine. Written from the next adopter's perspective — not what this deployment did, but what they would need to know if they were facing the same challenge.
-
-| Page | Summary |
-|---|---|
-| [MahaVistaar](pathways/mahavistaar.md) | Maharashtra government agricultural advisory via Marathi voice telephony (155313); anchor OAN deployment; richest documentation of architecture, cost, and ecosystem design |
-| [Amul Sarlaben](pathways/amul-sarlaben.md) | Amul cooperative dairy advisory in Gujarati; deployed in 3 weeks via OAN DPG reuse; evidence for cooperative deployer model advantages |
-| [Bharat-VISTAAR](pathways/bharat-vistaar.md) | ICAR national agricultural advisory in Hindi and English (155261); national-scale OAN deployment by India's apex research institution |
-| [Bihar Krishi](pathways/bihar-krishi.md) | Bihar state agricultural advisory; independent (non-OAN) deployment; comparison case for DPG reuse value; documentation is thin and is a priority gap |
-| [Ethiopia ATI](pathways/ethiopia-ati.md) | Ethiopian ATI agricultural advisory in Amharic; first international OAN deployment; Fayda digital ID integration; cross-border portability evidence |
+Master index of all wiki pages. Updated on every ingest or page creation.
 
 ---
 
-## Synthesis Pages
-Synthesis pages capture patterns that only become visible across multiple deployments. They carry their own content — they are not aggregators. They cite pathway pages as evidence but stand independently. A synthesis page should only be created once the same pattern appears in at least two deployments.
-
+## Pathways
 
 | Page | Summary |
 |---|---|
-| [Dimension Shifts](synthesis/dimension-shifts.md) | All 21 FROM→TO shift patterns across the six dimensions, with evidence from OAN deployments |
-| [Compression Proof](synthesis/compression-proof.md) | Evidence for DPG reuse compressing deployment timelines; MahaVistaar → Amul Sarlaben (3 weeks); Bihar Krishi as needed comparison |
-| [Trust Architecture](synthesis/trust-architecture.md) | How trust is built across deployments: institutional attribution as the primary trust source, not AI performance |
-| [Failure Modes](synthesis/failure-modes.md) | Known failure patterns: commercial LLM cost spiral, data governance blockage, ecosystem orphan, workforce dependency |
-| [70/30 Split](synthesis/70-30-split.md) | Evidence for the 30% tech / 70% non-tech resource ratio across deployments |
-| [DPG Reuse Patterns](synthesis/dpg-reuse-patterns.md) | What transfers across OAN deployments (architecture, safety, serving infrastructure) and what must be rebuilt (language, domain, integration) |
+| [MahaVistaar](pathways/mahavistaar.md) | Maharashtra state agriculture AI — pioneer OAN deployment; 17 lakh daily advisories; source of the DPG architecture and governance frameworks reused by all subsequent deployments. |
+| [Bharat-VISTAAR](pathways/bharat-vistaar.md) | India's national agriculture DPI — Rs. 150 crore Union Budget allocation; hub-and-spoke federation connecting state and cooperative nodes to national scheme data and ICAR advisory. |
+| [Amul Sarlaben](pathways/amul-sarlaben.md) | Amul cooperative dairy AI — three-week deployment; 3.6 million members; 2 billion procurement transactions surfaced to farmers; fastest documented OAN deployment. |
+| [Bihar Krishi](pathways/bihar-krishi.md) | Bihar state agriculture platform — built independently, connected to Bharat-VISTAAR; 850,000+ farmers, 38 districts, 15,000+ extension workers trained; two national awards. |
+| [Ethiopia ATI](pathways/ethiopia-ati.md) | First OAN deployment outside India — three months from commitment to launch; 30M farmer target; ATI national transformation institute as network operator; COP32 climate intelligence integration. |
+| [Blue Dots AI](pathways/blue-dots.md) | Livelihoods discovery AI — four DPGs addressing paradox of proximity; Dharwad and Ghaziabad pilots; 10,000+ job openings surfaced in 60 days; flywheel compounding economics. |
 
 ---
 
-## Entity Pages
-Reference pages for organisations, people, and systems referenced across pathways. Not knowledge containers — reference nodes that pathway pages link to rather than re-explain every time.
+## Synthesis
 
 | Page | Summary |
 |---|---|
-| [EkStep Foundation](entities/ekstep-foundation.md) | OAN network operator; maintains DPG layer; technology ecosystem coordinator across all OAN deployments |
-| [Amul (GCMMF)](entities/amul.md) | India's largest dairy cooperative; deployer of Sarlaben; evidence for cooperative deployment model |
-| [OpenAgriNet (OAN)](entities/openagri-net.md) | DPG programme and open-source codebase underlying all OAN deployments |
-| [Ethiopian ATI](entities/ethiopian-ati.md) | Ethiopia's agricultural transformation institution; deployer of Ethiopia ATI pathway; first international OAN deployer |
+| [Dimension Shifts](synthesis/dimension-shifts.md) | The 21 FROM→TO shift patterns across all six dimensions, with evidence from documented deployments — a map of where deployments typically stall and what moves them forward. |
+| [Compression Proof](synthesis/compression-proof.md) | Evidence for the 9→3→3 week deployment time compression across MahaVistaar, Ethiopia ATI, and Amul Sarlaben — what drove each compression and what it means for planning. |
+| [Trust Architecture](synthesis/trust-architecture.md) | How trust was built across deployments — institutional attribution, voice persona design, and the cooperative vs government trust source distinction. |
+| [Failure Modes](synthesis/failure-modes.md) | Catalogue of named failure patterns with field evidence — technology and non-technology failures, what they look like early, and how to prevent them. |
+| [70-30 Split](synthesis/70-30-split.md) | Evidence for the 70% non-technology / 30% technology challenge distribution across deployments — with implications for planning, budget, and attention allocation. |
+| [DPG Reuse Patterns](synthesis/dpg-reuse-patterns.md) | What DPGs got reused across deployments, what did not transfer, and why — the mechanism behind deployment time compression. |
 
 ---
 
-## Sector Pages
-Sector listing pages only in v1. Thin index pages — not knowledge containers. They exist for human browsability, not as knowledge sources.
+## Entities
 
 | Page | Summary |
 |---|---|
-| [Agriculture](sectors/agriculture.md) | Index of all five agriculture pathways; sector overview |
-| [Livelihoods](sectors/livelihoods.md) | Placeholder; no livelihoods pathways ingested yet — contribution opportunity |
+| [EkStep Foundation](entities/ekstep-foundation.md) | Not-for-profit technology organisation; primary technical architect and deployment partner for OAN and Blue Dots AI DPG ecosystems. |
+| [OpenAgriNet](entities/openagri-net.md) | Open-source AI infrastructure ecosystem for agricultural advisory at scale — the DPG library at the centre of the OAN pathway. |
+| [Amul](entities/amul.md) | Gujarat dairy cooperative; deployer of Amul Sarlaben; richest data foundation of any documented deployment. |
+| [Ethiopian ATI](entities/ethiopian-ati.md) | Ethiopia's national transformation institute; network operator for the first cross-geography OAN deployment; model for national cross-institutional AI governance. |
 
 ---
 
-## Framework
-Explains the six dimensions for a reader who is new to the framework. Does not contain deployment evidence — that lives in pathway and synthesis pages.
+## Sectors
 
 | Page | Summary |
 |---|---|
-| [The Six Dimensions Framework](framework.md) | The six dimensions explained; why 70% of deployment effort is non-technology; FROM→TO shift overview |
+| [Agriculture](sectors/agriculture.md) | Five documented agriculture AI deployments across India and Ethiopia — extension system scale challenge, voice-first access, federated data architecture. |
+| [Livelihoods](sectors/livelihoods.md) | One documented livelihoods discovery deployment — Blue Dots AI; paradox of proximity framing; informal demand surfacing. |
+
+---
+
+## Framework and Operations
+
+| Page | Summary |
+|---|---|
+| [Six Dimensions Framework](framework.md) | The six orthogonal dimensions — problem orientation, architecture, institution, ecosystem, workforce, operating model — that structure every pathway page. |
+| [Log](log.md) | Append-only chronological log of all wiki operations. |

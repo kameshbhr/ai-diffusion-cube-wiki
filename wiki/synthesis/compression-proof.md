@@ -1,51 +1,49 @@
-# Compression Proof — Speed of Replication Across Deployments
+# Compression Proof
 
 **Type:** Synthesis
-**Deployments cited:** MahaVistaar, Amul Sarlaben, Bharat-VISTAAR, Ethiopia ATI, Bihar Krishi
-**Last updated:** 2026-05-28
+**Deployments cited:** MahaVistaar, Amul Sarlaben, Ethiopia ATI
+**Last updated:** 2026-06-02
 
 ## The Pattern
 
-Each successive OAN deployment has taken less time than the previous. The compression is not the result of a more capable team working faster — it is the result of the OAN DPG layer accumulating reusable components that new deployments configure rather than build. The headline figure is Amul Sarlaben: deployed in three weeks. What the three weeks covered, what it did not require, and what this means for a next adopter is documented here.
+Documented deployment time for AI advisory systems in the OAN pathway has compressed from nine months to three months to three weeks across three successive deployments. This is not a coincidence of simpler problems — each subsequent deployment faced comparable or greater institutional complexity. The compression happened because each deployment codified its architecture, governance frameworks, failure modes, and deployment playbooks into transferable assets, and each subsequent deployment started from the highest point the prior deployment had reached rather than from scratch.
+
+The compression is the operational evidence for why the first deployment in a new context is the most expensive and the slowest. The pioneer deployment builds what subsequent deployments inherit. Organisations that understand this invest differently in documentation and codification: not as a project administration task, but as the primary mechanism by which their investment multiplies across future deployments.
 
 ## Evidence
 
-### MahaVistaar
+### MahaVistaar — 9 months
 
-MahaVistaar is the anchor OAN deployment — the system the DPG layer was built around. It required building all seven layers of the system architecture (user, interface, moderation, AI decision engine, knowledge/scientific models, live data sources, DPI foundation) plus the ecosystem coordination model, the serving infrastructure, the safeguard architecture, and the domain knowledge base for Maharashtra agriculture. The specific build timeline for MahaVistaar is not documented in available sources. It serves as the baseline — the full-build deployment against which subsequent compressions are measured.
+Maharashtra's state agriculture AI deployment took nine months from commitment to operational deployment. This was a pioneer deployment — the first in India to build the full OAN architecture, governance framework, language pipeline methodology, data connector approach, model evaluation benchmarks, and failure mode library. Nine months reflects the cost of building the foundation, not the cost of deploying an AI system. The Saagu Baagu cotton pilot in Telangana (21% yield increase, 9% pesticide reduction) provided the evidence base that the architecture was worth building at scale.
 
 [See full pathway: MahaVistaar](../pathways/mahavistaar.md)
 
-### Amul Sarlaben
+### Ethiopia ATI — 3 months
 
-Amul Sarlaben deployed in three weeks. The three-week figure is documented in OAN sources as evidence of DPG reuse compressing deployment time. What the three weeks covered: Gujarati language configuration (ASR/TTS tuning), dairy domain knowledge base (cattle breeds, feed regimes, milk yield, animal health), Amul cooperative scheme information, and integration testing. What the three weeks did not require: rebuilding the OAN DPG layer, the serving infrastructure, the safeguard model architecture, the 7-layer system architecture, or the ecosystem coordination model — all of these were inherited from MahaVistaar's DPG layer.
-
-[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md)
-
-### Ethiopia ATI
-
-Ethiopia ATI is an international deployment enabled by OAN DPG reuse. Specific timeline is not documented in available sources. The deployment required Amharic language configuration, Ethiopian crop and climate knowledge, and Fayda digital ID integration — a new integration type (national digital ID) not present in Indian deployments. Whether the Fayda integration extended the timeline versus a simpler reconfiguration deployment is not documented.
+Ethiopia's national agriculture AI deployment took three months from commitment to formal launch in February 2026. Ethiopia was the first country outside India to deploy the OAN pathway. The deployment's evaluators — ATI, OpenAgriNet, EkStep Foundation — assessed what the Ethiopian context required that was different from Maharashtra's, and what it did not need to rebuild. The answer was: the architecture, governance frameworks, language pipeline methodology, data connector approach, model evaluation benchmarks, and failure mode library all transferred. What needed adaptation was the institutional context (ATI as national transformation institute rather than state agriculture department), the language pipeline (Oromo and other Ethiopian languages rather than Marathi), and the data connector approach (Fayda national digital ID rather than AgriStack). Adaptation, not construction, took three months. Without the MahaVistaar assets, the OAN Diffusion Pathway documents that the same deployment would have taken significantly longer.
 
 [See full pathway: Ethiopia ATI](../pathways/ethiopia-ati.md)
 
-### Bihar Krishi (comparison)
+### Amul Sarlaben — 3 weeks
 
-Bihar Krishi is an independent state deployment that did not use the OAN DPG layer. It is included here as the intended comparison: what does a comparable deployment cost and take to build without the shared DPG infrastructure? This data is not yet documented. Capturing Bihar Krishi's build timeline and cost would make the compression claim precisely quantifiable rather than directionally evident.
+Amul's cooperative dairy AI deployment took three weeks from commitment to deployment at full cooperative scale (3.6 million members). This is the fastest documented deployment on the OAN pathway as of March 2026. The compression from three months to three weeks was driven by two factors: Amul's cooperative data foundation was the richest of any documented deployment (50 years of records, 2 billion procurement transactions, 30 million cattle with unique IDs), requiring minimal data connection work; and Amul's institutional context as a private cooperative meant approval came through cooperative leadership rather than government procurement, removing the institutional complexity that added time in Ethiopia. The entire OAN asset library was available; the adaptation task was focused and well-scoped.
 
-[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md)
+[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md)
 
 ## What This Means for a Next Adopter
 
-If you are a government or cooperative seeking to deploy agricultural AI advisory, the OAN DPG layer means you can target a three-week deployment rather than a multi-month build. The three weeks covers language configuration, domain knowledge, and deployment-specific data integration. Everything else — architecture, safety, serving infrastructure, ecosystem coordination — is built, tested in production, and maintained by EkStep Foundation.
+The compression data has four direct implications for planning.
 
-The caveat: the compression is real only if your deployment fits the OAN model (voice-first agricultural advisory, federated data architecture, Beckn-based ecosystem). If your use case requires significant architecture changes — a different interface type, a domain outside agriculture, a fundamentally different data access model — you are back to building rather than configuring, and the three-week figure does not apply.
+**The pioneer deployment in your context will be the most expensive.** If you are the first to deploy this architecture in your country, sector, or language context, budget for the full nine-month pioneer timeline and the full pioneer cost. That cost is not wasted — it produces the assets that make every subsequent deployment cheaper. Frame the investment accordingly: you are building an infrastructure layer, not running a pilot.
 
-Contact EkStep Foundation through the OpenAgriNet programme to assess fit before committing to a timeline.
+**Codify as you build.** The compression from nine months to three months to three weeks was made possible by explicit codification of architecture, governance frameworks, language pipeline methodology, and failure modes during and after the MahaVistaar deployment. Organisations that say "we will document this later" do not produce the assets that enable compression. Documentation is a build task, not an administration task.
+
+**The adaptation question is more useful than the build question.** When starting a new deployment, the productive question is not "what do we need to build?" but "what has already been built that applies here, and what specifically about our context requires adaptation?" The Ethiopia ATI deployment answered this question explicitly before beginning. The answer shapes the timeline, the cost, and the partnership requirements.
+
+**Three weeks is not the floor.** The Amul compression was driven by an unusually well-structured data foundation and an unusually agile institutional context. A next deployment with equivalent data readiness and institutional agility could match or beat three weeks. A deployment with lower data readiness or higher institutional complexity will land between three weeks and three months. The compression curve is real; the specific position on it depends on starting conditions.
 
 ## Open Questions
 
-MahaVistaar's original build timeline is not documented. Knowing this would make the compression figure more precise: how many weeks or months does the DPG layer save per deployment?
+The compression curve has three data points — all in agriculture and all drawing on the same OAN asset library. Whether the same compression pattern applies in health, education, or livelihoods is not yet documented. Blue Dots AI's Dharwad-to-Ghaziabad compression (ten months to four months) provides early livelihoods evidence, but the asset library behind that compression is different and less fully documented.
 
-Bharat-VISTAAR's deployment timeline is not documented.
-
-Bihar Krishi, as an independent (non-OAN) deployment, could provide the counterfactual needed to make this claim empirically precise. A contribution documenting Bihar Krishi's build timeline and cost would be one of the highest-value additions to this wiki.
+The compression data does not yet include a failed compression — a deployment that expected to compress and did not, due to underestimated institutional complexity or data access barriers. A documented failure of the compression expectation would significantly strengthen the model by clarifying which starting conditions are necessary for compression to hold.

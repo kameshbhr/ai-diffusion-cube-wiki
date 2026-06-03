@@ -1,20 +1,20 @@
 # Ethiopia ATI — Pathway
 
-**Deployment:** Ethiopia ATI Agricultural Advisory System
-**Contributor:** Agricultural Transformation Institute (ATI), Ethiopia / EkStep Foundation
+**Deployment:** OpenAgriNet Ethiopia — National Agriculture AI Advisory
+**Contributor:** Ethiopian Administrative and Technical Institute (ATI); OpenAgriNet; EkStep Foundation
 **Sector:** Agriculture
-**Geography:** Ethiopia
-**Actor type:** Government
+**Geography:** Ethiopia — national; designed for extraordinary agricultural diversity across language, crop system, climate zone, and connectivity profile
+**Actor type:** Government (national transformation institute)
 **Journey stage:** Pilot
-**Dimensions covered:** A, B, C, D
-**Horizontal or vertical:** Vertical (sector-specific)
+**Dimensions covered:** A, B, C, D, F
+**Horizontal or vertical:** Vertical (sector-specific — agriculture)
 **Deployment status:** Active
-**Last updated:** 2026-05-28
-**Contact for peer connection:** EkStep Foundation — via OpenAgriNet
+**Last updated:** 2026-06-02
+**Contact for peer connection:** Ethiopian ATI; EkStep Foundation — ekstep.org
 
 ## Summary
 
-The Ethiopia ATI deployment is the first international extension of the OpenAgriNet (OAN) DPG architecture outside India, deployed by Ethiopia's Agricultural Transformation Institute in Amharic. It integrates with Fayda, Ethiopia's national digital identity system, and demonstrates that the OAN DPG layer can be localised for a new language, country-specific crops, and a different national DPI foundation. For a next adopter working in Africa or in a context with a national digital ID system, this pathway documents what cross-border DPG portability looks like in practice and what configuration work is required.
+Ethiopia is the first country outside India to deploy the OpenAgriNet pathway — launched in February 2026, three months from commitment to deployment. The speed was possible because the architecture, governance frameworks, language pipeline methodology, data connector approach, and failure mode library had all been built by MahaVistaar and did not need to be rebuilt. ATI aligned the Ministry of Agriculture, international development partners, and technology enablers around a single national architecture, with 30 million farmers as the stated target including 14 million women, integration with Fayda (Ethiopia's national digital ID), and an 8% income boost within five years as the ambition. Ethiopia is also host of COP32; climate intelligence is integrated into the system from the start.
 
 ---
 
@@ -23,22 +23,28 @@ The Ethiopia ATI deployment is the first international extension of the OpenAgri
 *What you build on.*
 
 **Who were you trying to serve, and what specific problem were you solving for them?**
-Ethiopian smallholder farmers, served through Ethiopia's ATI extension network. The problem framing parallels India: farmers need personalised advisory on crops, pests, weather, and market prices at a cadence and scale the human extension network cannot deliver alone.
+Ethiopia's 15 million+ smallholder households, with agriculture at 35% of GDP and 60%+ of workforce. The structural problem is the same as Maharashtra's: severely limited access to reliable digital advisory, fragmented institutional knowledge, and an extension system that cannot reach all farmers with timely guidance. Ethiopia's additional dimension is extraordinary agricultural diversity — across language, crop system, climate zone, and connectivity profile — requiring a system built for this range rather than for a single uniform context.
 
-**What were the access constraints of your users — language, literacy, connectivity — and how did that shape what you built?**
-Amharic language, voice-first interface. Ethiopia's rural connectivity context — lower smartphone penetration than urban India — reinforces the voice-telephony-first access approach. The Amharic language configuration required sourcing or building Amharic ASR/TTS capability; whether through Bhashini's multilingual models or Ethiopia-specific development is not documented.
+**Who defined the problem — the deployer, the institution, or the user — and how do you know the user agrees?**
+ATI, aligned with the Ministry of Agriculture, defined the national architecture problem through the Digital Agriculture Roadmap 2025–2032. User agreement is inferred from the Roadmap's 22 prioritised use cases across six solution areas — which reflect genuine farmer needs rather than technology-push priorities. Direct user validation data is not yet documented at this early stage.
+
+**How did you define your success metrics — are they usage based or outcome based?**
+30 million farmers as the reach target, including 14 million women. 8% income boost within five years as the outcome ambition. Voice-first access in local languages for farmers without smartphones or broadband. Specific early usage metrics post-February 2026 launch are not yet documented in available sources.
+
+**Did you discover something in the field that you hadn't anticipated?**
+Not documented — the deployment was formally launched in February 2026 and field learning is in early stages.
 
 **Was there data already available to start with, or did you have to build or collect it first?**
-ATI holds Ethiopian agricultural research data. Integration with Fayda (national digital ID) suggests that farmer identity and potentially land or crop registration data could be linked to advisory sessions. The extent of data integration at launch is not documented.
+Ethiopia had limited digital advisory infrastructure compared to India. The OAN Diffusion Pathway documents that Ethiopia's evaluators assessed the existing architecture and determined what needed adaptation rather than construction — drawing on MahaVistaar's data connector approach. Fayda (Ethiopia's national digital ID) provided a foundation for farmer identity that India's AgriStack provides. Specific data availability by use case is not documented.
 
 **Why did this problem need AI — what would a non-AI solution have missed?**
-Same rationale as the Indian deployments: extension network capacity cannot match 24/7 personalised advisory demand. AI enables scale without proportionally scaling the human workforce.
+Same structural argument as Maharashtra: extension systems cannot scale with population at human staffing ratios. AI enables advisory at scale without proportional staff expansion. Ethiopia's COP32 context adds climate intelligence as a specific AI capability — integrating real-time climate signals into farm advisory is a use case that requires AI-level synthesis.
 
-**Did your understanding of the problem change after you started — and if so, how?**
-Not documented.
+**What were the access constraints of your users — language, literacy, connectivity — and how did that shape what you built?**
+Ethiopia's population includes Oromia farmers without smartphones or broadband, with local language requirements (Oromo and others) that require specific language infrastructure. Voice-first access in local languages was an architectural requirement from the start. Integration with Bhashini's language model approach was adapted to Ethiopian languages.
 
-**Is there anything about your users you assumed early on that turned out to be wrong?**
-Not documented.
+**Did you design the system to wait for users to come to it, or did it reach out to them too?**
+Not documented specifically for Ethiopia. The OAN architecture supports both inbound and outbound modes.
 
 ---
 
@@ -46,53 +52,68 @@ Not documented.
 
 *What you build with.*
 
-**Did users interact through voice, an app, or something else — and what drove that choice?**
-Voice interface in Amharic, delivered via telephony. Consistent with OAN's voice-first design for low-connectivity, low-literacy users.
+**Did you need data sources that were controlled by other departments or organisations?**
+Yes — the Ministry of Agriculture, agricultural research institutes, meteorological services, and other government departments hold the data sources the system draws on. Specific data access negotiations in Ethiopia are not documented. ATI's role as a national transformation institute — spanning government functions rather than being a single department — likely facilitated inter-institutional access.
 
 **Did you bring data together into one place or connect to it where it lived — and why?**
-Federated architecture inherited from the OAN DPG layer. Integration with Fayda (national digital ID) represents a new data integration point not present in India deployments — farmer identity verified through national ID rather than cooperative membership or state land records.
+The OAN architecture principle (data stays with institutions, AI connects at query time) applies. Ethiopia's deployment drew on the MahaVistaar data connector approach — adapting it to Ethiopian institutional context rather than rebuilding it.
 
-**What did you build yourself versus use something that already existed?**
-OAN DPG layer reused. What was built new: Amharic language configuration, Ethiopian crop and climate knowledge base, Fayda digital ID integration, and alignment with Ethiopia's national DPI foundation rather than India's (India-specific components such as Beckn and Bhashini have Ethiopia equivalents or require replacement). The cross-border portability test is whether the DPG layer separates cleanly from the DPI foundation layer beneath it — the Ethiopia deployment is evidence that it does.
-
-**How did you avoid being locked into a single vendor?**
-Inherited OAN vendor-independence architecture.
+**For each major component of your system — did you build it, buy it, or reuse something that existed?**
+Ethiopia's three-month deployment was possible because the architecture, governance frameworks, language pipeline methodology, data connector approach, model evaluation benchmarks, and failure mode library from existing OAN deployments were all transferable assets. The evaluation question shifted from "can this be built?" to "what does adapting this require here?" Ethiopia adapted rather than constructed. Specific component adaptations are not documented in detail.
 
 **Did any data source or system integration turn out to be harder than expected?**
-Not documented.
+Not documented. The three-month timeline suggests no major data access blockers, though as a pioneer in the Ethiopian context, some friction was inevitable.
 
-**Did the AI ever give a wrong or harmful answer to a user — and how did you catch and handle it?**
-Not documented.
+**Did vendor lock-in become a real constraint?**
+Not documented. The OAN architecture (open source, open protocols) applies by inheritance.
 
-**What did you put in place to prevent the AI from causing harm — and was it ever tested?**
-Inherited safeguard architecture from the OAN DPG layer.
+**What was your design policy for handling peak load?**
+Not documented for Ethiopia specifically.
+
+**Did the AI produce wrong or harmful outputs that reached users?**
+Not documented. The independent moderation layer from OAN DPGs applies.
+
+**Did data residency, sovereignty, or government policy constrain your architecture?**
+Not documented in detail. Ethiopian government data policies would apply. Fayda integration required alignment with Ethiopian digital ID governance.
+
+**If you used voice — did you face any problems?**
+Voice-first in local languages was a core design requirement. Specific ASR/TTS challenges for Ethiopian languages are not documented. The language pipeline methodology from OAN deployments provided a starting framework.
+
+**How frequently did the underlying data change, and how did you keep the AI current?**
+Not documented. Climate intelligence integration (COP32 context) suggests real-time climate data feeds are a live-update requirement.
+
+**Did you hit any infrastructure constraint at scale?**
+Not documented. The deployment was formally launched in February 2026; early-stage infrastructure learning is ongoing.
 
 ---
 
 ## C — Institution
 
-*Who deploys AI.*
+*Who owns solving of the problem.*
 
-**How did you get the deployment approved and funded — and did you position it as a one-time project or a long-term transformation initiative?**
-The Agricultural Transformation Institute is Ethiopia's designated government body for agricultural modernisation, giving the deployment a direct institutional mandate. Funding sources are not documented.
+**Was this deployment treated as a one-time project or as a long-term transformation initiative?**
+The Digital Agriculture Roadmap 2025–2032 provides the institutional framing — this is a seven-year national transformation commitment, not a project. ATI's role as a national transformation institute signals long-term institutional intent. The stated ambition (30 million farmers, 8% income boost, positioning Ethiopia as a regional leader in digital agriculture across Sub-Saharan Africa) is unambiguously transformational.
 
-**Was there internal resistance — and if so, what actually changed minds?**
+**How did you get the deployment approved and funded?**
+ATI aligned the Ministry of Agriculture, international development partners, and technology enablers around the Digital Agriculture Roadmap 2025–2032. The OAN delegation formally presented the Indian experience at a socialisation workshop in Addis Ababa. International development partners (not named in available sources) provided funding support. The specific approval process is not documented.
+
+**If the one or two people driving this deployment had moved to different roles mid-way, what would have happened?**
+Not documented. ATI's national mandate provides more institutional resilience than a single government department, but specific succession planning is not confirmed.
+
+**Which departments had to cooperate for this to work?**
+ATI aligned Ministry of Agriculture, meteorological services, and agricultural research institutes at minimum. The full cooperation map is not documented. ATI's national transformation mandate was cited as the enabler for alignment across institutions that individual ministry deployments cannot achieve.
+
+**Did procurement rules become a barrier?**
 Not documented.
 
-**Did you need multiple departments or agencies to cooperate — and where did that get difficult?**
-The Fayda digital ID integration requires cooperation with Ethiopia's national ID authority, not just the agriculture ministry. This cross-ministry coordination is required for the identity integration but details are not documented.
+**Were there decisions that needed political support from above?**
+The formal February 2026 launch and international presentation of the deployment suggest high-level political endorsement. Specific decision points requiring political support are not documented.
 
-**Did procurement rules create a barrier — and if so how did you get through them?**
+**When something went wrong, who was accountable?**
 Not documented.
 
-**When something went wrong, who was accountable — and was that clear from the start?**
-Not documented.
-
-**What happens to this deployment if the key person driving it moves to a different role?**
-Not documented.
-
-**Was there a leadership or political change during the deployment, and how did it affect things?**
-Not documented.
+**Which institution did the AI speak on behalf of?**
+The deployment speaks as the Ethiopian national agriculture system, backed by the Ministry of Agriculture and the Digital Agriculture Roadmap. Fayda integration means the system can personalise responses to registered farmers, strengthening institutional attribution.
 
 ---
 
@@ -101,15 +122,15 @@ Not documented.
 *Who executes.*
 
 **How many organisations had to work together for this to function?**
-ATI, EkStep Foundation (OAN DPG layer), Fayda national ID authority, Amharic language technology partners, and Ethiopian agricultural knowledge institutions. The international deployment adds a cross-border coordination layer between EkStep (India-based OAN orchestrator) and Ethiopian institutional partners.
+ATI aligned the Ministry of Agriculture, international development partners, and technology enablers. The full ecosystem map for Ethiopia is not documented. The OAN Diffusion Pathway notes that Ethiopia required different partners entirely from India — but the four-layer ecosystem structure (institutional/governance, technology/AI, structured data, knowledge/documents) holds constant.
 
-**Who was ultimately responsible for keeping all of them aligned — and what did that role actually involve?**
-EkStep Foundation for the OAN technology layer; ATI for Ethiopian institutional coordination.
+**Who was specifically responsible for keeping all partners aligned?**
+ATI held the network operator role — as a national transformation institute with a mandate spanning government functions, ATI could say "this runs in my name" with cross-institutional authority. EkStep Foundation provided technical deployment support.
 
-**Did any partner relationship not work out as expected — what happened and how did you handle it?**
-Not documented.
+**Were there partners whose commitment weakened over time?**
+Not documented. The deployment is in its earliest stage.
 
-**How was trust maintained across partners — especially when something went wrong?**
+**Where did partners have conflicting priorities or mandates?**
 Not documented.
 
 ---
@@ -118,16 +139,22 @@ Not documented.
 
 *Who absorbs AI.*
 
-**Were there people — field workers, extension officers, call centre staff — whose job changed because of this deployment?**
-Not documented.
+**Were there people — field workers, extension officers, call centre staff — whose job changed?**
+Ethiopia's agricultural extension system is the primary workforce affected. Extension capacity constraints in Ethiopia are severe (the same structural problem as Bihar's historical one-officer-per-2,000-farmers). The specific workforce transition plan is not documented.
+
+**When the AI gave an answer or recommendation to a user, what was the last-mile human expected to do with it?**
+Not documented for Ethiopia specifically. The OAN architecture's pattern (use is training, farmers progress from simple queries to complex actions) applies.
 
 **How and when were they brought in, and what did they need to learn?**
 Not documented.
 
-**Was there resistance from staff — and if so what worked to address it?**
+**Did you face resistance from staff?**
 Not documented.
 
-**After the deployment, could staff still do their job if the system was unavailable — or had they become dependent on it?**
+**Did frontline staff become dependent on the system in a way that reduced their own capability?**
+Not documented.
+
+**How did problems or insights from the field reach the people improving the system?**
 Not documented.
 
 ---
@@ -136,23 +163,26 @@ Not documented.
 
 *What makes it last.*
 
-**What did this cost to build, and what does it cost to run annually?**
-Not documented.
+**Who took ownership of steady state operations after the pilot?**
+ATI holds institutional ownership. The Digital Agriculture Roadmap 2025–2032 provides the long-term governance frame. International development partners provide initial funding support; the transition to domestically-sustained operations is planned but not yet documented.
 
-**What did you measure to know it was working — and what did the numbers actually show?**
-Not documented.
+**What did it cost to build, and what does it cost to run annually?**
+Not documented for Ethiopia specifically. The Six Shifts framework notes that the Ethiopia deployment drew on existing transferable assets, substantially reducing build costs relative to MahaVistaar's pioneer investment. International development partner funding covered the initial deployment.
 
-**Who owned operations after the pilot ended, and how was that handover structured?**
-Not documented.
+**Were there compliance, audit, or regulatory requirements that shaped how you ran operations?**
+Ethiopian data governance requirements apply. Fayda (national digital ID) integration required alignment with Ethiopia's digital identity governance framework.
 
-**Was there an outcome or a problem that showed up later that you wished you had been measuring from the start?**
-Not documented.
+**How long did the deployment actually take versus what you planned?**
+Three months from commitment to deployment — formally launched February 2026. This compresses MahaVistaar's nine months and Ethiopia's own three-month estimate was confirmed. The three-month achievement was contingent on the availability of OAN transferable assets; without them it would have taken significantly longer.
 
 **Was there a point where the whole thing nearly stalled — and what got it through?**
 Not documented.
 
-**Were there compliance, audit, or regulatory requirements that shaped how you ran operations?**
-Not documented.
+**What did you measure to know the solution was working?**
+Phase-1 launch metrics: voice-first access in local languages operational; Fayda integration live; integration with Ministry of Agriculture data sources confirmed. Longer-term: 30 million farmer reach target, 14 million women target, 8% income boost within five years. Post-launch usage data not yet documented in available sources.
+
+**Did you do a big launch or sequence through small pilots?**
+Formally launched in February 2026 — a national launch event. The OAN pathway design (eight-week pilot followed by structured review) would suggest this was a launch of initial functionality rather than full-scale rollout. Specific pilot sequencing within Ethiopia is not documented.
 
 ---
 
@@ -160,15 +190,18 @@ Not documented.
 
 | Asset | Type | What it is useful for | How to access |
 |---|---|---|---|
-| OAN DPG layer (reused) | Open-source codebase | See [MahaVistaar](mahavistaar.md) for full description | Via EkStep Foundation |
-| Fayda integration pattern | Architecture pattern | Integrating a national digital ID system into agricultural advisory; applicable to any African deployment with a national ID infrastructure | Via EkStep Foundation / Ethiopian ATI |
+| Transferable asset list from OAN deployments (architecture, governance frameworks, language pipeline methodology, data connector approach, model evaluation benchmarks, failure mode library) | DPG — organisational knowledge | Any new country deployment can assess what needs adaptation vs. construction using this list | OAN Diffusion Pathway document; EkStep Foundation |
+| National transformation institute as network operator model | Governance pattern | Countries where no single ministry has cross-institutional authority to align multiple departments — ATI model provides an alternative to ministry-led deployment | Contact ATI / EkStep Foundation |
+| Climate intelligence integration design | Architecture pattern | Embedding real-time climate signals into farm advisory — relevant for any COP context or climate-vulnerable agriculture | Contact ATI / OpenAgriNet |
 
 ---
 
 ## Related Pathways
 
-- [MahaVistaar](mahavistaar.md) — Source deployment; OAN DPG layer and architecture origin
-- [Amul Sarlaben](amul-sarlaben.md) — Similar rapid deployment using OAN DPG reuse
+- [MahaVistaar](mahavistaar.md) — pioneer deployment whose assets Ethiopia reused
+- [Bharat-VISTAAR](bharat-vistaar.md) — national DPI architecture India built; comparable ambition to Ethiopia's national roadmap
+- [Amul Sarlaben](amul-sarlaben.md) — parallel deployment; contrast cooperative vs. national government institutional type
+- [Bihar Krishi](bihar-krishi.md) — independent state deployment; contrast with Ethiopia's top-down national approach
 
 ## Related Entities
 
@@ -178,4 +211,4 @@ Not documented.
 
 ## Lineage
 
-Built on [MahaVistaar](mahavistaar.md) — OAN DPG layer reused; Amharic language, Ethiopian crop and climate knowledge, and Fayda digital ID integration added. First international OAN deployment.
+Built on [MahaVistaar](mahavistaar.md) — architecture, governance frameworks, language pipeline methodology, data connector approach, model evaluation benchmarks, and failure mode library all transferred. Ethiopia's deployment was the proof that the pathway is not context-specific to India.
