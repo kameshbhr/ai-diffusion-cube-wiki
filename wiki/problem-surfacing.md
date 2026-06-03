@@ -23,11 +23,7 @@ Problems that any adopter will likely face during deployment, regardless of the 
 
 - Problem framed too broadly to be deployable
 - Problem defined by deployer, not validated with the actual user
-- Solution designed around deployer's mental model, not user's mental model
-- Use case scope too wide — tries to serve too many needs, serves none well
-- Users have a workaround that works well enough — switching cost is real even if informal
 - Metrics measuring system activity rather than user outcomes
-- Inbound-only design when the use case requires proactive outreach
 - Field conditions different from what was designed for
 
 ### B — Architecture
@@ -62,21 +58,19 @@ Problems that any adopter will likely face during deployment, regardless of the 
 - Training happens after deployment rather than as part of it
 - Frontline staff become dependent on the system — capability atrophies
 - Staff resistance because authority or relevance feels threatened
-- Last-mile human's incentives not aligned with adoption — they see AI as reducing their relevance
 - Last-mile human not equipped to handle what the AI surfaces
 - No feedback loop from frontline to product team
 
 ### F — Operating Model
 
-- Pilot succeeds but can't transition to steady state
 - Funding model unclear — deployment is already dead even if it looks alive
 - Estimated cost shooting up during implementation or at scale
-- Pilot worked but adoption at scale is not happening
 - Timeline assumptions wrong — what was planned takes much longer
 - Governance adds overhead instead of enabling speed
 - Course corrections too late because signals weren't acted on
 - Measuring outputs not outcomes
 - Big launch mentality instead of small pilots
+- AI working on stale data
 
 ---
 
@@ -84,20 +78,12 @@ Problems that any adopter will likely face during deployment, regardless of the 
 
 Problems specific to the nature of what is being built and who is being served. These are not about how the deployment is run — they are about whether the solution is designed to work for the specific user in the specific context.
 
-### Specific to low-literacy / low-connectivity use cases
-
 - Users not digitally literate — solution assumes smartphone and text literacy they don't have
 - Low or no connectivity — solution assumes network availability that doesn't exist in the field
 - Language and dialect gaps — solution works in the standard language, not in how users actually speak
 - Voice recognition fails on local dialects, accents, or domain-specific terminology
-
-### Specific to advisory use cases
-
 - Users don't trust the source — the institution the AI speaks on behalf of has no credibility with this user
 - Safety-critical outputs without adequate guardrails — wrong dosage advice, misread conditions, outdated eligibility
-
-### Specific to use cases requiring proactive outreach
-
 - Inbound-only design when the use case requires the system to reach out to users, not wait for them
 
 ---
