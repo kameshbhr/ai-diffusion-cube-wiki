@@ -1,22 +1,23 @@
 # EkStep Foundation
 
 **Type:** Organisation
-**Role:** Network Operator / Technical Partner / Enabler
-**Geography:** India (Bengaluru); deployments across India and Ethiopia
-**Contact or reference:** [ekstep.org](https://ekstep.org)
+**Role:** Technical partner; DPG developer; ecosystem orchestrator
+**Geography:** India; international
+**Contact or reference:** ekstep.org
 
 ## What they are
 
-EkStep Foundation is an Indian non-profit technology organisation that builds and maintains the OpenAgriNet (OAN) digital public goods infrastructure for AI-powered agricultural advisory. In the OAN context, EkStep serves as the named network operator — the organisation responsible for maintaining the shared DPG layer, coordinating the technology ecosystem (Bhashini, Karya, compute partners), supporting new deployments through their configuration and launch, and holding the cross-deployment ecosystem relationships that individual deployers cannot maintain independently. EkStep's model separates the reusable DPG infrastructure (which it maintains) from the deployment-specific configuration (which each deployer owns), enabling multiple state and country deployments to share a common foundation without sharing governance.
+EkStep Foundation is a not-for-profit technology organisation that builds digital public goods for education, livelihoods, and agriculture. In the AI diffusion context, EkStep is the primary technical architect and deployment partner for the OpenAgriNet (OAN) pathway — having developed the OAN DPG architecture, co-deployed MahaVistaar with the Maharashtra Department of Agriculture, supported the Amul Sarlaben and Bihar Krishi deployments, provided technical deployment support for Ethiopia ATI, and built the Blue Dots AI DPG library for livelihoods discovery. EkStep does not operate deployments in its own name; it enables deployers (government departments, cooperatives, national transformation institutes) to operate AI systems under their own institutional authority.
 
 ## Deployments they are associated with
 
-- [MahaVistaar](../pathways/mahavistaar.md) — anchor deployment; OAN DPG layer originated here
-- [Amul Sarlaben](../pathways/amul-sarlaben.md) — technology ecosystem partner; supported 3-week deployment
-- [Bharat-VISTAAR](../pathways/bharat-vistaar.md) — technology ecosystem partner
-- [Bihar Krishi](../pathways/bihar-krishi.md) — referenced in OAN comparison documentation
-- [Ethiopia ATI](../pathways/ethiopia-ati.md) — supported first international OAN deployment
+- [MahaVistaar](../pathways/mahavistaar.md) — primary technical architect and deployment partner
+- [Bharat-VISTAAR](../pathways/bharat-vistaar.md) — technical partner for national DPI architecture
+- [Amul Sarlaben](../pathways/amul-sarlaben.md) — DPG deployment and technical support
+- [Bihar Krishi](../pathways/bihar-krishi.md) — connection to Bharat-VISTAAR national layer
+- [Ethiopia ATI](../pathways/ethiopia-ati.md) — technical deployment support; OAN asset transfer
+- [Blue Dots AI](../pathways/blue-dots.md) — DPG developer for livelihoods discovery architecture
 
 ## When this entity is relevant to an adopter
 
-If you are a government or cooperative considering an AI agricultural advisory deployment and want to avoid rebuilding the technology stack from scratch, EkStep Foundation is the primary point of contact for the OAN ecosystem. They hold the DPG layer, the ecosystem coordination model, and the institutional relationships required to connect a new deployment to the existing OAN infrastructure. Contact EkStep to assess whether your use case fits the OAN model before committing to a build timeline.
+An adopter building an AI deployment in agriculture, livelihoods, or a related public-interest sector who wants to start from the OAN DPG library rather than build from scratch. EkStep's deployment playbooks, governance frameworks, and failure mode libraries are the primary mechanism for compression — the shift from nine months to three months to three weeks. An adopter evaluating the OAN pathway for their context should contact EkStep Foundation as the first step to assess what adaptation is required versus what can be directly reused.

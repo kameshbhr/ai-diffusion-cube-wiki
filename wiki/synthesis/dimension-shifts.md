@@ -1,211 +1,99 @@
-# Dimension Shifts — The 21 FROM→TO Patterns
+# Dimension Shifts
 
 **Type:** Synthesis
-**Deployments cited:** MahaVistaar, Amul Sarlaben, Bharat-VISTAAR, Bihar Krishi, Ethiopia ATI
-**Last updated:** 2026-05-28
+**Deployments cited:** MahaVistaar, Bharat-VISTAAR, Amul Sarlaben, Bihar Krishi, Ethiopia ATI, Blue Dots AI
+**Last updated:** 2026-06-02
 
 ## The Pattern
 
-Across the five OAN deployments, each of the six dimensions shows a consistent FROM→TO shift — a characteristic move from how AI deployments are typically approached to how successful ones are actually structured. These 21 sub-component shifts (7 technology, 14 non-technology) are not prescriptions; they are patterns extracted from field experience. The 30/70 split between technology and non-technology sub-components reflects where effort actually concentrates in practice: two-thirds of the decisions that determine whether a deployment scales are non-technology.
+Across every documented deployment in this wiki, the move from idea to working-at-scale required the same set of fundamental reorientations — not just in technology choices, but in how problem framers, institutions, ecosystems, workforces, and operating teams thought about what they were doing. The Six Orthogonal Shifts framework names 21 of these FROM→TO transitions, grouped by dimension. They are not a checklist — they are a map of where deployments typically stall, and what the evidence says about how to move past each stall.
 
-Note: A5 (inclusion design) is listed in the source framework as a proposed addition to the A-dimension sub-components. It is included here as a proposed shift, not yet a confirmed sub-component.
+The 70/30 observation running through this evidence is structural, not incidental: approximately 70% of the failure and adaptation surface sits in the non-technology dimensions (institution, ecosystem, workforce, operating model), while the technology dimension (architecture, data) accounts for approximately 30%. Deployments that over-index on technology choices and under-invest in institutional, ecosystem, and workforce design tend to produce capable systems that do not spread.
 
-## Evidence
+## Evidence by Dimension
 
 ### A — Problem Orientation
 
-**A1 — Problem Framing: from generic use case to specific population with named failure condition**
+**A1 — FROM: Technology-push framing TO: User-pull framing.** The shift is from "we have AI, let us deploy it" to "farmers cannot get timely crop advisory at scale, and here is the specific constraint preventing that." MahaVistaar's problem framing began with the Saagu Baagu pilot evidence — 21% yield increase and 9% pesticide reduction for cotton farmers in Telangana — which established that the advisory access problem was real and AI could address it. Blue Dots AI's framing began with the "paradox of proximity" — supply and demand co-exist in the same district but cannot find each other due to digital invisibility. Both are user-pull framings: the AI was selected because the problem required it, not the reverse.
 
-FROM: generic AI use case definition ("what can AI do in agriculture?") TO: specific problem with a named population and a clear articulation of why the existing system fails them.
+**A2 — FROM: Data collection as prerequisite TO: Data connection as architecture.** Early deployments assumed a data-collection phase had to precede the AI deployment. MahaVistaar showed that the data already existed in fragmented form across the Agriculture Department, ICAR, IMD, and market systems — the architecture challenge was connection, not collection. Amul Sarlaben demonstrated this at its most extreme: 50 years of cooperative data, 2 billion procurement transactions, and records on 30 million cattle existed in Amul's systems, with no AI layer to surface them to farmers. Data connection, not data collection, was the architectural task.
 
-MahaVistaar's problem statement was specific: the extension officer network cannot deliver personalised advice to 1.5 crore Maharashtra farmers at the query cadence required for time-sensitive decisions. This specificity drove architecture choices — voice telephony for access reach, federated real-time data for answer currency, proactive alerts for time-critical conditions. A generic framing would not have generated these constraints.
+**A3 — FROM: Building for average users TO: Designing for the hardest-to-reach first.** MahaVistaar's voice-first design in Marathi on any phone — driven by the access constraints of smallholder farmers without smartphones or broadband — meant the system worked for the most excluded users and was usable by all. Blue Dots AI made the same choice: the Four DPGs are designed for workers without stable internet and informal employers without digital presence. The shift is from "design for the median user and assume the rest will adapt" to "design for the hardest-to-reach and let the system work outward from there."
 
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
+**A4 — FROM: Proof by demonstration TO: Proof by field outcome.** All deployments documented here moved from showing the technology working in a controlled setting to showing field outcomes (yield increases, income improvements, scheme applications submitted, employment connections made). The Saagu Baagu cotton pilot — cited in Bharat-VISTAAR as the evidence that the national architecture was worth building — is the canonical example. Ethiopia ATI's 8% income boost within five years is the stated outcome target that will govern whether the national deployment is considered successful.
 
-**A2 — Data Posture: from waiting for clean centralised data to deploying with federated data**
-
-FROM: waiting for a clean, centralised data lake before deployment TO: designing a federated architecture that connects to data where it lives.
-
-All OAN deployments connect to data at query time rather than migrating it to a central store. The inter-departmental data-sharing blockage in MahaVistaar — where the state agriculture department held data in a system the extension directorate could not access — was resolved by the federated approach: data never left its owning department, so no departmental consent to migration was required.
+**A5 — FROM: Inclusion as a feature TO: Inclusion as a design constraint.** MahaVistaar's language design, Amul Sarlaben's Gujarati voice channel, Ethiopia ATI's Oromo voice pipeline, and Blue Dots AI's consent-first data architecture were all inclusion decisions that shaped core architecture. They were not added after the core system was built. The shift is from "we will add language support later" to "the system does not exist until it is reachable by the hardest-to-reach user in the farmer's or worker's terms."
 
 [See full pathway: MahaVistaar](../pathways/mahavistaar.md)
-
-**A3 — Existing Assets: from building from scratch to assembling from DPGs, data, and prior deployments**
-
-FROM: treating every deployment as a greenfield build TO: inventorying existing assets (DPG layer, institutional data, knowledge repositories) before deciding what to build.
-
-The OAN DPG layer is an existing asset at the technology level. ICAR research data (Bharat-VISTAAR), Amul cooperative data (Sarlaben), and state agricultural databases (MahaVistaar) are existing assets at the data level. Amul Sarlaben deployed in 3 weeks because it assembled from existing assets rather than building from scratch.
-
-[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md)
-
-**A4 — Proof: from disconnected pilot to pilot on production architecture**
-
-FROM: a proof-of-concept pilot running on a prototype, to be replaced by a production rebuild TO: a pilot that runs on the same architecture as production.
-
-All OAN deployments are built on the same DPG-based architecture from the outset. There is no pilot-to-production architecture gap, and no migration risk. The proof and the scale pathway are the same system.
-
-**A5 — Inclusion Design (proposed): from accessibility as a later layer to access constraints as first-order design inputs**
-
-FROM: accessibility features added after the core architecture is defined TO: access constraints (language, literacy, connectivity) treated as first-order design constraints that determine the interface.
-
-Voice-first telephony was chosen before architecture was detailed, because the access constraints of Maharashtra's farmer population — Marathi, low digital literacy, no reliable data connectivity — were treated as non-negotiable. All OAN deployments share this characteristic: the interface choice (voice over telephony) is an access decision, not a feature decision.
 
 ### B — Architecture
 
-**B1 — Model Choice: from commercial frontier LLM to fine-tuned open-weights model**
+**B1 — FROM: Model selection as a primary decision TO: Model as a replaceable component.** MahaVistaar's architecture explicitly separates the model layer from the service layer — Azure OpenAI GPT-4o as the fallback, a fine-tuned Qwen3.5-27B running on 4×H100 GPUs (TP=4) as the primary, with vLLM serving. The model can be swapped without rebuilding the surrounding system. The cost implication was decisive: ₹9.4/question at Azure vs ₹0.05/question self-hosted — a 180× difference that only becomes available when model choice is made separately from service architecture.
 
-FROM: commercial frontier LLM API (GPT-4 class) as the production serving infrastructure TO: fine-tuned open-weights model deployed self-hosted.
+**B2 — FROM: Centralised data storage TO: Federated data connection.** All deployments in this wiki connect to data where it lives rather than replicating it into a central store. MahaVistaar connects to Department of Agriculture data, ICAR, IMD, and market feeds at query time. Bharat-VISTAAR connects to AgriStack, PM-KISAN, PMFBY, and ICAR without centralising them. Blue Dots AI's Signal DPG creates shareable demand signals without exposing raw worker data. The shift avoids data sovereignty disputes and allows institutional data owners to retain control, which was a precondition for their participation.
 
-MahaVistaar began on Azure GPT-4.1 at ₹9.4/question. The architecture migrated to self-hosted fine-tuned Qwen3.5-27B at ₹0.05/question — a 188× cost reduction. The fine-tuned smaller model also responds more predictably within the agricultural domain, making the safeguard model's task easier. A deployment that does not plan for this migration will face it at the worst moment — when query volume is growing and the commercial API cost is spiralling.
+**B3 — FROM: Single-vendor dependency TO: Open-protocol vendor independence.** The OAN stack uses open-source DPGs, open protocols (Beckn), and open standards throughout. MahaVistaar's dual-provider topology — self-hosted primary, cloud fallback — means no single vendor failure takes the system down. The Beckn protocol enables Amul Sarlaben to offer Bharat Taxi on the same platform without integrating a new vendor at the system level.
 
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
+**B4 — FROM: Building the whole system TO: Adapting the reusable layer.** The compression from 9 months (MahaVistaar) to 3 months (Ethiopia ATI) to 3 weeks (Amul Sarlaben) was driven by the shift from building to adapting. Ethiopia evaluated what needed adaptation, not what needed construction. Amul adapted MahaVistaar's architecture, governance frameworks, and deployment playbooks to a cooperative data context in three weeks. The shift is from "we are building an AI system" to "we are contextualising a proven architecture."
 
-**B2 — Data Sovereignty: from centralised data lake to federated data**
-
-FROM: centralised data lake owned by the deployer TO: federated architecture where each institution retains sovereignty over its data.
-
-All OAN deployments use federated architecture. No institution was required to migrate data out of its own systems. The federated approach is both a technical design choice and an institutional negotiation strategy: it removes the main objection institutional data owners have to participation.
-
-**B3 — Vendor Independence: from locked-in cloud stack to open DPG layer with pluggable components**
-
-FROM: proprietary cloud AI stack (single vendor dependency) TO: open DPG layer with protocol-based ecosystem interoperability.
-
-The OAN DPG layer is open-source and deployable without a specific cloud vendor. The Beckn protocol enables ecosystem interoperability without proprietary standards. The MahaVistaar serving migration (Azure GPT-4.1 to self-hosted Qwen) demonstrated vendor independence in practice, not just in principle.
-
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
-
-**B4 — DPG vs Instance: from each deployment building its own system to shared DPG layer plus thin configuration**
-
-FROM: each new deployment rebuilding the full technology stack TO: shared DPG layer maintained by a network operator, with each deployment adding only language, domain, and institutional configuration.
-
-The compression from MahaVistaar's original build to Amul Sarlaben's 3-week deployment is the quantified evidence for this shift. Bihar Krishi, as an independent deployment not using the OAN DPG layer, is the intended comparison case — but its timeline and cost are not yet documented.
-
-[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md) | [Bihar Krishi](../pathways/bihar-krishi.md)
+[See full pathway: MahaVistaar](../pathways/mahavistaar.md) | [Amul Sarlaben](../pathways/amul-sarlaben.md)
 
 ### C — Institution
 
-**C1 — Institutional Framing: from project to transformation**
+**C1 — FROM: Project framing TO: Transformation framing.** Bihar Krishi was embedded in Bihar's 4th Agriculture Roadmap — not deployed as a standalone technology project but as a component of a multi-year agricultural transformation programme. Ethiopia ATI's Digital Agriculture Roadmap 2025–2032 provides the same institutional framing. The shift from "we are running a technology pilot" to "we are running a national transformation programme with this as a component" changes what gets funded, who is accountable, and how long institutional support lasts.
 
-FROM: positioned as a technology project with a defined end date TO: positioned as a transformation of the extension delivery system with ongoing mandate.
+**C2 — FROM: Assuming tacit knowledge transfers TO: Recognising non-transferability.** The Six Orthogonal Shifts framework documents this as a specific failure mode: deployment knowledge that is held implicitly by the deployment team and not codified does not transfer when key people move. MahaVistaar documented its architecture, governance frameworks, and failure mode library explicitly — these became the transferable assets that made Ethiopia and Amul possible. The shift is from "the team knows how to do this" to "the knowledge is documented in a form that makes the next deployment cheaper."
 
-MahaVistaar is positioned under the Commissioner of Agriculture as a transformation — not a project. This framing affects funding (recurring rather than project-based), staffing (permanent rather than contracted), and survival through political change. A project mandate ends; a transformation mandate must be explicitly dismantled.
+**C3 — FROM: Waiting for political permission TO: Building political support through demonstration.** Bharat-VISTAAR was announced in the Union Budget 2026-27 after state-level deployments had produced field evidence. The national allocation of Rs. 150 crore followed state-level proof, not preceded it. Prime Minister Modi's endorsement at the India AI Impact Summit followed working deployments, not proposals. The shift is from "we cannot act without political approval" to "we build the evidence that makes approval follow."
 
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
-
-**C2 — Resistance and Non-Transferability: from communication problem to structural design problem**
-
-FROM: institutional resistance treated as something to be overcome through explanation and demonstration TO: institutional resistance treated as a structural design problem requiring authority and accountability changes.
-
-The joint secretary-level meeting required to resolve MahaVistaar's data-sharing blockage was not resolved by explaining the technology. It required convening the authority level at which a structural data governance question could be decided. Resistance in large government organisations is often a signal that a decision requires authority that has not yet been engaged, not that the technology needs better communication.
-
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
-
-**C3 — Institutional Knowledge: from individual champions to embedded process**
-
-FROM: deployment knowledge held by individual champions who may leave TO: knowledge embedded in the OAN DPG layer, in documented processes, and in institutionalised training.
-
-The OAN DPG layer represents institutionalised knowledge — architecture decisions, safety patterns, and ecosystem coordination models that can survive the departure of the individuals who designed them. A deployment that exists only in the heads of its champions is a succession risk.
+[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md) | [Bharat-VISTAAR](../pathways/bharat-vistaar.md)
 
 ### D — Ecosystem
 
-**D1 — Ecosystem Design: from deployer plus vendor to minimum viable ecosystem with named roles**
+**D1 — FROM: Building a deployment team TO: Building a network operator role.** MahaVistaar had 54 ecosystem partners — the architecture, knowledge, technology, and data layers each required different partners. The network operator (EkStep Foundation, then the Maharashtra Department of Agriculture) held the ecosystem together by "saying this runs in my name" — providing the institutional anchor that made every partner's participation credible. ATI in Ethiopia played the same role: as a national transformation institute spanning government functions, it could align the Ministry of Agriculture, meteorological services, and research institutes in a way no single ministry could. The shift is from "who do we hire" to "who can say this runs in their name."
 
-FROM: deployment imagined as a two-party relationship between deployer and technology vendor TO: minimum viable ecosystem with named roles across institutional, technology, data, and knowledge layers.
+**D2 — FROM: Trust as a precondition TO: Trust as a design element.** Amul Sarlaben's institutional credibility comes from 50 years of daily milk procurement with 3.6 million members — a trust relationship that pre-dates the AI deployment. Bharat-VISTAAR speaks as the Ministry of Agriculture with ICAR advisory authority. MahaVistaar speaks as the Department of Agriculture Maharashtra. In every documented case, the AI was attributed to an institution the end user already trusted. The shift is from "users will trust the AI if it gives good answers" to "users will trust the AI if it speaks as an institution they already trust."
 
-MahaVistaar mapped 54 enablers across four layers. The number is not the point — the point is that the roles are named and the minimum set required for the system to function is identified before deployment, not discovered when a gap causes an incident.
+**D3 — FROM: Assuming partners will align TO: Designing coordination mechanisms.** MahaVistaar's 54-partner ecosystem required explicit coordination mechanisms — governance structures, role definitions, escalation paths — not just goodwill. Blue Dots AI's four-lever model (district administration as governance node, NGOs as trust fabric, MSMEs as data contributors, workers as signal generators) documents each partner's role and what holds their participation. The shift is from "these organisations share our goals" to "these organisations have defined roles and incentive alignment."
 
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
+**D4 — FROM: Equal-weight partnerships TO: Network operator primacy.** Every documented deployment has one organisation that holds the "network operator" role — the institution that says "this runs in my name" and bears responsibility for the system's outputs. EkStep Foundation in MahaVistaar, ATI in Ethiopia, Amul in Sarlaben, the Ministry of Agriculture in Bharat-VISTAAR. Without this anchor, accountability diffuses and nothing moves. The shift is from "we are all equal partners in this consortium" to "one institution is accountable, and the others contribute under that anchor."
 
-**D2 — Trust Source: from trust in the AI to trust in the institution**
-
-FROM: trust in the AI system itself (accuracy, reliability) as the primary adoption driver TO: trust sourced from the deploying institution, with the AI delivered under that institution's brand and channel.
-
-Farmers trust MahaVistaar because it is the Commissioner of Agriculture's system, delivered on government short code 155313. Amul Sarlaben's trust source is the Amul cooperative relationship. Ethiopia ATI's trust source is ATI's government mandate. In none of these deployments is the AI itself the trust source — the institution is.
-
-[See full pathways: MahaVistaar](../pathways/mahavistaar.md) | [Amul Sarlaben](../pathways/amul-sarlaben.md) | [Ethiopia ATI](../pathways/ethiopia-ati.md)
-
-**D3 — Coordination Mechanism: from informal relationships to protocol-based coordination with a named operator**
-
-FROM: ecosystem coordination through informal personal relationships TO: protocol-based coordination (Beckn protocol) with a named network operator holding the coordination function.
-
-The Beckn protocol provides a standards-based coordination mechanism that survives personnel changes. EkStep Foundation as named network operator holds the coordination function across the OAN ecosystem — relationships do not need to be rebuilt when individuals move.
-
-**D4 — Network Operator: from no named operator to explicit mandate**
-
-FROM: no organisation explicitly responsible for ecosystem health TO: named network operator (EkStep Foundation) with an explicit mandate.
-
-EkStep Foundation is the named network operator across all OAN deployments. Without this role explicitly assigned, ecosystems erode: data feeds go stale, technology integrations break, and knowledge sources stop being updated, with no one holding responsibility for any of it.
-
-[See entity: EkStep Foundation](../entities/ekstep-foundation.md)
+[See full pathway: MahaVistaar](../pathways/mahavistaar.md) | [Blue Dots AI](../pathways/blue-dots.md)
 
 ### E — Workforce
 
-**E1 — Training Timing: from post-deployment training to training integrated into system design**
+**E1 — FROM: Training as a deployment step TO: Training as an ongoing architecture.** Bihar Krishi trained 15,000+ extension workers across 38 districts — not as a one-time event at launch but as a structured, district-level rollout integral to deployment. The Six Orthogonal Shifts framework cites Bihar Krishi as the canonical example of deliberate, scaled workforce training for an institutional AI deployment. The shift is from "train the trainers before launch" to "workforce training is part of the system architecture."
 
-FROM: training delivered at deployment launch as an afterthought TO: training integrated into system design from the beginning, with escalation paths designed around what the human workforce can handle.
+**E2 — FROM: Training for compliance TO: Training for capability.** The distinction is whether training teaches workers to follow a new workflow or teaches them to understand what the AI can and cannot do, so they can use it well in novel situations. Extension workers who understand the AI's knowledge boundaries can escalate appropriately; workers trained only to follow workflows cannot. The shift is from "here is the new process" to "here is how the AI works and why its outputs should be verified in these specific cases."
 
-Extension officer roles in MahaVistaar (Krishi Sahayaks, BOs, SDOs) are designed into the system architecture — the escalation paths in the AI advisory (situations where the system directs farmers to a human officer) are designed with the workforce's capability and availability in mind, not bolted on afterward.
+**E3 — FROM: AI as answer machine TO: AI as agency amplifier.** The Amul Sarlaben deployment documented a specific field finding: younger family members who lack thirty years of dairy experience can now access expert knowledge through Sarlaben — "informed, therefore powerful to make choices; freedom comes from knowing, and nobody can fool me." This equaliser effect was not designed in — it emerged from the field. The watchword from the same deployment: information alone is not the point; there is skill in the hand that counts for more than information in the head. AI should make the farmer's or worker's skill more precise, not substitute for it. The shift is from "AI provides the answer" to "AI provides the information that enables the person to act more capably."
 
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
-
-**E2 — Training Depth: from tool training to capability building**
-
-FROM: training staff to use the system (which buttons to press, which menus to navigate) TO: training staff to interpret, verify, and extend AI outputs.
-
-Not documented in detail across any OAN deployment. The shift is named in the framework as critical — an extension officer trained only to use the system becomes dependent on it, whereas one trained to verify and extend outputs maintains capability if the system is unavailable or wrong.
-
-**E3 — Agency Test: from measuring system usage to testing whether people can work without it**
-
-FROM: measuring adoption (how many staff are using the system) as the primary workforce metric TO: testing whether staff can still do their core job if the system goes offline.
-
-Not documented in detail across any OAN deployment. The framework proposes this as a critical check for any deployment that replaces or augments human advisory roles. High adoption combined with inability to function without the system is a fragility indicator, not a success signal.
+[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md) | [Amul Sarlaben](../pathways/amul-sarlaben.md)
 
 ### F — Operating Model
 
-**F1 — Velocity: from plus-one scaling to compressed replication**
+**F1 — FROM: Plus-ten ambition TO: Plus-one sequencing.** Amul Sarlaben is the canonical example: start with advisory → add AI booking for artificial insemination → add microcredit → add Bharat Taxi via Beckn. Each step adds one capability to what already exists. Never plus-ten. The operational risk of adding many features simultaneously is that no single feature gets the focus it needs to work well, and failure in one undermines trust in all. The shift is from "we will build the full system" to "we will add one thing at a time, and each addition builds on demonstrated readiness."
 
-FROM: each new deployment treated as a new project (adding one at a time, each requiring the same build effort) TO: replication with compression (each new deployment faster and cheaper than the previous, due to DPG accumulation).
+**F2 — FROM: Governance as accountability TO: Governance as learning loop.** MahaVistaar's query log creates a visible demand signal for knowledge gaps — queries the system cannot answer reveal what knowledge needs to be added. Bharat-VISTAAR inherits this architecture at the national level. Blue Dots AI's Aggregator DPG creates shared intelligence for district administration from anonymised demand signals. The shift is from "governance tells us who is responsible when something goes wrong" to "governance tells us what the field is revealing and how to respond."
 
-The compression from MahaVistaar to Amul Sarlaben (3 weeks) is the evidence. Bihar Krishi, as an independent deployment, is intended to provide the comparison — but its timeline is not yet documented.
+**F3 — FROM: Pilot-to-project TO: Pilot-to-infrastructure.** Bihar Krishi connected to Bharat-VISTAAR when the national layer launched — retrospectively gaining access to national scheme data, ICAR advisory, and AgriStack integration it did not have as a standalone deployment. The shift is from "we will run a project and evaluate whether to continue" to "we will build infrastructure that compounds in value with every additional node, and the infrastructure framing is established before the pilot begins."
 
-[See synthesis: Compression Proof](compression-proof.md)
+**F4 — FROM: Cold-start deployment TO: Compression through reuse.** The compression from 9 months to 3 months to 3 weeks is the operational evidence for this shift. Each subsequent deployment started from a higher floor because predecessor deployments had codified their architecture, governance frameworks, and failure modes. The shift is from "every deployment starts from the beginning" to "every deployment starts from the highest point the prior deployment reached."
 
-**F2 — Governance: from governance as constraint to governance as enabler**
-
-FROM: governance processes (approvals, sign-offs) treated primarily as delays to route around TO: governance clarity (right level of authority engaged at right time) as the mechanism that resolves structural blockages.
-
-The joint secretary-level meeting that resolved MahaVistaar's data-sharing blockage is the evidence: when the right authority was convened, a structural stall was resolved. The failure mode is not engaging that authority level early enough, not the governance process itself.
-
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
-
-**F3 — Sustainability: from deferred funding clarity to pre-scale cost model**
-
-FROM: funding model deferred until after the pilot proves value TO: cost model built before scale, with a documented projection of infrastructure investment versus ongoing API cost.
-
-MahaVistaar's serving cost analysis (₹25 lakh for 6-month 4-GPU cluster; ₹2 crore/year planned versus ₹18 crore/year Azure run-rate) is the evidence. The deployer can make an informed decision about infrastructure investment before being locked into a cost trajectory at scale.
-
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md)
-
-**F4 — Pilot to Deployment: from prototype replaced by production to pilot IS production**
-
-FROM: prototype pilot to be replaced by a separate production build TO: pilot running on the same architecture as production from day one.
-
-All OAN deployments use the DPG-based architecture from pilot through production. There is no transition risk between pilot and production because the pilot is already production-grade. The cost of rebuilding is eliminated, and the learnings from the pilot accumulate directly in the production system.
+[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md) | [Bihar Krishi](../pathways/bihar-krishi.md)
 
 ## What This Means for a Next Adopter
 
-The 21 shifts are most useful as a diagnostic: if your current deployment design sits on the FROM side of multiple sub-components, you are accumulating risk that will compound at scale. The highest-leverage shifts:
+The 21 shifts are not sequential — they do not have to be completed in order. But they cluster around two critical early decisions that unlock the rest.
 
-B1 (model choice) — do not anchor on a commercial frontier LLM API as production serving infrastructure. Fine-tune a smaller open-weights model early; the cost and control advantages compound with scale.
+The first is the network operator decision (D4). Before committing to a deployment, identify which institution can say "this runs in my name" with the authority to align the other partners. If no institution can do this, the deployment will stall in coordination before it stalls in technology. ATI's national mandate is what made the three-month Ethiopia deployment possible — not the technology.
 
-A2 (data posture) — do not wait for centralised, clean data. Design federated from the start; it is easier than migrating later and removes institutional objections.
+The second is the framing decision (C1 and A1 together). A deployment framed as a technology project will be evaluated as a technology project — limited budget, time-bounded, no workforce training, no sustainability beyond the pilot. A deployment framed as a transformation initiative will be funded, governed, and staffed differently. The shift in framing is a precondition for most of the other shifts, and it costs nothing except clarity about what you are doing.
 
-D4 (network operator) — name the network operator before you need them. Ecosystem collapse often happens when no one is explicitly responsible for ecosystem health.
-
-F3 (sustainability) — build a cost model before scale, not after.
+For technology decisions: the evidence consistently shows that model choice is less important than architecture choice (B1 vs B2). A system built on federated data connection and open protocols can swap its AI model; a system built on a single vendor or a centralised data store cannot. Make the architecture decision first and let the model selection follow.
 
 ## Open Questions
 
-E2 (training depth) and E3 (agency test) are named shifts but not yet documented with field evidence. A next contributing deployment should capture what training approach was used and whether extension officers could still function if the system went offline.
+The shift evidence is strongest for agriculture deployments in India and Ethiopia. Blue Dots AI provides early evidence for livelihoods, but the flywheel compounding pattern (F3 applied to demand-signal infrastructure) has not yet been tested across multiple geographies. A livelihoods deployment outside India would significantly strengthen or qualify the pattern.
 
-Bihar Krishi, as an independent deployment, could document the FROM side of the B4 shift — what does it cost and take to build without the DPG layer? This comparison data point does not yet exist in the wiki.
+The workforce shift evidence (E1–E3) is thin outside Bihar Krishi. Most deployments document what happened to extension workers at a summary level but not the training design, timing, or resistance pattern. A deployment that documents its workforce transition in detail — what was taught, when, what resistance looked like, and what resolved it — would fill a significant evidence gap.

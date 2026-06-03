@@ -1,25 +1,32 @@
 # Agriculture — Pathway Index
 
-Agricultural AI deployments in this wiki focus on the advisory challenge: connecting smallholder farmers to personalised, timely information about crop management, pest control, weather, market prices, and scheme access. The common access constraint across deployments is language and connectivity — farmers are predominantly voice-reliant, without reliable data connectivity, and communicate in regional languages (Marathi, Gujarati, Hindi, Amharic). The common actor pattern is a government agricultural department or cooperative deploying voice-telephony AI over existing institutional channels with a pre-established trust relationship with farmers. What makes agriculture distinctive as a sector is the combination of real-time data dependency (weather, pest alerts, mandi prices that change daily) with significant knowledge depth requirements (crop variety, soil type, pest identification, scheme eligibility), and the presence of a mature digital public goods layer (OAN) that dramatically compresses deployment timelines for new entrants.
+AI deployments in agriculture face a structural problem that recurs across every documented context: the extension system cannot scale with the farmer population at human staffing ratios. India's historical baseline was one agriculture field officer for every 2,000 farmers in Bihar; Ethiopia's is comparable. The result is that most smallholder farmers receive no timely, personalised advisory on planting decisions, crop health, scheme access, or market prices — not because the information does not exist, but because the delivery mechanism (human extension officers) cannot reach everyone who needs it. AI advisory at scale is the structural response to this constraint, and the deployments in this sector have collectively proven that voice-first AI in local languages, connected to institutional data sources, can reach farmers at extension-system-impossible ratios.
+
+The distinctive challenges in agriculture AI deployments are: language and access diversity (farmers without smartphones or broadband, speaking dozens of languages and dialects); data federation across multiple institutional owners (agriculture departments, research institutes, meteorological services, market systems); and the trust requirement that farm advisory be attributed to a credible institution, not an anonymous system. The deployments documented here have each addressed these challenges, and their architectures, governance frameworks, and failure mode libraries are available as reusable starting points.
 
 ## Pathways in this sector
 
 ### [MahaVistaar](../pathways/mahavistaar.md)
-**Geography:** Maharashtra, India | **Actor type:** Government | **Status:** Active
-The anchor OAN deployment; the most detailed documentation of architecture, cost, and ecosystem design in this wiki. Essential reading for any government agricultural advisory deployment — especially the LLM cost migration, the 54-enabler ecosystem map, and the inter-departmental data governance experience.
+**Geography:** India — Maharashtra | **Actor type:** Government | **Status:** Active
 
-### [Amul Sarlaben](../pathways/amul-sarlaben.md)
-**Geography:** Gujarat, India | **Actor type:** Cooperative | **Status:** Active
-Demonstrates DPG reuse compressing deployment to 3 weeks, and shows how the cooperative deployer model differs from government in procurement speed, data ownership, and trust architecture. Read alongside MahaVistaar to understand what changes when the deployer is a cooperative rather than a government department.
+The pioneer OAN deployment and the source of the DPG architecture, governance frameworks, and failure mode library that all subsequent deployments reused. The definitive reference for deployers building from scratch in a new state context.
 
 ### [Bharat-VISTAAR](../pathways/bharat-vistaar.md)
-**Geography:** India (national) | **Actor type:** Government | **Status:** Active
-National-level deployment by ICAR; demonstrates how a research institution becomes an AI advisory deployer and how national research knowledge repositories integrate into a conversational system. Useful for national-scale or research-institution planning.
+**Geography:** India — national | **Actor type:** Government | **Status:** Active
+
+India's national digital public infrastructure for agriculture — the hub-and-spoke federation layer that connects state and cooperative platforms to national scheme data, ICAR advisory, and AgriStack. The reference for deployers thinking about national architecture.
+
+### [Amul Sarlaben](../pathways/amul-sarlaben.md)
+**Geography:** India — Gujarat | **Actor type:** Cooperative | **Status:** Active
+
+The fastest documented OAN deployment (three weeks). The reference for cooperative deployers with an existing member data foundation. Documents the plus-one service extension sequence and the trust design pattern for a woman-centred advisory system.
 
 ### [Bihar Krishi](../pathways/bihar-krishi.md)
-**Geography:** Bihar, India | **Actor type:** Government | **Status:** Active
-Independent deployment not using the OAN DPG layer; comparison case for understanding what DPG reuse saves in time and cost. Documentation is thin — a priority for future gap-filling contributions.
+**Geography:** India — Bihar | **Actor type:** Government | **Status:** Active
+
+Built independently with different partners and then connected to Bharat-VISTAAR retroactively. The reference for deployers who build outside the OAN DPG library and then seek national layer connection. Documents large-scale extension worker training at 15,000+ across 38 districts.
 
 ### [Ethiopia ATI](../pathways/ethiopia-ati.md)
-**Geography:** Ethiopia | **Actor type:** Government | **Status:** Active
-First international OAN deployment; demonstrates cross-border DPG portability across language family and national DPI foundation. Includes Fayda digital ID integration. Essential reading for African or non-Indian agricultural advisory deployment planning.
+**Geography:** Ethiopia — national | **Actor type:** Government | **Status:** Active
+
+The first OAN deployment outside India. The reference for international deployers evaluating the OAN pathway for their context. Documents the national transformation institute as network operator model and climate intelligence integration for COP contexts.
