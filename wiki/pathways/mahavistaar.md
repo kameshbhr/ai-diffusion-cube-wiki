@@ -204,19 +204,98 @@ The Six Shifts framework documents "bounded ambition" as MahaVistaar's launch st
 
 ---
 
-## Related Pathways
+## Solution Patterns
 
-- [Bharat-VISTAAR](bharat-vistaar.md) — national layer built on MahaVistaar's architecture
-- [Amul Sarlaben](amul-sarlaben.md) — cooperative deployment that reused MahaVistaar's architecture in three weeks
-- [Bihar Krishi](bihar-krishi.md) — independent state deployment that connected to the national layer
-- [Ethiopia ATI](ethiopia-ati.md) — first international deployment, three months, drawing on MahaVistaar assets
-- [Blue Dots AI](blue-dots.md) — livelihoods deployment sharing the voice-first, DPG-based architecture pattern
+### Architecture
 
-## Related Entities
+**Problem:** LLM costs become unsustainable as usage scales.
 
-- [EkStep Foundation](../entities/ekstep-foundation.md)
-- [OpenAgriNet](../entities/openagri-net.md)
+**Solution:** Migrate high-volume flows to self-hosted open-source models; retain managed API as fallback only. Profile cost by use case before migrating — identify the dominant flow and optimise for its worst case.
 
-## Lineage
+---
 
-Not documented — MahaVistaar is the pioneer deployment. All subsequent pathways in the OAN ecosystem trace lineage here.
+**Problem:** Self-hosted infrastructure and managed APIs create opposing pressures on cost and reliability.
+
+**Solution:** Dual-provider architecture: self-hosted as primary, managed API as automatic fallback triggered only by infrastructure faults — not answer quality. Define a tunable concurrency cap that spills to managed API on overflow rather than queuing users.
+
+---
+
+**Problem:** The system gets locked with a vendor with no exit path.
+
+**Solution:** Build a provider abstraction layer at the start — resolve provider at configuration time, not in application code. Migration between providers becomes transparent to the application.
+
+---
+
+### Population & Access
+
+**Problem:** Target population cannot reach the system through available channels.
+
+**Solution:** Voice-first as an architectural requirement — IVR short codes on basic feature phones, not a smartphone add-on. Support multiple channels — voice, WhatsApp, app, web — converging into the same processing pipeline.
+
+---
+
+**Problem:** The system works in one language but the population speaks many.
+
+**Solution:** Build multilingual ASR and TTS pipeline as core infrastructure, not a post-launch addition. Develop domain-specific bilingual glossary to bridge regional language and institutional terminology — general translation models fail on specialised terms.
+
+---
+
+### Data
+
+**Problem:** Data needed to serve users is fragmented across institutions.
+
+**Solution:** Federated tool architecture — AI connects to each institutional source at query time via API; data does not move into a central repository. Each institution retains ownership and governance of its own data; open network protocols provide the interoperability layer.
+
+---
+
+**Problem:** AI responses have no traceable source — no institution is accountable for what the system says.
+
+**Solution:** Every claim the system makes must be retrieved from a named institutional source at the time of the query — the system does not answer from its own model memory. Surface institutional source attribution visibly to the user on every response.
+
+---
+
+### Institution
+
+**Problem:** The deployment is treated as a technology project — commissioned by the institution but not owned by it — leaving no one with authority over the governance, data sharing, and outcomes that the technology alone cannot deliver.
+
+**Solution:** Nominate a named senior sponsor and nodal officers across relevant departments before build begins. Frame the deployment as an institutional capability.
+
+---
+
+**Problem:** Data sharing agreements between institutions take longer to negotiate than the project expects.
+
+**Solution:** Begin data sharing negotiations before technical build starts — treat agreement timelines as the critical path, not a parallel workstream. Align data sharing across all required institutions as system leadership work before any build begins.
+
+---
+
+### Trust & Adoption
+
+**Problem:** End users distrust AI-generated answers for decisions.
+
+**Solution:** Position AI as delivery layer not authority — every answer cites the institution whose knowledge it draws from. The institution stands behind every answer; AI makes institutional knowledge reachable, it does not replace institutional accountability.
+
+---
+
+**Problem:** The AI system makes claims the institution has not authorised it to make.
+
+**Solution:** Define explicitly what the AI can and cannot do — domain validation, content safety, and policy-sensitive query classification enforced by an independent moderation layer. Every claim flows through a verified tool call to an authoritative source; the AI does not answer from memory.
+
+---
+
+### Ecosystem
+
+**Problem:** The deployment requires capabilities and data that no single institution possesses — but the institutions that collectively possess them were never designed to work together.
+
+**Solution:** Map the full enabler ecosystem before build — identify which layer each actor belongs to, what they contribute, and what governance arrangement allows their contribution to flow. Design participation so each actor's own interest is served — shared mission alone will not sustain coordination across actors with different mandates and incentives.
+
+---
+## Gaps — Information Not in the Source Documents
+
+1. At twelve months, what would you expect to observe in a farmer's life — not in the system's logs — that would tell you this worked? And for any of the live deployments, has anything like that been observed yet?
+2. Which body has the authority to determine what MahaVistaar can and cannot claim on behalf of the state — and what happens when that boundary is crossed?
+3. How was the initial deployment funded — which institution's budget, under what mechanism? And who bears the ongoing cost of the GPU cluster and the operational team — state government budget, central scheme, development partner, or something else?
+4. For the core actors — ICAR, IMD, AgriStack, the state agricultural universities — was their data contribution under a formal agreement, an informal arrangement, or a public mandate? And if any of them had withdrawn, what would have broken?
+5. Were extension officers or agriculture department staff resistant to the system — and what form did that resistance take?
+6. Today, in normal operations, who decides when the model needs retraining, when the advisory corpus needs updating, and when a guardrail needs changing? Is that a named role, a team, or is it still the pilot team?
+7. When a farmer receives a wrong or harmful answer — wrong pest treatment advice, wrong scheme eligibility, wrong mandi price — what is the path from that error to a fix? Who finds out, who decides what to do, and how are the guardrails updated so it doesn't happen again?
+8. Which specific regulatory or policy constraints — DPDP obligations, government procurement rules, NIC hosting requirements — shaped how the deployments were structured? And were any of them obstacles that required a workaround?
