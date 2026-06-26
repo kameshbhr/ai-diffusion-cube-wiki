@@ -9,10 +9,7 @@ Master index of all wiki pages. Updated on every ingest or page creation.
 | Page | Summary |
 |---|---|
 | [MahaVistaar](pathways/mahavistaar.md) | Maharashtra state agriculture AI — pioneer OAN deployment; 17 lakh daily advisories; source of the DPG architecture and governance frameworks reused by all subsequent deployments. |
-| [Bharat-VISTAAR](pathways/bharat-vistaar.md) | India's national agriculture DPI — Rs. 150 crore Union Budget allocation; hub-and-spoke federation connecting state and cooperative nodes to national scheme data and ICAR advisory. |
-| [Amul Sarlaben](pathways/amul-sarlaben.md) | Amul cooperative dairy AI — three-week deployment; 3.6 million members; 2 billion procurement transactions surfaced to farmers; fastest documented OAN deployment. |
-| [Bihar Krishi](pathways/bihar-krishi.md) | Bihar state agriculture platform — built independently, connected to Bharat-VISTAAR; 850,000+ farmers, 38 districts, 15,000+ extension workers trained; two national awards. |
-| [Ethiopia ATI](pathways/ethiopia-ati.md) | First OAN deployment outside India — three months from commitment to launch; 30M farmer target; ATI national transformation institute as network operator; COP32 climate intelligence integration. |
+| [Astitva](pathways/astitva=pathway.md) | Dehvali Bhili, a low-resource tribal language enablement for Voice AI; 60,000+ voice samples, processed them through a quality-assured pipeline, and integrated the resulting language model into MahaVISTAAR, Maharashtra's agricultural extension platform |
 | [Blue Dots AI](pathways/blue-dots.md) | Livelihoods discovery AI — four DPGs addressing paradox of proximity; Dharwad and Ghaziabad pilots; 10,000+ job openings surfaced in 60 days; flywheel compounding economics. |
 
 ---
@@ -27,7 +24,7 @@ Master index of all wiki pages. Updated on every ingest or page creation.
 | [Failure Modes](synthesis/failure-modes.md) | Catalogue of named failure patterns with field evidence — technology and non-technology failures, what they look like early, and how to prevent them. |
 | [70-30 Split](synthesis/70-30-split.md) | Evidence for the 70% non-technology / 30% technology challenge distribution across deployments — with implications for planning, budget, and attention allocation. |
 | [DPG Reuse Patterns](synthesis/dpg-reuse-patterns.md) | What DPGs got reused across deployments, what did not transfer, and why — the mechanism behind deployment time compression. |
-
+| [Voice AI Deployment](synthesis/voice-ai-deployment-patterns.md) | Deploying voice AI for government and social sector use cases in India has produced a set of hard-won lessons that repeat across deployments.  |
 ---
 
 ## Entities
