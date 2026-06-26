@@ -217,6 +217,15 @@ The Dehvali Bhili language was enabled first, as a scoped initial effort within 
 | Contributor eligibility criteria | Governance guideline | Selection criteria for community language data contributors: proficiency in the target language, literacy and typing skills, and local ownership in language standardisation. Ensures quality begins at the selection stage. | Project Astitva Booklet |
 
 ---
+## Gaps — Information Not in the Source Documents
+
+1. What specific change in a farmer's life would tell you, at twelve months, that this worked — not that the system was used, but that it made a difference?
+2. Who owns the Dehvali Bhili dataset? Under what terms was it published to Bhashini — are there restrictions on commercial use? Does the community have any mechanism to withdraw or restrict it?
+3. How was Astitva funded? What did it cost? Who bears the ongoing cost of maintaining the language capability in MahaVISTAAR?
+4. Before data collection started, what formal agreements existed between the District Administration and external partners? Were there MOUs or data sharing agreements, or was it informal?
+5. Who is responsible for the Dehvali Bhili capability in MahaVISTAAR today when it degrades or needs updating?
+6. If a farmer receives wrong information from the system, what is the path from that error to a fix?
+7. Were there any legal or policy constraints — DPDP, tribal data rights, procurement rules — that you had to comply with as part of the voice data collection?
 
 ## Related Pathways
 
@@ -230,6 +239,4 @@ The Dehvali Bhili language was enabled first, as a scoped initial effort within 
 - [Bhashini](../entities/bhashini.md) — National open-source language platform and hosting infrastructure for the resulting dataset and model
 - [State Agriculture Department & POCRA](../entities/maharashtra-agriculture-pocra.md) — Service integration and deployment through extension systems
 
-## Lineage
 
-Not documented — Project Astitva appears to be a first-of-kind deployment for low-resource tribal language enablement in the Maharashtra government context. The broader voice AI architecture knowledge was contributed by EkStep Foundation from cross-deployment experience (MahaVISTAAR, Assam water supply, and others).
