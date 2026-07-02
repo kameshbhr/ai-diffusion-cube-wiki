@@ -10,8 +10,6 @@ Master index of all wiki pages. Updated on every ingest or page creation.
 |---|---|
 | [MahaVistaar](pathways/mahavistaar.md) | Maharashtra state agriculture AI — Pioneer OAN deployment; 17 lakh daily advisories; source of the DPG architecture and governance frameworks reused by all subsequent deployments. |
 | [Astitva](pathways/astitva-pathway.md) | Dehvali Bhili, a low-resource tribal language enablement for Voice AI — 60,000+ voice samples, processed them through a quality-assured pipeline, and integrated the resulting language model into MahaVISTAAR, Maharashtra's agricultural extension platform |
-| [Blue Dots AI](pathways/blue-dots.md) | Livelihoods discovery AI — Addressingthe  paradox of proximity; Dharwad and Ghaziabad pilots; 10,000+ job openings surfaced in 60 days; flywheel compounding economics. |
-
 ---
 
 ## Synthesis
