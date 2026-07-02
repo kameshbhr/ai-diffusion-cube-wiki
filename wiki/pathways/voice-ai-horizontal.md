@@ -16,7 +16,7 @@
 
 ## Summary
 
-This pathway synthesises practitioner experience across seven voice AI deployments in India and Africa. It is written for the next adopter — not as a record of what was done, but as a transfer of what was learned and what it cost to learn it. The test of this pathway is simple: does the next adopter start from a higher baseline because of it?
+This pathway synthesises practitioner experience across seven voice AI deployments in India and Africa. It is written for the next adopter — not as a record of what was done, but as a transfer of what was learned and what it cost to learn it. 
 
 ---
 
