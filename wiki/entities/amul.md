@@ -1,9 +1,6 @@
 # Amul
 
-**Type:** Organisation
-**Role:** Deployer (cooperative)
-**Geography:** India — Gujarat, 18,500+ villages; expansion planned to 20+ states
-**Contact or reference:** amul.com
+**Type:** Organisation **Role:** Deployer (cooperative) **Geography:** India — Gujarat, 18,500+ villages; expansion planned to 20+ states **Contact or reference:** amul.com
 
 ## What they are
 
@@ -13,7 +10,7 @@ Amul is a private cooperative — not a government department. Its approval proc
 
 ## Deployments they are associated with
 
-- [Amul Sarlaben](../pathways/amul-sarlaben.md) — deployer and data foundation owner
+* [Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe) — deployer and data foundation owner
 
 ## When this entity is relevant to an adopter
 

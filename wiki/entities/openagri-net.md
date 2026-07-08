@@ -1,9 +1,6 @@
 # OpenAgriNet
 
-**Type:** System / DPG ecosystem
-**Role:** Open-source AI infrastructure for agricultural advisory at scale
-**Geography:** India (primary); international (Ethiopia ATI first cross-geography deployment)
-**Contact or reference:** openagri.net
+**Type:** System / DPG ecosystem **Role:** Open-source AI infrastructure for agricultural advisory at scale **Geography:** India (primary); international (Ethiopia ATI first cross-geography deployment) **Contact or reference:** openagri.net
 
 ## What they are
 
@@ -13,11 +10,11 @@ The OAN pathway is the mechanism by which MahaVistaar's nine months of pioneer w
 
 ## Deployments they are associated with
 
-- [MahaVistaar](../pathways/mahavistaar.md) — pioneer OAN deployment; seven-layer architecture first deployed here
-- [Bharat-VISTAAR](../pathways/bharat-vistaar.md) — national DPI layer built on OAN DPGs
-- [Amul Sarlaben](../pathways/amul-sarlaben.md) — three-week deployment on OAN DPG foundation
-- [Ethiopia ATI](../pathways/ethiopia-ati.md) — first cross-geography OAN deployment
-- [Bihar Krishi](../pathways/bihar-krishi.md) — connected to OAN ecosystem via Bharat-VISTAAR
+* [MahaVistaar](../pathways/mahavistaar.md) — pioneer OAN deployment; seven-layer architecture first deployed here
+* [Bharat-VISTAAR](/broken/pages/VGFgrEvo55jInllGOyEC) — national DPI layer built on OAN DPGs
+* [Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe) — three-week deployment on OAN DPG foundation
+* [Ethiopia ATI](/broken/pages/qfEKhNo0InPc7RErnSIj) — first cross-geography OAN deployment
+* [Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn) — connected to OAN ecosystem via Bharat-VISTAAR
 
 ## When this entity is relevant to an adopter
 

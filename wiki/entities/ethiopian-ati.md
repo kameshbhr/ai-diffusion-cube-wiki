@@ -1,9 +1,6 @@
 # Ethiopian Administrative and Technical Institute (ATI)
 
-**Type:** Organisation
-**Role:** Deployer; network operator; national transformation institute
-**Geography:** Ethiopia — national
-**Contact or reference:** Contact via EkStep Foundation — ekstep.org
+**Type:** Organisation **Role:** Deployer; network operator; national transformation institute **Geography:** Ethiopia — national **Contact or reference:** Contact via EkStep Foundation — ekstep.org
 
 ## What they are
 
@@ -13,7 +10,7 @@ ATI is also the governance anchor for the Digital Agriculture Roadmap 2025–203
 
 ## Deployments they are associated with
 
-- [Ethiopia ATI](../pathways/ethiopia-ati.md) — deployer and network operator
+* [Ethiopia ATI](/broken/pages/qfEKhNo0InPc7RErnSIj) — deployer and network operator
 
 ## When this entity is relevant to an adopter
 

@@ -1,8 +1,6 @@
 # Trust Architecture
 
-**Type:** Synthesis
-**Deployments cited:** MahaVistaar, Amul Sarlaben, Bihar Krishi, Bharat-VISTAAR, Ethiopia ATI, Blue Dots AI
-**Last updated:** 2026-06-02
+**Type:** Synthesis **Deployments cited:** MahaVistaar, Amul Sarlaben, Bihar Krishi, Bharat-VISTAAR, Ethiopia ATI, Blue Dots AI **Last updated:** 2026-06-02
 
 ## The Pattern
 
@@ -24,31 +22,31 @@ Amul Sarlaben speaks as Amul. The cooperative relationship — 50 years of daily
 
 The name "Sarlaben" adds a second trust layer. It is a Gujarati woman's name — it signals that this system was built for a woman producer, in her language, on her terms. The system speaks Gujarati on any phone, including a basic landline. The name is reachable at a specific number (08035453545). These design choices are trust architecture: they signal before the first word is spoken that this is a system for the user calling, not a system the user is calling.
 
-[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md)
+[See full pathway: Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe)
 
 ### Bihar Krishi — state government attribution with national award validation
 
 Bihar Krishi speaks as the Bihar state government agriculture department, backed by the 4th Agriculture Roadmap. The national award recognition — ET DigiTech Gold and SKOCH Gold 2025 — provides an independent quality signal that supplements the institutional attribution. For farmers who are uncertain whether a government platform will actually work, third-party quality recognition provides a different kind of trust signal: not "trust this because the government says so" but "trust this because independent evaluators have verified it works."
 
-[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md)
+[See full pathway: Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn)
 
 ### Bharat-VISTAAR — ministerial attribution with PM endorsement
 
 Bharat-VISTAAR speaks as the Ministry of Agriculture and Farmers Welfare, Government of India. The national short code 155261 is associated with the national ministry. Prime Minister Modi's endorsement at the India AI Impact Summit 2026 added political visibility that supplements the ministerial attribution — not as a trust mechanism with individual farmers, but as a trust mechanism with state governments and institutional partners considering connection to the national layer. The trust architecture here operates at the institutional level (state governments trusting the national layer) as well as the farmer level.
 
-[See full pathway: Bharat-VISTAAR](../pathways/bharat-vistaar.md)
+[See full pathway: Bharat-VISTAAR](/broken/pages/VGFgrEvo55jInllGOyEC)
 
 ### Ethiopia ATI — national transformation mandate as trust source
 
 Ethiopia's deployment trust architecture is distinctive because ATI is a national transformation institute rather than a single ministry. The AI speaks as ATI, backed by the Ministry of Agriculture and the Digital Agriculture Roadmap 2025–2032. The advantage of ATI's institutional position over a single ministry is that ATI's mandate spans government functions — its institutional authority is broader and harder to challenge at the sectoral level. The Fayda integration (Ethiopia's national digital ID) adds a personalisation layer: when a farmer is registered with Fayda, the system can speak to them specifically, which strengthens trust by demonstrating that the system knows who is calling.
 
-[See full pathway: Ethiopia ATI](../pathways/ethiopia-ati.md)
+[See full pathway: Ethiopia ATI](/broken/pages/qfEKhNo0InPc7RErnSIj)
 
 ### Blue Dots AI — district administration as governance node
 
 Blue Dots AI's trust architecture is different from the agricultural deployments because the beneficiaries — informal workers seeking livelihoods opportunities — have lower baseline trust in government institutions than farmers served by established extension systems. The deployment's response is to place district administration as the governance node (institutional legitimacy) while using NGOs as the trust fabric (relational credibility with workers). District administration provides oversight and accountability; NGOs provide the relationship that makes a worker willing to share their skills profile. Neither alone is sufficient. The combination is the trust architecture.
 
-[See full pathway: Blue Dots AI](../pathways/blue-dots.md)
+[See full pathway: Blue Dots AI](/broken/pages/uuLUvqUaE9WM7YiEeH71)
 
 ## What This Means for a Next Adopter
 

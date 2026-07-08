@@ -6,7 +6,8 @@ The livelihoods AI deployment challenge is different from the agriculture adviso
 
 ## Pathways in this sector
 
-### [Blue Dots AI](../pathways/blue-dots.md)
+### [Blue Dots AI](/broken/pages/uuLUvqUaE9WM7YiEeH71)
+
 **Geography:** India — Dharwad (Karnataka), Ghaziabad (Uttar Pradesh) | **Actor type:** Civil society / Government partnership | **Status:** Active
 
 The pioneer deployment for the Blue Dots livelihoods discovery architecture. Documents the four-DPG approach (AI Diffusion, Signal, Aggregator, Facilitator), the flywheel compounding economics, and the four-lever ecosystem model (district administration as governance node, NGOs as trust fabric, MSMEs as data contributors, workers as signal generators). The reference for deployers attempting to surface informal labour demand in a district or city context.

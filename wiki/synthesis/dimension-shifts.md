@@ -1,8 +1,6 @@
 # Dimension Shifts
 
-**Type:** Synthesis
-**Deployments cited:** MahaVistaar, Bharat-VISTAAR, Amul Sarlaben, Bihar Krishi, Ethiopia ATI, Blue Dots AI
-**Last updated:** 2026-06-02
+**Type:** Synthesis **Deployments cited:** MahaVistaar, Bharat-VISTAAR, Amul Sarlaben, Bihar Krishi, Ethiopia ATI, Blue Dots AI **Last updated:** 2026-06-02
 
 ## The Pattern
 
@@ -36,7 +34,7 @@ The 70/30 observation running through this evidence is structural, not incidenta
 
 **B4 — FROM: Building the whole system TO: Adapting the reusable layer.** The compression from 9 months (MahaVistaar) to 3 months (Ethiopia ATI) to 3 weeks (Amul Sarlaben) was driven by the shift from building to adapting. Ethiopia evaluated what needed adaptation, not what needed construction. Amul adapted MahaVistaar's architecture, governance frameworks, and deployment playbooks to a cooperative data context in three weeks. The shift is from "we are building an AI system" to "we are contextualising a proven architecture."
 
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md) | [Amul Sarlaben](../pathways/amul-sarlaben.md)
+[See full pathway: MahaVistaar](../pathways/mahavistaar.md) | [Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe)
 
 ### C — Institution
 
@@ -46,7 +44,7 @@ The 70/30 observation running through this evidence is structural, not incidenta
 
 **C3 — FROM: Waiting for political permission TO: Building political support through demonstration.** Bharat-VISTAAR was announced in the Union Budget 2026-27 after state-level deployments had produced field evidence. The national allocation of Rs. 150 crore followed state-level proof, not preceded it. Prime Minister Modi's endorsement at the India AI Impact Summit followed working deployments, not proposals. The shift is from "we cannot act without political approval" to "we build the evidence that makes approval follow."
 
-[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md) | [Bharat-VISTAAR](../pathways/bharat-vistaar.md)
+[See full pathway: Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn) | [Bharat-VISTAAR](/broken/pages/VGFgrEvo55jInllGOyEC)
 
 ### D — Ecosystem
 
@@ -58,7 +56,7 @@ The 70/30 observation running through this evidence is structural, not incidenta
 
 **D4 — FROM: Equal-weight partnerships TO: Network operator primacy.** Every documented deployment has one organisation that holds the "network operator" role — the institution that says "this runs in my name" and bears responsibility for the system's outputs. EkStep Foundation in MahaVistaar, ATI in Ethiopia, Amul in Sarlaben, the Ministry of Agriculture in Bharat-VISTAAR. Without this anchor, accountability diffuses and nothing moves. The shift is from "we are all equal partners in this consortium" to "one institution is accountable, and the others contribute under that anchor."
 
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md) | [Blue Dots AI](../pathways/blue-dots.md)
+[See full pathway: MahaVistaar](../pathways/mahavistaar.md) | [Blue Dots AI](/broken/pages/uuLUvqUaE9WM7YiEeH71)
 
 ### E — Workforce
 
@@ -68,7 +66,7 @@ The 70/30 observation running through this evidence is structural, not incidenta
 
 **E3 — FROM: AI as answer machine TO: AI as agency amplifier.** The Amul Sarlaben deployment documented a specific field finding: younger family members who lack thirty years of dairy experience can now access expert knowledge through Sarlaben — "informed, therefore powerful to make choices; freedom comes from knowing, and nobody can fool me." This equaliser effect was not designed in — it emerged from the field. The watchword from the same deployment: information alone is not the point; there is skill in the hand that counts for more than information in the head. AI should make the farmer's or worker's skill more precise, not substitute for it. The shift is from "AI provides the answer" to "AI provides the information that enables the person to act more capably."
 
-[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md) | [Amul Sarlaben](../pathways/amul-sarlaben.md)
+[See full pathway: Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn) | [Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe)
 
 ### F — Operating Model
 
@@ -80,7 +78,7 @@ The 70/30 observation running through this evidence is structural, not incidenta
 
 **F4 — FROM: Cold-start deployment TO: Compression through reuse.** The compression from 9 months to 3 months to 3 weeks is the operational evidence for this shift. Each subsequent deployment started from a higher floor because predecessor deployments had codified their architecture, governance frameworks, and failure modes. The shift is from "every deployment starts from the beginning" to "every deployment starts from the highest point the prior deployment reached."
 
-[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md) | [Bihar Krishi](../pathways/bihar-krishi.md)
+[See full pathway: Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe) | [Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn)
 
 ## What This Means for a Next Adopter
 

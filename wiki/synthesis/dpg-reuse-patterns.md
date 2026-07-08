@@ -1,8 +1,6 @@
 # DPG Reuse Patterns
 
-**Type:** Synthesis
-**Deployments cited:** MahaVistaar, Amul Sarlaben, Bihar Krishi, Ethiopia ATI, Blue Dots AI, Bharat-VISTAAR
-**Last updated:** 2026-06-02
+**Type:** Synthesis **Deployments cited:** MahaVistaar, Amul Sarlaben, Bihar Krishi, Ethiopia ATI, Blue Dots AI, Bharat-VISTAAR **Last updated:** 2026-06-02
 
 ## The Pattern
 
@@ -28,7 +26,7 @@ Bharat-VISTAAR reused the OAN DPG architecture directly. The six-month compressi
 
 What Bharat-VISTAAR added to the DPG library: the hub-and-spoke federation architecture pattern, the national scheme integration approach (PM-KISAN, PMFBY, Soil Health Card, Kisan Credit Card), and the national voice short-code access model (155261).
 
-[See full pathway: Bharat-VISTAAR](../pathways/bharat-vistaar.md)
+[See full pathway: Bharat-VISTAAR](/broken/pages/VGFgrEvo55jInllGOyEC)
 
 ### Amul Sarlaben — DPG adaptation to cooperative context
 
@@ -36,7 +34,7 @@ Amul Sarlaben is the sharpest example of DPG reuse. The three-week deployment wa
 
 What Amul Sarlaben contributed to the DPG library: the cooperative data architecture pattern (connecting 50 years of transaction data to AI advisory without centralising or exposing raw records), the plus-one service extension sequence (how to grow a cooperative AI deployment beyond advisory one step at a time), and the trust design pattern (how to signal institutional identity and user-centricity through naming and voice persona).
 
-[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md)
+[See full pathway: Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe)
 
 ### Ethiopia ATI — first cross-geography reuse
 
@@ -46,7 +44,7 @@ What did not transfer: the 54-enabler ecosystem. Ethiopia required entirely diff
 
 What Ethiopia ATI contributed to the DPG library: the national transformation institute as network operator model (applicable to countries where no single ministry has cross-institutional authority), the climate intelligence integration design (embedding real-time climate signals into farm advisory for COP and climate-vulnerable contexts), and the proof that the DPG library transfers across geographies with adaptation rather than reconstruction.
 
-[See full pathway: Ethiopia ATI](../pathways/ethiopia-ati.md)
+[See full pathway: Ethiopia ATI](/broken/pages/qfEKhNo0InPc7RErnSIj)
 
 ### Bihar Krishi — independent build, then DPG connection
 
@@ -54,7 +52,7 @@ Bihar Krishi was not built on OAN DPGs initially — it was built independently 
 
 The Bihar Krishi pattern has both advantages and costs. The advantage: Bihar could move at its own pace and on its own terms, without waiting for the OAN DPG library to be available. The cost: Bihar's build took longer and likely cost more than it would have if it had started from the OAN DPG foundation. The retrospective connection to Bharat-VISTAAR gave Bihar access to national scheme data, ICAR advisory, and AgriStack integration that it did not have as a standalone deployment — these are the benefits Bihar could not have achieved independently.
 
-[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md)
+[See full pathway: Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn)
 
 ### Blue Dots AI — DPG for livelihoods, distinct architecture
 
@@ -62,7 +60,7 @@ Blue Dots AI introduces a distinct DPG set for livelihoods discovery — the Fou
 
 The Blue Dots DPG library is at an earlier stage of codification than the OAN agriculture DPGs — the Dharwad and Ghaziabad deployments are the initial pilots, and the compression from ten months to four months is early evidence that the DPG reuse pattern is beginning to hold. The livelihoods DPG library is in the same position the OAN agriculture library was in after MahaVistaar: one pioneer deployment has produced the assets, and the question is whether subsequent deployments will use and extend them.
 
-[See full pathway: Blue Dots AI](../pathways/blue-dots.md)
+[See full pathway: Blue Dots AI](/broken/pages/uuLUvqUaE9WM7YiEeH71)
 
 ## What Transfers, What Does Not
 

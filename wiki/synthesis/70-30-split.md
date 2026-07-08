@@ -1,8 +1,6 @@
 # 70-30 Split
 
-**Type:** Synthesis
-**Deployments cited:** MahaVistaar, Amul Sarlaben, Bihar Krishi, Ethiopia ATI, Blue Dots AI, Bharat-VISTAAR
-**Last updated:** 2026-06-02
+**Type:** Synthesis **Deployments cited:** MahaVistaar, Amul Sarlaben, Bihar Krishi, Ethiopia ATI, Blue Dots AI, Bharat-VISTAAR **Last updated:** 2026-06-02
 
 ## The Pattern
 
@@ -30,7 +28,7 @@ Bharat-VISTAAR required a Union Budget announcement, ministerial launch, and Pri
 
 Ethiopia ATI's three-month deployment timeline was enabled by ATI's national transformation mandate — a pre-existing institutional authority that could align the Ministry of Agriculture, meteorological services, and research institutes without requiring new institutional arrangements. Countries attempting a similar deployment without an equivalent of ATI would need to create that institutional alignment first, which would likely be the longest part of the deployment.
 
-[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md) | [Bharat-VISTAAR](../pathways/bharat-vistaar.md)
+[See full pathway: Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn) | [Bharat-VISTAAR](/broken/pages/VGFgrEvo55jInllGOyEC)
 
 ### D — Ecosystem (part of the 70%)
 
@@ -38,7 +36,7 @@ MahaVistaar required 54 ecosystem partners across four layers (institutional/gov
 
 Amul Sarlaben's ecosystem was significantly smaller — Amul holds institutional, data, and member-relationship roles that required multiple separate organisations in state government deployments. This was a structural advantage of the cooperative model, not a technology advantage. The smaller ecosystem (primarily internal cooperative functions plus EkStep/OpenAgriNet for DPG deployment and Bhashini for language support) is what enabled the three-week deployment. The technology was the same as MahaVistaar; the ecosystem was simpler.
 
-[See full pathway: MahaVistaar](../pathways/mahavistaar.md) | [Amul Sarlaben](../pathways/amul-sarlaben.md)
+[See full pathway: MahaVistaar](../pathways/mahavistaar.md) | [Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe)
 
 ### E — Workforce (part of the 70%)
 
@@ -46,13 +44,13 @@ Bihar Krishi trained 15,000+ extension workers across 38 districts. The Six Orth
 
 Amul Sarlaben's workforce transition is structurally different: the 1,400 veterinary doctors whose records feed the system had their role change from the primary advisory source to a second-level escalation for cases the AI cannot resolve. This transition did not require a training programme — the cooperative relationship already structured the veterinary network's role. The absence of a documented workforce resistance challenge in Amul contrasts with the Bihar Krishi training requirement: cooperative workforces and government extension officer workforces have different starting conditions.
 
-[See full pathway: Bihar Krishi](../pathways/bihar-krishi.md)
+[See full pathway: Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn)
 
 ### F — Operating Model (part of the 70%)
 
 Blue Dots AI's livelihoods deployment documents the operating model challenge at its most explicit. The flywheel economics (more employers → richer demand signals → more relevant matches → more workers trust the system → more employer participation) only compound if operations are sustained. The Dharwad district deployment (10 months) and Ghaziabad deployment (4 months) are documented as proofs of the flywheel — but sustaining the flywheel requires sustained operations, not sustained technology investment. The district administration governance node, NGO trust fabric, and MSME data contribution are all non-technology operating model commitments.
 
-[See full pathway: Blue Dots AI](../pathways/blue-dots.md)
+[See full pathway: Blue Dots AI](/broken/pages/uuLUvqUaE9WM7YiEeH71)
 
 ## What This Means for a Next Adopter
 

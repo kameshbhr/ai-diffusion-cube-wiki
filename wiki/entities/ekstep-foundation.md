@@ -1,9 +1,6 @@
 # EkStep Foundation
 
-**Type:** Organisation
-**Role:** Technical partner; DPG developer; ecosystem orchestrator
-**Geography:** India; international
-**Contact or reference:** ekstep.org
+**Type:** Organisation **Role:** Technical partner; DPG developer; ecosystem orchestrator **Geography:** India; international **Contact or reference:** ekstep.org
 
 ## What they are
 
@@ -11,12 +8,12 @@ EkStep Foundation is a not-for-profit technology organisation that builds digita
 
 ## Deployments they are associated with
 
-- [MahaVistaar](../pathways/mahavistaar.md) — primary technical architect and deployment partner
-- [Bharat-VISTAAR](../pathways/bharat-vistaar.md) — technical partner for national DPI architecture
-- [Amul Sarlaben](../pathways/amul-sarlaben.md) — DPG deployment and technical support
-- [Bihar Krishi](../pathways/bihar-krishi.md) — connection to Bharat-VISTAAR national layer
-- [Ethiopia ATI](../pathways/ethiopia-ati.md) — technical deployment support; OAN asset transfer
-- [Blue Dots AI](../pathways/blue-dots.md) — DPG developer for livelihoods discovery architecture
+* [MahaVistaar](../pathways/mahavistaar.md) — primary technical architect and deployment partner
+* [Bharat-VISTAAR](/broken/pages/VGFgrEvo55jInllGOyEC) — technical partner for national DPI architecture
+* [Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe) — DPG deployment and technical support
+* [Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn) — connection to Bharat-VISTAAR national layer
+* [Ethiopia ATI](/broken/pages/qfEKhNo0InPc7RErnSIj) — technical deployment support; OAN asset transfer
+* [Blue Dots AI](/broken/pages/uuLUvqUaE9WM7YiEeH71) — DPG developer for livelihoods discovery architecture
 
 ## When this entity is relevant to an adopter
 

@@ -1,8 +1,6 @@
 # Compression Proof
 
-**Type:** Synthesis
-**Deployments cited:** MahaVistaar, Amul Sarlaben, Ethiopia ATI
-**Last updated:** 2026-06-02
+**Type:** Synthesis **Deployments cited:** MahaVistaar, Amul Sarlaben, Ethiopia ATI **Last updated:** 2026-06-02
 
 ## The Pattern
 
@@ -22,13 +20,13 @@ Maharashtra's state agriculture AI deployment took nine months from commitment t
 
 Ethiopia's national agriculture AI deployment took three months from commitment to formal launch in February 2026. Ethiopia was the first country outside India to deploy the OAN pathway. The deployment's evaluators — ATI, OpenAgriNet, EkStep Foundation — assessed what the Ethiopian context required that was different from Maharashtra's, and what it did not need to rebuild. The answer was: the architecture, governance frameworks, language pipeline methodology, data connector approach, model evaluation benchmarks, and failure mode library all transferred. What needed adaptation was the institutional context (ATI as national transformation institute rather than state agriculture department), the language pipeline (Oromo and other Ethiopian languages rather than Marathi), and the data connector approach (Fayda national digital ID rather than AgriStack). Adaptation, not construction, took three months. Without the MahaVistaar assets, the OAN Diffusion Pathway documents that the same deployment would have taken significantly longer.
 
-[See full pathway: Ethiopia ATI](../pathways/ethiopia-ati.md)
+[See full pathway: Ethiopia ATI](/broken/pages/qfEKhNo0InPc7RErnSIj)
 
 ### Amul Sarlaben — 3 weeks
 
 Amul's cooperative dairy AI deployment took three weeks from commitment to deployment at full cooperative scale (3.6 million members). This is the fastest documented deployment on the OAN pathway as of March 2026. The compression from three months to three weeks was driven by two factors: Amul's cooperative data foundation was the richest of any documented deployment (50 years of records, 2 billion procurement transactions, 30 million cattle with unique IDs), requiring minimal data connection work; and Amul's institutional context as a private cooperative meant approval came through cooperative leadership rather than government procurement, removing the institutional complexity that added time in Ethiopia. The entire OAN asset library was available; the adaptation task was focused and well-scoped.
 
-[See full pathway: Amul Sarlaben](../pathways/amul-sarlaben.md)
+[See full pathway: Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe)
 
 ## What This Means for a Next Adopter
 

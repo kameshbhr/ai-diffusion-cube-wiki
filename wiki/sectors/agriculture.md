@@ -7,26 +7,31 @@ The distinctive challenges in agriculture AI deployments are: language and acces
 ## Pathways in this sector
 
 ### [MahaVistaar](../pathways/mahavistaar.md)
+
 **Geography:** India — Maharashtra | **Actor type:** Government | **Status:** Active
 
 The pioneer OAN deployment and the source of the DPG architecture, governance frameworks, and failure mode library that all subsequent deployments reused. The definitive reference for deployers building from scratch in a new state context.
 
-### [Bharat-VISTAAR](../pathways/bharat-vistaar.md)
+### [Bharat-VISTAAR](/broken/pages/VGFgrEvo55jInllGOyEC)
+
 **Geography:** India — national | **Actor type:** Government | **Status:** Active
 
 India's national digital public infrastructure for agriculture — the hub-and-spoke federation layer that connects state and cooperative platforms to national scheme data, ICAR advisory, and AgriStack. The reference for deployers thinking about national architecture.
 
-### [Amul Sarlaben](../pathways/amul-sarlaben.md)
+### [Amul Sarlaben](/broken/pages/CvkYDreqsGaIAPd4DhZe)
+
 **Geography:** India — Gujarat | **Actor type:** Cooperative | **Status:** Active
 
 The fastest documented OAN deployment (three weeks). The reference for cooperative deployers with an existing member data foundation. Documents the plus-one service extension sequence and the trust design pattern for a woman-centred advisory system.
 
-### [Bihar Krishi](../pathways/bihar-krishi.md)
+### [Bihar Krishi](/broken/pages/BVetJI7LT04tWO9ekmVn)
+
 **Geography:** India — Bihar | **Actor type:** Government | **Status:** Active
 
 Built independently with different partners and then connected to Bharat-VISTAAR retroactively. The reference for deployers who build outside the OAN DPG library and then seek national layer connection. Documents large-scale extension worker training at 15,000+ across 38 districts.
 
-### [Ethiopia ATI](../pathways/ethiopia-ati.md)
+### [Ethiopia ATI](/broken/pages/qfEKhNo0InPc7RErnSIj)
+
 **Geography:** Ethiopia — national | **Actor type:** Government | **Status:** Active
 
 The first OAN deployment outside India. The reference for international deployers evaluating the OAN pathway for their context. Documents the national transformation institute as network operator model and climate intelligence integration for COP contexts.
