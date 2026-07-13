@@ -52,5 +52,5 @@ Master index of all wiki pages. Updated on every ingest or page creation.
 
 | Page                           | Summary                                                                                                                                                    |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Six Dimensions Framework](./) | The six orthogonal dimensions — problem orientation, architecture, institution, ecosystem, workforce, operating model — that structure every pathway page. |
+| [Seven Dimensions Framework](framework.md) | The seven orthogonal dimensions — problem, architecture, data, institution, ecosystem, workforce, operating model — that structure every pathway page. |
 | [Log](log.md)                  | Append-only chronological log of all wiki operations.                                                                                                      |
