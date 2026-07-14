@@ -57,21 +57,10 @@ Symbols show density only — how many tagged units exist per cell.
 
 ### Known gaps in the pathway
 
-- *(Data, Explore)* What data would this system need, and does any of it already exist in usable form?
-- *(Institution, Explore)* Who inside the institution has to personally want this to work, and do they know yet — by name?
-- *(Ecosystem, Explore)* Who else has tried to solve this for this population, and what happened?
-- *(Workforce, Explore)* Who are the frontline people who reach this user, and how do they see AI?
-- *(Operating Model, Explore)* What would this cost to set up and run annually, at least as an order of magnitude?
-- *(Problem Orientation, Define)* What is the one question a user will ask that this system must answer, and what does success look like in binary terms?
-- *(Problem Orientation, Pilot)* Which user interactions are actually failing during the pilot — is it a scope problem or a quality problem?
-- *(Data, Pilot)* When a data source starts giving stale or wrong answers, how quickly does its owner fix it — and what's the response time?
-- *(Data, Scale)* Which data source is breaking under scale, and is there a formal SLA in place for it?
-- *(Institution, Pilot)* What has the institution seen fail publicly, and did it own the failure or disown it?
-- *(Institution, Scale)* Has the institution absorbed this as an ongoing service — budget line, named owner, review cadence — or is it still the project team's problem?
-- *(Ecosystem, Pilot/Scale)* Which partner is underperforming, and is there a named alternative to switch to?
-- *(Workforce, Pilot)* Are the intended users actually using this system, or working around it?
-- *(Workforce, Scale)* Is there evidence that users are becoming more capable over time, or just more dependent on the system?
-- *(Operating Model, Define)* What does this need to demonstrate for the institution to commit to a real pilot, and by when?
+- *(Operating Model, Explore)* This pathway has cost-tracking techniques for Pilot and Scale, but nothing for an early, rough cost estimate at Explore — is there a reliable way to do that before committing to build?
+- *(Institution, Scale)* This pathway doesn't say how to tell whether an institution has genuinely absorbed the service (budget, named owner, review cadence) versus still running it informally through the founding team. Is there a reliable way to tell the difference?
+- *(Workforce, Scale)* Unit 25 states the intended goal (extend capacity, don't create dependency) but there's no documented way to measure which outcome actually happened — is there a transferable indicator (e.g., growing specificity of caller questions over time)?
+- *(Operating Model, Define)* This pathway doesn't say what a prototype needs to prove — or by when — for an institution to commit to a full pilot. Is there a reliable way to set that threshold?
 
 ---
 
