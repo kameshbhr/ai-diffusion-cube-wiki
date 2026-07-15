@@ -42,7 +42,7 @@ Density: ●●● = 3+ units · ●● = 2 units · ● = 1 unit · ○ = 0 uni
 
 | Dimension | Explore | Define | Pilot | Scale |
 |---|---|---|---|---|
-| Problem Orientation | ●● | ○ | ○ | ○ |
+| Problem Orientation | ● | ○ | ○ | ○ |
 | Architecture | ○ | ●●● | ○ | ○ |
 | Data | ● | ●●● | ●● | ● |
 | Institution | ○ | ●●● | ○ | ○ |
@@ -54,17 +54,14 @@ Density: ●●● = 3+ units · ●● = 2 units · ● = 1 unit · ○ = 0 uni
 
 ### Known gaps in the pathway
 
-- *(Problem Orientation, Explore)* Were there any early warning signs that would tell a team they'd mis-mapped a language or dialect boundary before going into full-scale data collection?
 - *(Problem Orientation, Scale)* Beyond usage numbers, did the project track any real-world outcome — like an actual change in a farmer's life — to show impact on the community?
 - *(Data, Define)* Did the project use a specific sentence-selection methodology — like a coverage logic or sourcing method — beyond just the volume targets, to guide corpus construction for a language with limited written material?
 - *(Data, Pilot)* Was there a specific WER, BLEU, or MOS score that the team used as the bar for "accurate enough to release more widely"?
 - *(Data, Define)* How does the project handle India's DPDP 2023 data protection law for this data — who is the data fiduciary, and can contributors withdraw consent even though the dataset is hosted openly?
-- *(Institution, Define)* If the District Collector or another convening authority gets transferred mid-project, is there a backup plan to keep things moving?
 - *(Institution, Define)* What kinds of problems did the monitoring process actually catch during data collection — fake submissions, unfair treatment of contributors, misuse of funds, something else — and how were they handled?
 - *(Institution, Scale)* Once the PMU winds down, is there a plan to make sure knowledge about the dataset, the model, and community relationships doesn't just leave with the team?
 - *(Ecosystem, Define)* For a language with no academic tradition, how do you actually find or train someone to serve as a linguistic validator?
 - *(Ecosystem, Define)* Beyond having the pipeline and role structure in place, how were community annotators and validators actually trained and quality-checked at volume?
-- *(Ecosystem, Define)* Beyond just having a PMU, what did its day-to-day operating charter actually look like — who had decision authority, how were issues escalated, how often did people check in?
 - *(Ecosystem, Pilot)* Besides the one Tribaldaan conclave at the start, were there other touchpoints that kept the community's trust through the weeks of data collection?
 - *(Operating Model, Scale)* If a downstream deployment like MahaVISTAAR finds the model getting something wrong, is there a process to report that back to the team that owns the model — and does it trigger a fix or retraining?
 - *(Operating Model, Scale)* Now that the dataset is open and the plan is to hand over from district to state, who's actually responsible for updating it, funding it, and deciding what happens to it next?
@@ -82,16 +79,6 @@ Density: ●●● = 3+ units · ●● = 2 units · ● = 1 unit · ○ = 0 uni
 - Decision: Framed the effort as solving language exclusion — a specific Dehvali Bhili speaker in Nandurbar, often with low or no literacy, using a keypad phone or basic Android handset, unable to access services designed for majority languages — rather than starting from a technology capability.
 - Alternative considered: Not documented in the source.
 - Condition — applies when: A project risks starting with "what can this technology do" instead of "who is excluded, and why."
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
-
-**2. Define the target language precisely; dialect mapping precedes collection**
-- Dimension: Problem Orientation
-- Stage: Explore
-- Type: Strategic Decision
-- Decision: Mapped dialect variation before starting collection — a single district (Nandurbar) alone spans 18+ languages and dialects including Bhili, Pawari, Kokani, and Mavchi, and Dehvali Bhili itself is one dialect within a roughly ten-million-speaker regional language spanning multiple states.
-- Alternative considered: Not documented in the source.
-- Condition — applies when: A "language" name is being used as a single label that may actually mask significant dialect variation.
 - Before → After: Not documented in the source.
 - Source: Project Astitva.
 
