@@ -1,4 +1,4 @@
-# Enabling Voice AI Models — Language Enablement Pathway
+# Language Enablement for AI
 
 ## 0. Reading guide
 
