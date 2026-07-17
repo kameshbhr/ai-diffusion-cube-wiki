@@ -1,4 +1,4 @@
-# MahaVistaar — Pathway
+# Advisory system for farmers
 
 **Deployment:** MahaVistaar — Maharashtra Agricultural AI Advisory System
 **Contributor:** Department of Agriculture, Government of Maharashtra; EkStep Foundation; OpenAgriNet
