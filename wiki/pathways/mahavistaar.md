@@ -1,301 +1,534 @@
-# Advisory system for farmers
+# Agricultural Advisory System for Farmers
 
-**Deployment:** MahaVistaar — Maharashtra Agricultural AI Advisory System
-**Contributor:** Department of Agriculture, Government of Maharashtra; EkStep Foundation; OpenAgriNet
-**Sector:** Agriculture
-**Geography:** India — Maharashtra (statewide; initially selected Kharif districts)
-**Actor type:** Government
-**Journey stage:** Scaling
-**Dimensions covered:** A, B, C, D, E, F
-**Horizontal or vertical:** Vertical (sector-specific — agriculture)
-**Deployment status:** Active
-**Last updated:** 2026-06-02
-**Contact for peer connection:** EkStep Foundation — ekstep.org
+## 0. Reading guide
 
-## Summary
+This is a **vertical pathway**: a single state government deployment, documented end to end — from the structural problem it responds to, through its production serving architecture down to the GPU, to the cost economics that shaped its next scaling decision. MahaVistaar is not an adopter of a pre-existing playbook; it is the pioneer deployment that the OpenAgriNet (OAN) pathway itself was built from. Everything documented here was built without a prior template, which is also why the Architecture and Operating Model dimensions are unusually deep — they carry the level of technical and cost detail that later adopters (Bharat-VISTAAR nationally, Amul's Sarlaben in Gujarat, OpenAgriNet Ethiopia) were able to reuse rather than rediscover.
 
-MahaVistaar is Maharashtra's state-level voice AI advisory system for farmers, connecting crop advisories, weather, market prices, government schemes, and grievance tracking through a single voice call on any phone. Built in nine months by the Department of Agriculture, Maharashtra, it generated 342,000+ unique users, answered 1.67 million+ farmer questions, and now reaches 17 lakh farmers daily through proactive voice alerts. It is the pioneer deployment on the OpenAgriNet pathway and carries every transferable asset subsequent deployments have reused.
+**Why this pathway exists.** A Marathi-speaking farmer's question — "my paddy is standing, should I harvest now?" — needs weather data, market prices, and crop-stage advisory that sit in three different institutions, none of which were built to talk to each other. Separately, the farmer most likely to need that answer is also the farmer least likely to reach it through a portal: low literacy, a basic phone, no reliable internet. MahaVistaar exists because those two problems — institutional fragmentation and structural exclusion — do not resolve on their own, and because voice, not an app, is the access channel that dissolves literacy, device, and language barriers simultaneously. The throughline across this material is that AI here is a delivery and coordination layer sitting above institutions that remain the actual authority — the Department of Agriculture, the state agricultural university, IMD — not a replacement for them.
+
+**How to navigate**
+- If you're deciding whether the problem is real before building anything — start with Problem Orientation.
+- If you're designing the serving stack itself — start with Architecture; this is where almost all of the load-bearing detail sits.
+- If you're scoping what data the system should touch and how — start with Data.
+- If you're trying to get institutional buy-in and ownership right — start with Institution.
+- If you're mapping who needs to be involved — start with Ecosystem, particularly the 54-enabler map (Unit 26).
+- If you're worried about serving cost or GPU capacity — go straight to Operating Model, Units 24–26.
 
 ---
 
-## A — Problem Orientation
+## 1. Pathway identity
 
-*What you build on.*
-
-**Who were you trying to serve, and what specific problem were you solving for them?**
-Maharashtra serves 152 lakh hectares of Kharif cropland and millions of smallholder farmers who had no single point of access to integrated agricultural guidance. The specific problem was fragmentation: the state agricultural university held crop knowledge, IMD held weather, APMCs held market prices, MahaDBT held scheme status — none of these talked to each other, and none was accessible to a farmer through a single voice call. A Marathi-speaking farmer in Raigad asking "my paddy is still standing — should I harvest now?" needed current weather, local market prices, and crop-stage advisory from a university simultaneously. No single institution could answer it. Together they could — but they were never designed to work together.
-
-**Who defined the problem — the deployer, the institution, or the user — and how do you know the user agrees?**
-The Department of Agriculture, Maharashtra, defined the institutional problem — fragmented advisory channels and inaccessibility for the majority of farmers. The evidence that users agreed came rapidly after deployment: 205,000 crop/pest advisory queries per month, with farmers asking hyper-specific questions such as "leaf curling in chilli — what to do?" and "can guava be grown on my land?" The query volume itself confirmed the problem framing was accurate.
-
-**How did you define your success metrics — are they usage based or outcome based?**
-The deployment team tracked unique users, total questions answered, sessions (as an indicator of repeat engagement), and farmer feedback rate. As of early 2026: 342,000+ unique users, 1.67 million+ questions answered, 791,000+ sessions, 97–98.5% positive feedback rate. The shift toward proactive outbound alerts (17 lakh farmers reached daily) marked a move toward outcome-adjacent metrics. Full agronomic outcome metrics — yield change, input cost reduction — were not yet systematically measured at this stage.
-
-**Did you discover something in the field that you hadn't anticipated when defining the problem or designing the solution?**
-The OAN Diffusion Pathway documents that dialect variation and API instability were not anticipated and required nine months of operational learning. The deployment team also discovered that the system's categories needed to match farmers' mental models, not the department's organisational chart. Grouping use cases by what farmers are trying to do (asking about a sick crop, checking scheme eligibility, tracking an application) produced a different and more adoptable architecture than grouping by technical taxonomy. The inbound/outbound distinction also became clearer in practice: the shift from a platform that waited for questions to one that proactively pushed crop calendar advisories was identified as the move from useful to indispensable.
-
-**Was there data already available to start with, or did you have to build or collect it first?**
-Maharashtra had fragmented advisory platforms, university databases, weather services, and market data — all working in isolation. The deployment team reports that the feasibility question was not "what do we need?" but "what can be joined?" Every department had APIs that had never been called. The moment AI wired them together, officials were confronted with what their own data could show. No new data infrastructure was built before deployment began; the connection itself was the intervention.
-
-**Why did this problem need AI — what would a non-AI solution have missed?**
-The state had historically barely one agriculture field officer for every 2,000 farmers in comparable states. A non-AI advisory model scales with staff; an AI advisory model scales with usage. Beyond scale, AI was needed to perform real-time cross-institutional synthesis: a farmer's question routinely requires weather data, soil data, crop advisory, and scheme eligibility to be assembled and answered in one response in the farmer's language within seconds. No human extension system could do this at the moment of query. AI also revealed institutional data gaps — 205,000 monthly queries created a visible, quantified demand signal for knowledge that had previously been tacit.
-
-**What were the access constraints of your users — language, literacy, connectivity — and how did that shape what you built?**
-The majority of Maharashtra's smallholder farmers are Marathi-speaking, many with limited literacy and basic feature phones rather than smartphones. The OAN Diffusion Pathway documents this as a structural inclusion problem, not a marginal one: a determined person would need a smartphone, reliable internet, sufficient literacy, and the right language to access what government portals already held. MahaVistaar was designed voice-first for this reason. The short code is 155313. The system supports Marathi, Hindi, Bhili, and English, with a bilingual Marathi↔English agricultural glossary built as a core component.
-
-**Did you design the system to wait for users to come to it, or did it reach out to them too?**
-Both modes operate. Inbound: farmers call 155313 with questions. In December 2025, the system was receiving over 440,000 categorised queries per month. Outbound: the system proactively pushes crop calendar advisories, pest alerts (e.g., "pink bollworm detected in your region"), and weather warnings to registered farmers before they ask. Roughly 15 stage-based advisories are delivered proactively across the crop calendar. The second phase of MahaVistaar was explicitly designed to complete the shift from a platform that waits for questions to one that anticipates needs.
+| Field | Detail |
+|---|---|
+| Deployment/Pathway name | MahaVistaar — State Agricultural Advisory Platform |
+| Sector | Agriculture (crop, livestock, and fisheries advisory), extending to scheme/subsidy discovery and market information |
+| Actor type | Government (Department of Agriculture, Government of Maharashtra), Technologist/orchestration (EkStep Foundation, COSS, Samagra, Artha Global), Academic/Research (IIT Mumbai, IISc, Vassar Labs), National infrastructure (Bhashini, AI4Bharat, India AI Mission) |
+| Geography | Maharashtra, India — India's second-largest state by GDP, 152 lakh hectares of Kharif cropland |
+| Population served | Farmers statewide across crops, livestock, and fisheries; 342,000+ unique users, 1.67 million+ questions answered, 791,000+ sessions, 17 lakh farmers reached daily through proactive voice alerts (as of early 2026) |
+| Stage reached | Production, scaling — live and operating for roughly nine months at the point these sources were written; a self-hosted inference migration is complete, and the next scaling step (TP=8, moderation isolated onto its own node) is planned but not yet executed |
+| Contributing organisation | Department of Agriculture, Government of Maharashtra (lead); EkStep Foundation, COSS, Samagra, Artha Global (orchestration and implementation); Karya, Bhashini, AI4Bharat (language and AI); IIT Mumbai, IISc, Vassar Labs (research); ICAR-affiliated universities — MPKV, VNMAU, PDKV, GAVASU (knowledge) |
+| Source deployments | MahaVistaar is the origin deployment of the OAN pathway, not a downstream adopter. It became the architectural and governance basis that Bharat-VISTAAR (India's national agricultural DPI), Amul's Sarlaben (Gujarat dairy cooperative), and OpenAgriNet Ethiopia each drew on directly, deploying in three weeks and three months respectively rather than MahaVistaar's original nine. |
+| Dimensions covered | Architecture is documented exhaustively — serving topology, GPU sizing, and cost economics down to the rupee — reflecting the production internal note as a source. Institution and Ecosystem are covered at the level of principle and enabler-mapping, not day-to-day operational detail. Workforce carries no units of its own: extension officers appear only as a named user class, never as a locus of their own decisions. Outcome-level impact (yield, income, decision quality) is undocumented throughout; what's documented is usage and satisfaction. |
+| Last updated | Not stated in the source; the internal note's data is anchored to November 2025 and describes a Langfuse integration planned for "this week," suggesting the underlying material is current to roughly early 2026 |
+| Contact for peer connection | Not stated in the source |
+| Summary | MahaVistaar is a Maharashtra state government platform that unifies fragmented agricultural advisory — university knowledge, weather, market prices, scheme status — behind a single voice-and-text interface, with institutions remaining the cited authority behind every answer. Built from scratch in nine months with no prior playbook, it has since migrated its serving stack from commercial per-token inference to a self-hosted GPU cluster, cutting cost per question by roughly 180× while becoming the architectural template three other OAN deployments reused directly. |
 
 ---
 
-## B — Architecture
+## 2. Coverage grid
 
-*What you build with.*
+Density: ●●● = 3+ units · ●● = 2 units · ● = 1 unit · ○ = 0 units
 
-**Did you need data sources that were controlled by other departments or organisations — if so, what did it actually take to get access?**
-Yes. The deployment required data-sharing across the Department of Agriculture, state agricultural universities (MPKV, VNMAU, PDKV, PDKV), IMD, Skymet, APMCs (307 market committees), MahaDBT (40+ government schemes), AgriStack (farmer and farm registry), soil labs, and KVKs. The OAN Pathway documents that the Department of Agriculture authorised data-sharing across its own systems and from its agricultural universities — this institutional authorisation was the system leadership work that made everything else possible. Specific negotiation timelines for each data source are not documented in available sources.
+| Dimension | Explore | Define | Pilot | Scale |
+|---|---|---|---|---|
+| Problem Orientation | ●●● | ● | ● | ○ |
+| Architecture | ○ | ●●● | ●● | ● |
+| Data | ○ | ●●● | ● | ○ |
+| Institution | ● | ●●● | ○ | ○ |
+| Ecosystem | ○ | ●●● | ○ | ○ |
+| Workforce | ○ | ○ | ●●● | ○ |
+| Operating Model | ● | ○ | ●● | ○ |
 
-**Did you bring data together into one place or connect to it where it lived — and why?**
-Data was connected to where it lived rather than centralised. The orchestrating AI agent connects to institutional data sources as tools at the moment of query. Raw institutional data never moves to a central repository. The OAN architecture principle is explicit: data stays with its legitimate owner; the AI reaches it through APIs with farmer consent at the moment of query. This choice was made for both sovereignty reasons (government data remaining with government institutions) and compliance reasons (alignment with India's Digital Personal Data Protection Act).
+### Known gaps in the pathway
 
-**For each major component of your system — did you build it, buy it, or reuse something that existed? Would you make the same choices again?**
-The MahaVistaar system was built on OpenAgriNet's open-source building blocks — the same 7-layer architecture (user, interface, moderation, AI decision engine, knowledge/scientific models, live data sources, DPI foundation) reused across subsequent deployments. The production serving stack (documented in the MahaVistaar Architecture Note, May 2026) runs a fine-tuned Qwen3.5-27B model as the primary advisory LLM on 4 × H100 GPUs via vLLM, with GPT-OSS Safeguard 20B as an independent moderation model on 2 × H100s, and Azure OpenAI as fallback. The moderation model and advisory model are fully decoupled — a design choice the team explicitly maintained. For several months before the migration to self-hosted, the platform ran entirely on GPT-4.1 via Azure OpenAI at ~₹9 per question; the self-hosted path achieves ~₹0.05 per question at full utilisation, a ~180× reduction.
-
-**Did any data source or system integration turn out to be harder than expected?**
-The OAN Pathway documents dialect variation and API instability as the two most operationally demanding challenges, both requiring the full nine-month build period to resolve. Weather station geographic gaps required expanding search radii and building graceful fallbacks. Some government data APIs had never been called before MahaVistaar wired into them, meaning the system exposed data quality problems that had previously been invisible — officials asking "whose data is right?" for the first time.
-
-**Did vendor lock-in become a real constraint — what were your options and how did you resolve it?**
-The initial deployment on GPT-4.1 via Azure OpenAI created both cost exposure and potential lock-in. The Architecture Note documents the decision to migrate to a self-hosted fine-tuned open-source model (Qwen3.5-27B) as the primary path, with Azure retained as a reliability fallback rather than the primary inference provider. The design principle is explicit: no AI model is permanent; the infrastructure beneath — institutional data sources, open network protocols, farmer registries — remains stable as models evolve. The modular architecture means the AI model can be swapped without changing data sources, and the voice pipeline can be upgraded without changing orchestration logic.
-
-**What was your design policy for handling peak load?**
-The Architecture Note documents the policy as "latency over queue depth." The vLLM primary is capped at 100 concurrent calls per endpoint. When a request arrives and the cap is saturated, the system does not queue it — the request is routed instantly to Azure OpenAI as fallback. The operating principle is that users never experience elevated latency from queuing, even at burst load. The cost of that guarantee is paid by Azure, not by the user. The 100-call cap is tunable via environment variable, not hard-coded. Load tests at 10, 25, and 60 users/minute produced no fallback events.
-
-**Did the AI produce wrong or harmful outputs that reached users — how did you detect it and what did you put in place to prevent recurrence?**
-The architecture includes an independent moderation layer — GPT-OSS Safeguard 20B — fully decoupled from the advisory engine. This model performs domain validation, content safety filtering, prompt injection defence, and input sanitisation on every query. In voice channels, moderation is embedded within the ASR pipeline. Adversarial test sets of up to 500 attack patterns were maintained. The design principle is that unsafe outputs are caught before they reach the farmer, not addressed by policy after the fact. Specific documented incidents of harmful outputs reaching users are not available in current sources.
-
-**Did data residency, sovereignty, or government policy on technology vendors constrain your architecture — did that come up early or late?**
-Data sovereignty was a foundational design constraint, addressed from the start. The orchestrating agent talks directly to the deployer's databases, pulls data, frames the prompt, and sends only the prompt to the LLM — raw data never leaves government systems. This is described in the Six Shifts framework as a sovereignty decision, not a technical footnote. The architecture aligns with India's Digital Personal Data Protection Act (DPDP). NIC hosting requirements for sensitive government data (land records, scheme eligibility) also required dedicated secure connectivity.
-
-**If you used voice — did you face any problems such as latency, pronunciation, turn-taking and timing? What did you do to address it?**
-Voice was the primary channel. The deployment team built a distinct voice pipeline — ASR (automatic speech recognition), turn detection, and TTS (text-to-speech) — separate from the advisory decision engine. Marathi regional accent variation required a bilingual Marathi↔English agricultural glossary as a core component. Low-latency inference was critical for voice: the model must begin streaming output before the full response is ready, enabling TTS to start speaking immediately. Telephony gateway hardware (SIP servers, PSTN interconnect) with low jitter and stable audio codec support was required. The system plans a future transition to unified speech-to-speech models. The typical advisory exchange completes in 12–15 seconds wall-clock response time.
-
-**How frequently did the underlying data change, and how did you keep the AI current with those changes?**
-Different data sources have different update frequencies. IMD and Skymet weather data are real-time feeds accessed at query time. APMC mandi prices are updated regularly and accessed as live tools. Government scheme data (MahaDBT) changes less frequently but was accessed through live APIs rather than cached static copies. The agricultural advisory corpus (crop SOPs, pest guides from ICAR and universities) is more stable but required structured chunking, metadata tagging, and periodic update. The system's connection-at-query-time architecture means that when source data is updated, the AI's responses update without any model retraining.
-
-**Did you hit any infrastructure constraint at scale that you didn't anticipate, and how did you resolve it?**
-The Architecture Note documents that the initial 8-GPU node (4 GPUs for MahaVistaar LLM at TP=4, 2 for moderation, 2 idle) was suboptimal: tensor parallelism accepts only power-of-two widths, meaning the node cannot step from TP=4 to TP=6, leaving 2 GPUs stranded. The planned resolution is to spin up a separate dedicated single-H100 moderation node and consolidate all 8 main-node GPUs for the advisory LLM at TP=8 — roughly doubling concurrency from ~80 to ~160+ users per node with the addition of one H100. The prior Azure cost trajectory (headed toward ~₹6 lakh/day at Voice AI scale) was the infrastructure constraint that drove the migration to self-hosted inference.
-
-### Additional Insights
-
-The Architecture Note documents a precise cost comparison that any adopter planning scale should study. The volume-weighted average cost on Azure OpenAI was ₹9.4 per question (November 2025 production data, 216,000 queries). The self-hosted path achieves ₹0.05 per question at full utilisation — a ~180× reduction. Advisory queries dominated both cost and volume (67% of LLM spend on 57% of queries) because they chain multiple tool calls. The input token cost dominated composition (79.7% of total), making prefix caching — not output token efficiency — the primary cost lever. A 16-GPU build-out pencils at ~₹2 crore annually versus a projected Azure run-rate of ~₹18 crore/year at scale.
+- *(Problem Orientation, Scale)* Beyond usage numbers — users, questions answered, satisfaction scores — does MahaVistaar track any outcome, like a change in yield, income, or decision quality, that shows real impact on a farmer's life?
+- *(Architecture, Pilot)* What did the dialect-variation and API-instability issues Maharashtra worked through during the nine-month build actually look like day to day, and how were they fixed?
+- *(Architecture, Scale)* Now that the TP=8 change and the dedicated moderation node are actually running, does the measured concurrency gain match the roughly 2× projection?
+- *(Data, Define)* What does farmer consent for accessing their own registry data — Farmer ID, Farm ID, crop-sown records — actually involve in practice? How is it obtained, and can a farmer withdraw it?
+- *(Institution, Define)* Beyond naming an Agri Secretary sponsor and nodal officers, what did building trust with farmers actually require day to day, and how was scepticism handled?
+- *(Institution, Scale)* Is there a standing governance body overseeing the live MahaVistaar deployment today, or does it still rest informally with the original project team?
+- *(Institution, Define)* Did government procurement rules create any real obstacle when building or running MahaVistaar — and if so, how was it navigated?
+- *(Institution, Scale)* Who has the authority to decide what MahaVistaar can and cannot claim on behalf of the state, and what actually happens when that line gets crossed?
+- *(Ecosystem, Define)* Are ICAR, IMD, AgriStack, and the state universities contributing their data under a formal agreement, an informal arrangement, or a public mandate — and what would break if any one of them pulled out?
+- *(Workforce, Pilot)* Beyond freeing up extension officers' time, what specific new skills or day-to-day changes do they actually need — and is any of that documented, or just assumed?
+- *(Operating Model, Scale)* Who bears MahaVistaar's ongoing operating costs beyond the initial build, and what keeps institutional partners contributing their data over time?
+- *(Operating Model, Scale)* Today, who actually decides when the model needs retraining, when the advisory corpus needs updating, or when a guardrail needs changing — is that a named role, a team, or still the original pilot team?
+- *(Operating Model, Pilot)* When a farmer gets a wrong or harmful answer — wrong pest treatment, wrong scheme eligibility, wrong mandi price — what's the actual path from that error being found to it being fixed?
+- *(Operating Model, Pilot)* Now that Langfuse is live, what do the real fallback frequency, blended cost, and per-flow latency numbers actually show, compared with the modelled figures in this note?
 
 ---
 
-## C — Institution
+## 3. Micro-innovations
 
-*Who owns solving of the problem.*
+### Problem Orientation
 
-**Was this deployment treated as a one-time project or as a long-term transformation initiative — did that framing create problems?**
-The OAN Pathway documents that the Department of Agriculture, Maharashtra did not commission a platform — it created a state-level advisory capability embedded in the workflows of farmers, extension workers, and departments. The framing was explicitly a long-term institutional transformation: moving from fragmented advisory channels to a common rail for trusted intelligence, creating a feedback loop so field usage improved policy over time, and scaling without adding staff proportionally. Whether this framing encountered resistance from those who preferred a project framing is not documented in available sources.
+**1. Frame the problem as institutional fragmentation, not absence of knowledge**
+- Dimension: Problem Orientation
+- Stage: Explore
+- Type: Strategic Decision
+- Decision: Treated the core problem as fragmentation across institutions, not a shortage of agricultural knowledge. A farmer's harvest-timing question needs weather data, market prices, and crop-stage advisory — each held by a different institution, none of which was built to talk to the others.
+- Why it matters: If you frame the problem as "farmers lack knowledge," you'll try to produce more knowledge. That doesn't help — the knowledge already exists. What's missing is a way to pull it together and hand it to the farmer in one place.
+- Alternative considered: Not documented in the source.
+- Condition — applies when: The knowledge already exists across multiple institutions, but no single one of them can answer the farmer's actual question alone.
+- Before → After: Before — a university, a weather service, a market system, and a scheme department each held one piece of the answer, with no shared route between them. After — one voice or text query reaches all of them at once.
+- Source: OAN Diffusion Pathway.
 
-**How did you get the deployment approved and funded?**
-Not documented in detail. The OAN Pathway records that the Department of Agriculture authorised data-sharing across its own systems and from its agricultural universities, and that a named Agri Secretary sponsor and nodal officers across agriculture, IT, and field operations were the first concrete institutional decisions. The Six Shifts framework notes that state government sponsorship — specifically the alignment of an Agri Secretary — was the enabling condition for MahaVistaar as the pioneer deployment.
+**2. Frame inclusion as a structural failure of reach, not a failure of the farmer**
+- Dimension: Problem Orientation
+- Stage: Explore
+- Type: Strategic Decision
+- Decision: Treated exclusion as a property of the system, not the farmer. The knowledge is technically available on portals and PDFs, but reaching it needs literacy, a smartphone, reliable internet, and fluency in the portal's language — things most of the intended population doesn't have.
+- Why it matters: If you assume the farmer just needs to try harder or be taught to use the portal, you build the wrong fix. The actual fix is to remove the barriers, not train around them.
+- Alternative considered: Not documented in the source.
+- Condition — applies when: The population that needs a service most is also the population least equipped to use the channel that currently delivers it.
+- Before → After: Not documented in quantified terms.
+- Source: OAN Diffusion Pathway.
 
-**If the one or two people driving this deployment had moved to different roles mid-way, what would have happened?**
-The Six Shifts framework flags this risk explicitly under institutional knowledge (C3): AI forces institutions to articulate what they know, what they decide, and why. When the Department of Agriculture authorised its advisory corpus to flow through MahaVistaar, it made an institutional knowledge claim that became publicly queryable — no longer living only in individual experts. However, whether the institutional arrangements around MahaVistaar itself were sufficiently documented to survive key personnel transitions is not confirmed in available sources.
+**3. Voice as the architectural response to inclusion, not a channel choice**
+- Dimension: Problem Orientation
+- Stage: Explore
+- Type: Strategic Decision
+- Decision: Treated voice as the actual fix for exclusion, not one option among several. A farmer who can't read doesn't need to read. A farmer without a smartphone can call a number. Literacy, device type, and language all stop mattering at once.
+- Why it matters: An app or a better website only fixes one barrier at a time — you'd still need separate fixes for literacy, language, and connectivity. Voice removes all of them in a single move.
+- Alternative considered: A text-first or app-first interface with voice added later.
+- Condition — applies when: Literacy, device, and language barriers are all present at once, so no single non-voice fix would cover more than one of them.
+- Before → After: Not documented in quantified terms; illustrated by a Marathi-speaking farmer on a basic feature phone reaching an advisory that was previously unreachable.
+- Source: OAN Diffusion Pathway.
 
-**Which departments had to cooperate for this to work — where did that cooperation break down or get difficult, and how was it resolved?**
-The OAN enabler map documents 54 organisations across institutional/governance, technology/AI, structured data, and knowledge/document layers — including the Department of Agriculture, Department of Livestock (MH), Department of Fisheries (MH), GoI Agriculture Ministry, Maharashtra DBT, and others. The specific friction points in interdepartmental cooperation are not documented in available sources. The framework document notes that in one unnamed project, the same institution accused its operational partner of rubber-stamping vendor decisions while also refusing to participate in the steering committee — a pattern to watch for.
+**4. Institutional credibility, not algorithmic credibility, as an explicit design requirement**
+- Dimension: Problem Orientation
+- Stage: Explore
+- Type: Strategic Decision
+- Decision: Built the system on the premise that people trust institutions, not algorithms. For AI to be adopted at population scale, it has to carry the traceable authority of a trusted institution — not present itself as the authority.
+- Why it matters: An answer with no institutional backing looks, to a farmer, like a guess from an unfamiliar chatbot. Trust in an algorithm has to be earned one interaction at a time; trust in a known institution is already there. Skipping this means adoption has to be won the hard way, answer by answer.
+- Alternative considered: Not documented in the source.
+- Condition — applies when: The target population already trusts specific public institutions, and a new AI interface can either borrow that trust or undermine it.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway.
 
-**Did procurement rules become a barrier — and if so how did you navigate through?**
-The Six Shifts framework documents procurement as a systemic barrier across deployments generally: government procurement was built for hardware and hiring body shops, not for buying AI capabilities that evolve monthly. RFP specifications become obsolete before contracts are signed. MahaVistaar-specific procurement navigation is not documented in available sources.
+**5. Inbound and outbound as two designed modes of interaction**
+- Dimension: Problem Orientation
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Built the system to work two ways at once. Inbound: farmers call a short code (155313) with questions. Outbound: the system proactively pushes advisories — pest alerts like pink bollworm detection, pre-monsoon weather warnings, roughly 15 stage-based advisories across the crop calendar — to registered farmers before they ask.
+- Why it matters: An inbound-only system only helps a farmer who already knows to ask. For time-sensitive risks — a pest outbreak, a coming storm — waiting for the farmer to think of the question can be too late.
+- Alternative considered: An inbound-only system that responds to questions but never initiates contact.
+- Condition — applies when: The advisory is time-sensitive enough that waiting for the farmer to ask would be too late to act on.
+- Before → After: Before — a platform that only answered when asked. After — a platform that also reaches out first. Completing this shift was treated as the difference between the system being useful and being indispensable.
+- Source: OAN Diffusion Pathway; mahavistaar.md reference.
 
-**Were there decisions that needed political support from above — did you have it when you needed it?**
-Bharat-VISTAAR (the national layer built on MahaVistaar's architecture) was announced in the Union Budget 2026-27 and championed by the Prime Minister at the India AI Impact Summit — indicating strong political support at the national level for the pathway MahaVistaar pioneered. State-level political support during MahaVistaar's nine-month build is not detailed in available sources.
-
-**When something went wrong, who was accountable — and was that clear from the start?**
-Not documented.
-
-**Which institution did the AI speak on behalf of — and did that institution have credibility with your end users?**
-MahaVistaar speaks as the Department of Agriculture, Maharashtra, and cites state agricultural universities (MPKV, VNMAU, PDKV). The Six Shifts framework documents this explicitly: the AI must not speak as itself — it must speak as the institution. Every response carries institutional attribution. The trust source analysis in the framework confirms that farmers distinguish between information and trusted information: the same advice from a commercial seller sounds like a sales pitch; from a university or government extension service, it sits as certain.
-
----
-
-## D — Ecosystem
-
-*Who executes.*
-
-**How many organisations had to work together for this to function?**
-54 enablers are documented across four layers: 14 institutional/governance (funders including Gates Foundation, World Bank, UNDP, EkStep Foundation; orchestration partners EkStep, COSS, Samagra, Artha Global; government bodies), 8 technology/AI (research institutions IIT Mumbai, IISc, Vassar Labs, India AI Mission; language models Bhashini, AI4Bharat, Karya; knowledge contributors ICAR), 8 structured data sources (APMC, WDRA, CHC, KVK, IMD, Skymet, Officer Data, Scheme Data), and 24 knowledge/document sources (state and national programme guidelines, crop knowledge manuals, livestock and animal husbandry materials, fisheries and aquaculture guidelines, research and reports). The OAN Pathway notes that 25+ organisations were directly required for MahaVistaar's core operation.
-
-**Who was specifically responsible for keeping all partners aligned — was that role clearly assigned and resourced?**
-EkStep Foundation served as the primary orchestration and implementation partner. The OAN Pathway documents that the role of the entity that creates the "network roots" and says "this runs in my name" was critical — and that the Department of Agriculture, Maharashtra, held that institutional authority. Whether the coordination role had a single named individual with explicit resourcing is not documented.
-
-**Were there partners whose commitment weakened over time — what drove that and how did you handle it?**
-Not documented in available sources.
-
-**Where did partners have conflicting priorities or mandates — how were those conflicts resolved?**
-Not documented in available sources. The Six Shifts framework documents a named failure pattern from a different deployment (not MahaVistaar): an institution that accused its operational partner of rubber-stamping vendor decisions while also refusing to participate in the steering committee governing those decisions. That pattern is flagged as a risk rather than a MahaVistaar-specific event.
-
----
-
-## E — Workforce
-
-*Who absorbs AI.*
-
-**Were there people — field workers, extension officers, call centre staff — whose job changed because of this deployment?**
-Yes. Agricultural extension officers in Maharashtra had previously operated by travelling long distances to answer questions across crops, livestock, schemes, and markets, carrying scattered PDFs, circulars, and personal notes. MahaVistaar does not replace extension officers — it changes what they do. The system enables farmers to get answers to routine questions directly, freeing extension capacity for higher-value interactions. The system also serves government and policy actors as a layer: state planning officials can see live usage patterns across the crop calendar.
-
-**When the AI gave an answer or recommendation to a user, what was the last-mile human expected to do with it — and were they actually capable of doing that?**
-For farmers using the inbound voice channel, the last-mile is the farmer themselves — the expectation is that they act on the advisory (spray this, harvest now, apply for this scheme). The system was designed so that use itself is training: farmers move naturally from simple queries (weather, pest) to complex actions (scheme applications, credit products, grievance tracking). For extension officers using the system as a reference, the expectation is professional judgement applied to AI-supplied information — not blind compliance.
-
-**How and when were they brought in, and what did they need to learn?**
-Not documented for Maharashtra-specific extension officer training. The OAN Pathway notes that farmers were not trained on MahaVistaar and then given access — they called a number, asked a question, and got an answer. The system was designed so that use is training.
-
-**Did you face resistance from staff — what were the reasons and what worked?**
-Not documented in available sources.
-
-**Did frontline staff become dependent on the system in a way that reduced their own capability — how did you know?**
-Not documented. The Six Shifts framework flags this as a genuine risk (the agency test, E3): the question is whether AI leaves people more capable or more dependent. MahaVistaar-specific evidence on this question is not available.
-
-**How did problems or insights from the field reach the people improving the system — was there a structured feedback loop?**
-The system creates a data feedback loop: 205,000+ monthly queries create a visible, quantified demand signal for knowledge that was previously tacit. Where farmers' questions went unanswered, the institution could now see its own gaps. The OAN Pathway documents this as one of the structural benefits of AI at population scale — institutions listening to field signals continuously, not just through periodic surveys. Specific governance mechanisms for translating this signal into system improvements are not documented.
-
----
-
-## F — Operating Model
-
-*What makes it last.*
-
-**Who took ownership of steady state operations after the pilot — how was that transition structured and when did it happen?**
-The Department of Agriculture, Maharashtra holds institutional ownership. EkStep Foundation and the broader OAN partner network hold the technical operating model. The specific transition structure from pilot to steady state is not documented in available sources. The Architecture Note (May 2026) describes an ongoing production deployment, suggesting the transition has occurred, but its structure is not detailed.
-
-**What did it cost to build, and what does it cost to run annually — how did those compare to your original estimates?**
-The Six Shifts framework notes a general pathway cost of approximately $250,000 to set up and $250,000 per year to maintain — MahaVistaar is the pioneer against which these estimates were derived, so it likely incurred higher build costs than subsequent deployments. The Architecture Note documents current GPU infrastructure costs precisely: six months of the 4-GPU H100 cluster cost ₹25 lakh (~₹50 lakh annually); a planned 16-GPU build-out would cost ~₹2 crore annually. Against a projected Azure run-rate of ₹18 crore/year, the self-hosted economics are strongly favourable. Original estimates versus actuals are not documented.
-
-**Were there compliance, audit, or regulatory requirements that shaped how you ran operations?**
-India's Digital Personal Data Protection Act (DPDP), 2023 shaped the consent architecture. NIC hosting requirements applied to government data. The modular data architecture — connecting to data where it lives, not copying it — was designed to be DPDP-compliant by construction rather than as a post-facto audit exercise.
-
-**How long did the deployment actually take versus what you planned — where did time get lost?**
-MahaVistaar was built from commitment to deployment in nine months. This was the pioneer build — without a playbook, governance frameworks, or failure mode library to draw on. The nine months absorbed learning about dialect variation, API instability, inter-institutional data access, and trust-building with farmers. Subsequent deployments compressed this dramatically: Ethiopia took three months, Amul took three weeks. The nine months was not waste — it produced every transferable asset the pathway now carries.
-
-**Was there a point where the whole thing nearly stalled — and what got it through?**
-Not documented in available sources.
-
-**What did you measure to know the solution was working — and what did the numbers actually show?**
-As of early 2026: 342,000+ unique users; 1.67 million+ farmer questions answered; 791,000+ sessions (indicating repeat and sustained engagement, not one-off usage); 17 lakh farmers reached daily through proactive personalised voice alerts; 97–98.5% positive feedback rate. The system spans weather, pest advisory, mandi prices, 40+ government schemes, 307 APMCs, 4 state agricultural universities, and 203 warehouses — all accessible through a voice call or message in Marathi. Agronomic outcome metrics (yield change, input cost reduction) were not yet systematically reported at this stage.
-
-**Did you do a big launch or sequence through small pilots — and looking back was that the right call?**
-The Six Shifts framework documents "bounded ambition" as MahaVistaar's launch strategy: starting with one or two crops, a few districts, one or two languages. The national platform Bharat-VISTAAR was built on the architecture Maharashtra established. The pathway evidence from MahaVistaar supports the "sequence through small pilots" approach explicitly — and the framework states that those who treat the pilot as a vanity launch find the compounding stops there.
-
----
-
-## Reusable Toolkit
-
-| Asset | Type | What it is useful for | How to access |
-|---|---|---|---|
-| OpenAgriNet open-source building blocks (7-layer architecture) | Code / DPG | Foundational voice AI system for agriculture — Knowledge Engine, Memory Layer, Trust Layer, Agent Core, Action Gateway, Reach Layer, Learning Layer | openagri.net |
-| Dual-provider inference stack design (vLLM + Azure fallback) | Architecture pattern | Handling peak load at low cost with reliability guarantee — documented in MahaVistaar Architecture Note May 2026 | Internal note; contact EkStep Foundation |
-| Adversarial test set (500 attack patterns) | Evaluation benchmark | Safety testing for agricultural AI moderation layers | Via OpenAgriNet ecosystem |
-| Bilingual Marathi↔English agricultural glossary | Language asset | ASR/TTS accuracy for regional agricultural terminology | Via OpenAgriNet ecosystem |
-| Advisory corpus (ICAR, state university crop/pest knowledge, chunked and metadata-tagged) | Knowledge base | Agriculture advisory RAG layer | Via OpenAgriNet ecosystem |
-| 54-enabler ecosystem map | Governance template | Inventorying the four-layer ecosystem (institutional/governance, technology/AI, structured data, knowledge/documents) for a new deployment | OAN Diffusion Pathway document |
-| Governance frameworks, data connector approach, model evaluation benchmarks, failure mode library | DPG — organisational knowledge | Transferable deployment know-how for next instances | Via EkStep Foundation / OpenAgriNet |
-
----
-
-## Solution Patterns
+**6. Organise use cases by what farmers are trying to do, not by department**
+- Dimension: Problem Orientation
+- Stage: Pilot
+- Type: Failure and Fix
+- Failure: An early version organised use cases by the department's own structure — which system or team held which answer. That didn't match how farmers actually thought about their problem.
+- Fix: Regrouped use cases by what farmers are actually trying to do — asking about a sick crop, checking scheme eligibility, tracking an application — instead of by which department holds the answer.
+- Insight: A system is easier to adopt when it's organised around the user's own way of thinking about their problem, not the institution's internal filing system.
+- Condition — applies when: The system pulls answers from multiple departments, each of which categorises its knowledge differently from how an end user would ask the question.
+- Source: mahavistaar.md reference.
 
 ### Architecture
 
-**Problem:** LLM costs become unsustainable as usage scales.
+**7. Seven-layer reference architecture separating interface, moderation, reasoning, knowledge, live data, and DPI foundation**
+- Dimension: Architecture
+- Stage: Define
+- Type: Toolkit Asset
+- Toolkit asset: A layered reference architecture — User Layer, Interface Layer, Moderation Layer, AI Decision Engine (reasoning, orchestration, response), Knowledge & Scientific Models, Live Data & Institutional Sources, and the DPI Foundation — with each layer's job kept strictly separate from the others.
+- Why it matters: Without this separation, replacing one piece — say, the moderation model, or adding a new channel like WhatsApp — would mean touching the advisory logic itself. Keeping the layers separate means each one can be swapped, scaled, or upgraded on its own.
+- Reusable as-is: A structural template for any similar multi-institutional advisory system, regardless of which specific models or data sources fill each layer.
+- Condition — applies when: Multiple institutional data sources and multiple channels (voice, chat, push) need to converge into one response pipeline.
+- Source: MahaVistaar Production Serving Architecture (Internal Note); OAN Diffusion Pathway.
 
-**Solution:** Migrate high-volume flows to self-hosted open-source models; retain managed API as fallback only. Profile cost by use case before migrating — identify the dominant flow and optimise for its worst case.
+**8. Independent moderation layer, fully decoupled from the advisory engine**
+- Dimension: Architecture
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Ran query moderation as a separate model (GPT-OSS Safeguard 20B) — checking for off-topic content, safety issues, and prompt injection — completely apart from the main advisory model. In voice, this check happens inside the speech-recognition step rather than as a separate call.
+- Why it matters: If moderation and advisory logic were the same model, a successful prompt injection or off-topic query could reach the part of the system that speaks with institutional authority. Keeping them apart means a compromised or confused query gets stopped before it can produce an answer that looks official.
+- Alternative considered: A single model handling both moderation and advisory generation.
+- Condition — applies when: The advisory model's answers carry institutional authority and can't risk being compromised by unsafe or off-topic content reaching it.
+- Before → After: Not documented in the source.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
----
+**9. Agentic tool-orchestration with hard grounding guardrails**
+- Dimension: Architecture
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Required that no query is ever answered from the model's own memory — every claim has to come from a verified tool call. Enforced fixed query flows (for example: Pest → Glossary → Advisory) instead of letting the model decide its own retrieval steps.
+- Why it matters: A model answering from memory can sound confident and still be wrong, with no way to trace where the claim came from. Forcing every answer through a real tool call means every claim has a traceable, checkable source behind it.
+- Alternative considered: Allowing the model to answer simple queries directly from its own training.
+- Condition — applies when: The system's credibility depends on every factual claim being traceable to a specific institutional source.
+- Before → After: Not documented in the source.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
-**Problem:** Self-hosted infrastructure and managed APIs create opposing pressures on cost and reliability.
+**10. Federated data architecture: institutions keep their data, the AI connects to it at query time**
+- Dimension: Architecture
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Farmer, weather, market, and scheme data are never copied into a central store. The orchestrating agent connects directly to each institution's database at query time, pulls what it needs, and assembles the prompt locally — only the finished prompt, never the raw data, is sent to the LLM, and the result is attributed back to its institutional source. This was treated explicitly as a sovereignty decision, not a technical footnote: the design was built to align with India's DPDP Act by construction, not bolted on through a later compliance audit. Handling sensitive government data (land records, scheme eligibility) also required dedicated secure connectivity to meet NIC hosting requirements.
+- Why it matters: Asking an institution to hand its data into a central repository it doesn't control is often a non-starter — many departments simply won't agree to it. If raw records were sent to the LLM provider itself, that would also risk breaching both institutional sovereignty expectations and DPDP obligations. Keeping raw data inside government systems, and sending only the assembled prompt out, is what satisfies data control and regulatory compliance at the same time, instead of solving them separately.
+- Alternative considered: Centralising all institutional data into one MahaVistaar-owned store.
+- Condition — applies when: Institutions need to keep ownership and control of their own data as a condition of taking part, and the data involved is sensitive enough that compliance can't be an afterthought.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway; mahavistaar.md reference.
 
-**Solution:** Dual-provider architecture: self-hosted as primary, managed API as automatic fallback triggered only by infrastructure faults — not answer quality. Define a tunable concurrency cap that spills to managed API on overflow rather than queuing users.
+**11. Dual-provider serving topology: self-hosted primary, commercial fallback strictly on infrastructure faults**
+- Dimension: Architecture
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Every generative call goes through a wrapper pointed at one of two providers — a self-hosted vLLM primary, and a shared Azure OpenAI fallback — with failover triggered only by genuine infrastructure faults (timeouts, server errors, malformed payloads, concurrency overflow). It is never triggered by a low-quality answer or a client-side error.
+- Why it matters: Self-hosted infrastructure alone risks slow responses or downtime during traffic spikes. A commercial API alone is too expensive to run at full production volume. Running both together gets the low cost of self-hosting in the common case and the reliability of a managed provider in the rare case — without paying full commercial price all the time.
+- Alternative considered: A single-provider serving stack.
+- Condition — applies when: Cost-sensitive, everyday serving needs to coexist with a hard reliability guarantee during traffic spikes.
+- Before → After: Not documented in the source.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
----
+**12. Latency over queue depth: overflow spills to fallback instantly rather than making users wait**
+- Dimension: Architecture
+- Stage: Define
+- Type: Strategic Decision
+- Decision: When the self-hosted endpoint's concurrency limit is full, the system doesn't make the request wait in line — it routes instantly to the Azure fallback, at the same API surface.
+- Why it matters: A farmer on a voice call won't tolerate a long pause any more than a person would on a normal phone call. This choice means a busy moment costs money (the fallback is pricier), not the farmer's patience.
+- Alternative considered: Queuing overflow requests for the cheaper self-hosted path instead of paying for the more expensive fallback right away.
+- Condition — applies when: How fast the user gets an answer matters more than minimising the cost of occasional overflow traffic.
+- Before → After: Not documented in the source.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
-**Problem:** The system gets locked with a vendor with no exit path.
+**13. Tensor parallelism (TP=4) to convert weight-replication overhead into pooled concurrency**
+- Dimension: Architecture
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Split the 27-billion-parameter model's weights across four H100 GPUs (TP=4) instead of running it on one. A single 80GB GPU has only about 26GB left for active requests once the model's weights are loaded — enough for roughly a dozen at once. Splitting the model across four GPUs frees up roughly 260GB for active requests instead — about eight times the concurrency, on the same total hardware.
+- Alternative considered: Running the model on a single GPU, or copying the full model across GPUs without splitting it.
+- Condition — applies when: A model's weights alone take up most of a single GPU's memory, so the number of requests it can serve at once — not raw processing power — is what limits it.
+- Before → After: Not documented as a before/after on MahaVistaar itself, but stated as a general rule: the same tensor-parallelism decision will matter again if a bigger model (40B, 70B) gets fine-tuned in future.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
-**Solution:** Build a provider abstraction layer at the start — resolve provider at configuration time, not in application code. Migration between providers becomes transparent to the application.
+**14. Prefix caching as the dominant cost lever, discovered from the prior commercial-API spend**
+- Dimension: Architecture
+- Stage: Pilot
+- Type: Failure and Fix
+- Failure: On the earlier commercial deployment (Azure OpenAI/GPT-4.1), input tokens made up roughly 80% of total spend, and caching wasn't applied aggressively. Roughly 37% of the compute on a three-turn conversation was simply the previous turn's prompt being paid for again.
+- Fix: Moved to a self-hosted setup with prefix caching turned on, so that repeated computation is skipped instead of re-paid.
+- Insight: In a multi-turn conversation where the prompt and its accumulated context dominate the token count, caching that shared prefix is not a minor tweak — it's the single biggest lever on cost, after the choice of model itself.
+- Condition — applies when: A conversation re-sends a large shared prompt across multiple turns, and the provider doesn't cache it aggressively.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
----
+**15. A fine-tuned smaller open-source model outperforming a larger commercial API on internal evaluation**
+- Dimension: Architecture
+- Stage: Pilot
+- Type: Strategic Decision
+- Decision: Fine-tuned a 27B-parameter open-source model specifically for this advisory task. It scored higher on the team's own evaluation (94%) than the larger commercial API it replaced (91%) — while costing a fraction as much to run.
+- Why it matters: A bigger general-purpose model isn't automatically better at a narrow, specific job. Once the task is well-defined, a smaller model trained specifically for it can beat a larger one at a much lower running cost.
+- Alternative considered: Continuing to rely on a larger general-purpose commercial API.
+- Condition — applies when: The task is narrow and well-defined enough that a smaller, purpose-built model can match or beat a larger general model on it.
+- Before → After: Before — GPT-4.1 via Azure OpenAI, general-purpose. After — a fine-tuned 27B open-source model, scoring higher on the internal evaluation at a fraction of the cost.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
-### Population & Access
-
-**Problem:** Target population cannot reach the system through available channels.
-
-**Solution:** Voice-first as an architectural requirement — IVR short codes on basic feature phones, not a smartphone add-on. Support multiple channels — voice, WhatsApp, app, web — converging into the same processing pipeline.
-
----
-
-**Problem:** The system works in one language but the population speaks many.
-
-**Solution:** Build multilingual ASR and TTS pipeline as core infrastructure, not a post-launch addition. Develop domain-specific bilingual glossary to bridge regional language and institutional terminology — general translation models fail on specialised terms.
-
----
+**16. GPU allocation stranded by power-of-two tensor-parallel widths; moderation isolated to unlock full width on the main model**
+- Dimension: Architecture
+- Stage: Scale
+- Type: Failure and Fix
+- Failure: The current 8-GPU node runs the main model on 4 GPUs and moderation on 2, leaving 2 idle — because splitting a model across GPUs only works in powers of two (2, 4, or 8), so the main model can't use the freed-up GPUs without moderation giving up its own first.
+- Fix (planned, not yet executed): Move moderation onto its own single-GPU node — it only ever needed a fraction of that headroom — freeing all 8 GPUs on the main node for the advisory model.
+- Insight: Because a wider split frees up more than a proportional amount of memory for active requests, the resulting gain is expected to be more than a clean doubling.
+- Condition — applies when: A lightweight secondary model shares a node with a primary model whose ideal GPU split is blocked by the secondary model's allocation.
+- Before → After: Before — 8-GPU node, ~80 concurrent users, 2 GPUs idle. After (projected) — moderation moved off, ~160+ concurrent users on the main node.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
 ### Data
 
-**Problem:** Data needed to serve users is fragmented across institutions.
+**17. Live institutional data accessed as tools at query time, never pre-loaded into the model**
+- Dimension: Data
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Connected the system to weather, farm records, scheme status, soil data, and local extension contacts as live calls made at the moment of the query, rather than loading any of this into the model itself.
+- Why it matters: If this data were baked into the model instead, the model would keep confidently repeating an old price or an outdated application status long after it changed — with no way to know it was wrong. Fetching live data at query time means the answer is only ever as old as the last real update.
+- Alternative considered: Pre-loading a static snapshot of institutional data into the model's context or training data.
+- Condition — applies when: The underlying data changes over time and the model must never answer from a stale copy.
+- Before → After: Not documented in the source.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
-**Solution:** Federated tool architecture — AI connects to each institutional source at query time via API; data does not move into a central repository. Each institution retains ownership and governance of its own data; open network protocols provide the interoperability layer.
+**18. Bilingual glossary bridges the language gap without translating the full advisory corpus**
+- Dimension: Data
+- Stage: Define
+- Type: Toolkit Asset
+- Toolkit asset: A two-way Marathi↔English farming-term glossary that lets the system reason over English-language source material while still speaking to the farmer in Marathi — without translating the entire advisory corpus first.
+- Reusable as-is: A lightweight language-bridging piece for any advisory system where the source material and the farmer's language don't match.
+- Condition — applies when: The authoritative knowledge base is mostly in one language, the population speaks another, and translating the whole corpus isn't practical.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
----
+**19. Graceful fallback for data sources with geographic coverage gaps**
+- Dimension: Data
+- Stage: Pilot
+- Type: Failure and Fix
+- Failure: Some live data sources, especially weather stations, have real gaps in geographic coverage — a query from certain locations would otherwise come back empty.
+- Fix: Widened the search radius and built fallback logic so a nearby data point is used when the exact location has no direct coverage.
+- Insight: Assume external data sources have coverage gaps by default, and design the fallback in from the start, rather than finding out through a failed query.
+- Condition — applies when: A system depends on external data sources that weren't built with full geographic coverage in mind.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
-**Problem:** AI responses have no traceable source — no institution is accountable for what the system says.
-
-**Solution:** Every claim the system makes must be retrieved from a named institutional source at the time of the query — the system does not answer from its own model memory. Surface institutional source attribution visibly to the user on every response.
-
----
+**20. Adversarial test sets maintained for moderation defense**
+- Dimension: Data
+- Stage: Define
+- Type: Toolkit Asset
+- Toolkit asset: A maintained set of up to 500 adversarial attack patterns, used to keep testing the moderation layer's resistance to prompt injection and unsafe content.
+- Why it matters: A moderation layer that was only checked once, at launch, gives no guarantee it still holds after later changes. A standing test set lets every future change be checked against the same bar.
+- Reusable as-is: A concrete starting benchmark size and habit for any deployment that needs to validate its moderation layer, before and after changes.
+- Condition — applies when: A moderation layer gates access to a system carrying institutional authority, where a failure has real consequences.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
 
 ### Institution
 
-**Problem:** The deployment is treated as a technology project — commissioned by the institution but not owned by it — leaving no one with authority over the governance, data sharing, and outcomes that the technology alone cannot deliver.
+**21. Long-term institutional transformation, not a one-time project**
+- Dimension: Institution
+- Stage: Explore
+- Type: Strategic Decision
+- Decision: Framed the deployment as building a long-term, state-level advisory capability — a shared rail for trusted information, a feedback loop that lets real usage improve policy over time, and growth without adding staff at the same rate — rather than commissioning a one-time technology platform.
+- Why it matters: A project has an end date and a handover. Once it's "done," nobody is left responsible for updating the corpus, watching the feedback loop, or improving the system. Framing it as an ongoing capability, not a project, keeps a mandate and a budget alive for that continuing work.
+- Alternative considered: Treating the deployment as a bounded technology project with a fixed delivery date and no further institutional evolution expected.
+- Condition — applies when: The system's value depends on institutions continuing to evolve around it, not just receiving a finished product.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway; mahavistaar.md reference.
 
-**Solution:** Nominate a named senior sponsor and nodal officers across relevant departments before build begins. Frame the deployment as an institutional capability.
+**22. Nominate named, accountable institutional ownership before building**
+- Dimension: Institution
+- Stage: Explore
+- Type: Strategic Decision
+- Decision: Made the first concrete step the nomination of an Agri Secretary sponsor and nodal officers across agriculture, IT, and field operations — naming who owns this before any technical work began.
+- Why it matters: Without a named sponsor, nobody has the standing to approve data-sharing agreements, decide what the AI is allowed to say on the institution's behalf, or take responsibility when something goes wrong. Naming an owner first means those questions have an answer before they come up, instead of after.
+- Alternative considered: Beginning technical build-out before formal institutional ownership was assigned.
+- Condition — applies when: The system will speak with an institution's name and authority on every answer, making a vendor-led or ownerless start unworkable.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway.
 
----
+**23. Institution remains the advisory authority; the AI layer never becomes the source**
+- Dimension: Institution
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Every answer cites the Department of Agriculture, the state agricultural university, or IMD as its source. The AI delivers and coordinates; it never becomes the authority itself.
+- Why it matters: Farmers trust the university or the department, not an unfamiliar piece of software. If the AI presented itself as the authority, it would be asking farmers to extend trust to something with no track record, instead of borrowing trust that already exists.
+- Alternative considered: Presenting advisory answers as the AI system's own output, without institutional attribution.
+- Condition — applies when: Farmer trust depends on the credibility of institutions the farmer already trusts, not on trust in an algorithm.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway.
 
-**Problem:** Data sharing agreements between institutions take longer to negotiate than the project expects.
+**24. Cross-institutional data-sharing alignment as the core system-leadership task**
+- Dimension: Institution
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Treated getting universities, weather services, market systems, and scheme platforms to align on data-sharing — and agreeing what the AI could and couldn't do with that data — as the real leadership work of building MahaVistaar, not a technology procurement exercise.
+- Why it matters: Without this alignment, the system can be fully built and still have nothing to say — each institution can simply decline to share, and there's no data to answer with. Getting this agreement is what makes the rest of the build possible at all.
+- Alternative considered: Commissioning a platform without first securing this cross-institutional alignment.
+- Condition — applies when: The system's value depends on data held across institutions with no existing sharing agreement between them.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway.
 
-**Solution:** Begin data sharing negotiations before technical build starts — treat agreement timelines as the critical path, not a parallel workstream. Align data sharing across all required institutions as system leadership work before any build begins.
-
----
-
-### Trust & Adoption
-
-**Problem:** End users distrust AI-generated answers for decisions.
-
-**Solution:** Position AI as delivery layer not authority — every answer cites the institution whose knowledge it draws from. The institution stands behind every answer; AI makes institutional knowledge reachable, it does not replace institutional accountability.
-
----
-
-**Problem:** The AI system makes claims the institution has not authorised it to make.
-
-**Solution:** Define explicitly what the AI can and cannot do — domain validation, content safety, and policy-sensitive query classification enforced by an independent moderation layer. Every claim flows through a verified tool call to an authoritative source; the AI does not answer from memory.
-
----
+**25. Negotiate data-sharing agreements before the technical build starts**
+- Dimension: Institution
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Treated data-sharing agreement timelines as the critical path — to be settled before technical construction began, not run alongside it.
+- Why it matters: If the agreements are still being negotiated once building starts, the technical team ends up waiting on something outside their control, at the point they can least afford to wait.
+- Alternative considered: Starting technical build in parallel with data-sharing negotiations, expecting them to conclude in time.
+- Condition — applies when: The system depends on data controlled by multiple institutions with no pre-existing agreement, and integration work would otherwise stall waiting for it.
+- Before → After: Not documented in the source.
+- Source: mahavistaar.md reference.
 
 ### Ecosystem
 
-**Problem:** The deployment requires capabilities and data that no single institution possesses — but the institutions that collectively possess them were never designed to work together.
+**26. Fifty-four named enablers organised into four layers**
+- Dimension: Ecosystem
+- Stage: Define
+- Type: Toolkit Asset
+- Toolkit asset: A complete map of 54 named enablers behind MahaVistaar, sorted into four layers — Institutional & Governance, Technology & AI, Data, and Knowledge & Documents.
+- Why it matters: A project spanning this many institutions makes it easy to simply forget an entire category of partner — a data provider, a knowledge source — until the gap shows up later as a missing feature. Mapping all four layers up front catches that before it becomes a problem.
+- Reusable as-is: A checklist of partner categories for any similar multi-institutional advisory system, independent of which organisation fills each slot.
+- Condition — applies when: Assembling or auditing the full partner landscape for a state-scale, multi-sector advisory platform.
+- Source: OAN Diffusion Pathway.
 
-**Solution:** Map the full enabler ecosystem before build — identify which layer each actor belongs to, what they contribute, and what governance arrangement allows their contribution to flow. Design participation so each actor's own interest is served — shared mission alone will not sustain coordination across actors with different mandates and incentives.
+**27. Connect what already exists rather than building it fresh**
+- Dimension: Ecosystem
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Treated the project's job as a connecting layer — letting 54 pre-existing systems (schemes, publications, weather services, language models) be found, combined, and delivered as one answer — rather than building fresh versions of any of them.
+- Why it matters: Rebuilding what already exists wastes time and risks duplicating something an institution already maintains and trusts. Connecting to it instead gets to a working system much faster, and keeps the institution's own data authoritative.
+- Alternative considered: Building new versions of institutional data sources or knowledge bases instead of connecting to existing ones.
+- Condition — applies when: The knowledge a farmer needs already exists somewhere in the institutional landscape, just not in a form one query can reach.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway.
+
+**28. Design participation so each actor's own interest is served, not just the shared mission**
+- Dimension: Ecosystem
+- Stage: Define
+- Type: Strategic Decision
+- Decision: Designed each partner's role so it served that partner's own interest directly, instead of counting on shared enthusiasm for the mission to keep them involved.
+- Why it matters: Partners come from very different worlds — government, academia, a cooperative — with different incentives. Goodwill fades under pressure; a partner who gets something concrete out of participating keeps showing up even when priorities shift elsewhere.
+- Alternative considered: Coordinating partners mainly through appeal to the shared public-good mission of the project.
+- Condition — applies when: Partners have genuinely different mandates and incentives, such that goodwill alone is unlikely to hold them over time.
+- Before → After: Not documented in the source.
+- Source: mahavistaar.md reference.
+
+### Workforce
+
+**29. Extension officers' role shifts from sole information source to freed capacity for higher-value work**
+- Dimension: Workforce
+- Stage: Pilot
+- Type: Tactical Decision
+- Decision: Let farmers get routine answers directly from the system, instead of requiring an extension officer to answer every question themselves.
+- Why it matters: An officer who spends their day answering the same routine questions has no time left for the harder cases that actually need a person. Freeing that time up is what lets officers focus where they add the most value.
+- Alternative considered: Not documented in the source.
+- Condition — applies when: Frontline workers spend a large share of their time on routine, repeatable questions a system could answer directly.
+- Before → After: Before — officers travelled long distances answering questions across crops, livestock, schemes, and markets, carrying scattered notes and paperwork. After — farmers get routine answers directly from the system, freeing officer time for higher-value work.
+- Source: mahavistaar.md reference.
+
+**30. Use itself is training — no separate onboarding layer for farmers**
+- Dimension: Workforce
+- Stage: Pilot
+- Type: Strategic Decision
+- Decision: Built no separate training step for farmers. A farmer calls the number, asks a question, and gets an answer — nothing to learn first. Farmers were seen moving naturally from simple questions (weather, pest) toward more complex ones (scheme applications, credit, grievances) just through using it.
+- Why it matters: Requiring training before access adds a barrier for exactly the population this system is meant to reach — people with limited literacy and no history with formal digital services. Making the first use as simple as making a phone call removes that barrier entirely.
+- Alternative considered: Building a formal onboarding or training process before farmers could use the system.
+- Condition — applies when: The interaction itself (a phone call) is already familiar enough that no separate training is needed.
+- Before → After: Not documented in the source.
+- Source: mahavistaar.md reference.
+
+**31. Population-scale usage as an institutional feedback loop**
+- Dimension: Workforce
+- Stage: Pilot
+- Type: Strategic Decision
+- Decision: Treated the total volume of farmer queries as a feedback signal in its own right. 205,000+ monthly queries made previously invisible demand visible, letting institutions see their own knowledge gaps — where farmers' questions went unanswered — continuously, not just through occasional surveys.
+- Why it matters: A periodic survey only catches a gap if someone thinks to ask about it. Watching real query patterns at scale surfaces gaps institutions didn't know to look for, as they happen.
+- Alternative considered: Not documented in the source.
+- Condition — applies when: A system gets enough real query volume that patterns in unanswered or frequent questions become a meaningful signal about where institutional knowledge is thin.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway; mahavistaar.md reference.
+
+### Operating Model
+
+**32. Bounded start, run as a time-boxed pilot with a review gate before scaling**
+- Dimension: Operating Model
+- Stage: Explore
+- Type: Playbook
+- Playbook:
+  1. Start with a bounded scope — Kharif crops, selected districts, one or two languages — instead of trying for statewide, all-crop, all-language coverage from day one.
+  2. Run that bounded scope as an eight-week pilot, treated as a learning phase, not a launch event.
+  3. Review what the pilot actually revealed, not just whether it worked.
+  4. Only then decide whether and how to scale.
+- Why it matters: A big-bang launch that fails, fails everywhere at once, and it's hard to tell which part broke. A bounded pilot fails small, and tells you exactly what to fix before you scale it up.
+- Condition — applies when: There's no existing proof the underlying pipeline works, and a smaller, time-boxed launch can generate that proof faster than a broad one.
+- Before → After: Not documented in the source.
+- Source: OAN Diffusion Pathway.
+
+**33. Migrate from commercial per-token inference to a self-hosted GPU cluster to escape a runaway cost trajectory**
+- Dimension: Operating Model
+- Stage: Pilot
+- Type: Failure and Fix
+- Failure: Running entirely on GPT-4.1 via Azure OpenAI, spend in November 2025 was roughly ₹2 lakh a day, heading toward roughly ₹6 lakh a day as adoption grew — a cost curve that would have made staying on commercial per-token pricing unworkable at scale.
+- Fix: Moved to a self-hosted cluster on 4×H100 GPUs, keeping Azure only as a backup for overflow traffic. Six months of GPU rental for that cluster cost ₹25 lakh; a planned larger build-out is projected at roughly ₹2 crore a year — well under the roughly ₹18 crore a year the Azure path was heading toward.
+- Insight: The real question was never whether to move to self-hosted — it was how far to go, and how much reliability to keep in reserve. Once the move was made, the commercial path's job changed: from doing most of the work, to being an expensive backup used rarely.
+- Condition — applies when: Per-token commercial cost grows with usage in a way a self-hosted cluster's mostly-fixed cost doesn't, and it's worth paying more occasionally for reliability rather than under-building capacity or making users wait.
+- Before → After: Before — roughly ₹9 per question, fully exposed to per-token cost growth. After — roughly ₹0.05 per question at full use (about a 180× drop), with the commercial path kept only as a bounded-cost backup.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
+
+**34. Learn how much traffic the system can handle by watching it live, instead of guessing upfront**
+- Dimension: Operating Model
+- Stage: Pilot
+- Type: Playbook
+- Playbook:
+  1. Turn on usage tracking (Langfuse), already set up at the time of writing.
+  2. Watch, for two weeks, how often the self-hosted setup gets full and starts sending calls to the backup instead — that's the number that shows whether today's limit is set right.
+  3. Slowly raise the number of farmers allowed to talk to the system at the same time (in steps: 120, then 140), checking each time that answers aren't getting slower.
+  4. Lock in the real "how many farmers at once" number the data supports, instead of the current provisional guess of 60–70.
+- Why it matters: "How many farmers can the system talk to at the same moment" is a real number with a cost on both sides. Set it too low, and farmers get pushed to the expensive backup, or turned away, more than they need to be. Set it too high, and the system slows down or struggles under real load. Watching real usage first means the final number reflects what the system can actually handle, not a guess made before anyone had used it.
+- Condition — applies when: Nobody yet knows how many farmers the system can safely talk to at once, and guessing wrong in either direction — too cautious or too aggressive — costs real money or real reliability.
+- Before → After: Not documented as completed; this is the plan at the time of writing, not yet carried out.
+- Source: MahaVistaar Production Serving Architecture (Internal Note).
+
+
+## 4. Toolkits and playbooks
+
+| Asset | Unit | Reuse condition |
+|---|---|---|
+| Seven-layer reference architecture | Toolkit (Unit 7) | Use when multiple institutional data sources and channels need to converge into one response pipeline. |
+| Bilingual glossary (Marathi↔English) | Toolkit (Unit 18) | Use when the authoritative knowledge base and the served population's language differ, and full corpus translation is impractical. |
+| Adversarial test sets for moderation | Toolkit (Unit 20) | Use when validating a moderation layer's robustness before and after changes. |
+| Fifty-four-enabler map | Toolkit (Unit 26) | Use when assembling or auditing the full partner landscape for a state-scale, multi-sector advisory platform. |
+| Eight-week pilot, then structured review | Playbook (Unit 32) | Use when a new deployment context has no prior evidence of how the pipeline will behave at scale. |
+| Watch-then-set traffic limits | Playbook (Unit 34) | Use when nobody knows how many users the system can safely handle at once, and guessing wrong is costly either way. |
 
 ---
-## Gaps — Information Not in the Source Documents
 
-1. At twelve months, what would you expect to observe in a farmer's life — not in the system's logs — that would tell you this worked? And for any of the live deployments, has anything like that been observed yet?
-2. Which body has the authority to determine what MahaVistaar can and cannot claim on behalf of the state — and what happens when that boundary is crossed?
-3. How was the initial deployment funded — which institution's budget, under what mechanism? And who bears the ongoing cost of the GPU cluster and the operational team — state government budget, central scheme, development partner, or something else?
-4. For the core actors — ICAR, IMD, AgriStack, the state agricultural universities — was their data contribution under a formal agreement, an informal arrangement, or a public mandate? And if any of them had withdrawn, what would have broken?
-5. Were extension officers or agriculture department staff resistant to the system — and what form did that resistance take?
-6. Today, in normal operations, who decides when the model needs retraining, when the advisory corpus needs updating, and when a guardrail needs changing? Is that a named role, a team, or is it still the pilot team?
-7. When a farmer receives a wrong or harmful answer — wrong pest treatment advice, wrong scheme eligibility, wrong mandi price — what is the path from that error to a fix? Who finds out, who decides what to do, and how are the guardrails updated so it doesn't happen again?
-8. Which specific regulatory or policy constraints — DPDP obligations, government procurement rules, NIC hosting requirements — shaped how the deployments were structured? And were any of them obstacles that required a workaround?
+## 5. Problem→solution patterns
+
+| Problem | Root cause | Solution | Result | Condition |
+|---|---|---|---|---|
+| Commercial inference spend was on a runaway trajectory (~₹2 lakh/day heading toward ~₹6 lakh/day) | Per-token commercial pricing with input tokens at ~80% of cost and caching under-utilised | Migrated to a self-hosted vLLM cluster with aggressive prefix caching | Cost per question fell from ~₹9 to ~₹0.05 — roughly a 180× reduction | Applies whenever per-token commercial inference cost scales with adoption faster than a self-hosted cluster's largely fixed cost |
+| An 8-GPU node was stranding 2 GPUs, capping the main model at TP=4 | Tensor parallelism only accepts power-of-two widths, and moderation's allocation blocked the main model from stepping to TP=8 | Move moderation onto its own dedicated single-H100 node, freeing all 8 GPUs for the main model | Concurrency projected to more than double (~80 → ~160+ users/node) | Applies whenever a lightweight secondary model shares a node with a primary model whose ideal tensor-parallel width is blocked by that allocation |
+| Some locations returned no weather data | Live weather-station sources have real geographic coverage gaps | Expanded search radii and built graceful fallback/routing logic | Not quantified in the source | Applies whenever a system depends on external data sources without complete geographic coverage |
+
+---
+
+## 6. Retrieval guide
+
+*"Why does this problem need an AI system at all — couldn't better websites or more staff solve it?"* → Unit 1, Unit 2
+
+*"Why voice specifically, instead of an app or a better website?"* → Unit 3
+
+*"Does the system only answer when asked, or does it reach out too?"* → Unit 5
+
+*"How should we organise use cases — by our own department structure, or some other way?"* → Unit 6
+
+*"How do we keep farmers trusting the system rather than trusting the AI itself?"* → Unit 4, Unit 23
+
+*"What should the overall system architecture look like?"* → Unit 7
+
+*"How do we stop unsafe or off-topic queries from reaching the main model?"* → Unit 8
+
+*"How do we make sure every answer is actually grounded in real data, not the model's own guess?"* → Unit 9
+
+*"Should we centralise all the institutional data, or leave it where it is?"* → Unit 10
+
+*"How do we get both low cost and high reliability out of our serving stack?"* → Unit 11, Unit 12
+
+*"Our model is large — how do we actually get good concurrency out of it?"* → Unit 13
+
+*"Where should we look first if our self-hosted inference costs are higher than expected?"* → Unit 14
+
+*"Should we use a big commercial API or fine-tune our own smaller model?"* → Unit 15
+
+*"We have GPUs sitting idle — why, and what do we do about it?"* → Unit 16
+
+*"How do we bridge farmers' language with English-language source material without translating everything?"* → Unit 18
+
+*"Who actually needs to be involved in a project like this?"* → Unit 26, Unit 27
+
+*"What's the very first institutional step before any building starts?"* → Unit 22
+
+*"Should this be a one-time technology project or something longer-term?"* → Unit 21
+
+*"When should we lock down data-sharing agreements relative to the technical build?"* → Unit 25
+
+*"How do we keep partners committed beyond just sharing a mission?"* → Unit 28
+
+*"What happens to extension officers once farmers can get answers directly?"* → Unit 29, Unit 30
+
+*"How do we know if the system itself is actually improving how institutions work, not just answering questions?"* → Unit 31
+
+*"Should we try to cover every crop, district, and language at launch?"* → Unit 32
+
+*"What's the right way to run a first pilot before deciding to scale?"* → Unit 32
+
+*"How much does something like this actually cost to run, and how did that shape the architecture?"* → Unit 33
+
+*"How do we figure out our real capacity limits without guessing upfront?"* → Unit 34
