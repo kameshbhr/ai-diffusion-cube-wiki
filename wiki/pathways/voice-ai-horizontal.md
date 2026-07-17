@@ -1,4 +1,4 @@
-# Voice AI for Inclusion — Horizontal Pathway
+# Voice AI for Inclusion
 
 ---
 
