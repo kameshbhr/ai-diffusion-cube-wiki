@@ -8,9 +8,9 @@ Master index of all wiki pages. Updated on every ingest or page creation.
 
 | Page                                        | Summary                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [MahaVistaar](pathways/mahavistaar.md)      | Maharashtra state agriculture AI — Pioneer OAN deployment; 17 lakh daily advisories; source of the DPG architecture and governance frameworks reused by all subsequent deployments.                                                                           |
-| [Astitva](pathways/astitva-pathway.md)      | Dehvali Bhili, a low-resource tribal language enablement for Voice AI — 60,000+ voice samples, processed them through a quality-assured pipeline, and integrated the resulting language model into MahaVISTAAR, Maharashtra's agricultural extension platform |
-| [Voice AI](pathways/voice-ai-horizontal.md) | This pathway synthesises practitioner experience across seven voice AI deployments in India and Africa. It is written for the next adopter — not as a record of what was done, but as a transfer of what was learned and what it cost to learn it.            |
+| [MahaVistaar](pathways/mahavistaar.md)      | Maharashtra's advisory system for farmers, connecting crop advisories, weather, market prices, government schemes, and grievance tracking through a single voice call on any phone.                                                                           |
+| [Astitva](pathways/astitva-pathway.md)      | A district-led effort in Nandurbar, Maharashtra, that built Dehvali Bhili — a tribal language with no prior digital footprint — into a usable voice AI stack  |
+| [Voice AI](pathways/voice-ai-horizontal.md) | A synthesis of practitioner experience across several voice AI deployments at scale into reusable decisions, playbooks, and safety tools for teams  building reliable voice services for rural and low-literacy users.            |
 
 ***
 
