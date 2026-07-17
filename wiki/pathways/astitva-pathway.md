@@ -27,8 +27,7 @@ This is a **horizontal pathway**: it captures language enablement as a prerequis
 | Geography | Nandurbar district, Maharashtra, India (Dehvali Bhili is spoken by a much larger community — roughly ten million tribal speakers across a wider multi-state region) |
 | Population served | 9+ lakh tribal residents of Nandurbar across 18+ languages and dialects; Dehvali Bhili itself spoken by roughly ten million speakers regionally |
 | Stage reached | Pilot → Scaling (Dehvali Bhili integrated into MahaVISTAAR; expansion to further languages and domains underway) |
-| Contributing organisation | EkStep Foundation, with District Administration Nandurbar, Karya, AI4Bharat/IIT Madras, Bhashini, State Agriculture Department & POCRA |
-| Source deployments | Project Astitva (language enablement); MahaVISTAAR (first practical deployment of the resulting language capability) |
+| Contributing organisation | EkStep Foundation|
 | Dimensions covered | Architecture, Data, Institution, and Ecosystem are all densely and specifically documented, including named tooling and partner roles. Workforce is out of scope by design — the source material frames workforce and dependency questions as belonging to the downstream deployment that consumes this language infrastructure, not to language enablement itself. Governance, licensing, and maintenance economics after the pilot are the thinnest area within the dimensions this pathway does cover. |
 | Last updated | Not stated in the source |
 | Contact for peer connection | Not stated in the source |
