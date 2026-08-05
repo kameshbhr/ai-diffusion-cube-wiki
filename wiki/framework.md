@@ -56,8 +56,6 @@ This framework serves two purposes: **(1)** generating a structured pathway docu
 
 ## 2. The question bank — insight forms and stage-weighting
 
-This serves double duty: it's the **classification standard** when extracting units from raw material (does this content satisfy this cell's insight form?), and it's the **probing/retrieval logic** when guiding a live adopter (what should the agent ask next, and what corpus units should it surface?).
-
 ### EXPLORE — Is AI the right answer, and what would it take?
 
 | Dimension | Core question | Listening for | Insight form | Corpus example |
@@ -146,23 +144,7 @@ Primary = ask/check directly this stage. Secondary = ask only if relevant or if 
 
 ---
 
-## 3. Extracting units from raw material
-
-Whether the raw material is an interview transcript or a document dump, the same discipline applies before anything gets treated as a unit:
-
-| Step | What it means |
-| --- | --- |
-| **Tag every unit** | Dimension + Sub-category + Stage + Type + Condition tag. No untagged units enter the corpus. `Also relevant at: [Stage, Stage]` — optional. Captures where a unit is *useful* beyond its stage of origin. **Does not count toward the Section 2 coverage grid** — grid density is driven by Stage (origin) alone, so gap-detection stays honest. This field feeds only the Section 6 retrieval guide and adopter-facing navigation. Stage reflects where the evidence was **discovered** (counted in the grid). "Also relevant at" reflects where it's **useful** (not counted, used for retrieval only). Never merge the two. |
-| **Write the before→after** | Every tactical/strategic unit needs an outcome statement. Without it, it's a lesson, not a finding. |
-| **Name the failure specifically** | "It didn't work" is not a unit. Name the failure, the fix, and the threshold or insight the fix revealed. |
-| **Flag the gaps** | Check against Primary sub-categories per stage, not raw cell density — a filled cell can still miss its stage's real concern. |
-| **Don't fabricate** | If a before→after, a named individual, or a condition isn't in the source, write "Not documented in the source" rather than inventing it. |
-
-**The synthesis test:** could someone who never saw the raw material make a different decision because of this unit? If yes, it's a real unit. If it just describes what happened, it isn't.
-
----
-
-## 4. The pathway document — output structure
+## 3. The pathway document — output structure
 
 A pathway document is not a case study. A case study documents what was built. A pathway document is written for the next adopter — what they would need to decide, the alternatives they would consider, the conditions under which different choices are correct.
 
@@ -232,6 +214,22 @@ Rules:
 - "Covers" cites actual Section numbers, field names, and unit ranges — not vague descriptions like "background info."
 - When a file is derivative of another (a condensed summary, an earlier draft of the same material), say so explicitly and mark it "confirms, doesn't add" rather than listing it as an independent source for content it merely restates.
 - If a source file contributed nothing that made it into the final document, don't list it — this appendix records what was actually used, not everything attached.
+
+---
+
+## 4. Extracting units from raw material
+
+Whether the raw material is an interview transcript or a document dump, the same discipline applies before anything gets treated as a unit:
+
+| Step | What it means |
+| --- | --- |
+| **Tag every unit** | Dimension + Sub-category + Stage + Type + Condition tag. No untagged units enter the corpus. `Also relevant at: [Stage, Stage]` — optional. Captures where a unit is *useful* beyond its stage of origin. **Does not count toward the Section 2 coverage grid** — grid density is driven by Stage (origin) alone, so gap-detection stays honest. This field feeds only the Section 6 retrieval guide and adopter-facing navigation. Stage reflects where the evidence was **discovered** (counted in the grid). "Also relevant at" reflects where it's **useful** (not counted, used for retrieval only). Never merge the two. |
+| **Write the before→after** | Every tactical/strategic unit needs an outcome statement. Without it, it's a lesson, not a finding. |
+| **Name the failure specifically** | "It didn't work" is not a unit. Name the failure, the fix, and the threshold or insight the fix revealed. |
+| **Flag the gaps** | Check against Primary sub-categories per stage, not raw cell density — a filled cell can still miss its stage's real concern. |
+| **Don't fabricate** | If a before→after, a named individual, or a condition isn't in the source, write "Not documented in the source" rather than inventing it. |
+
+**The synthesis test:** could someone who never saw the raw material make a different decision because of this unit? If yes, it's a real unit. If it just describes what happened, it isn't.
 
 ---
 
