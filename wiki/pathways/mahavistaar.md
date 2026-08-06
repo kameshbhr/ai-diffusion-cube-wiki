@@ -2,7 +2,7 @@
 
 ## 0. Reading guide
 
-This is a pathway of MahaVISTAAR (Maharashtra's state agricultural advisory system), documented by the team that built it (EkStep Foundation; OpenAgriNet) as of July 2026. Written for a government department, technologist, or social-sector/enterprise team deciding whether to build a similar voice-first, DPI-backed advisory system, or already building one.
+This is a pathway of MahaVISTAAR (Maharashtra's state agricultural voice advisory system). It draws primarily on the published diffusion pathway document and its executive summary, cross-checked against an earlier OpenAgriNet package document and a production-serving architecture note. Written for a government department, technologist, or social-sector/enterprise team deciding whether to build a similar voice-first, DPI-backed advisory system, or already building one.
 
 **Why this pathway exists.** MahaVISTAAR doesn't speak as an AI — it speaks as the Department of Agriculture, Maharashtra, through a bot named Vasudha. A farmer who gets bad advice doesn't experience "the model got it wrong"; she experiences "the department failed me." Every unit here — architecture, data governance, safety design, testing sequence — traces back to that fact. The second throughline: the problem was fragmentation, not absence. The knowledge farmers needed already existed across universities, IMD, APMCs, and scheme databases; the work was connecting it.
 
@@ -428,7 +428,7 @@ This is a pathway of MahaVISTAAR (Maharashtra's state agricultural advisory syst
 
 ---
 
-Source Trace
+Provenance appendix (contributor-only)
 
 | Source file | Covers | Notes |
 |---|---|---|
