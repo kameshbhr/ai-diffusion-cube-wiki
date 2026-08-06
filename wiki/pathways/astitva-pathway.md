@@ -1,416 +1,360 @@
-# Language Enablement for AI
+# Language Enablement for Voice AI
+
+*A pathway for bringing a language with little or no existing digital footprint into voice AI — speech recognition, translation, and speech synthesis — and into a live public service.*
+
+---
 
 ## 0. Reading guide
 
-This is a **horizontal pathway**: it captures language enablement as a prerequisite step, upstream of any specific use case — the output is language infrastructure (a trained ASR/NMT/TTS/LLM stack plus the open data behind it), not a deployment in itself. It draws on Project Astitva, a district-led effort in Nandurbar, Maharashtra, that built Dehvali Bhili — a tribal language with no prior digital footprint — into a usable voice AI stack in roughly a hundred days, then fed the result into an existing agricultural advisory deployment (MahaVISTAAR).
+This pathway is built from one deployment — bringing Dehwali Bhili, a tribal language with zero prior digital resources, into a live government voice service — plus a companion blueprint written to generalize that experience for the next language, anywhere.
 
-**Why this pathway exists.** For a language with no script, no formal teaching, and no digital footprint, every other AI-deployment decision is blocked until the language itself exists as an asset. No commercial actor had a market reason to build that infrastructure on its own, so the gap was never going to close without a deliberate, publicly-led effort. This pathway exists because language enablement has its own lifecycle, its own actor map, its own failure modes, and its own economics — distinct from the deployment that eventually uses the resulting language capability. The throughline across this material is a deployment-first discipline: data collection is the easy part to talk about and the wrong thing to optimise for; what determines impact is a committed downstream deployment, a convening authority who owns it, and a use case identified early enough to anchor the whole effort.
+**What this is.** Organized around the decisions the next adopter will actually face: what to decide, what was weighed, why one path was chosen, and the conditions under which that choice holds.
 
-**How to navigate**
-- If you're deciding whether a language actually needs to be built from scratch — start with Problem Orientation, Explore stage (Units 1–2), and the data audit in Unit 6.
-- If you're choosing what to build the model stack on top of — start with Architecture.
-- If you're scoping the data collection design itself — start with Data, Define stage.
-- If you're trying to figure out who needs to be in the room — start with Ecosystem, especially the ten-role blueprint (Unit 19).
-- If you're worried about cost, funding, or who owns this after the pilot — start with Operating Model.
-- If your model works in testing but breaks on real calls — go to Data, Pilot stage (Units 11–12).
-- If you want the actual build sequence end to end — go straight to the playbook in Unit 28.
+**How to navigate it.** Section 3 groups reusable insight into four areas — who you're building for, what you're building, whether your institution can own it, and who else needs to be at the table — each broken out by how far along the effort is. Section 2 shows where this pathway has dense, tested experience and where it's thin. Section 6 is a question-first index.
 
 ---
 
 ## 1. Pathway identity
 
-| Field | Detail |
-|---|---|
-| Deployment/Pathway name | Enabling Voice AI Models for Bhili Language (Project Astitva) |
-| Sector | Cross-sector (initial deployment: Agriculture via MahaVISTAAR; planned: Health, Education, Administration) |
-| Actor type | Government, Technologist, Social Sector-Enterprise |
-| Geography | Nandurbar district, Maharashtra, India (Dehvali Bhili is spoken by a much larger community — roughly ten million tribal speakers across a wider multi-state region) |
-| Population served | 9+ lakh tribal residents of Nandurbar across 18+ languages and dialects; Dehvali Bhili itself spoken by roughly ten million speakers regionally |
-| Stage reached | Pilot → Scaling (Dehvali Bhili integrated into MahaVISTAAR; expansion to further languages and domains underway) |
-| Contributing organisation | EkStep Foundation|
-| Dimensions covered | Architecture, Data, Institution, and Ecosystem are all densely and specifically documented, including named tooling and partner roles. Workforce is out of scope by design — the source material frames workforce and dependency questions as belonging to the downstream deployment that consumes this language infrastructure, not to language enablement itself. Governance, licensing, and maintenance economics after the pilot are the thinnest area within the dimensions this pathway does cover. |
-| Last updated | Not stated in the source |
-| Contact for peer connection | Not stated in the source |
-| Summary | A district-led, EkStep Foundation-coordinated effort built Dehvali Bhili — a tribal language with no script, no formal teaching, and no digital footprint — into a working ASR/NMT/TTS/LLM stack in roughly a hundred days, at a government-funded pilot cost of about ₹27 lakh. The resulting open language infrastructure was integrated into MahaVISTAAR as its first practical use, with expansion to three more languages and new sectors planned next. |
+| Field | Value |
+| --- | --- |
+| **Deployment name** | Bhili (Dehwali Bhili) Language Enablement for Voice AI — Project Astitva |
+| **Sector** | Government service delivery — agricultural extension advisory, with health, education, and citizen feedback named as near-term extensions |
+| **Geography** | Nandurbar district, Maharashtra, India; the companion blueprint is written for global reuse |
+| **Population served** | 10 million+ Bhili speakers nationally; within Nandurbar, tribal community members — particularly women farmers with smaller advice networks, limited Marathi exposure, and lower smartphone access |
+| **Contributing organisation(s)** | EkStep Foundation (Voice and Language AI team); Nandurbar District Administration (convening authority); AI4Bharat/IIT Madras (model building); Bhashini (national hosting); Karya (data-collection platform); State Agriculture Department and POCRA (deployment, via MahaVISTAAR's Vasudha bot) |
+| **Stage reached** | Scale — live public service since approximately May 2026, telephony/IVR version targeted live before October 2026, replication to sibling languages already in motion. As of July 2026. |
+| **Key dates** | Phase 1 data collection compressed to roughly one month; full collect→build→deploy cycle roughly 100 days; first live version ~May 2026. As of July 2026. |
+| **2-sentence summary** | A district administration's independent effort to collect Bhili voice data was connected to a national AI platform and a live agricultural advisory service, taking a zero-digital-resource tribal language from a standing start to a working ASR/NMT/TTS pipeline in about 100 days. The most transferable finding is that the bottleneck was organisational and relational — trust, a named institutional anchor, a real deployment target — not the AI tooling, which already existed. |
+| **Scale/impact achieved** | 60,000+ voice samples and 60,000 Bhili–Marathi translation pairs collected in about one month (~60 hours spontaneous speech, ~2 hours studio voice); live inside MahaVISTAAR's Vasudha bot. As of July 2026. |
+| **Cost anchor** | ~₹27 lakh for Phase 1, entirely government-funded; ~₹20 lakh paid directly to community contributors. Model training subsidised by AI4Bharat in exchange for open data access. As of July 2026. |
+| **Build effort** | ~100 days end to end (collect → build → deploy) from an absolute zero-resource start. |
+| **Known downstream adopters** | Mathwadi Bhili, Mavchi, and Pawari are next in motion on the same playbook; Bodo and Garo are on the roadmap. As of July 2026. |
+| **Scope — does not transfer cleanly when** | The target language already has some existing digital presence (this pathway assumes an absolute zero-resource start); or the effort is not tied to a specific service a community will actually use. |
 
 ---
 
-## 2. Coverage grid
-
-Density: ●●● = 3+ units · ●● = 2 units · ● = 1 unit · ○ = 0 units
+## 2. Coverage grid and gaps
 
 | Dimension | Explore | Define | Pilot | Scale |
-|---|---|---|---|---|
-| Problem Orientation | ● | ○ | ○ | ○ |
-| Architecture | ○ | ●●● | ○ | ○ |
-| Data | ● | ●●● | ●● | ● |
-| Institution | ○ | ●●● | ○ | ○ |
-| Ecosystem | ● | ●●● | ○ | ○ |
-| Workforce | ○ | ○ | ○ | ○ |
-| Operating Model | ○ | ●●● | ○ | ○ |
+| --- | --- | --- | --- | --- |
+| **Persona** | ● | ●● | ○ | ○ |
+| **Solution** | ●● | ●● | ●●● | ○ |
+| **Institution** | ●●● | ● | ●● | ● |
+| **Ecosystem** | ○ | ●●● | ○ | ● |
 
-*Workforce shows no units by design, not by omission: the people who apply the resulting model in a live use case — and any training, feedback, or dependency questions that come with that — belong to the downstream deployment that consumes this language infrastructure, not to this pathway.*
+**Gaps worth naming**
 
-### Known gaps in the pathway
-
-- *(Problem Orientation, Scale)* Beyond usage numbers, did the project track any real-world outcome — like an actual change in a farmer's life — to show impact on the community?
-- *(Data, Define)* Did the project use a specific sentence-selection methodology — like a coverage logic or sourcing method — beyond just the volume targets, to guide corpus construction for a language with limited written material?
-- *(Data, Pilot)* Was there a specific WER, BLEU, or MOS score that the team used as the bar for "accurate enough to release more widely"?
-- *(Data, Define)* How does the project handle India's DPDP 2023 data protection law for this data — who is the data fiduciary, and can contributors withdraw consent even though the dataset is hosted openly?
-- *(Institution, Define)* What kinds of problems did the monitoring process actually catch during data collection — fake submissions, unfair treatment of contributors, misuse of funds, something else — and how were they handled?
-- *(Institution, Scale)* Once the PMU winds down, is there a plan to make sure knowledge about the dataset, the model, and community relationships doesn't just leave with the team?
-- *(Ecosystem, Define)* For a language with no academic tradition, how do you actually find or train someone to serve as a linguistic validator?
-- *(Ecosystem, Define)* Beyond having the pipeline and role structure in place, how were community annotators and validators actually trained and quality-checked at volume?
-- *(Ecosystem, Pilot)* Besides the one Tribaldaan conclave at the start, were there other touchpoints that kept the community's trust through the weeks of data collection?
-- *(Operating Model, Scale)* If a downstream deployment like MahaVISTAAR finds the model getting something wrong, is there a process to report that back to the team that owns the model — and does it trigger a fix or retraining?
-- *(Operating Model, Scale)* Now that the dataset is open and the plan is to hand over from district to state, who's actually responsible for updating it, funding it, and deciding what happens to it next?
+- **Persona at Pilot and Scale is empty.** No record of how real usage matched or missed the intended scope, or whether new user segments surfaced once Bhili reached real scale.
+- **Solution at Scale is empty.** The pathway is documented mid-rollout — no record of which components get unbundled, or whether data SLAs will be needed, as Bhili extends beyond agriculture.
+- **Institution at Define is thin (1 unit).** No named content-authority sign-off, no named data steward, no explicit testing gate reported before real users.
+- **Ecosystem at Pilot is empty.** No confirmation of whether any partner underperformed once the effort was live, or what contingency existed if one had.
+- **Institution at Scale is thin (1 unit) and incomplete.** The one unit here captures the intent to run a standing multi-stakeholder model, but no named operational owner, budget line, or monitoring cadence is confirmed as actually locked in.
+- **What "deletion" actually covers once data has been used in a training run is undocumented.** Unit 16 confirms deletion mechanisms exist for stored data, but doesn't say whether a withdrawal request after training also affects a model already fine-tuned on that contributor's data, or only the raw stored copy.
 
 ---
 
 ## 3. Micro-innovations
 
-### Problem Orientation
+### Persona
 
-**1. Frame the problem as language exclusion, not technology absence**
-- Dimension: Problem Orientation
+**1. Anchor to a specific excluded person and a service, not the language**
+- Dimension: Persona
 - Stage: Explore
 - Type: Strategic Decision
-- Decision: Framed the effort as solving language exclusion — a specific Dehvali Bhili speaker in Nandurbar, often with low or no literacy, using a keypad phone or basic Android handset, unable to access services designed for majority languages — rather than starting from a technology capability.
-- Alternative considered: Not documented in the source.
-- Condition — applies when: A project risks starting with "what can this technology do" instead of "who is excluded, and why."
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
+- Decision: Start from a specific excluded person and the service they're entitled to but can't reach — not from "let's build a model for this language."
+- What this looked like here: Nandurbar's District Collector centered the effort on tribal women farmers with far less Marathi exposure than men in their communities, consequently missing agriculture/health/education scheme benefits, with the state's agricultural advisory system as the named service.
+- Alternative considered: Choosing to build a model for the language on its own terms, without first anchoring to a specific excluded population or service.
+- Why: A language chosen for its own sake produces a dataset with no one institutionally urgent about it. A named excluded person and a named unreachable service gives the effort a stakeholder whose life visibly changes if it works.
+- Condition — applies when: scoping a new low-resource-language effort from scratch.
 
-### Architecture
-
-**3. Reuse existing assets wherever possible**
-- Dimension: Architecture
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Reused existing assets at every layer rather than building from scratch — fine-tuned an existing open AI4Bharat/IIT Madras base across ASR, NMT, and TTS (with an LLM fine-tuned on a Qwen base) instead of training foundation models fresh, and separately bootstrapped Dehvali Bhili itself from Marathi, a linguistically related higher-resource neighbour, rather than relying purely on the very limited Bhili data collected.
-- Alternative considered: Training models from scratch; relying solely on Bhili-only data without cross-lingual bootstrapping.
-- Condition — applies when: An open, adequately-licensed model base already exists to fine-tune, and/or the target low-resource language has a linguistically related higher-resource neighbour with existing model or data assets.
-- Before → After: Not documented in quantified terms; framed as saving both time and cost.
-- Source: Project Astitva.
-
-**4. Open, model-agnostic stack and sovereign hosting to avoid lock-in**
-- Dimension: Architecture
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Chose open, model-agnostic components and Bhashini's sovereign hosting specifically to stay independent of any single commercial platform whose priorities could shift.
-- Alternative considered: Not documented in the source.
-- Condition — applies when: The resulting asset needs to remain usable regardless of any one vendor's future direction.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
-
-**5. Reuse an existing community radio station for recording**
-- Dimension: Architecture
+**2. Scope to one deployment first; extend to new sectors incrementally**
+- Dimension: Persona
 - Stage: Define
 - Type: Tactical Decision
-- Decision: Used an existing community radio station for audio recording rather than building a purpose-built studio.
-- Alternative considered: Building a dedicated recording studio.
-- Condition — applies when: A suitable existing recording facility is already available in the community, avoiding new capital spend.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
+- Decision: Scope tightly to one deployment now rather than building for many future use cases at once, with incremental data collection for the next use case later.
+- What this looked like here: Bhili was scoped to the MahaVISTAAR agriculture advisory bot first; health, education, and citizen-feedback use cases were deferred to later, separate efforts.
+- Alternative considered: Covering every anticipated future use case within the first data-collection sprint.
+- Why: A use-case-agnostic model needs far more data before it's usable for any sector — a harder bar for a genuinely low-resource pool of available speakers. Scoping narrow gets a working system into people's hands faster, and each new sector then needs only incremental top-up data.
+- Condition — applies when: resources (financial and human) are constrained, which is the common case here.
 
-### Data
+**3. Name one dialect variant explicitly; treat sibling languages as separate follow-on efforts**
+- Dimension: Persona
+- Stage: Define
+- Also relevant at: Scale
+- Type: Strategic Decision
+- Decision: Where a language has more than one identifiable variant, name and record for one of them, rather than trying to represent the whole continuum in the first sprint.
+- What this looked like here: The team chose Dehwali Bhili over Bhili's other known variation for this effort. Mathwadi Bhili, Mavchi, and Pawari are next in line as separate efforts, with Bodo and Garo further out.
+- Alternative considered: Collecting across both known Bhili variations within this same effort.
+- Why: Splitting a first sprint's data collection across multiple variants dilutes what any one of them gets, without making the resulting model good for either.
+- Condition — applies when: the target language has more than one identifiable variant or closely related sibling language already known.
 
-**6. Audit existing language assets before assuming zero**
-- Dimension: Data
+### Solution
+
+**4. Reuse and fine-tune an existing open model rather than build from scratch**
+- Dimension: Solution
 - Stage: Explore
 - Type: Strategic Decision
-- Decision: Audited what already existed for Dehvali Bhili — textbooks, written material, prior recordings, prior linguistic work, including checking Bhashini for prior work — before committing to a zero-to-one collection effort. The audit confirmed a genuine zero-to-one starting point: no script, no formal teaching, fewer than a hundred existing books, no audio or video assets.
-- Alternative considered: Not documented in the source.
-- Condition — applies when: Any project is about to commit a zero-to-one data-collection budget and plan without first checking what may already exist.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
+- Decision: Fine-tune an existing open model, bootstrapped from a related higher-resource language, instead of building model architecture from zero.
+- What this looked like here: AI4Bharat fine-tuned an existing open model, bootstrapping Bhili from Marathi.
+- Alternative considered: Building Bhili's ASR/NMT/TTS models from scratch.
+- Why: For a genuinely low-resource language, the real bottleneck is data quality and institutional process, not architecture.
+- Condition — applies when: a related, higher-resource language exists to bootstrap from.
 
-**7. Multi-domain sentence corpus specification**
-- Dimension: Data
-- Stage: Define
-- Type: Toolkit Asset
-- Toolkit asset: A quantified corpus specification — 25,000 agricultural sentences, 15,000 non-agricultural sentences (40,000+ sentence recordings total), plus roughly 68 hours of speech across spontaneous (60 hrs), studio (6 hrs), and conversational (2 hrs) recordings, all in Dehvali Bhili.
-- Reusable as-is: A concrete, bounded collection target for any similar language-enablement effort.
-- Condition — applies when: Starting a language-enablement effort with no prior sense of how much or what kind of data is needed.
-- Source: Project Astitva.
+**5. First attempt used clean studio audio; failed on real telephony conditions**
+- Dimension: Solution
+- Stage: Explore
+- Also relevant at: Define
+- Type: Failure and Fix
+- Failure: The first attempt at Bhili data collection gathered clean, studio-style audio.
+- Fix: Shifted sampling toward conversational and spontaneous speech, designed explicitly for telephony and low latency, aiming for at least 25% of speech data at 8 kHz.
+- Insight: Clean studio audio performs poorly on the real telephony calls most rural users actually make — the deployment channel has to dictate recording conditions from session one.
+- Condition — applies when: the deployment channel includes basic-phone or IVR access.
 
-**8. Kathbath as the underlying collection methodology**
-- Dimension: Data
-- Stage: Define
-- Type: Toolkit Asset
-- Toolkit asset: Kathbath was used as the underlying collection process for gathering voice recordings from community contributors.
-- Reusable as-is: An existing, tested collection methodology rather than a bespoke process built from nothing.
-- Condition — applies when: Standing up voice-data collection from a distributed community of contributors.
-- Source: Project Astitva.
-
-**9. Maker–Checker–Superchecker multi-layer quality pipeline**
-- Dimension: Data
-- Stage: Define
-- Type: Toolkit Asset
-- Toolkit asset: Three parallel tracks running simultaneously — production (contributors/makers recording), checking (checkers reviewing contributor output in real time via Shoonya, the annotation tool), and validation (linguistic experts and the Tribal Research Institute reviewing checker output) — following a Maker–Checker–Superchecker model, tracked through digital dashboards and leaderboards. All recordings, transcriptions, and quality validations were managed centrally through Karya's platform in one place — a deliberate contrast to the federated data model used downstream in MahaVISTAAR itself, chosen specifically so this real-time multi-layer pipeline could run against a single dataset being built from nothing.
-- Reusable as-is: A ready-made quality structure for high-volume, time-bound community data collection.
-- Condition — applies when: Collecting data at volume, under time pressure, from a distributed community rather than a small in-house team.
-- Source: Project Astitva.
-
-**10. Separate domain-specific data from general data by design**
-- Dimension: Data
+**6. Scope to the three-model minimum (ASR+NMT+TTS)**
+- Dimension: Solution
 - Stage: Define
 - Type: Strategic Decision
-- Decision: Deliberately separated domain-specific sentence collection by contributor domain — health workers contributed health/social-service sentences, revenue staff contributed administrative sentences, community members and Bhili-speaking agriculture officers contributed agriculture and daily-life sentences — as a design decision, not an incidental outcome.
-- Alternative considered: Collecting general-purpose sentences without domain tagging.
-- Condition — applies when: The resulting model will be deployed across multiple sectoral use cases that each need domain-accurate vocabulary.
-- Before → After: Not documented in quantified terms; framed as mattering directly for model accuracy in sectoral deployments.
-- Source: Project Astitva.
+- Decision: Treat ASR, NMT, and TTS as the minimum capability bundle needed to bring a language onto the AI map; treat LLM fine-tuning as a separate, later workstream.
+- What this looked like here: Bhili's effort scoped to these three models.
+- Why: Translating into a higher-resource language lets an already-capable LLM handle downstream sophistication without first needing the far larger data volumes LLM fine-tuning requires.
+- Condition — applies when: foundational translation and speech models don't yet exist for the language.
 
-**11. Read speech does not produce conversational-grade models**
-- Dimension: Data
-- Stage: Pilot
-- Type: Failure and Fix
-- Failure: Initial collection leaned on read speech; people read differently from how they speak, and read-only data produces models that fail in real conversation. This gap was discovered post-deployment, requiring rework.
-- Fix: Added dedicated conversational speech collection (2 hours) alongside spontaneous (60 hrs) and studio (6 hrs) recordings, since conversational data cannot simply be scripted — it requires deliberate design.
-- Insight: Both read/scripted and natural/conversational speech types are needed, and both must be planned into the original collection design rather than discovered afterward.
-- Condition — applies when: The model is intended for live, spoken, conversational deployment.
-- Source: Project Astitva.
-
-**12. Telephony audio-quality mismatch**
-- Dimension: Data
-- Stage: Pilot
-- Type: Failure and Fix
-- Failure: Data was recorded at 16kHz (smartphone/laptop quality); telephony lines operate at 8kHz. A model trained only at 16kHz fails on actual telephony calls. This mismatch was also discovered post-deployment, requiring rework.
-- Fix: Either collect at 8kHz directly or deliberately downsample during training — decided as part of the recording specification before collection, not after, going forward.
-- Insight: Recording quality must be matched to deployment conditions from the start; this and the read-vs-conversational gap were both discovered too late in Astitva and both belong in the original collection plan for any future effort.
-- Condition — applies when: Data-collection tooling (smartphones, laptops) has higher audio fidelity than the deployment channel (telephony).
-- Source: Project Astitva.
-
-**13. Deliberate dialect representation in testing**
-- Dimension: Data
+**7. Data volume and composition target table**
+- Dimension: Solution
 - Stage: Define
-- Type: Failure and Fix
-- Failure: Approval from a small group of testers does not constitute proof of dialect coverage if dialect variation isn't represented in the testing panel.
-- Fix: Map which dialects have gaps and target supplementary collection accordingly, rather than relying on whichever testers happen to be available.
-- Insight: Dialect representation must be deliberate and tracked, not incidental to who is easiest to reach for testing.
-- Condition — applies when: The target language has multiple dialects and formal testing capacity is limited.
-- Source: Project Astitva.
-
-**14. Open dataset release via Bhashini and AI Kosh**
-- Dimension: Data
-- Stage: Scale
+- Also relevant at: Pilot
 - Type: Toolkit Asset
-- Toolkit asset: The resulting dataset — 40,000+ sentence recordings plus roughly 68 hours of speech — is released as an open repository on Bhashini and also on AI Kosh, for nationwide replication.
-- Reusable as-is: Any deployer building voice AI for Dehvali Bhili can draw on the dataset directly rather than recollecting it.
-- Condition — applies when: Building any AI system, not limited to agriculture, that needs to serve Dehvali Bhili speakers.
-- Source: Bhashini national language repository; AI Kosh.
+- Purpose: For sizing a Phase 1 collection plan — how many hours and sentence pairs to collect, of which types — so the effort neither collects too little data to be usable nor spends time and budget collecting more than the current stage needs.
+- Toolkit asset: A target table by data type — translation pairs, naturalistic speech, telephony-grade (8 kHz) speech, studio TTS data, conversational speech. Zero-resource practical minimums: ~60–100 hours of speech and 25,000–40,000 sentence pairs. Production-grade targets (Bhashini DMU/AI4Bharat 2022 benchmark): ~300 hours transcribed speech, 100,000 sentence pairs, 40 hours studio TTS per voice artist.
+- Reusable as-is: Directly usable to set both a Phase 1 plan and a longer-term production target from any starting point.
+- Condition — applies when: setting collection targets for a new low-resource language.
+
+**8. First collection cycle produced Marathi-mixed "impure" Bhili; fixed via iterative small-batch cycles**
+- Dimension: Solution
+- Stage: Pilot
+- Type: Failure and Fix
+- Failure: In the first collection cycle, contributors' spoken Bhili was heavily mixed with Marathi, a natural consequence of how often they interface with Marathi-speaking institutions.
+- Fix: Running collection in iterative cycles (roughly 50–100 hours at a time) caught the mixing early, before a full dataset was locked in.
+- Insight: Data-quality problems specific to a low-resource language surface fastest through iterative small-batch collection with review in between.
+- Condition — applies when: the target language coexists closely with a dominant regional language and speakers habitually code-switch in institutional contexts.
+
+**9. Weight data collection toward an already-named deployment domain**
+- Dimension: Solution
+- Stage: Pilot
+- Type: Tactical Decision
+- Decision: Where a first deployment domain is already named, weight collection more heavily toward that domain than a generic split.
+- What this looked like here: Bhili's collection ran roughly 50% generic / 50% agriculture-specific.
+- Alternative considered: A roughly 70% generic / 30% domain-specific split, treated as the more typical default when no use case is yet named.
+- Why: Front-loading domain-specific data gets the one deployment that has to work sooner to acceptable accuracy, at the cost of needing supplemental collection before serving a second domain well.
+- Condition — applies when: the first deployment target and domain are already named.
+
+**10. Evaluation scorecard — WER / BLEU / MOS plus qualitative field checks**
+- Dimension: Solution
+- Stage: Pilot
+- Also relevant at: Scale
+- Type: Toolkit Asset
+- Purpose: For deciding, at each stage gate, whether the ASR/NMT/TTS models are accurate and natural enough to move toward deployment, and for holding a technical partner to a shared, objective bar.
+- Toolkit asset: Word Error Rate (ASR), BLEU (NMT), Mean Opinion Score (TTS), plus qualitative field checks (naturalness, background-noise handling, turn-taking, whether the conversation feels safe). Rough thresholds: WER <20% usable / <10% production-grade; BLEU >20 usable / >35 near-human; MOS ≥3.5 acceptable.
+- Reusable as-is: Hand this scorecard to any technical partner and request the same numbers at each phase gate.
+- Condition — applies when: assessing readiness to move an ASR/NMT/TTS pipeline between stages.
 
 ### Institution
 
-**15. Convening authority must have local standing**
+**11. Champion-led model: a genuinely committed, high-authority champion is a precondition**
 - Dimension: Institution
-- Stage: Define
+- Stage: Explore
 - Type: Strategic Decision
-- Decision: Used the District Collector's office — which in Maharashtra sits above all line departments — as the convening authority, on the basis that an external organisation could support and implement but could not substitute as convener; the convening authority must be local and trusted.
-- Alternative considered: An external organisation acting as convener.
-- Condition — applies when: Cross-department mobilisation is needed and the convening actor must already be trusted locally.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
+- Decision: Find, or become, a person with real authority and genuine personal commitment to lead the effort — before finalizing a data-collection plan.
+- What this looked like here: Nandurbar's District Collector personally drove community engagement, contributor recruitment, and inter-departmental coordination throughout.
+- Alternative considered: Approaching a district or region through cold outreach, asking them to build the model without an empowered individual leading from within.
+- Why: Coordinating multiple departments and sustaining community engagement over months requires someone empowered to push through friction that procurement sign-off alone can't.
+- Condition — applies when: any government, university, or NGO is anchoring a language effort.
 
-**16. District-level financial delegation as an enabling condition**
+**12. The four-phase process: Foundations → Initial Sprint → Deployment → Institutionalisation**
 - Dimension: Institution
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Relied on Maharashtra's delegated district-level financial powers to act without requiring state-level approval at each step.
-- Alternative considered: Not documented in the source.
-- Condition — applies when: Working within an administrative structure with equivalent district-level fiscal delegation.
-- Condition — fails when: That delegation doesn't exist elsewhere — in which case a different institutional anchor (a state-level ministry, a national programme) may be needed; a next adopter should check for this explicitly before designing a funding and approval model.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
+- Stage: Explore
+- Also relevant at: Define, Pilot, Scale
+- Type: Playbook
+- Playbook:
+  1. **Phase 0 — Foundations (Weeks 1–6):** Decide who is leading the effort — a government body itself, a community/civil-society network, or an external funder acting as convener — since this determines who owns the data, how contributors are recruited, and how deployment gets negotiated later. Assign one accountable, empowered project lead. Register the project with the relevant national language-data platform for your context (Bhashini/ULCA in India, Lacuna Fund in Africa, Mozilla Common Voice for global volunteer collection) — this gives the project access to that platform's hosting, compute, and institutional backing from the start, instead of having to arrange each separately once collection is underway. Name the deployment target, select a data-collection approach, hold a community launch event, agree a script with elders and linguists, build a reference lexicon, recruit diverse contributors, set compensation terms.
+  2. **Phase 1 — Initial Data Sprint (Weeks 6–10):** Collect the foundational dataset in one focused campaign, with collection, checking, and validation running in parallel. Ship a lightweight keyword-spotting model within weeks as the first tangible community deliverable.
+  3. **Phase 2 — Deployment and Deepening (Months 3–12):** Deploy into the live service, run field demonstrations and a structured community feedback loop, expand the dataset toward 100–200 hours.
+  4. **Phase 3 — Institutionalisation and Replication (Month 12+):** Transition ownership to standing infrastructure, open the dataset publicly, begin replication to adjacent languages, publish a handbook.
+- Note: Skipping Phase 0's governance and community steps to reach data collection faster is the most common failure mode.
+- Condition — applies when: starting a language-enablement effort from little or no existing digital presence.
+- Before → After: Nandurbar compressed Phase 0 and Phase 1 into roughly one month against a hard external deadline; less centralized or lower-capacity efforts typically take 1.5–2× longer.
 
-**17. District and community pride, made concrete through a dedicated trust-building event**
+**13. The Replication Checklist**
 - Dimension: Institution
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Framed the project explicitly as a matter of district and community pride, not just a technical exercise — and made that framing concrete for the community itself through the Tribaldaan conclave with Bhashini, held before data collection began to establish what was being built, why, and on what terms.
-- Alternative considered: Not documented in the source.
-- Condition — applies when: A short, high-intensity, multi-actor effort risks losing momentum without an identity-level motivator, and/or the community being asked to contribute has reason to distrust a government-led technology effort.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
+- Stage: Explore
+- Also relevant at: Define
+- Type: Toolkit Asset
+- Purpose: For checking, before committing to data collection, whether the governance, community, and linguistic preconditions are actually in place.
+- Toolkit asset: A go/no-go checklist across Governance (institutional anchor, named deployment platform, data-ownership plan, maintenance plan), Community (community meeting held, trusted local recruitment partner, fair compensation plan, script agreement), and Linguistics (linguist/research institute engaged, 5+ bilingual translators/validators, elder speakers available, dialect variation mapped).
+- Reusable as-is: Each "No" becomes a Phase 0 task, not a stop signal.
+- Condition — applies when: assessing readiness before significant data collection begins.
 
-**18. In-house institutional testing at each phase, non-negotiable**
+**14. Recruit contributors through existing government line-departments**
 - Dimension: Institution
 - Stage: Define
 - Type: Strategic Decision
-- Decision: Required the institution whose name is on the model to put a human lens on it at each phase before wider release — this could not be outsourced to the technology partner or a third-party testing team.
-- Alternative considered: Outsourcing testing to the technology partner.
-- Condition — applies when: A government institution's name and credibility stand behind what the AI system says.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
+- Decision: Recruit voice contributors through the local administration's own line departments rather than through independent vendor outreach.
+- What this looked like here: Teachers appointed by the education department, ASHA workers from health, and extension workers from agriculture became the first protocol of contributors.
+- Alternative considered: Vendor-driven onboarding of contributors not already known to the local administration.
+- Why: The administration already knew who the credible, capable bilingual speakers were, collapsing two trust problems (is this legitimate? are these people any good?) into one already-solved relationship.
+- Condition — applies when: a trusted government administration is the convening authority and already employs people who speak the target language.
+
+**15. Pay contributors promptly, verifiably, and directly for completed work**
+- Dimension: Institution
+- Stage: Pilot
+- Type: Tactical Decision
+- Decision: Pay contributors directly and quickly once a specific task is verified complete, rather than through delayed or batched payment.
+- What this looked like here: Contributors were paid per word (~₹1 to validate, ~₹2 to transcribe/translate) via UPI, landing in their account the same day a task was completed; ~₹20 lakh of the ₹27 lakh Phase 1 budget went directly to community compensation this way.
+- Why: For communities with legitimate, historically grounded wariness of extraction, payment that is fast, tied to verified work, and visible is itself a trust signal. UPI is the local rail used here; the transferable property is prompt, verifiable, direct payment.
+- Condition — applies when: contributors are individual community members providing time and expertise to an institution-led effort.
+
+**16. Explicit, revocable, regulation-aligned consent built in from day one**
+- Dimension: Institution
+- Stage: Pilot
+- Also relevant at: Define
+- Type: Strategic Decision
+- Decision: Require specific written consent describing what's being contributed and how it will be used, before any data collection begins, with a mechanism to withdraw consent and request deletion.
+- What this looked like here: All Bhili contributors gave consent (digital or physical) before contributing; the effort describes DPDP-style mechanisms for storage, withdrawal, and deletion as already working.
+- Why: Voice data is personally identifying, and fear of surveillance or misuse is a legitimate concern for these communities — a weak consent process reinforces exactly the extraction fear the effort otherwise works to dispel.
+- Condition — applies when: collecting voice or personal data under a jurisdiction with a formal data-protection regime.
+
+**17. Multi-stakeholder standing operating model, not a one-time grant sprint**
+- Dimension: Institution
+- Stage: Scale
+- Type: Strategic Decision
+- Decision: Assign each partner a defined, continuing role — monitoring, feedback, retraining — rather than treating the project as complete once the first deployment ships.
+- What this looked like here: AI4Bharat, Bhashini, and the local administration are each described as needing standing roles for ongoing monitoring and feedback, with a plan to extend the same infrastructure to sectors beyond agriculture.
+- Alternative considered: Treating the effort as complete once the first deployment goes live, with no standing roles afterward.
+- Why: A model whose only institutional memory is a single funded team's presence disappears when that funding or those people move on.
+- Condition — applies when: initial funding or mandate was tied to a single deployment milestone.
 
 ### Ecosystem
 
-**19. Ten-role replicable actor blueprint**
+**18. Partner-role map**
 - Dimension: Ecosystem
 - Stage: Define
+- Also relevant at: Explore
 - Type: Toolkit Asset
-- Toolkit asset: A generalised ten-role blueprint for any low-resource language project: convening authority, community speakers, annotators, linguistic validators, data collection platform provider, specialised data partner, model builder, infrastructure/hosting provider, neutral orchestrator, and PMU.
-- Reusable as-is: A checklist of roles that need filling, independent of which specific organisation fills each one.
-- Condition — applies when: Assembling partners for any similar language-enablement effort from scratch.
-- Source: Project Astitva.
+- Purpose: For identifying, before model work starts, who needs to be involved and what each person or partner is responsible for, so no essential role is silently missing.
+- Toolkit asset: A role-by-role map — convening authority; community contributors (multilingual translators, script-reading contributors, speech-only contributors); linguistic experts/validators; community leaders/influencers; data-collection platform; national AI platform; technical partner; deployment partner — each with what they do.
+- Reusable as-is: Copy the table and fill in local names against each role before starting.
+- Condition — applies when: assembling a new language-enablement effort of any kind.
 
-**20. Neutral orchestrator must actively map and connect actors**
-- Dimension: Ecosystem
-- Stage: Explore
-- Type: Failure and Fix
-- Failure: IIT Madras had relevant model-building capability but had no way of knowing the Astitva effort was happening at all.
-- Fix: EkStep Foundation held coordination across every actor and drove the effort to launch, acting as neutral orchestrator by actively mapping the relevant ecosystem and making introductions.
-- Insight: The neutral orchestrator role is not a passive coordination function — without someone actively mapping and reaching out, relevant partners simply may not know an effort exists.
-- Condition — applies when: More than a few independent organisations need to coordinate and none has natural authority over the others.
-- Source: Project Astitva.
-
-**21. Specialised data partner is not substitutable by a general implementation partner**
+**19. Data-collection platform comparison and selection criteria**
 - Dimension: Ecosystem
 - Stage: Define
-- Type: Strategic Decision
-- Decision: Engaged Karya specifically as a specialised data partner with distinct expertise in ethical data collection from underserved communities, rather than using a general implementation partner.
-- Alternative considered: A general implementation partner without this specific expertise.
-- Condition — applies when: Data collection touches vulnerable or underserved communities and requires ethical-collection expertise that a general partner would not have.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
+- Also relevant at: Explore
+- Type: Toolkit Asset
+- Purpose: For choosing which data-collection platform or vendor fits a given context, instead of defaulting to whichever platform is best known.
+- Toolkit asset: Categorized comparison — ethical/community-centred (BhashaDaan, Shoonya, Karya, Josh Talks AI), global volunteer (Mozilla Common Voice, Zindi), commercial (Appen, TELUS/Lionbridge, Sama, NextWealth, isahit), university/research-network-led — against connectivity, community literacy, and budget.
+- Reusable as-is: Use directly to shortlist a platform for a new context.
+- Condition — applies when: selecting a data-collection approach for a new effort.
 
-**22. Compensation, consent, and eligibility design for community contributors**
+**20. Release data openly rather than keeping it inside one vendor's platform**
 - Dimension: Ecosystem
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Designed community contributor compensation and consent as one integrated pattern — contributors selected against explicit eligibility criteria (proficiency in the target language, literacy and typing skills, and local ownership in language standardisation), anonymised through unique registration codes, paid directly via UPI at roughly ₹1–2 per word, with payment tied only to verified contributions rather than submission alone, and told transparently before any recording began that data was being collected for open-source ASR, NMT, and TTS.
-- Alternative considered: Not documented in the source.
-- Condition — applies when: Compensating and protecting a large, distributed group of community contributors producing personal voice data directly, at scale.
-- Before → After: Not documented in the source; roughly ₹20 lakh of the pilot spend reached community contributors directly through this design.
-- Source: Project Astitva.
-
-**23. Linguistic validator as a distinct, non-substitutable role**
-- Dimension: Ecosystem
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Treated linguistic validation — checking grammatical and phonetic accuracy — as a distinct role from native-speaker recording, since fluent speakers cannot reliably validate their own grammatical accuracy; used linguistic experts and the Tribal Research Institute for this function.
-- Alternative considered: Relying on native-speaker contributors alone to self-validate.
-- Condition — applies when: The target language has no academic tradition, meaning this role may need to be developed through the project itself rather than sourced externally.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
-
-### Operating Model
-
-**24. Anchor to a committed deployment: data collection is infrastructure, not the deliverable**
-- Dimension: Operating Model
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Anchored data collection to the MahaVISTAAR use case and a deadline tied to the India AI Impact Summit — after early collection had drifted without a fixed use case or deadline — on the underlying principle that a committed downstream deployment, a convening authority who owns it, and an early-identified use case are what determine impact, not the volume of data collected. A model built without a deployment-first approach creates no impact.
-- Alternative considered: Continuing an open-ended collection effort without a forcing function (the actual early state, which drifted); treating data collection as the primary deliverable.
-- Condition — applies when: A language-building effort risks becoming an open-ended documentation exercise without a real deployment and a hard deadline attached to it, or risks being scoped and measured as a data-collection project rather than as infrastructure for a committed downstream use.
-- Before → After: Before — collection drifted without a fixed use case or deadline. After — anchoring to MahaVISTAAR and the Summit deadline turned it into purposeful work, completed in roughly a hundred days.
-- Source: Project Astitva.
-
-**25. Plan institutional handover before the project begins**
-- Dimension: Operating Model
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Designed tribal-department ownership and a district-to-state transition (via MahaVISTAAR) as the intended handover plan before the project began, rather than improvising ownership later.
-- Alternative considered: Not documented in the source.
-- Condition — fails when: The plan is designed but not verified as operating — the source itself does not confirm whether this transition, or a standing governance model, is actually functioning today.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
-
-**26. Design for reuse and openness from day one**
-- Dimension: Operating Model
-- Stage: Define
-- Type: Strategic Decision
-- Decision: Decided on open licensing, platform-neutral hosting, and documented methodology early, rather than retrofitting openness after the fact — retrofitting is harder and often simply doesn't happen.
-- Alternative considered: Building a closed or partner-specific asset and opening it up later.
-- Condition — applies when: The resulting dataset or model is meant to be reused by future deployers beyond the current partner set.
-- Before → After: Not documented in the source.
-- Source: Project Astitva.
-
-**27. Absorb model-build cost via research partnership in exchange for open data**
-- Dimension: Operating Model
 - Stage: Define
 - Type: Tactical Decision
-- Decision: Structured the partnership so that model-training cost was effectively absorbed by the research partner (AI4Bharat/IIT Madras) in exchange for the resulting dataset being released openly, rather than paying directly for model-building.
-- Alternative considered: Commissioning and paying for model-building directly.
-- Condition — applies when: A research partner has enough independent interest in access to a novel open dataset that it will absorb training costs in exchange for it.
-- Before → After: Not documented in comparative cost terms.
-- Source: Project Astitva.
+- Decision: Negotiate explicitly with the technical partner to release the resulting dataset openly on a national platform, in exchange for subsidised model-building, rather than keeping the data exclusive to one vendor's platform.
+- What this looked like here: AI4Bharat trained the Bhili models at no direct cost to the district; in exchange, the dataset was released openly on AI Kosh and Bhashini/ULCA rather than remaining solely inside Karya's platform.
+- Alternative considered: Paying for model-building outright and keeping the resulting dataset exclusive to the district and its vendor.
+- Why: This makes one asset serve two purposes — it funds the model-building work without extra project budget, and it keeps the data portable and reusable beyond whichever single vendor collected it.
+- Condition — applies when: a technical partner is willing to subsidise model training in exchange for open data.
 
-**28. Build-process playbook: from zero to a live integration**
-- Dimension: Operating Model
+**21. Isolated local data-collection effort connected late to technical/deployment partners**
+- Dimension: Ecosystem
 - Stage: Define
-- Type: Playbook
-- Playbook:
-  1. Audit what already exists for the target language (scripts, texts, recordings, prior Bhashini work) before assuming a zero-to-one build (Unit 6).
-  2. Map dialect and linguistic variation precisely before setting collection targets (Unit 2).
-  3. Set a quantified, domain-balanced corpus specification and assemble the partner and actor roles needed to deliver it (Units 7, 19).
-  4. Run data collection through a multi-layer quality pipeline — production, checking, validation — rather than collecting first and validating later (Unit 9).
-  5. Build the model layer by reusing existing open bases and bootstrapping from linguistically related higher-resource languages wherever possible, rather than training from scratch (Unit 3).
-  6. Anchor the whole sprint to a committed downstream deployment and a hard external deadline, so the effort doesn't drift into an open-ended data-collection exercise (Unit 24).
-  7. Integrate into one existing deployment and prove it there before expanding to additional languages or domains.
-- Note: Skipping the ordering — most commonly collecting data before dialect variation is mapped, or building without a downstream deployment committed — is the failure mode this sequence exists to prevent.
-- Condition — applies when: Starting a language-enablement effort from zero, where the full sequence from problem framing to a live integration hasn't been run before.
-- Before → After: Not documented in the source as a single tracked sequence; assembled here from decisions and milestones documented separately across the project (roughly a month for the foundational data sprint, about two months for the wider Phase 1).
-- Source: Project Astitva.
+- Type: Failure and Fix
+- Failure: Nandurbar's original Bhili data-collection work order ran independently of the model-building and deployment side, with no explicit target for conversational speech and no named deployment platform.
+- Fix: EkStep connected the effort to AI4Bharat, Bhashini, and MahaVISTAAR, and revised the collection scope before the sprint was complete.
+- Insight: A data-collection effort with no tie to a technical or deployment partner produces a dataset, not a pathway — the connection has to happen early.
+- Condition — applies when: a sub-national government unit begins language data collection before technical and deployment partners are engaged.
+
+**22. Source scarce linguistic-expert capacity through local government channels**
+- Dimension: Ecosystem
+- Stage: Define
+- Also relevant at: Explore
+- Type: Strategic Decision
+- Decision: Where qualified bilingual linguistic experts are scarce, use local government identification channels to locate them, rather than relying on open or vendor-led recruitment to surface them.
+- What this looked like here: Finding linguistic experts for Bhili was genuinely difficult given how few exist in the community; the task was handled by local government teams and administration, with the education department suggesting candidates.
+- Alternative considered: Open or vendor-led recruitment to find linguistic experts.
+- Why: In a genuinely low-resource-language community, qualified bilingual experts are rare and not easily found through open recruitment; local government departments already have visibility into who in the community has this skill.
+- Condition — applies when: the target language has very few qualified bilingual linguistic experts, which is typical for tribal or zero-resource languages.
+
+**23. Open methodology handbook and open dataset release**
+- Dimension: Ecosystem
+- Stage: Scale
+- Also relevant at: Define
+- Type: Toolkit Asset
+- Purpose: The handbook is for transferring the step-by-step method — governance steps, recruitment approach, data specs — to a new team with no direct access to the original implementers. The open dataset release is for letting others — researchers, other government departments, other language efforts — build on the underlying data without re-collecting it themselves.
+- Toolkit asset: A published process handbook documenting the methodology end-to-end, alongside the open dataset release described in Unit 20.
+- Reusable as-is: Publishing the handbook is what let another team pick up the work directly — a working bot alone would not have made that possible.
+- Condition — applies when: the goal is reusable public infrastructure rather than a single deployment.
 
 ---
 
 ## 4. Toolkits and playbooks
 
-| Asset | Unit | Reuse condition |
-|---|---|---|
-| Multi-domain sentence corpus specification | Toolkit (Unit 7) | Use when starting a language-enablement effort with no existing sense of how much or what kind of data is needed. |
-| Kathbath collection methodology | Toolkit (Unit 8) | Use when standing up voice-data collection from a distributed community of contributors. |
-| Maker–Checker–Superchecker quality pipeline | Toolkit (Unit 9) | Use when collecting data at volume, under time pressure, from a distributed community. |
-| Open dataset on Bhashini and AI Kosh | Toolkit (Unit 14) | Use directly when building any AI system that needs to serve Dehvali Bhili speakers. |
-| Ten-role replicable actor blueprint | Toolkit (Unit 19) | Use when assembling partners for a similar language-enablement effort from scratch. |
-| Build-process playbook: zero to live integration | Playbook (Unit 28) | Use as the end-to-end sequence when running a language-enablement effort for the first time. |
+| Unit | Asset | Reuse condition |
+| --- | --- | --- |
+| 7 | Data volume & composition target table | Setting Phase 1 collection targets for any low-resource language |
+| 10 | WER / BLEU / MOS scorecard + qualitative field checks | Assessing readiness to move between stages |
+| 12 | Four-phase process | Any effort starting from little or no digital presence |
+| 13 | The Replication Checklist | Pre-flight readiness check before data collection |
+| 18 | Partner-role map | Assembling the ecosystem for a new effort |
+| 19 | Data-collection platform comparison | Choosing a data-collection approach |
+| 23 | Open methodology handbook + dataset release | Enabling another team to replicate without the original implementers |
 
 ---
 
 ## 5. Problem→solution patterns
 
 | Problem | Root cause | Solution | Result | Condition |
-|---|---|---|---|---|
-| Model performed poorly in natural conversation | Data collection leaned on read speech; not discovered until post-deployment | Added a dedicated conversational speech collection track | Rework required; conversational data now planned in from the start | Applies to any voice model intended for live conversational deployment |
-| Model underperformed on live telephony calls | Data recorded at 16kHz; telephony operates at 8kHz; not discovered until post-deployment | Collect at 8kHz directly or deliberately downsample during training | Rework required; audio spec now decided before collection begins | Applies whenever collection tooling has higher audio fidelity than the deployment channel |
-| Small-panel testing gave false confidence in dialect coverage | Dialect variation wasn't represented in the testing panel | Map which dialects have gaps and target supplementary collection accordingly | Not documented in comparative terms | Applies whenever the target language has multiple dialects and testing capacity is limited |
-| A directly relevant technical partner (IIT Madras) was unaware the effort existed | No neutral orchestrator actively mapping and connecting the ecosystem | EkStep Foundation took on the neutral orchestrator role, actively mapping actors and making introductions | Enabled coordination across the full ten-role actor map | Applies whenever several independent organisations must coordinate and none has natural authority over the others |
-| Early data collection drifted without clear purpose | No fixed use case or deadline attached to the collection effort | Anchored the sprint to the MahaVISTAAR use case and a deadline tied to the India AI Impact Summit | Completed in roughly a hundred days from zero digital footprint to live service component | Applies whenever a language-building effort risks becoming open-ended without a forcing function |
+| --- | --- | --- | --- | --- |
+| Collected audio performed poorly on real usage | First collection used clean, studio-style recordings, not telephony-grade audio | Shifted sampling toward conversational speech, designed for 8 kHz telephony and low latency | Recordings matched the real channel most rural users actually use | Applies when the deployment channel includes basic-phone or IVR access |
+| Collected "Bhili" speech was mixed with Marathi | Contributors habitually code-switch when interfacing with institutions | Ran collection in iterative small-batch cycles with review between cycles | Mixing was caught and corrected before the full dataset was locked in | Applies when the target language coexists closely with a dominant regional language |
+| Data collection produced a dataset with nowhere to go | Effort ran independently of model-building and deployment partners | Connected to a technical partner and deployment platform; revised the collection scope | Requirements corrected mid-course, before the sprint completed | Applies when a government unit starts collection before technical/deployment partners are engaged |
 
 ---
 
 ## 6. Retrieval guide
 
-*"How do we know if a language actually needs to be built from scratch, or does something already exist?"* → Unit 6
+- *"How do we pick which language or community to start with?"* → Unit 1
+- *"Should we build one model that covers everything, or start narrow?"* → Unit 2
+- *"Our language has multiple dialects — how do we handle that?"* → Unit 3
+- *"Do we need to build our own model architecture from scratch?"* → Unit 4
+- *"Our audio doesn't work well on phone calls — why?"* → Unit 5
+- *"What's the minimum viable set of AI capabilities we need?"* → Unit 6
+- *"How much data do we need to collect, and of what kind?"* → Unit 7
+- *"How do we make sure collected language data is actually 'pure'?"* → Unit 8
+- *"What mix of general vs. domain-specific data should we collect?"* → Unit 9
+- *"How do we know if our models are good enough to deploy?"* → Unit 10
+- *"We don't have a strong internal champion — does that matter?"* → Unit 11
+- *"What's the overall sequence for running an effort like this?"* → Unit 12
+- *"Are we actually ready to start collecting data?"* → Unit 13
+- *"Should we use a vendor to recruit contributors, or do it ourselves?"* → Unit 14
+- *"How should we pay contributors to keep them motivated?"* → Unit 15
+- *"What consent process do we need for voice data?"* → Unit 16
+- *"How do we sustain this after initial funding ends?"* → Unit 17
+- *"Who needs to be involved in an effort like this?"* → Unit 18
+- *"Which data-collection platform should we use?"* → Unit 19
+- *"A technical partner is offering free model training — what's the catch?"* → Unit 20
+- *"We already started collecting data on our own — is it too late to bring in partners?"* → Unit 21
+- *"We can't find anyone who can validate our language — what do we do?"* → Unit 22
+- *"How do we help another team replicate what we did?"* → Unit 23
 
-*"Our target population speaks one 'language' — do we need to worry about dialects?"* → Unit 2, Unit 13
+---
+---
 
-*"What should we build our model stack on top of instead of starting from nothing?"* → Unit 3
+### Provenance appendix *(internal — not adopter-facing)*
 
-*"How do we avoid vendor lock-in on the model and hosting side?"* → Unit 4
-
-*"What should our data collection targets and structure actually look like?"* → Unit 7, Unit 10
-
-*"What tools or methodology should we use to actually run the collection process?"* → Unit 8, Unit 9
-
-*"Our model sounds fine in training but fails on real phone calls — why?"* → Unit 12
-
-*"Our model reads fine but breaks down in natural conversation — why?"* → Unit 11
-
-*"How do we pay and protect community contributors fairly?"* → Unit 22
-
-*"Who actually needs to be involved in a project like this?"* → Unit 19, Unit 20
-
-*"Should this be run by an external organisation or must it be government-led?"* → Unit 15
-
-*"How do we keep this from stalling if the person driving it moves roles?"* → Unit 15, Unit 25
-
-*"What does this actually cost, and how is it typically funded?"* → Unit 22, Unit 27
-
-*"Should we try to build support for every dialect and sector at once, or go step by step?"* → Unit 28
-
-*"How do we make sure this doesn't turn into an endless data-collection exercise with nothing to show for it?"* → Unit 24
-
-*"What's the actual end-to-end sequence for a language-enablement project?"* → Unit 28
+| Source file | Covers | Notes |
+| --- | --- | --- |
+| Bhili pathway v1 (docx/PDF), as of July 2026 | Section 1 (all fields); Units 1, 3, 4, 5, 9, 11, 14, 17, 18 (partial), 19 (partial), 20, 21; Section 5 | Primary source — the finished narrative write-up of the deployment |
+| Bringing a Language to the AI Map (blueprint), Santosh Kevlani / EkStep Foundation | Units 2, 6, 7, 10, 12, 13, 18 (partial), 19 (partial), 23; Section 0 framing | Primary source — adds the four-phase process, cost components, thresholds, and checklist not in the Bhili write-up |
+| Otter_Bhili_transcript (interview, Santosh Kevlani) | Units 8, 9, 16, 22; additional detail supporting Units 1, 4, 11, 14, 15, 18 | Primary source for the code-mixing fix (Unit 8), domain-mix decision (Unit 9), and linguistic-expert sourcing (Unit 22); otherwise largely confirms the Bhili pathway document |
